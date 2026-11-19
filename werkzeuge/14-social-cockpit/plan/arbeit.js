@@ -95,7 +95,7 @@ function ansichtName(a) {
 function kopf() {
   const p = imPlan(), letzt = p.reduce((m, b) => b.datum > m ? b.datum : m, ''), w = p.length ? Math.floor((dObj(letzt) - dObj(wocheVon(heute()))) / 6048e5) + 1 : 0;
   const z = p.length ? `${mz(p.length, 'Beitrag', 'Beiträge')} in ${mz(w, 'Woche', 'Wochen')}` : 'Noch nichts geplant';
-  $('#kopf').innerHTML = WO.kopf({ werkzeug: ORDNER, unter: 'Kommunikation', titel: ansichtName(S.ansicht), stand: z, website: (H.wege && H.wege.website) || '/zentrale/seite/index.html', markeHref: '../#start' });
+  $('#kopf').innerHTML = WO.kopf({ werkzeug: ORDNER, unter: 'Kommunikation', titel: ansichtName(S.ansicht), stand: z, website: (H.wege && H.wege.website) || 'https://tastyrob123.github.io/tastystudios/', markeHref: '../#start' });
 }
 function rand() {
   $('#rand').innerHTML = WO.rand(soWege(S.d, 'plan', S.ansicht), {});

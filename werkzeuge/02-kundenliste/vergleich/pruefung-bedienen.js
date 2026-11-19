@@ -174,7 +174,7 @@ const ok = (was, b, mehr = '') => { erg.push((b ? 'OK   ' : 'FEHL ') + was + (me
     // Kopf
     const kopf = await p.evaluate(() => [...document.querySelectorAll('#ws-kopf a')].map(a => a.getAttribute('href') + '|' + (a.getAttribute('aria-label') || a.innerText.trim())));
     ok(W + 'Kopf-Links', kopf.length > 0, kopf.join(' ; '));
-    for (const href of ['pruefung.html', 'anleitung.html', '/', '/zentrale/seite/index.html']) {
+    for (const href of ['pruefung.html', 'anleitung.html', '/', 'https://tastyrob123.github.io/tastystudios/']) {
       const r = await ctx.request.get(new URL(href, N).href); ok(W + 'Ziel erreichbar ' + href, r.ok());
     }
     if (breite < 900) {

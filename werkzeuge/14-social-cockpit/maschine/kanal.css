@@ -1,0 +1,17 @@
+/* Content-Maschine · Kanal-Wahl im Stil der Kanäle */
+.kanalwahl{display:grid;gap:10px;margin-top:14px}
+.kw-k{padding:12px;border-radius:18px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.kw-k.an{background:var(--kg);box-shadow:none}
+.kw-k__kopf{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.kw-k__kopf .so-lg{--g:38px}
+.kw-k__kopf b{font:600 15px/1.2 'Instrument Sans',system-ui,sans-serif}
+.kw-k__f{display:flex;flex-wrap:wrap;gap:6px}
+.kw-k__f button{display:grid;gap:2px;padding:8px 12px;border:0;border-radius:12px;cursor:pointer;text-align:left;background:rgba(255,255,255,.1);color:inherit;font:500 13.5px/1.2 'Instrument Sans',system-ui,sans-serif}
+.kw-k__f button small{font:400 13px/1.2 'DM Mono',ui-monospace,monospace;opacity:.7}
+.kw-k__f button:hover{background:rgba(255,255,255,.2)}
+.kw-zurueck{display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.kw-zurueck svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8}
+/* Keine Schrift unter 13 px (Prüfpunkt 17 der internen Werkzeuge); das Studio war auf 9,5 bis 11,5 px gesetzt */
+.kopf__marke small,.kopf__marke small span,.pruef__zahl,.pruef__t,.nb,.nk,.reiter button,.studio label,.studio small,.vorlagen small,.fussleiste,.fussleiste span,.fussleiste label,
+.insel button span,.kn span,.rechts label,.rechts small,.rechts button,.rechts span,.leise,.fotos small,.ablage small,.ablage span,.seitenwahl button,.segment button,.filter button,.kw-zurueck span,.menue small,.menue b,.dialog small,.hinweise,.status{font-size:13px!important;letter-spacing:.04em!important}
+#vorlagen small,#vorlagen p{display:none!important}   /* Beschreibungen der Vorlagen stammen aus dem Druck (Flyer, Aushang) und stehen in zu schmaler Spalte; Bild und Name reichen */

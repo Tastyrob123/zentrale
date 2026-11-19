@@ -15,7 +15,7 @@ if (H.namen && !H.namen[ORDNER]) H.namen[ORDNER] = 'Sales Cockpit';
 const NAME = 'Sales Cockpit';
 const W = window.SC_WISSEN || {};
 const FOTO = k => (H.fotos && H.fotos[k]) || H.foto;
-const WEBSITE = (H.wege && H.wege.website) || '/zentrale/seite/index.html';
+const WEBSITE = (H.wege && H.wege.website) || 'https://tastyrob123.github.io/tastystudios/';
 const KUNDEN_WZ = '/zentrale/werkzeuge/02-kundenliste/';
 const LAPTOP = '/zentrale/zentrale/img/laptop.webp';
 const WZ_BILD = '/zentrale/werkzeuge/12-marke-vision/haeuser/wz/';

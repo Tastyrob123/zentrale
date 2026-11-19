@@ -127,7 +127,7 @@ function kopfLeiste() {
   const n = wartend().length;
   $('#kopf').innerHTML = WO.kopf({ werkzeug: '10-newsletter', unter: 'Newsletter', titel: TITEL[S.ansicht] || WO.name('10-newsletter'),
     stand: D().versand.scharf ? 'Versand ist scharf' : mal(bestaetigt().length, 'Ein Empfänger bestätigt', 'Empfänger bestätigt') + '',
-    pruefung: WEGE.pruefung, anleitung: WEGE.anleitung, website: (WO_HAUS.wege || {}).website || '/zentrale/seite/index.html', marke: 'data-gehe="start"' });
+    pruefung: WEGE.pruefung, anleitung: WEGE.anleitung, website: (WO_HAUS.wege || {}).website || 'https://tastyrob123.github.io/tastystudios/', marke: 'data-gehe="start"' });
   /* Das Kleid legt im Kopf die Werkzeug-Leiste des Culinarium an (im Rahmen «Die Bühne» ausgeblendet). Sie gehört nicht hierher: weg damit, auch für Bildschirmleser. */
   const wz = $('#kopf .wo-kopf__wz'); if (wz) wz.remove();
   const r = $('#kopf .wo-kopf__r');
@@ -144,7 +144,7 @@ function rand() {
     { titel: 'Für Robert und Anna', eintraege: [e('versand', 'Versand', D().postausgang.length)] }], WEGE);
   const w = $('#rand .wo-rand__wege'), pf = WO.ic('pfeil');
   if (w) {   // Wege: die Anmeldung auf der Agentur-Seite, die Zentrale; dazu «Neue Ausgabe» fürs Handy
-    w.insertAdjacentHTML('afterbegin', `<a href="${esc((WO_HAUS.wege || {}).website || '/zentrale/seite/index.html')}#arbeiten" target="_blank" rel="noopener">Anmeldung auf der Agentur-Seite${pf}</a>`);
+    w.insertAdjacentHTML('afterbegin', `<a href="${esc((WO_HAUS.wege || {}).website || 'https://tastyrob123.github.io/tastystudios/')}#arbeiten" target="_blank" rel="noopener">Anmeldung auf der Agentur-Seite${pf}</a>`);
     w.insertAdjacentHTML('beforeend', `<a href="${esc((WO_HAUS.wege || {}).zentrale || '/zentrale/')}">${esc(WO.name('zentrale'))}${pf}</a><button class="wo-rand__probe" type="button" data-neu>Neue Ausgabe${WO.ic('plus')}</button>`);
   }
   $$('#rand [data-gehe]').forEach(b => b.onclick = () => gehe(b.dataset.gehe));
