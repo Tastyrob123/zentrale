@@ -99,16 +99,7 @@
       tun: function (d) { var b = Q(d, '.cu-t .kl-mini'); if (b && !T(d, 'button', /^Laufende Verträge$/i)) b.click(); }, warte: 1400,
       ziel: function (d) { var b = T(d, 'main button, main a', /^Laufende Verträge$/i); return b ? b.parentElement : null; }, titel: 'Die Akte eines Kunden',
       text: 'Oben in der Akte: «Datei ablegen», «Notiz schreiben» und «Entwurf ansehen». Die Reiter führen zu Überblick, Arbeiten, Stammdaten, laufenden Verträgen, Ablage, Rechnungen, Verlauf, Besuchen und Notizen.' },
-    { kap: 'Kunden', wz: '03-entwurf-besuche', in: '02-kundenliste', oben: true,
-      ziel: function (d) { var z = Q(d, '.zeitraum'); return z ? (z.closest('section, .blatt') || z) : null; }, titel: 'Wer den Entwurf geöffnet hat',
-      text: 'Für jedes Haus, dem wir einen Entwurf geschickt haben: wer ihn geöffnet hat, wann, welche Seiten und wie lange. Oben wählst du den Zeitraum, 7, 30 oder 90 Tage.' },
-    { kap: 'Kunden', wz: '03-entwurf-besuche', in: '02-kundenliste',
-      tun: function (d) { var b = Q(d, '.besuch'); if (b && !/besuche/.test(d.defaultView.location.hash)) b.click(); }, warte: 1300, oben: true,
-      ziel: function (d) { return Q(d, 'main'); }, max: 640, titel: 'Ein Besuch im Einzelnen',
-      text: 'Ein Klick auf einen Besuch zeigt den Weg durch den Entwurf, Seite für Seite.' },
-    { kap: 'Kunden', wz: '05-angebot', in: '02-kundenliste', block: 'start', max: 560,
-      ziel: function (d) { return Q(d, '.wo-aufg') || Q(d, 'main'); }, titel: 'Ein Angebot schreiben',
-      text: 'Haus wählen, anklicken, was dazugehört, und das Angebot entsteht rechts Seite für Seite, mit den Preisen aus den Grundlagen. «Angebot speichern» gibt ihm eine Nummer, «PDF speichern» öffnet das Druckfenster.' },
+    /* «Wer hat den Entwurf geöffnet» und «Angebot» gehören zu Kunden, laufen online aber nicht (Stand 19.11.2026): darum hier nicht im Rundgang */
 
     /* Haus-Check */
     { kap: 'Haus-Check', wz: '04-haus-check',
