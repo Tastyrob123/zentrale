@@ -1,0 +1,107 @@
+{
+ "stand": "2026-11-17",
+ "briefe": {
+  "saltandsilver": {
+   "datei": "brief/saltandsilver.html",
+   "online": true,
+   "ziel": "https://salt-and-silver-studie.vercel.app/",
+   "an": "Johannes Riffelmacher und Thomas Kosikowski"
+  },
+  "beau-rivage": {
+   "datei": "brief/beau-rivage.html",
+   "online": true,
+   "ziel": "https://grand-beau-rivage-entwurf.vercel.app/",
+   "an": ""
+  },
+  "seiler": {
+   "datei": "brief/seiler.html",
+   "online": false,
+   "ziel": "",
+   "an": ""
+  },
+  "carlton": {
+   "datei": "brief/carlton.html",
+   "online": true,
+   "ziel": "https://carlton.tastystudios.ch/",
+   "an": "Stephan JJ. Maeder"
+  },
+  "doldenhorn": {
+   "datei": "brief/doldenhorn.html",
+   "online": true,
+   "ziel": "https://doldenhorn.tastystudios.ch/",
+   "an": "René-François und Patric Maeder"
+  },
+  "ruedihus": {
+   "datei": "brief/ruedihus.html",
+   "online": true,
+   "ziel": "https://ruedihus.tastystudios.ch/",
+   "an": "Familie Maeder"
+  },
+  "gasterntal": {
+   "datei": "brief/gasterntal.html",
+   "online": true,
+   "ziel": "https://berghotel-gasterntal-entwurf.vercel.app/",
+   "an": "Familie Maeder"
+  },
+  "monte-moro": {
+   "datei": "brief/monte-moro.html",
+   "online": true,
+   "ziel": "https://tastystudios.vercel.app/einblick/monte-moro/",
+   "an": "Esther und Fabian Zurbriggen"
+  },
+  "zermatt": {
+   "datei": "brief/zermatt.html",
+   "online": true,
+   "ziel": "https://tastystudios.vercel.app/einblick/zermatt/",
+   "an": "Moni und Pirmin Zurbriggen"
+  },
+  "wellness": {
+   "datei": "brief/wellness.html",
+   "online": true,
+   "ziel": "https://tastystudios.vercel.app/einblick/wellness/",
+   "an": "Esther und Fabian Zurbriggen"
+  },
+  "schaefli": {
+   "datei": "brief/schaefli.html",
+   "online": true,
+   "ziel": "https://schaefli.tastystudios.ch/",
+   "an": "Christian Kuchler"
+  },
+  "schloessli": {
+   "datei": "brief/schloessli.html",
+   "online": true,
+   "ziel": "https://schloessli.tastystudios.ch/",
+   "an": "Christian Kuchler"
+  },
+  "uncle-hung": {
+   "datei": "brief/uncle-hung.html",
+   "online": true,
+   "ziel": "https://unclehung.tastystudios.ch/",
+   "an": "Ngo Thi Hong Yen"
+  },
+  "bareiss": {
+   "datei": "brief/bareiss.html",
+   "online": false,
+   "ziel": "",
+   "an": "Familie Bareiss"
+  },
+  "gilles-varone": {
+   "datei": "brief/gilles-varone.html",
+   "online": false,
+   "ziel": "",
+   "an": "Gilles Varone"
+  },
+  "roots": {
+   "datei": "brief/roots.html",
+   "online": false,
+   "ziel": "",
+   "an": "Pascal Steffen"
+  },
+  "rustica": {
+   "datei": "brief/rustica.html",
+   "online": false,
+   "ziel": "",
+   "an": "Heidi und Damian Andenmatten-Zurbriggen"
+  }
+ }
+}

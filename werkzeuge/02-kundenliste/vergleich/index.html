@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Vergleich · Kundenliste · Tasty Studios</title>
+<link rel="icon" href="/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg" type="image/svg+xml">
+<!-- Vergleich der Prüfung (Prüf-Chat 07.11.2026), nach der Nachbesserung neu aufgenommen: links die Vorlage Website bearbeiten, rechts die Kundenliste, je Ansicht bei 1440 und 390 px.
+     Bilder: vergleich/pruefung-aufnahme.js (Playwright). Unter jeder Ansicht steht, was die Prüfung gesehen und bedient hat. Urteil: PRUEFUNG.md. -->
+<script src="/zentrale/zentrale/oberflaeche/kleid/tasty.js"></script>
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/grund.css"><link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/kleid/tasty.css">
+<style>
+body.vg{margin:0;background:var(--wo-papier);color:var(--wo-tinte);font:15px/1.55 var(--wo-sans)}
+.vg-kopf{background:var(--wo-tapete);color:#fff;padding:22px 24px}
+.vg-kopf__in{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.vg-kopf h1{margin:0;font:700 clamp(26px,3vw,38px)/1.05 var(--wo-titel);text-transform:uppercase;letter-spacing:.015em}
+.vg-kopf h1 em{font-style:normal;font-weight:300}
+.vg-kopf a{color:var(--wo-g1);font:400 11px/1 var(--wo-mono);letter-spacing:.16em;text-transform:uppercase}
+.vg-raum{max-width:1400px;margin:0 auto;padding:36px 24px 80px}
+.vg-satz{max-width:76ch;margin:0 0 10px}
+.vg-wahl{display:flex;gap:8px;margin:22px 0 8px;flex-wrap:wrap}
+.vg-wahl button{height:38px;padding:0 18px;border:0;border-radius:999px;cursor:pointer;font:400 10.5px/1 var(--wo-mono);letter-spacing:.16em;text-transform:uppercase;background:var(--wo-papier2);color:var(--wo-tinte)}
+.vg-wahl button[aria-pressed="true"]{background:var(--wo-tief);color:#fff}
+.vg-ans{padding:30px 0;border-top:1px solid var(--wo-linie)}
+.vg-ans h2{margin:0 0 4px;font:600 26px/1.1 var(--wo-titel);letter-spacing:.01em}
+.vg-ans > p{margin:0 0 16px;max-width:90ch;color:var(--wo-leise)}
+.vg-paar{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.vg-paar figure{margin:0;min-width:0}
+.vg-paar figcaption{font:400 10.5px/1 var(--wo-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--wo-akzent);margin-bottom:8px}
+.vg-paar img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 0 0 1px var(--wo-linie),0 20px 34px -24px rgba(0,0,0,.5)}
+[data-breite="390"] .vg-paar{grid-template-columns:repeat(2,minmax(0,390px));justify-content:start}
+.vg-ab{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:6px;max-width:100ch}
+.vg-ab li{font-size:14px;padding-left:14px;border-left:2px solid var(--wo-taupe)}
+.vg-ab li.vg-fehl{border-left-color:var(--wo-punkt)}
+@media (max-width:700px){.vg-raum{padding:24px 16px 60px}.vg-paar{gap:10px}}
+</style>
+</head>
+<body class="vg">
+<header class="vg-kopf"><div class="vg-kopf__in"><h1>Vergleich <em>Website bearbeiten · Kundenliste</em></h1><a href="../">Zum Werkzeug</a></div></header>
+<main class="vg-raum">
+  <p class="vg-satz">Aufgenommen vom Prüf-Chat am 07.11.2026, nach der Nachbesserung am selben Tag mit demselben Ablauf neu aufgenommen (Abweichungen behoben, abgehakt in NACHBESSERUNG.md). Links die Vorlage Website bearbeiten (Culinarium, Vorführ-Fassung mit Beispielwerten), rechts die Kundenliste mit Probedaten. Erlaubt sind nur Kleid, Inhalt und Namen. Unter jeder Ansicht steht, was die Prüfung gesehen und selbst bedient hat; rot markiert wäre eine Abweichung. Urteil der Prüfung: PRUEFUNG.md, Nachbesserung: NACHBESSERUNG.md im selben Ordner.</p>
+  <div class="vg-wahl" role="group" aria-label="Breite"><button type="button" data-b="1440" aria-pressed="true">Rechner 1440 px</button><button type="button" data-b="390" aria-pressed="false">Handy 390 px</button></div>
+  <div id="vg-ort" data-breite="1440"></div>
+</main>
+<script>
+/* [Datei, Titel, Satz, [Befunde], nur Handy, nur Neubau]. Befund mit «!» am Anfang = Abweichung. */
+var ANS = [
+  ['start', 'Start', 'Kopf mit Zeichen und runden Knöpfen, Rand mit Gruppen und Zahlen, Startbild mit Gruss nach Tageszeit, einem Satz und Foto, Knöpfe Anleitung und Prüfung, Leiste unten.',
+    ['Gleich wie die Vorlage. Gruss wechselt nach Tageszeit, Foto ist im ersten Bild geladen.', 'Lage mit drei Fächern (Heute, Im Gespräch, Zuletzt); jeder Knopf darin führt in seine Ansicht (bedient).']],
+  ['start-ganz', 'Start, ganze Seite', 'Unter der Lage «Häufig gebraucht» mit Foto und die Bereich-Kacheln «Stand für Stand».',
+    ['Gleich aufgebaut. Alle sieben Kacheln und alle neun Bereich-Kacheln bedient: jede öffnet ihr Ziel (Notiz und Schritt fragen erst nach dem Haus).', 'Ganzseiten-Bild: Rand und Leiste kleben und stehen darum verschoben, in beiden Werkzeugen gleich.']],
+  ['liste', 'Alle Häuser (neben «Termine»)', 'Karten wie die Termine der Vorlage: Plakat links, Felder rechts. Darüber Suche, Stand, Fälligkeit, Art, Sortierung (Auftrag).',
+    ['Suche, alle drei Filter und die Sortierung bedient: jedes Mal die richtigen Häuser.', 'Stand in der Karte ändern: wartet gelb, mit Quittung gespeichert, Rückgängig geht.']],
+  ['brett', 'Brett (neben einem Bereich der Website)', 'Die Stände als Spalten (Auftrag). Aus Flächen der Vorlage gebaut.',
+    ['Karte gezogen: wartet gelb, Speichern legt den Stand ab, Rückgängig nimmt ihn zurück.', 'Hinweis: am Rechner stehen vier der neun Spalten im ersten Bild; die übrigen liegen seitlich im Brett (nichts läuft über den Rand).']],
+  ['heute', 'Heute fällig (neben «Termine»)', 'Was heute ansteht oder überfällig ist; dieselben Punkte gehen an die Zentrale.',
+    ['Drei fällige Häuser, gleich wie /api/02-kundenliste/heute und die Startansicht der Zentrale.']],
+  ['stand', 'Ein Stand (neben «Der Abend»)', 'Je Stand die Häuser darin; im Rand mit Zahl.', ['Alle acht Stände im Rand bedient, jeder zeigt seine Häuser.']],
+  ['haus', 'Ein Haus (neben «Angaben des Hauses»)', 'Felder wie die Angaben der Vorlage; rechts Notizen, Besuche auf dem Entwurf (Platzhalter mit Kürzel), Verlauf, Löschen.',
+    ['Vier Felder auf einmal geändert (Telefon, Schritt, Datum, Art): Leiste zählt vier, Speichern legt alle ab, Verlauf mit wer und wann, Rückgängig stellt alles zurück.', 'Notiz mit Name und Zeit, Rückgängig geht. Löschen fragt vorher, «Behalten» löscht nichts, Rückgängig holt das Haus zurück.']],
+  ['bestand', 'Bestand übernehmen (neben «Hinweis für Gäste»)', 'Import der echten Häuser mit Bericht; Probedaten laden.',
+    ['Behoben (Nachbesserung): siehe die nächste Ansicht «Nach dem Import».', 'Bericht, Quittung und Rückgängig des Imports gehen; Probedaten laden mit Rückfrage und Quittung.']],
+  ['import', 'Nach dem Import (neben «Hinweis für Gäste»)', '«Echte Häuser übernehmen» gedrückt: Bericht, Quittung, Zahlen im Rand.',
+    ['Nachbesserung: verschickt.json und versand-schutz-projekte.py werden gelesen. 14 Häuser, nur Kunden; eigene Projekte und Studien «nur lokal» stehen im Bericht als nicht übernommen. Stände nur, wo belegt: txtme Vertrag, Grand Beau-Rivage und Salt & Silver Entwurf geschickt, Carlton-Europe und Waldhotel Doldenhorn angeschrieben, die übrigen offen. Keine Doppelten, Art nur wo belegt.', 'Quittung mit vorher und nachher, Rückgängig stellt die Probedaten wieder her.']],
+  ['verlauf', 'Frühere Änderungen (neben «Frühere Fassungen»)', 'Platten je Tag mit Zeit, was und wer.', ['Gleich aufgebaut; ein Klick auf den Namen öffnet das Haus.']],
+  ['fenster', 'Ein offenes Fenster', 'Vorlage: Foto tauschen. Kundenliste: Neues Haus.',
+    ['Gleich aufgebaut (Titel mit Akzent, Kuhlen, «Abbrechen» als Link, dunkler Hauptknopf). Ohne Namen warnt es; angelegt mit Quittung, Rückgängig nimmt es zurück.']],
+  ['offen', 'Eingabe offen: Leiste gelb', 'Eine Eingabe wartet: die Leiste zählt sie, Speichern leuchtet gelb.',
+    ['Gleich. «Vorher, nachher» zeigt beide Werte. Statt «Veröffentlichen» steht am Rechner «Verwerfen» (fragt nach, stellt zurück); am Handy zwei Knöpfe wie die Vorlage. Strg + S speichert.']],
+  ['quittung', 'Quittung nach dem Speichern', 'Die Vorführ-Fassung der Vorlage zeigt nach Speichern keine Quittung (rechts die Kundenliste).',
+    ['Quittung mit «vorher» wird «nachher», «Vorher/nachher ansehen», «Ansehen», «Rückgängig»; Speichern wird grün und nach sechs Sekunden wieder grau, wie in der Vorlage.']],
+  ['anleitung', 'Anleitung', 'Eigene Seite mit Kopf, Auftakt und Abschnitten mit echten Bildschirmen.', ['Gleich aufgebaut, ohne Schrittnummern (CLAUDE.md). Alle Bilder laden.']],
+  ['pruefung', 'Prüfseite (Vorlage: Karten & Preislisten)', 'Website bearbeitens eigene Prüfseite liegt nicht in der Vorlage; daneben steht die von «Karten & Preislisten». Kopf wie pruefung-haus.css von «Website bearbeiten».',
+    ['Teile Browser, Server und Liste, Fehler, Alle Daten, Reparaturen mit zwei Klicks, Lexikon «Was tun, wenn …»; «Was tun?» in jeder Meldung führt dorthin.']],
+  ['rundgang', 'Rundgang', 'Fünf Schritte mit Kegel und Karte; «Kurzer Rundgang» im Rand ruft ihn wieder auf.',
+    ['Alle fünf Schritte und «Überspringen» bedient, bei 1440 und 390 px.', 'Nachbesserung: der erreichte Strich leuchtet jetzt (Signalrot des Kleids), mit jedem «Weiter» kommt einer dazu, wie in der Vorlage.']],
+  ['zentrale-heute', 'In der Zentrale: Heute-Punkt geöffnet', 'Nur Kundenliste: die Zentrale nach einem Klick auf den fälligen Punkt «Seehotel Lindenhof».',
+    ['Nachbesserung: /api/02-kundenliste/heute liefert link «?haus=…» relativ zum Werkzeug, wie zentrale/VERTRAG-HEUTE.md verlangt. Der Rahmen öffnet das Haus.'], false, true],
+  ['rand', 'Handy: Rand aufgeklappt', '«Bereiche» klappt den Rand auf, eine Wahl klappt ihn zu.', ['Gleich.'], true]
+];
+var ort = document.getElementById('vg-ort');
+function zeichne(b) {
+  ort.setAttribute('data-breite', b); ort.textContent = '';
+  ANS.forEach(function (a) {
+    if (a[4] && b === '1440') return;
+    var s = document.createElement('section'); s.className = 'vg-ans'; s.id = a[0];
+    s.innerHTML = '<h2>' + a[1] + '</h2><p>' + a[2] + '</p><div class="vg-paar">'
+      + (a[5] ? ['neubau'] : ['vorlage', 'neubau']).map(function (x) { return '<figure><figcaption>' + (x === 'vorlage' ? 'Vorlage · Website bearbeiten' : 'Neu · Kundenliste') + ' · ' + b + ' px</figcaption><img src="bilder/' + a[0] + '-' + b + '-' + x + '.jpg" alt="' + a[1] + ', ' + (x === 'vorlage' ? 'Vorlage' : 'Kundenliste') + '" loading="lazy"></figure>'; }).join('')
+      + '</div><ul class="vg-ab">' + a[3].map(function (t) { return t.charAt(0) === '!' ? '<li class="vg-fehl">Abweichung: ' + t.slice(2) + '</li>' : '<li>' + t + '</li>'; }).join('') + '</ul>';
+    ort.appendChild(s);
+  });
+}
+document.querySelectorAll('[data-b]').forEach(function (k) { k.addEventListener('click', function () { document.querySelectorAll('[data-b]').forEach(function (x) { x.setAttribute('aria-pressed', x === k ? 'true' : 'false'); }); zeichne(k.getAttribute('data-b')); }); });
+zeichne('1440');
+</script>
+</body>
+</html>

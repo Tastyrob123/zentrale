@@ -1,0 +1,46 @@
+ok    1440 sieben Kacheln «Häufig gebraucht» (7)
+ok    1440 Kachel 1 führt nach ?ansicht=text | Beiträge · Tasty Studios
+ok    1440 Kachel 2 führt nach ?ansicht=text&entwurf=e-20261105-fernsicht-frage | Beiträge · Tasty Studios
+ok    1440 Kachel 3 führt nach ?ansicht=angaben&entwurf=e-20261104-kastanienhof-situation | Beiträge · Tasty Studios
+ok    1440 Kachel 4 führt nach ?ansicht=bild&entwurf=e-20261105-fernsicht-frage | Beiträge · Tasty Studios
+ok    1440 Kachel 5 führt nach ?ansicht=regeln | Beiträge · Tasty Studios
+ok    1440 Kachel 6 führt nach ?ansicht=vorlagen | Beiträge · Tasty Studios
+ok    1440 Kachel 7 führt nach ?ansicht=l%3Aalle | Beiträge · Tasty Studios
+ok    1440 Stand gewählt, Ablage noch «entwurf» vor dem Speichern
+ok    1440 nach Speichern «fertig» in der Ablage
+ok    1440 Quittung mit «Rückgängig»
+ok    1440 Rückgängig: wieder «entwurf»
+ok    1440 Text kopieren legt 404 Zeichen in die Zwischenablage
+ok    1440 Rückfrage offen, Beitrag noch in der Ablage
+ok    1440 nach «Ja, löschen» aus der Ablage
+ok    1440 Rückgängig: Beitrag wieder da
+ok    1440 Grafik quadratisch als PNG 1080 × 1080
+ok    1440 Grafik-Format ungespeichert, Ablage unverändert
+ok    1440 Anleitung mit sieben Schritten
+ok    1440 Prüfseite läuft
+ok    1440 in der Zentrale im Rahmen geladen
+ok    1440 Zentrale ohne Überlauf
+ok    1440 Konsole leer []
+ok    390 sieben Kacheln «Häufig gebraucht» (7)
+ok    390 Kachel 1 führt nach ?ansicht=text | Beiträge · Tasty Studios
+ok    390 Kachel 2 führt nach ?ansicht=text&entwurf=e-20261105-fernsicht-frage | Beiträge · Tasty Studios
+ok    390 Kachel 3 führt nach ?ansicht=angaben&entwurf=e-20261104-kastanienhof-situation | Beiträge · Tasty Studios
+ok    390 Kachel 4 führt nach ?ansicht=bild&entwurf=e-20261105-fernsicht-frage | Beiträge · Tasty Studios
+ok    390 Kachel 5 führt nach ?ansicht=regeln | Beiträge · Tasty Studios
+ok    390 Kachel 6 führt nach ?ansicht=vorlagen | Beiträge · Tasty Studios
+ok    390 Kachel 7 führt nach ?ansicht=l%3Aalle | Beiträge · Tasty Studios
+ok    390 Stand gewählt, Ablage noch «entwurf» vor dem Speichern
+ok    390 nach Speichern «fertig» in der Ablage
+ok    390 Quittung mit «Rückgängig»
+ok    390 Rückgängig: wieder «entwurf»
+ok    390 Text kopieren legt 404 Zeichen in die Zwischenablage
+ok    390 Rückfrage offen, Beitrag noch in der Ablage
+ok    390 nach «Ja, löschen» aus der Ablage
+ok    390 Rückgängig: Beitrag wieder da
+ok    390 Grafik quadratisch als PNG 1080 × 1080
+ok    390 Grafik-Format ungespeichert, Ablage unverändert
+ok    390 Anleitung mit sieben Schritten
+ok    390 Prüfseite läuft
+ok    390 in der Zentrale im Rahmen geladen
+ok    390 Zentrale ohne Überlauf
+ok    390 Konsole leer []

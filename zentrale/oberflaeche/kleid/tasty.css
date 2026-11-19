@@ -1,0 +1,171 @@
+/* kleid/tasty.css · Tasty Studios · interne Werkzeuge (Neubau im Kleid, 07.11.2026).
+   Werte aus grundlagen/Branding.md und der gebauten Agentur-Seite (seite/assets/css/main.css :root), nicht erfunden:
+   Nacht #111421, Navy #1f213b, Schiefer #1f212c als dunkle Flächen; Papier #f5eee6 als Raum; Creme #ebdbce und Taupe #9e947f als warme Akzente
+   (Knauf, Linie, Etikett); Signalrot #ff3132 nur für «Entwurf». Schrift schwarz (Tinte #0b0c10), auf Dunkel weiss.
+   Schrift wie die Agentur-Seite: Titel Antonio 700 in Versalien, Lauf Instrument Sans, Etiketten und Zahlen DM Mono.
+   Knopf wie die Seite (.kn): dunkle Platte mit Tiefe, runder Knauf in Creme; der helle Knopf ist eine Creme-Platte mit dunklem Knauf.
+   Form: ruhig, architektonisch. Keine Punkt-Etiketten, keine Pillen-Reihen als Schmuck, keine Zierlinien über Titeln. Rahmen: Die Bühne. */
+@font-face{font-family:'Antonio';font-weight:100 700;font-display:block;src:url('../../../grundlagen/marke/schriften/Antonio-normal-100_700.woff2') format('woff2')}
+@font-face{font-family:'Instrument Sans';font-weight:400 600;font-display:block;src:url('../../../grundlagen/marke/schriften/InstrumentSans-normal-400_600.woff2') format('woff2')}
+@font-face{font-family:'DM Mono';font-weight:400;font-display:block;src:url('../../../grundlagen/marke/schriften/DMMono-normal-400.woff2') format('woff2')}
+:root{
+  --wo-sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif; --wo-mono:'DM Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --wo-e1:cubic-bezier(.16,1,.3,1); --wo-e2:cubic-bezier(.32,.72,0,1);
+  /* dunkle Flächen: Navy als Platte, Nacht als Tiefe */
+  --wo-nacht:#1f213b; --wo-nacht2:#2d3250; --wo-tief:#111421; --wo-schiefer:#1f212c;
+  /* Knauf und Licht: Creme (wie .kn der Seite: #f8eee4 → #d6c2b1) */
+  --wo-g1:#fbf5ee; --wo-g2:#ebdbce; --wo-g3:#d6c2b1;
+  --wo-gold:#ebdbce; --wo-akzent:#6f6656; --wo-taupe:#9e947f; --wo-kerze:#9e947f;
+  --wo-papier:#f5eee6; --wo-papier2:#ebe3d7; --wo-blatt:#faf6f0; --wo-weiss:#ffffff;
+  --wo-tinte:#0b0c10; --wo-leise:#57534c; --wo-linie:rgba(11,12,16,.13); --wo-linie-d:rgba(235,219,206,.2);
+  --wo-punkt:#ff3132; --wo-gut:#4f7a5c; --wo-rot:#ff3132;
+  --wo-titel:'Antonio','Arial Narrow','Helvetica Neue',sans-serif; --wo-titel-g:700; --wo-titel-ls:.015em;
+  --wo-r1:18px; --wo-r2:14px; --wo-r3:12px; --wo-rk:999px;
+  /* Tapete: das Raster der Agentur-Seite, fein in Creme auf Nacht (architektonische Ruhe, kein Muster zum Ansehen) */
+  --wo-tapete:#111421 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M0 .5H120M.5 0V120' stroke='%23ebdbce' stroke-opacity='.05' fill='none'/%3E%3C/svg%3E") 0 0/120px 120px;
+  --wo-tapete-fein:var(--wo-tapete);
+  color-scheme:light;
+}
+
+/* ================= Tasty Studios ================= */
+/* Titel wie die Seite: Antonio 700 in Versalien, leicht gesperrt; Betonung über die Farbe, nie kursiv */
+.wo-sb__h,.wo-zw,.wo-lg b,.wo-det__kopf h3,.wo-kopf__mitte b,.wo-leiste__t b,.wo-marke-w b{font-family:var(--wo-titel);font-weight:700;text-transform:uppercase;letter-spacing:.015em}
+.wo-sb__h{line-height:1.02;letter-spacing:.01em}
+.wo-zw{font-size:clamp(26px,2.3vw,34px);line-height:1.06}
+.wo-zw em{font-style:normal;color:var(--wo-tinte);font-weight:300}
+/* Schrift bleibt schwarz bzw. auf Dunkel weiss (Branding 16.06.2026): die Betonung im Titel trägt die Schriftstärke, nie eine Farbe */
+.wo-sb .wo-sb__h em{font-style:normal;color:#fff;font-weight:300}
+/* Kleinere Titel (Kacheln, Listen, Felder): Antonio 600 in normaler Schreibung, ruhiger als Versalien in jeder Zeile */
+.wo-ag b,.wo-bk__t b,.wo-an__t b,.wo-of b,.wo-fe__kopf b,.wo-ke__t b,.wo-rk__t b,.wo-brief__kopf b{font-family:var(--wo-titel);font-weight:600;letter-spacing:.01em}
+.wo-ag b,.wo-bk__t b{font-size:20px}
+.wo-an__t b{font-size:18px}
+.wo-lg b{font-size:26px}
+/* Etiketten in DM Mono wie die Seite, Taupe dunkel auf Hell, Creme auf Dunkel */
+.wo-bk__t small,.wo-mk{color:var(--wo-akzent)}
+.wo-lg .wo-mk,.wo-det__kopf .wo-mk,.wo-det__daten dt{color:var(--wo-taupe)}
+.wo-sb__zier{color:var(--wo-gold)}
+
+/* Flächen: helle Platten wie die Seite (--platte-h), dunkle mit Glanzkante (--platte-d) */
+.wo-lage,.wo-ag,.wo-leiste{background:linear-gradient(180deg,#262a3f,#1a1d2d 46%,#15182a)}
+.wo-lage{box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(235,219,206,.12),0 2px 0 #07080d,0 40px 50px -32px rgba(0,0,0,.6)}
+.wo-bk,.wo-of{background:linear-gradient(180deg,#ffffff,#f6f1e9 60%,#ece6da);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(11,12,16,.09),0 1.5px 0 #cfc8b6,0 34px 46px -32px rgba(11,12,16,.4)}
+.wo-rand{box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(11,12,16,.09),0 1.5px 0 #cfc8b6,0 34px 46px -30px rgba(11,12,16,.35)}
+.wo-lg__z,.wo-ag__z{color:var(--wo-tief)}
+.wo-bk__p{color:var(--wo-gold)}
+
+/* Rand: der gewählte Eintrag ist eine Navy-Platte, die Zahl im Creme-Knauf bleibt dunkel */
+.wo-re.wo-an,.wo-re[aria-current="true"],.wo-re[aria-current="page"]{background:linear-gradient(180deg,#2d3250,#1f213b 55%,#151929)}
+.wo-re.wo-an,.wo-re[aria-current="true"],.wo-re[aria-current="page"],.wo-re.wo-an *,.wo-re[aria-current] *{color:#fff}
+.wo-rand .wo-re.wo-an,.wo-rand .wo-re[aria-current]:not([aria-current="false"]){font-family:var(--wo-titel);font-weight:600;letter-spacing:.02em;text-transform:uppercase;font-size:18px}
+.wo-re.wo-an .wo-zahl,.wo-re[aria-current="true"] .wo-zahl,.wo-re[aria-current="page"] .wo-zahl{color:var(--wo-tief)}
+
+/* Knöpfe wie die Seite: Platte mit Tiefe, runder Knauf. «gold» heisst hier Creme (der Hauptknopf), «dunkel» Navy mit Creme-Knauf */
+.wo-kn--gold{color:#0b0c10;text-shadow:none;background:linear-gradient(180deg,#fffaf4 0%,#ebdbce 52%,#d6c2b1 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -2px 0 rgba(90,70,50,.22),inset 0 0 0 1px rgba(11,12,16,.06),0 14px 26px -14px rgba(0,0,0,.6),0 3px 8px -3px rgba(0,0,0,.3)}
+.wo-kn--gold i,.wo-kn--hell i{background:linear-gradient(180deg,#2d3250,#111421);color:#ebdbce}
+.wo-kn--dunkel{color:#fff;background:linear-gradient(180deg,#2d3250 0%,#1a1e33 50%,#0c0e18 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.26),inset 0 -2px 0 rgba(0,0,0,.55),0 16px 30px -16px rgba(0,0,0,.7),0 3px 8px -3px rgba(0,0,0,.35)}
+.wo-kn--dunkel i{background:linear-gradient(180deg,#f8eee4,#d6c2b1);color:#0b0c10}
+.wo-kn--hell{color:#0b0c10;background:linear-gradient(180deg,#ffffff 0%,#f6f1e9 55%,#ece6da 100%)}
+.wo-kn--glas i{color:var(--wo-gold)}
+.wo-kn--rund{color:var(--wo-gold)}
+
+/* Ecke oben links in allen Werkzeugen gleich: das T im Ring aus Nacht mit einer Kante in Creme, darunter Werkzeug · Tasty Studios */
+.wo-marke-w{position:relative;padding-left:60px!important;min-height:46px}
+.wo-marke-w::before{content:'';position:absolute;left:0;top:50%;width:46px;height:46px;margin-top:-23px;border-radius:50%;
+  background:radial-gradient(circle at 50% 35%,#2d3250,#111421 78%);box-shadow:inset 0 0 0 1px rgba(235,219,206,.55),inset 0 0 0 4px rgba(7,8,13,.55),0 6px 14px -8px rgba(0,0,0,.8)}
+.wo-marke-w .wo-zeichen{position:absolute;left:13px;top:50%;width:20px;height:19.4px;max-width:none;margin-top:-9.7px;color:#fff}
+.wo-marke-w b{font-size:20px;letter-spacing:.03em}
+.wo-marke-w small{color:rgba(235,219,206,.82)!important}
+.wo-kopf__mitte b{font-size:23px;letter-spacing:.04em}
+.wo-kopf__mitte small{color:var(--wo-taupe)}
+[data-wo-rahmen="buehne"] .wo-kopf{border-bottom:1px solid rgba(235,219,206,.14)}
+.wo-kopf{background:#111421}
+.wo-kopf::after{opacity:1}
+
+/* Die Bühne: dunkle Platte in Nacht, das Foto rechts, unten eine feine Kante in Creme */
+[data-wo-rahmen="buehne"] .wo-sb{background:#111421;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -1px 0 rgba(235,219,206,.28),0 0 0 1px rgba(235,219,206,.12),0 40px 60px -40px rgba(7,8,13,.85)}
+.wo-sb__foto::after{background:linear-gradient(0deg,rgba(17,20,33,.55),transparent 55%)}
+.wo-sb__zier .wo-zeichen{color:#fff}
+.wo-brief__kopf .wo-zeichen{color:var(--wo-tinte)}
+.wo-lg__z,.wo-ag__z{border-radius:50%}
+
+/* Marken und Status */
+.wo-marke{background:var(--wo-rot);color:#fff}
+.wo-sp{color:var(--wo-tief)}
+.wo-an--neu .wo-an__st em{color:var(--wo-tief)}
+.wo-an--an::before{background:var(--wo-tinte)}
+
+/* Quittung, Lupe, Brief: nie kursiv, Hervorhebung über eine Creme-Unterlegung */
+.wo-brief em,.wo-brief i{font-style:normal}
+.wo-brief__text{font:15px/1.65 var(--wo-sans);color:#1a1b20}
+.wo-brief mark{background:none}
+.wo-lu{font-style:normal;color:inherit;background:linear-gradient(180deg,transparent 55%,rgba(158,148,127,.38) 55%)}
+.wo-bl__rub span,.wo-bl__g span,.wo-bl__h{font-family:var(--wo-sans);font-style:normal}
+.wo-bl__g b{font-family:var(--wo-titel);font-weight:600;letter-spacing:.02em}
+.wo-quittung a{color:var(--wo-tinte)}
+.wo-feld>span{color:var(--wo-akzent)}
+.wo-app :focus-visible{outline-color:var(--wo-tinte)}
+[data-wo-rahmen="buehne"] .wo-leiste{border-radius:var(--wo-rk)}
+
+/* Auftritt der Bühne wie in der Vorlage: Foto zoomt ein, Zier, Titel, Satz und Knöpfe steigen von unten. Nur transform, deckend. */
+@keyframes woAufFoto{from{translate:0 40px;scale:1.06}}
+@keyframes woZoom{from{scale:1.12}}
+@keyframes woHoch{from{translate:0 34px}}
+@media screen and (prefers-reduced-motion:no-preference){
+  html:not(.still) .wo-sb__foto{animation:woAufFoto 1.1s cubic-bezier(.19,1,.22,1) both;overflow:hidden}
+  html:not(.still) .wo-sb__foto img{animation:woZoom 2.6s cubic-bezier(.19,1,.22,1) both}
+  html:not(.still) :is(.wo-sb__zier,.wo-sb__h,.wo-sb__satz,.wo-sb__kn){animation:woHoch 1.15s cubic-bezier(.19,1,.22,1) both}
+  html:not(.still) .wo-sb__zier{animation-delay:.1s}
+  html:not(.still) .wo-sb__h{animation-delay:.18s}
+  html:not(.still) .wo-sb__satz{animation-delay:.3s}
+  html:not(.still) .wo-sb__kn{animation-delay:.42s}
+  html:not(.still) .wo-sb__h.wo-zl{animation:none}
+  html:not(.still) .wo-sb__h.wo-zl .wo-w{display:inline-block;animation:woHoch 1.15s cubic-bezier(.19,1,.22,1) both;animation-delay:calc(.18s + var(--z,0) * .11s)}
+  @supports (animation-timeline:view()){
+    @keyframes woZug{from{translate:0 -6%}to{translate:0 0}}
+    html:not(.still) .wo-sb__foto img{height:112%;animation:woZoom 2.6s cubic-bezier(.19,1,.22,1) both,woZug linear both;animation-timeline:auto,view();animation-range:normal,exit 0% exit 100%}
+  }
+  :is(.wo-kn,.wo-rund,.wo-ag,.wo-bk,button):active{scale:.975;transition:scale .12s ease-out}
+}
+/* Erstes Bild erst mit Schrift und Foto (kleid/tasty.js setzt .wo-wartet höchstens 1,2 s); der Auftritt wartet mit */
+html.wo-wartet body{visibility:hidden}
+html.wo-wartet *{animation-play-state:paused!important}
+
+/* Leiste unten: der Titel bricht nie um; wird es eng, verschwindet erst der Satz, dann die Beschriftung der Knöpfe */
+.wo-leiste__t b{white-space:nowrap;font-size:19px}
+
+/* Kopf bei wenig Breite: der Titel in der Mitte nimmt nur den freien Platz und kürzt notfalls mit «…» */
+@media (min-width:901px){
+  .wo-kopf{grid-template-columns:auto minmax(0,1fr) auto}
+  .wo-kopf__mitte{min-width:0;max-width:100%}
+  .wo-kopf__mitte b,.wo-kopf__mitte small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+}
+@media (min-width:901px) and (max-width:1240px){
+  .wo-kopf__mitte b{font-size:19px}
+  .wo-kopf .wo-kn--gold.wo-kn--klein>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .wo-kopf .wo-kn--gold.wo-kn--klein{padding:0;gap:0;width:42px;height:42px;min-height:0;min-width:0;border-radius:50%;justify-content:center;align-items:center}
+}
+.wo-sb__zier{min-width:0;max-width:100%}
+.wo-sb__zier span{min-width:0;white-space:normal;overflow:visible;line-height:1.6}
+@media (max-width:1240px){.wo-sb__zier i{display:none}}
+.wo-sb{margin-bottom:34px}
+@media (max-width:760px){.wo-sb{margin-bottom:24px}}
+.wo-kopf,.wo-kopf a:not(.wo-kn--gold),.wo-sb,.wo-sb a:not(.wo-kn){color:#fff}
+.wo-kopf a.wo-kn--gold{color:#0b0c10}
+
+/* Schrift optisch mittig in Knöpfen (wie in der Vorlage) */
+.wo-kn>span,.wo-re>span,.wo-kopf__ber>span{text-box:trim-both cap alphabetic}
+.wo-re .wo-zahl{display:block;height:auto;padding:7px;line-height:1;text-align:center;text-box:trim-both cap alphabetic}
+@supports not (text-box:trim-both cap alphabetic){.wo-kn>span,.wo-re>span,.wo-kopf__ber>span{position:relative;top:.05em}}
+h1,h2,h3,h4,figcaption{text-wrap:balance}
+@media (min-width:901px) and (max-width:1365px){.wo-ber .wo-bk__t b{min-height:2.4em}}
+
+/* Handy: Knopf «Bereiche» im Kopf als Creme-Platte wie der Hauptknopf */
+@media (max-width:900px){
+  .wo-kopf__ber{color:#0b0c10;background:linear-gradient(180deg,#fffaf4,#ebdbce 55%,#d6c2b1)}
+  .wo-marke-w b{font-size:18px}
+  .wo-leiste .wo-kn--gold{background:linear-gradient(180deg,#fffaf4,#ebdbce 50%,#d6c2b1)}
+}
+@media (max-width:700px){ .wo-sb__h{font-size:clamp(34px,10vw,44px)} .wo-sb--buehne .wo-sb__h{font-size:32px} }
+
+/* Im Rahmen der Zentrale: der Kopf des Werkzeugs bleibt, die Zentrale trägt ihren eigenen darüber nicht doppelt (nichts ausgeblendet, nur ohne Abstand oben) */
+html[data-wo-im-rahmen] .wo-kopf{top:0}

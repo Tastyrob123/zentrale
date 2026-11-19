@@ -1,0 +1,526 @@
+[
+ {
+  "id": "visitenkarten",
+  "gruppe": "grund",
+  "name": "Visitenkarten",
+  "format": "85 × 55 mm, Vorderseite und je eine Rückseite für Anna und Robert",
+  "titel": [
+   "Für Anna",
+   "und Robert."
+  ],
+  "satz": "Vorne der Anker auf Navy mit dem Anker-Muster aus dem Markenbuch, hinten Name, Aufgabe und Nummer auf Papier. Beide Karten sind gleich gebaut, mit Nummer und eigener Adresse unter tasty-studios.de.",
+  "vorschau": [
+   [
+    "vk-vorne",
+    1
+   ],
+   [
+    "vk-robert",
+    2
+   ],
+   [
+    "vk-anna",
+    3
+   ]
+  ],
+  "seiten": 3
+ },
+ {
+  "id": "briefbogen",
+  "gruppe": "grund",
+  "name": "Briefbogen",
+  "format": "A4, erste Seite und Folgeseite, Fenster nach DIN 5008",
+  "titel": [
+   "Der Brief",
+   "im Dokumentstil."
+  ],
+  "satz": "Oben die quere Fassung mit Anker und Namen, in der Mitte der Anker als Wasserzeichen mit 6 Prozent, geschrieben wird in Montserrat. Fenster, Falz- und Lochmarken sitzen nach DIN 5008, damit die Anschrift im Fensterumschlag steht.",
+  "vorschau": [
+   [
+    "briefbogen",
+    1
+   ],
+   [
+    "briefbogen-2",
+    2
+   ]
+  ],
+  "seiten": 2
+ },
+ {
+  "id": "umschlaege",
+  "gruppe": "grund",
+  "name": "Umschläge",
+  "format": "DL mit Fenster 220 × 110 mm · C4 229 × 324 mm, vorne und hinten",
+  "titel": [
+   "Die Banderole,",
+   "jetzt mit dem Anker."
+  ],
+  "satz": "Der C4-Umschlag nimmt die Banderole 05, die im Oktober gewählt wurde, und trägt jetzt den Anker; das T gehört seit dem Markenbuch nur noch zum Backoffice. Hinten schliesst ein runder Aufkleber die Klappe. Dazu ein heller DL-Umschlag mit Fenster für den Briefbogen.",
+  "vorschau": [
+   [
+    "c4",
+    2
+   ],
+   [
+    "c4-r",
+    3
+   ],
+   [
+    "dl",
+    1
+   ]
+  ],
+  "seiten": 3
+ },
+ {
+  "id": "mailkopf",
+  "gruppe": "grund",
+  "name": "E-Mail-Kopf",
+  "format": "600 × 160 px für Pitch-Mails, dunkel und hell",
+  "titel": [
+   "Oben in",
+   "jeder Pitch-Mail."
+  ],
+  "satz": "Ein Bildstreifen über ganze Mailbreite, so wie es die Mail-Regel verlangt: nie Bildstücke nebeneinander. Darunter folgt die Signatur, die es seit dem 4. November für Anna und Robert gibt (Ordner _Signaturen).",
+  "vorschau": [
+   [
+    "mail-dunkel",
+    1
+   ],
+   [
+    "mail-hell",
+    2
+   ]
+  ],
+  "seiten": 2
+ },
+ {
+  "id": "angebot",
+  "gruppe": "grund",
+  "name": "Angebotsvorlage",
+  "format": "A4, Fachdokument nach dem Dokumentstil",
+  "titel": [
+   "Das Angebot",
+   "auf einer Seite."
+  ],
+  "satz": "Kapitel zentriert, Abschnitte mit Nummer in Medium, alles in Montserrat und reinem Schwarz, wie es der Dokumentstil vorgibt. Leistungen und Beträge bleiben leer, sie kommen je Haus aus dem Sales Cockpit.",
+  "vorschau": [
+   [
+    "angebot",
+    1
+   ]
+  ],
+  "seiten": 1
+ },
+ {
+  "id": "rechnung",
+  "gruppe": "grund",
+  "name": "Rechnungsvorlage",
+  "format": "A4, Fachdokument nach dem Dokumentstil",
+  "titel": [
+   "Die Rechnung",
+   "im selben Satz."
+  ],
+  "satz": "Gleicher Aufbau wie das Angebot, mit Rechnungsnummer, Leistungszeitraum und der Steuernummer aus den Stammdaten. Die Bankverbindung ist als Feld vorbereitet und bleibt leer, bis sie für Rechnungen festgelegt ist.",
+  "vorschau": [
+   [
+    "rechnung",
+    1
+   ]
+  ],
+  "seiten": 1
+ },
+ {
+  "id": "aufkleber",
+  "gruppe": "grund",
+  "name": "Aufkleber und Siegel",
+  "format": "rund 60 mm, Creme und Navy · Siegelstreifen 110 × 30 mm",
+  "titel": [
+   "Zum Verschliessen",
+   "und Mitgeben."
+  ],
+  "satz": "Der runde Aufkleber schliesst den C4-Umschlag, wie beim gewählten Entwurf. Ringsum der Name und Hamburg in DM Mono. Der Streifen in der Farbe der Banderole verschliesst Mappen und Pakete.",
+  "vorschau": [
+   [
+    "aufkleber-creme",
+    1
+   ],
+   [
+    "aufkleber-navy",
+    2
+   ],
+   [
+    "siegel",
+    3
+   ]
+  ],
+  "seiten": 3
+ },
+ {
+  "id": "pitchheft",
+  "gruppe": "akquise",
+  "name": "Pitch-Heft",
+  "format": "A5 hoch, sechs Seiten",
+  "titel": [
+   "Das Heft",
+   "für den Termin."
+  ],
+  "satz": "Titel, wer wir sind, die vier Teile, das Team, zwei Kunden, Kontakt. Jeder Satz steht so auf der Website oder in der Kundenakte, nichts ist dazugeschrieben. Preise und Abläufe stehen bewusst nicht drin.",
+  "vorschau": [
+   [
+    "heft-1",
+    1
+   ],
+   [
+    "heft-2",
+    2
+   ],
+   [
+    "heft-3",
+    3
+   ],
+   [
+    "heft-4",
+    4
+   ],
+   [
+    "heft-5",
+    5
+   ],
+   [
+    "heft-6",
+    6
+   ]
+  ],
+  "seiten": 6
+ },
+ {
+  "id": "mappe",
+  "gruppe": "akquise",
+  "name": "Mappe mit Einstecktasche",
+  "format": "A4-Mappe, 220 × 310 mm, aussen und innen",
+  "titel": [
+   "Analyse und Angebot",
+   "in einer Mappe."
+  ],
+  "satz": "Aussen Navy mit dem Anker Ton in Ton und der Banderole, innen das helle Anker-Muster und eine Tasche mit Schlitz für die Visitenkarte. Darin liegen Potentialanalyse, Angebot und das Heft.",
+  "vorschau": [
+   [
+    "mappe-aussen",
+    1
+   ],
+   [
+    "mappe-innen",
+    2
+   ]
+  ],
+  "seiten": 2
+ },
+ {
+  "id": "terminkarte",
+  "gruppe": "akquise",
+  "name": "Karte nach dem Termin",
+  "format": "A6 quer, zwei Seiten, QR-Code je Haus",
+  "titel": [
+   "Was nach dem Termin",
+   "beim Hotel liegt."
+  ],
+  "satz": "Vorne die Analyse des Hauses, hinten der Name des Hauses von Hand, Anna als Ansprechpartnerin und ein QR-Code. Der Code führt hier noch auf tasty-studios.de, pro Haus wird er auf dessen Analyse gesetzt.",
+  "vorschau": [
+   [
+    "termin",
+    1
+   ],
+   [
+    "termin-r",
+    2
+   ]
+  ],
+  "seiten": 2
+ },
+ {
+  "id": "begleitbrief",
+  "gruppe": "akquise",
+  "name": "Begleitbrief zur Potentialanalyse",
+  "format": "A4 auf dem Briefbogen",
+  "titel": [
+   "Ein Brief",
+   "zur Analyse."
+  ],
+  "satz": "Ein kurzer Brief in Wir-Form auf dem Briefbogen: was die Analyse ist, wo sie liegt, wer erreichbar ist. Die hellen Stellen werden je Haus ausgefüllt.",
+  "vorschau": [
+   [
+    "brief",
+    1
+   ]
+  ],
+  "seiten": 1
+ },
+ {
+  "id": "referenzkarten",
+  "gruppe": "akquise",
+  "name": "Referenzkarten",
+  "format": "A6 quer, je Kunde mit Vertrag eine Karte",
+  "titel": [
+   "Je Kunde",
+   "eine Karte."
+  ],
+  "satz": "Nur Häuser, die Kunden sind: heute Walk on the Wild Side und txtme.social. Vorne die Website, hinten der Satz aus der Kundenakte. Mit jedem neuen Vertrag kommt eine Karte dazu.",
+  "vorschau": [
+   [
+    "ref-wild",
+    1
+   ],
+   [
+    "ref-wild-r",
+    2
+   ],
+   [
+    "ref-txtme",
+    3
+   ],
+   [
+    "ref-txtme-r",
+    4
+   ]
+  ],
+  "seiten": 4
+ },
+ {
+  "id": "uebergabe",
+  "gruppe": "sparten",
+  "name": "Übergabeblatt der Agentur",
+  "format": "A4, Fachdokument",
+  "titel": [
+   "Der Tag,",
+   "an dem die Seite online geht."
+  ],
+  "satz": "Ein Blatt für den Start einer Website: Adresse, Datum, Sprachen, Werkzeuge, wo die Zugänge liegen, nie Passwörter. Anna steht als Ansprechpartnerin schon drin.",
+  "vorschau": [
+   [
+    "uebergabe",
+    1
+   ]
+  ],
+  "seiten": 1
+ },
+ {
+  "id": "handbuch",
+  "gruppe": "sparten",
+  "name": "Handbuch-Umschlag Backoffice",
+  "format": "A4 hoch, Titelseite",
+  "titel": [
+   "Das T",
+   "auf dem Handbuch."
+  ],
+  "satz": "Die Titelseite für das Handbuch zum Notion AI Backoffice, in Nacht und Schiefer mit Weiss wie im Markenbuch. Der Inhalt kommt aus dem Produkt selbst, hier ist nur der Umschlag.",
+  "vorschau": [
+   [
+    "handbuch",
+    1
+   ]
+  ],
+  "seiten": 1
+ },
+ {
+  "id": "masterclass",
+  "gruppe": "sparten",
+  "name": "Masterclass",
+  "format": "Urkunde A4 quer · Namensschild 90 × 55 mm · Tischkarte A6 · Arbeitsheft A4",
+  "titel": [
+   "Vier Stücke",
+   "für die Masterclass."
+  ],
+  "satz": "Teilnahmeurkunde, Namensschild, Tischkarte und der Umschlag des Arbeitshefts, in Creme, Taupe und Nacht wie im Markenbuch. Die Masterclass ruht gerade, die Stücke liegen bereit, wenn sie wieder startet.",
+  "vorschau": [
+   [
+    "mc-urkunde",
+    1
+   ],
+   [
+    "mc-schild",
+    2
+   ],
+   [
+    "mc-tisch",
+    3
+   ],
+   [
+    "mc-heft",
+    4
+   ]
+  ],
+  "seiten": 4
+ },
+ {
+  "id": "linkedin",
+  "gruppe": "digital",
+  "name": "LinkedIn-Banner",
+  "format": "1584 × 396 px",
+  "titel": [
+   "Das Band",
+   "über dem Profil."
+  ],
+  "satz": "Links bleibt Platz für das runde Profilbild, rechts stehen Anker, Name und in einer Zeile, was Tasty Studios baut. Unten die Banderole als Abschluss.",
+  "vorschau": [
+   [
+    "linkedin",
+    1
+   ]
+  ],
+  "seiten": 1
+ },
+ {
+  "id": "beitraege",
+  "gruppe": "digital",
+  "name": "Beitragsvorlagen",
+  "format": "1080 × 1350 px, Karussell mit fünf Bildern",
+  "titel": [
+   "Ein Karussell",
+   "mit fünf Bildern."
+  ],
+  "satz": "Die vier Teile der Website als Karussell: ein Titelbild, dann je Teil ein Bild mit Foto, Name und dem Satz von der Website. Hell und dunkel wechseln sich ab, damit es im Feed nicht flach wirkt.",
+  "vorschau": [
+   [
+    "post-1",
+    1
+   ],
+   [
+    "post-2",
+    2
+   ],
+   [
+    "post-3",
+    3
+   ],
+   [
+    "post-4",
+    4
+   ],
+   [
+    "post-5",
+    5
+   ]
+  ],
+  "seiten": 5
+ },
+ {
+  "id": "praesentation",
+  "gruppe": "digital",
+  "name": "Präsentationsvorlage",
+  "format": "16:9, vier Folien: Titel, Kapitel, Inhalt, Kontakt",
+  "titel": [
+   "Vier Folien",
+   "für jeden Termin."
+  ],
+  "satz": "Titel auf Navy mit dem Anker-Muster, eine Kapitelfolie mit Foto, eine Inhaltsfolie mit vier Spalten und die Kontaktfolie. Alle Sätze stammen von der Website.",
+  "vorschau": [
+   [
+    "folie-1",
+    1
+   ],
+   [
+    "folie-2",
+    2
+   ],
+   [
+    "folie-3",
+    3
+   ],
+   [
+    "folie-4",
+    4
+   ]
+  ],
+  "seiten": 4
+ },
+ {
+  "id": "videocall",
+  "gruppe": "digital",
+  "name": "Hintergrund für Videocalls",
+  "format": "1920 × 1080 px, dunkel und hell",
+  "titel": [
+   "Hinter dem Kopf",
+   "der Anker."
+  ],
+  "satz": "Das Anker-Muster flächig, oben rechts die quere Fassung. Die Mitte bleibt ruhig, dort sitzt man selbst. Im Programm gespiegelt erscheint der Name für das Gegenüber richtig herum.",
+  "vorschau": [
+   [
+    "call-dunkel",
+    1
+   ],
+   [
+    "call-hell",
+    2
+   ]
+  ],
+  "seiten": 2
+ },
+ {
+  "id": "notizbuch",
+  "gruppe": "haptik",
+  "name": "Notizbuch",
+  "format": "A5 hoch, Leinen mit Prägung, Lesebändchen",
+  "titel": [
+   "Für Notizen",
+   "im Gespräch."
+  ],
+  "satz": "Navy-Leinen, der Anker blind geprägt, die Banderole mit dem Namen und ein rotes Lesebändchen, das einzige Rot, wie der Punkt im Markenbuch.",
+  "vorschau": [
+   [
+    "notizbuch",
+    1
+   ]
+  ],
+  "seiten": 1
+ },
+ {
+  "id": "laptop",
+  "gruppe": "haptik",
+  "name": "Laptop-Aufkleber",
+  "format": "60 × 60 mm, gestanzt mit weissem Rand, drei Zeichen",
+  "titel": [
+   "Drei Zeichen",
+   "zum Aufkleben."
+  ],
+  "satz": "Anker, T und Doktorhut je auf ihrer Farbe aus dem Markenbuch: Navy, Schiefer und Creme. Gestanzt mit schmalem weissem Rand.",
+  "vorschau": [
+   [
+    "laptop-anker",
+    1
+   ],
+   [
+    "laptop-tee",
+    2
+   ],
+   [
+    "laptop-hut",
+    3
+   ]
+  ],
+  "seiten": 3
+ },
+ {
+  "id": "anhaenger",
+  "gruppe": "haptik",
+  "name": "Gepäckanhänger",
+  "format": "55 × 110 mm, mit Öse, vorne und hinten",
+  "titel": [
+   "Am Koffer",
+   "zum Termin."
+  ],
+  "satz": "Vorne Anker und Name auf Navy, hinten Felder für Name, Telefon und das Haus, das man besucht. Das Gegenstück zu den Kofferetiketten der Hotels.",
+  "vorschau": [
+   [
+    "anhaenger",
+    1
+   ],
+   [
+    "anhaenger-r",
+    2
+   ]
+  ],
+  "seiten": 2
+ }
+]

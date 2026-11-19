@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotel am Kai · Zwölf Zimmer am Hamburger Hafen</title>
+<meta name="description" content="Zwölf Zimmer in einem alten Speicher am Sandtorkai. Frühstück bis elf, Restaurant mit Blick auf die Elbe, direkt beim Haus buchen.">
+<meta property="og:title" content="Hotel am Kai">
+<meta property="og:image" content="https://www.hotel-am-kai.de/bilder/speicher-abend-2400.webp">
+<link rel="alternate" hreflang="de" href="https://www.hotel-am-kai.de/">
+<link rel="alternate" hreflang="en" href="https://www.hotel-am-kai.de/en/">
+<link rel="alternate" hreflang="fr" href="https://www.hotel-am-kai.de/fr/">
+<link rel="alternate" hreflang="x-default" href="https://www.hotel-am-kai.de/">
+<link rel="stylesheet" href="/kai.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Hotel","name":"Hotel am Kai","description":"Zwölf Zimmer in einem alten Speicher am Sandtorkai, Hamburg.","url":"https://www.hotel-am-kai.de/","telephone":"+49 40 300 61 70","email":"gast@hotel-am-kai.de","image":"https://www.hotel-am-kai.de/bilder/speicher-abend-2400.webp","priceRange":"€€","numberOfRooms":12,"checkinTime":"15:00","checkoutTime":"11:00","petsAllowed":true,"address":{"@type":"PostalAddress","streetAddress":"Sandtorkai 7","postalCode":"20457","addressLocality":"Hamburg","addressCountry":"DE"},"geo":{"@type":"GeoCoordinates","latitude":53.5431,"longitude":9.9923},"amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Frühstück bis 11 Uhr","value":true},{"@type":"LocationFeatureSpecification","name":"Hunde willkommen","value":true}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"212"},"hasMap":"https://maps.example/hotel-am-kai"}
+</script>
+<script src="/kai.js" defer></script>
+</head>
+<body>
+<header>
+<a href="/" class="marke">Hotel am Kai</a>
+<nav><a href="/zimmer">Zimmer</a><a href="/restaurant">Restaurant</a><a href="/anreise">Anreise</a><a href="/en/" hreflang="en">English</a><a href="/fr/" hreflang="fr">Français</a><a class="buchen" href="https://buchen.seekda.com/hotel-am-kai">Buchen</a></nav>
+</header>
+<main>
+<section class="auftakt">
+<picture>
+<source type="image/avif" srcset="/bilder/speicher-abend-1200.avif 1200w, /bilder/speicher-abend-2400.avif 2400w" sizes="100vw">
+<img src="/bilder/speicher-abend-2400.webp" srcset="/bilder/speicher-abend-1200.webp 1200w, /bilder/speicher-abend-2400.webp 2400w" sizes="100vw" width="2400" height="1500" alt="Der Speicher am Sandtorkai in der blauen Stunde, die Fenster leuchten warm">
+</picture>
+<h1>Zwölf Zimmer, ein Speicher, die Elbe vor der Tür.</h1>
+<p>Das Hotel am Kai liegt in einem Backsteinspeicher von 1888 am Sandtorkai. Zwölf Zimmer, ein Frühstück bis elf und abends eine Küche, die kocht, was der Fischmarkt hergibt.</p>
+<a class="knopf" href="https://buchen.seekda.com/hotel-am-kai">Zimmer buchen</a>
+</section>
+<section class="zimmer">
+<h2>Die Zimmer</h2>
+<p>Sieben Zimmer zum Wasser, fünf zum Hof. Alle mit Eichenboden, Leinen aus Flandern und Fenstern, die man öffnen kann. Kein Zimmer gleicht dem anderen, weil der Speicher es nicht zulässt.</p>
+<img src="/bilder/zimmer-wasser-1600.webp" srcset="/bilder/zimmer-wasser-900.webp 900w, /bilder/zimmer-wasser-1600.webp 1600w, /bilder/zimmer-wasser-2400.webp 2400w" sizes="(min-width: 900px) 50vw, 100vw" width="2400" height="1600" alt="Zimmer zum Wasser mit Blick auf den Sandtorhafen" loading="lazy">
+<a href="/zimmer">Alle Zimmer und Preise</a>
+</section>
+<section class="kueche">
+<h2>Die Küche</h2>
+<p>Abends eine lange Tafel, eine kurze Karte, dazu Weine von Winzern, die wir kennen. Mittags Suppe und Brot für alle, die vom Hafen kommen.</p>
+<img src="/bilder/tafel-1600.webp" srcset="/bilder/tafel-900.webp 900w, /bilder/tafel-1600.webp 1600w" sizes="(min-width: 900px) 50vw, 100vw" width="1600" height="1067" alt="Die lange Tafel im Restaurant, Kerzen, Hände, die Brot teilen" loading="lazy">
+<a href="/restaurant">Zur Karte</a>
+</section>
+<section class="gaeste">
+<h2>Was Gäste sagen</h2>
+<blockquote>«Wir haben das Fenster nachts offen gelassen und den Hafen gehört. Frühstück bis elf, Hund durfte mit. Wir kommen wieder.»</blockquote>
+<p>4,8 von 5 aus 212 Bewertungen bei Google.</p>
+</section>
+</main>
+<footer>
+<p>Hotel am Kai · Sandtorkai 7 · 20457 Hamburg · <a href="tel:+494030061700">+49 40 300 61 70</a> · <a href="mailto:gast@hotel-am-kai.de">gast@hotel-am-kai.de</a></p>
+<p><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a> · <a href="https://www.instagram.com/hotelamkai">Instagram</a> · © 2026</p>
+</footer>
+</body>
+</html>

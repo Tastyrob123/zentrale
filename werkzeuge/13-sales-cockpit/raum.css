@@ -1,0 +1,887 @@
+/* raum.css · Sales Cockpit als Glasraum (Robert 11.11.2026: «weg von diesem platten Weißen … digitaler Glass-Tile-Parallax-Raum … Apple-Style edel»).
+   Ein ruhiger Lichtraum hinter allem (eine Ebene, bewegt nur über transform), darauf Tafeln aus hellem Glas: durchscheinend, Lichtkante oben,
+   weicher Schatten. Kein Weichzeichner (backdrop-filter) über dem bewegten Raum, das hält das Scrollen flüssig (Regel 55). Gilt für alle Ansichten. */
+
+body.sc{
+  --glas:linear-gradient(158deg,rgba(255,255,255,.80) 0%,rgba(255,255,255,.50) 48%,rgba(255,255,255,.34) 100%);
+  --glas-fest:linear-gradient(160deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.72) 100%);
+  --glas-kante:inset 0 1px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.55),inset 0 -1px 0 rgba(17,20,33,.05);
+  --glas-schatten:0 1px 1px rgba(17,20,33,.04),0 18px 36px -20px rgba(17,20,33,.22),0 60px 90px -60px rgba(17,20,33,.30);
+  --wo-blatt:rgba(255,255,255,.5);
+  background:#e7e0d6;
+}
+
+/* ---------- der Raum: Licht, Tiefe, ein feines Raster ---------- */
+.sc-raum{position:fixed;inset:-12vh -6vw;z-index:-1;pointer-events:none;will-change:transform;contain:strict}
+.sc-raum i{position:absolute;border-radius:50%;display:block}
+.sc-raum .r1{width:78vw;height:78vw;left:-22vw;top:-30vw;background:radial-gradient(closest-side,rgba(31,33,59,.24),rgba(31,33,59,0))}
+.sc-raum .r2{width:70vw;height:70vw;right:-20vw;top:8vh;background:radial-gradient(closest-side,rgba(201,163,118,.42),rgba(201,163,118,0))}
+.sc-raum .r3{width:60vw;height:60vw;left:22vw;top:40vh;background:radial-gradient(closest-side,rgba(255,252,246,.95),rgba(255,252,246,0))}
+.sc-raum .r4{width:46vw;height:46vw;right:6vw;bottom:-14vh;background:radial-gradient(closest-side,rgba(176,74,58,.10),rgba(176,74,58,0))}
+.sc-raum .r5{width:56vw;height:56vw;left:-12vw;bottom:-22vh;background:radial-gradient(closest-side,rgba(110,125,150,.20),rgba(110,125,150,0))}
+.sc-raum b{position:absolute;inset:0;display:block;
+  background-image:linear-gradient(rgba(17,20,33,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(17,20,33,.045) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 0%,rgba(0,0,0,.35) 60%,transparent 100%);
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 0%,rgba(0,0,0,.35) 60%,transparent 100%)}
+
+/* ---------- Tafeln aus Glas ---------- */
+body.sc .wo-rand,
+body.sc .sc-familie,body.sc .sc-web,body.sc .sc-braucht,body.sc .sc-form,body.sc .sc-tuer-zu{
+  background:var(--glas)!important;box-shadow:var(--glas-kante),var(--glas-schatten)!important}
+body.sc .sc-familie,body.sc .sc-web,body.sc .sc-braucht,body.sc .sc-form{border-radius:30px}
+
+/* Häuser in Zeilen: jede Zeile eine eigene Glastafel */
+body.sc #sc-haeuser .sc-zeile{position:relative;padding:clamp(18px,2vw,28px) clamp(18px,2vw,30px);margin:0 0 18px;border:0;border-radius:30px;background:var(--glas);box-shadow:var(--glas-kante),var(--glas-schatten)}
+body.sc #sc-haeuser .sc-zeile__fakten{border-top:0}
+body.sc #sc-haeuser .sc-zeile__fakten>div{border-bottom-color:rgba(17,20,33,.08)}
+
+/* Seitenleiste: Glas, die Einträge mit einer gleitenden Lichtplatte */
+body.sc .wo-rand{border-radius:30px;isolation:isolate}
+body.sc .wo-rand .wo-re{position:relative;z-index:1;border-radius:14px;transition:color .25s}
+body.sc .wo-rand .wo-re.wo-an,body.sc .wo-rand .wo-re[aria-current]:not([aria-current="false"]){box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 14px 26px -14px rgba(17,20,33,.6)}
+.sc-platte{position:absolute;z-index:0;left:12px;right:12px;top:0;height:40px;border-radius:14px;pointer-events:none;opacity:0;
+  background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),0 10px 22px -12px rgba(17,20,33,.35);
+  transition:transform .45s cubic-bezier(.19,1,.22,1),height .45s cubic-bezier(.19,1,.22,1),opacity .25s}
+.sc-platte.an{opacity:1}
+
+/* ---------- Fortschritt: Glasfelder mit Tiefe ---------- */
+body.sc .sc-fort{perspective:900px}
+body.sc .sc-fort__f{position:relative;isolation:isolate;transform-style:preserve-3d;border-radius:18px;
+  background:var(--glas-fest);
+  box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.75),0 0 0 1px color-mix(in srgb,var(--ton,#999) 14%,transparent),0 16px 30px -18px color-mix(in srgb,var(--ton,#111421) 55%,transparent),0 30px 50px -36px rgba(17,20,33,.35);
+  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.19,1,.22,1),box-shadow .3s}
+body.sc .sc-fort__f::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--ton,#999) 10%,transparent),transparent 62%)}
+body.sc .sc-fort__f::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(240px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.75),rgba(255,255,255,0) 60%);mix-blend-mode:soft-light}
+body.sc .sc-fort__f.kippt{transition:transform .12s linear,box-shadow .3s}
+body.sc .sc-fort__f.kippt::after{opacity:1}
+body.sc .sc-fort__f>b{transform:translateZ(26px)}
+body.sc .sc-fort__f>.sc-fort__b{transform:translateZ(16px)}
+body.sc .sc-fort__f>.sc-fort__mk,body.sc .sc-fort__f>.sc-fort__t{transform:translateZ(10px)}
+@media (hover:hover){body.sc button.sc-fort__f:hover{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-3px)}}
+body.sc .sc-fort__b{height:8px;background:rgba(17,20,33,.07);box-shadow:inset 0 1px 1px rgba(17,20,33,.08)}
+body.sc .sc-fort__b i{transform-origin:left center;animation:scFuell 1.2s cubic-bezier(.19,1,.22,1) both;
+  box-shadow:0 0 12px -2px color-mix(in srgb,var(--ton) 70%,transparent)}
+@keyframes scFuell{from{transform:scaleX(0)}}
+body.sc .sc-fort__arbeit{font:700 clamp(20px,1.7vw,26px)/1.05 var(--wo-titel)!important;text-transform:uppercase;letter-spacing:.02em;color:var(--ton)}
+.sc-fort__f--still{cursor:default}
+.sc-ton--tinte{--ton:#111421}
+body.sc .sc-fort-auf i{background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),0 8px 16px -10px rgba(17,20,33,.4)}
+
+/* Kopf der Mappe: die drei Stände als dunkles Glas im Startbild */
+body.sc .sc-stand__t{background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.03))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 1px rgba(255,255,255,.10),0 24px 40px -26px rgba(0,0,0,.7)!important;border-radius:20px}
+
+/* ---------- Gespräch zum Aufklappen ---------- */
+.sc-gs dd{display:block!important}
+.sc-gs__d summary{list-style:none;display:grid;gap:7px;cursor:pointer}
+.sc-gs__d summary::-webkit-details-marker{display:none}
+.sc-gs__z{font:500 14.5px/1.3 var(--wo-sans);color:var(--wo-tinte)}
+.sc-gs__z b{font:700 17px/1 var(--wo-titel)}
+.sc-gs__b{position:relative;display:block;height:6px;border-radius:3px;background:rgba(17,20,33,.08);overflow:hidden}
+.sc-gs__b i{position:absolute;inset:0 auto 0 0;border-radius:3px;background:var(--wo-akzent,#8a6d4b)}
+.sc-gs__auf{display:flex;align-items:center;justify-content:space-between;gap:8px;font:400 12.5px/1.3 var(--wo-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--wo-akzent)}
+.sc-gs__auf i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),0 6px 12px -8px rgba(17,20,33,.4);transform:rotate(180deg);transition:transform .35s cubic-bezier(.19,1,.22,1)}
+.sc-gs__auf .wo-ic{width:12px;height:12px}
+.sc-gs__d[open] .sc-gs__auf i{transform:none}
+.sc-gs__l{list-style:none;margin:12px 0 0;padding:12px;display:grid;gap:4px;border-radius:16px;background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),0 14px 26px -18px rgba(17,20,33,.35)}
+.sc-gs__l li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:9px;align-items:start;padding:5px 2px;font:400 14px/1.35 var(--wo-sans);color:var(--wo-leise)}
+.sc-gs__l li i{display:block;width:14px;height:14px;margin:2px 0 0 2px;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(17,20,33,.22)}
+.sc-gs__l li.ok{color:var(--wo-tinte)}
+.sc-gs__l li.ok i{width:18px;height:18px;margin:0;border-radius:0;box-shadow:none;color:#3f8a5c}
+.sc-gs__l li.ok .wo-ic{width:18px;height:18px;stroke-width:3}
+.sc-gs__fuss{margin:10px 0 0;display:grid;gap:2px;font:500 14px/1.35 var(--wo-sans);color:var(--wo-tinte)}
+.sc-gs__fuss span{font:400 12px/1.3 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--wo-akzent)}
+.sc-gs__kn{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:0;background:none;border:0;cursor:pointer;font:400 12.5px/1.3 var(--wo-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--wo-tinte)}
+.sc-gs__kn .wo-ic{width:12px;height:12px}
+.sc-gs__d[open] .sc-gs__l{animation:scAuf .45s cubic-bezier(.19,1,.22,1) both}
+@keyframes scAuf{from{opacity:0;transform:translateY(-6px)}}
+
+/* ---------- Familie: Überblick der gemeinsamen Startseite ---------- */
+/* Link und Schalter mittig in einer Reihe, gleich darunter beginnt die Linie zu den Häusern; aufgeklappt stehen die zwei Felder mittig dazwischen */
+.sc-famstand{width:100%;display:grid;justify-items:center;gap:18px}
+.sc-baum__wege{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px clamp(24px,3vw,44px)}
+button.sc-fam-auf{padding:0;border:0;background:none;cursor:pointer}
+.sc-fam-auf i{background:var(--glas-fest)!important;color:var(--wo-akzent)!important;box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),0 8px 16px -10px rgba(17,20,33,.4)}
+.sc-fam-auf i .wo-ic{transition:transform .35s cubic-bezier(.19,1,.22,1)}
+.sc-famstand:not(.auf) .sc-fam-auf i .wo-ic{transform:rotate(180deg)}
+.sc-famstand .sc-fort{width:min(460px,100%);grid-template-columns:repeat(2,minmax(0,1fr))}
+body.sc .sc-baum .sc-karten{margin-top:14px}
+
+@media (prefers-reduced-motion:reduce){
+  .sc-raum{transform:none!important}
+  body.sc .sc-fort__f{transform:none!important}
+  body.sc .sc-fort__b i,.sc-gs__d[open] .sc-gs__l{animation:none}
+}
+
+/* Nachschliff nach dem ersten Blick: Wort statt Zahl ohne leeren Balken, Gespräch untereinander, Zeilen mit Luft */
+body.sc .sc-fort__f--arbeit .sc-fort__b{visibility:hidden}
+body.sc .sc-gs{grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+body.sc #sc-haeuser .sc-zeile{margin:18px 0}
+@media (min-width:761px){body.sc #sc-haeuser .sc-zeile__fakten>div:not(.sc-fortreihe):not(.sc-gs){grid-template-columns:156px minmax(0,1fr)}}
+@media (min-width:1101px){body.sc #sc-haeuser .sc-zeile{grid-template-columns:minmax(190px,250px) minmax(0,1.15fr) minmax(330px,1fr)}}
+
+/* gemeinsame Startseite: eigener Schalter, beim Öffnen eingeklappt */
+body.sc #sc-haeuser .sc-famstand .sc-fort{display:none!important}
+body.sc #sc-haeuser .sc-famstand.auf .sc-fort{display:grid!important}
+
+/* Auf- und Zuklappen: nur unsere eigene Korrektur hält den Knopf an seiner Stelle, kein zweites Nachrücken durch den Browser */
+html:has(body.sc),body.sc{overflow-anchor:none}
+
+/* ---------- Filter oben über den Häusern: eine Glasleiste mit zwei Schaltern ---------- */
+.sc-filter{display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:center;gap:14px 22px;margin:clamp(28px,3vw,44px) 0 clamp(8px,1vw,14px);padding:14px 16px 14px 24px;border-radius:26px;
+  background:var(--glas);box-shadow:var(--glas-kante),var(--glas-schatten)}
+.sc-filter__mk{font:400 12.5px/1.2 var(--wo-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--wo-akzent)}
+.sc-filter__wahl{position:relative;display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:rgba(17,20,33,.06);box-shadow:inset 0 1px 2px rgba(17,20,33,.10)}
+.sc-filter__kn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px 10px 20px;border:0;border-radius:999px;background:none;cursor:pointer;
+  font:400 13px/1 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--wo-leise);transition:color .25s,background .35s cubic-bezier(.19,1,.22,1),box-shadow .35s}
+.sc-filter__kn b{display:grid;place-items:center;min-width:28px;height:28px;padding:0 8px;border-radius:999px;font:700 15px/1 var(--wo-titel);letter-spacing:0;background:rgba(17,20,33,.07);color:var(--wo-tinte)}
+.sc-filter__kn.an{color:#fff;background:linear-gradient(180deg,#2a2d4a,#111421);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 12px 22px -12px rgba(17,20,33,.7)}
+.sc-filter__kn.an b{background:#f1e6d8;color:#111421}
+@media (hover:hover){.sc-filter__kn:not(.an):hover{color:var(--wo-tinte);background:rgba(255,255,255,.7)}}
+.sc-filter__satz{margin:0;justify-self:end;text-align:right;font:400 14px/1.4 var(--wo-sans);color:var(--wo-leise)}
+.sc-filter__leer{margin:28px 0;font:700 clamp(22px,2vw,30px)/1.1 var(--wo-titel);text-transform:uppercase;color:#3f8a5c}
+@media (max-width:980px){.sc-filter{grid-template-columns:minmax(0,1fr)}.sc-filter__satz{justify-self:start;text-align:left}.sc-filter__wahl{justify-self:start}}
+@media (max-width:520px){.sc-filter{padding:14px}.sc-filter__wahl{display:grid;width:100%}.sc-filter__kn{justify-content:space-between}}
+
+/* ---------- Stand, Preise, Fortschritt und Gespräch als Kacheln (Robert 11.11.2026: «dass das quasi auch noch alles irgendwie so eine Kachel ist») ----------
+   Stand, Preise, Gespräch: helle Glaskacheln mit dem Etikett oben. Fortschritt: eine leicht vertiefte Schale, darin die zwei Felder. */
+body.sc #sc-haeuser .sc-k{display:grid!important;grid-template-columns:minmax(0,1fr)!important;align-content:start;gap:7px!important;margin:5px 0;padding:14px 16px!important;border:0!important;border-radius:18px;
+  background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.75),0 14px 26px -20px rgba(17,20,33,.38)}
+body.sc #sc-haeuser .sc-k>dt,body.sc #sc-haeuser .sc-fortreihe__mk{font:400 12px/1.3 var(--wo-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--wo-akzent)}
+body.sc #sc-haeuser .sc-k>dd{margin:0;font:500 15.5px/1.35 var(--wo-sans);color:var(--wo-tinte)}
+body.sc #sc-haeuser .sc-fortreihe.sc-k{background:rgba(17,20,33,.045);box-shadow:inset 0 1px 3px rgba(17,20,33,.10),inset 0 0 0 1px rgba(255,255,255,.35),0 1px 0 rgba(255,255,255,.8)}
+body.sc #sc-haeuser .sc-fortreihe.sc-k .sc-fort{margin-top:4px}
+body.sc #sc-haeuser .sc-karte .sc-fortreihe.sc-k{padding:12px 10px!important}
+body.sc #sc-haeuser .sc-karte .sc-fortreihe.sc-k .sc-fort{grid-template-columns:repeat(auto-fit,minmax(88px,1fr))}
+body.sc #sc-haeuser .sc-karte .sc-fortreihe__mk{padding:0 6px;letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.sc .sc-karte>dl>div:first-child{border-top:0!important}
+body.sc .sc-karte>dl,body.sc .sc-zeile__fakten{border-top:0!important}
+/* Preise: je Zeile Bezeichnung links, Betrag rechts, darunter klein wofür */
+.sc-preise{list-style:none;margin:0;padding:0;display:grid}
+.sc-preise li{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;align-items:center;padding:8px 0;border-top:1px solid rgba(17,20,33,.08)}
+.sc-preise li:first-child{border-top:0;padding-top:2px}
+.sc-preise span{font:500 14px/1.3 var(--wo-sans);color:var(--wo-tinte)}
+.sc-preise small{grid-column:1;font:400 12.5px/1.3 var(--wo-sans);color:var(--wo-leise)}
+.sc-preise b{grid-column:2;grid-row:1/span 2;font:700 19px/1 var(--wo-titel);letter-spacing:.01em;color:var(--wo-tinte);white-space:nowrap}
+
+/* Kopf-Titel: Komma und Unterlängen der ersten Zeile ragen nie in die zweite Zeile (Robert 11.11.2026, Regel «keine überlappenden Buchstaben») */
+body.sc .wo-sb__h{line-height:1.16!important}
+body.sc .wo-sb__h>span{line-height:inherit!important}
+
+/* Familie mit nur einem Haus (z. B. im Filter): Zeile statt Karte, die Linie läuft von oben in die Zeile */
+body.sc .sc-baum .sc-karten--eins{display:block;padding-top:28px}
+body.sc .sc-baum .sc-karten--eins::after{display:none}
+body.sc .sc-baum .sc-karten--eins .sc-zeile{margin:0}
+
+/* Gespräch: jeder Punkt ist ein Schalter zum Abhaken */
+body.sc .sc-gs__l li{display:block;padding:0}
+.sc-gs__l li button{display:grid;grid-template-columns:20px minmax(0,1fr);gap:9px;align-items:start;width:100%;padding:6px 6px;border:0;border-radius:10px;background:none;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:background .2s}
+.sc-gs__l li button:disabled{opacity:.5;cursor:wait}
+@media (hover:hover){.sc-gs__l li button:hover{background:rgba(17,20,33,.05)}.sc-gs__l li:not(.ok) button:hover i{box-shadow:inset 0 0 0 1.5px #3f8a5c}}
+
+/* Akquise-Stufe: Name, Bedeutung, sieben Schritte als feine Leiste */
+.sc-k--akq dd{display:grid;gap:6px}
+.sc-k--akq dd b{font:700 20px/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.02em}
+.sc-akq__s{font:400 13.5px/1.4 var(--wo-sans);color:var(--wo-leise)}
+.sc-akq{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:4px}
+.sc-akq i{display:block;height:5px;border-radius:3px;background:rgba(17,20,33,.10)}
+.sc-akq i.an{background:#111421}
+
+/* Monatlich wiederkehrend: zweite Lagezeile, etwas heller abgesetzt */
+body.sc .sc-lage--monat{margin-top:14px}
+
+/* ======================================================================================================================
+   Die Mappe im Gespräch (Robert 11.11.2026: «viel übersichtlicher … besser aufbereitet für die gesamte Situation im Call …
+   so viele kleine Ecken und Kacheln … eleganter, luxuriöser, edler»). Weniger Kästen, mehr Luft, klare Hierarchie:
+   grosse Zahlen, feine Linien statt Rahmen, eine dunkle Tafel je Kernaussage. */
+body.sc .sc-mappe2{gap:clamp(32px,3.6vw,56px)}
+body.sc .sc-mappe2__haupt>.sc-block{margin-top:clamp(64px,7vw,112px)}
+body.sc .sc-mappe2 .sc-kopf{padding-bottom:clamp(18px,2vw,26px);border-bottom:1px solid rgba(17,20,33,.12)}
+body.sc .sc-mappe2 .sc-lead{max-width:44ch}
+
+/* Angebot: eine dunkle Tafel, drei Preise nebeneinander, darunter je Teil, was drin ist */
+.sc-angebot{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:clamp(24px,2.6vw,36px);border-radius:30px;overflow:hidden;
+  background:linear-gradient(165deg,#272b42 0%,#181b2c 55%,#121423 100%);color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(235,219,206,.10),0 40px 70px -40px rgba(10,12,22,.75)}
+.sc-angebot__teil{display:grid;align-content:start;gap:10px;padding:clamp(24px,2.6vw,40px)}
+/* oben quer der einmalige Preis, darunter die zwei Monatspreise nebeneinander */
+.sc-angebot__teil:nth-child(3){border-left:1px solid rgba(235,219,206,.12)}
+.sc-angebot__teil--gross{grid-column:1/-1;grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:28px;border-bottom:1px solid rgba(235,219,206,.12)}
+.sc-angebot__teil--gross .wo-mk{grid-column:1/-1}
+.sc-angebot__teil--gross>p{grid-column:2;justify-self:end;text-align:right;padding-bottom:8px}
+.sc-angebot__teil b{white-space:nowrap}
+.sc-angebot__teil .wo-mk{color:#c9b59a;letter-spacing:.16em}
+.sc-angebot__teil b{font:700 clamp(40px,3.6vw,58px)/1 var(--wo-titel);letter-spacing:.005em;color:#f4ece2}
+.sc-angebot__teil--gross{background:linear-gradient(180deg,rgba(235,219,206,.07),rgba(235,219,206,0) 70%)}
+.sc-angebot__teil--gross b{font-size:clamp(48px,4.4vw,72px)}
+.sc-angebot__teil>p{margin:0;font:400 14px/1.45 var(--wo-sans);color:rgba(255,255,255,.62)}
+.sc-angebot__teil>p.sc-angebot__satz{margin-top:14px;padding-top:16px;border-top:1px solid rgba(235,219,206,.12);font-size:15px;color:rgba(255,255,255,.86)}
+.sc-angebot .sc-punkte{margin:2px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+.sc-angebot .sc-punkte li{position:relative;padding:0 0 0 18px;border:0!important;font:400 14.5px/1.5 var(--wo-sans);color:rgba(255,255,255,.76)}
+.sc-angebot .sc-punkte li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:1px;background:#c9b59a}
+@media (max-width:700px){.sc-angebot{grid-template-columns:minmax(0,1fr)}.sc-angebot__teil:nth-child(3){border-left:0;border-top:1px solid rgba(235,219,206,.12)}
+  .sc-angebot__teil--gross{grid-template-columns:minmax(0,1fr)}.sc-angebot__teil--gross>p{grid-column:1;justify-self:start;text-align:left;padding:0}}
+
+/* ruhige Listen statt Kästen: «Was wir vom Haus brauchen», «Was dem Haus gehört», «Gut zu wissen» */
+body.sc .sc-mappe2 .sc-braucht{background:none!important;box-shadow:none!important;padding:0;border-radius:0;margin-top:clamp(32px,3vw,44px)}
+body.sc .sc-mappe2 .sc-zwei{margin-top:clamp(32px,3vw,44px)}
+body.sc .sc-mappe2 .sc-fein{max-width:70ch;color:var(--wo-leise)}
+
+/* Fragen: feine Glasknöpfe statt schwerer schwarzer Kreise */
+body.sc .sc-frage{border-bottom-color:rgba(17,20,33,.10)}
+body.sc .sc-frage summary{padding:20px 0}
+body.sc .sc-frage summary i{width:36px;height:36px;background:var(--glas-fest);color:var(--wo-tinte);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),0 8px 18px -10px rgba(17,20,33,.4)}
+body.sc .sc-frage[open] summary i{background:#111421;color:#f1e6d8}
+body.sc .sc-frage__a{padding:0 0 22px;max-width:72ch}
+
+/* Seitenblatt «Parat im Gespräch»: mehr Luft, grössere Werte, Preise als Liste mit Beträgen rechts */
+body.sc .sc-parat{padding:26px 26px 22px;border-radius:30px}
+body.sc .sc-parat dl>div{padding:14px 0}
+body.sc .sc-parat dt{font-size:11px;letter-spacing:.18em;color:#c9b59a}
+body.sc .sc-parat dd{margin-top:6px;font-size:15.5px}
+.sc-parpreise{list-style:none;margin:2px 0 4px;padding:0;display:grid}
+.sc-parpreise li{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid rgba(235,219,206,.10)}
+.sc-parpreise li:first-child{border-top:0;padding-top:0}
+.sc-parpreise span{display:grid;gap:1px;font:500 14px/1.3 var(--wo-sans);color:#fff}
+.sc-parpreise span small{font:400 12px/1.3 var(--wo-sans);color:rgba(255,255,255,.55)}
+.sc-parpreise b{font:700 20px/1 var(--wo-titel);letter-spacing:.01em;color:#f4ece2;white-space:nowrap}
+
+body.sc .sc-karte .sc-gs__auf{letter-spacing:.05em}
+
+/* Prüfpunkt 17: keine Schrift unter 13 px (Seitenblatt, Kacheln, Filter) */
+body.sc .sc-parat dt{font-size:13px!important}
+.sc-parpreise span small,body.sc .sc-parat dd small{font-size:13px!important}
+body.sc #sc-haeuser .sc-k>dt,body.sc #sc-haeuser .sc-fortreihe__mk,.sc-preise small,.sc-gs__fuss span,.sc-gs__auf,.sc-filter__mk,body.sc .sc-angebot__teil .wo-mk{font-size:13px!important}
+
+/* Lage in einer schlanken Zeile: sechs Felder, kleinere Zahlen, kurze Sätze (Robert 11.11.2026: «viel zu fett … alles in einer Zeile») */
+body.sc .sc-lage--eins{grid-template-columns:repeat(6,minmax(0,1fr));border-radius:24px}
+body.sc .sc-lage--eins .wo-lg{padding:16px 18px 15px;row-gap:4px}
+body.sc .sc-lage--eins .wo-lg b{font-size:clamp(20px,1.7vw,27px);line-height:1.1;white-space:nowrap}
+body.sc .sc-lage--eins .wo-lg p{margin:0;font-size:13px;line-height:1.35;color:rgba(255,255,255,.62)}
+body.sc .sc-lage--eins .wo-lg .wo-mk{font-size:13px;letter-spacing:.1em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1180px){body.sc .sc-lage--eins{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){body.sc .sc-lage--eins{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- Memo nach dem Gespräch ---------- */
+.sc-memo{display:grid;gap:16px;margin:clamp(22px,2.4vw,32px) 0 clamp(18px,2vw,26px);padding:clamp(20px,2.2vw,30px);border-radius:30px;background:linear-gradient(165deg,#272b42 0%,#181b2c 60%,#121423 100%);color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(235,219,206,.10),0 30px 60px -36px rgba(10,12,22,.7)}
+.sc-memo__kopf .wo-mk{color:#c9b59a;letter-spacing:.16em;font-size:13px}
+.sc-memo__kopf p{margin:6px 0 0;max-width:62ch;font:400 15px/1.5 var(--wo-sans);color:rgba(255,255,255,.78)}
+.sc-memo__kn{display:flex;flex-wrap:wrap;gap:10px}
+.sc-memo__kn>*{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border:0;border-radius:999px;cursor:pointer;font:400 13px/1 var(--wo-mono);letter-spacing:.12em;text-transform:uppercase;color:#fff;
+  background:rgba(255,255,255,.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(235,219,206,.16);transition:background .25s}
+@media (hover:hover){.sc-memo__kn>*:hover{background:rgba(255,255,255,.13)}}
+.sc-memo__kn .sc-memo__auf{color:#111421;background:linear-gradient(180deg,#f6eee4,#e6d8c6);box-shadow:inset 0 1px 0 #fff,0 10px 22px -12px rgba(0,0,0,.6)}
+.sc-memo__auf i{display:grid;place-items:center;width:28px;height:28px;margin:-6px -4px -6px -8px;border-radius:50%;background:#111421;color:#f1e6d8}
+.sc-memo__auf .wo-ic{width:15px;height:15px}
+.sc-memo__lauf{display:flex;align-items:center;gap:12px;font:400 14px/1 var(--wo-sans);color:rgba(255,255,255,.8)}
+.sc-memo__lauf b{font:700 22px/1 var(--wo-titel);color:#fff;min-width:3.2em}
+.sc-memo__punkt{width:12px;height:12px;border-radius:50%;background:#e0533f;box-shadow:0 0 0 0 rgba(224,83,63,.6);animation:scPuls 1.4s ease-out infinite}
+@keyframes scPuls{70%{box-shadow:0 0 0 10px rgba(224,83,63,0)}100%{box-shadow:0 0 0 0 rgba(224,83,63,0)}}
+.sc-memo__stopp{margin-left:auto;padding:11px 18px;border:0;border-radius:999px;cursor:pointer;font:400 13px/1 var(--wo-mono);letter-spacing:.12em;text-transform:uppercase;color:#111421;background:linear-gradient(180deg,#f6eee4,#e6d8c6)}
+.sc-memo__tippen{display:grid;gap:10px}
+.sc-memo__tippen textarea{width:100%;box-sizing:border-box;padding:12px 14px;border:0;border-radius:16px;background:rgba(255,255,255,.94);font:400 15px/1.5 var(--wo-sans);color:#111421}
+.sc-memo__tippen .sc-memo__stopp{justify-self:end;margin:0}
+.sc-memo__warte{margin:0;font:400 14px/1.4 var(--wo-sans);color:rgba(255,255,255,.75)}
+.sc-memo__erg{display:grid;gap:12px;padding-top:16px;border-top:1px solid rgba(235,219,206,.12)}
+.sc-memo__erg .wo-mk{color:#c9b59a;font-size:13px;letter-spacing:.14em}
+.sc-memo__vor{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.sc-memo__vor label{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;padding:10px 12px;border-radius:14px;cursor:pointer;background:rgba(255,255,255,.05)}
+.sc-memo__vor input{position:absolute;opacity:0;pointer-events:none}
+.sc-memo__vor i{display:grid;place-items:center;width:20px;height:20px;border-radius:6px;box-shadow:inset 0 0 0 1.5px rgba(235,219,206,.4);color:transparent}
+.sc-memo__vor input:checked+i{background:#3f8a5c;box-shadow:none;color:#fff}
+.sc-memo__vor i .wo-ic{width:13px;height:13px;stroke-width:3}
+.sc-memo__vor span{display:grid;gap:2px;font:400 14.5px/1.45 var(--wo-sans);color:rgba(255,255,255,.88)}
+.sc-memo__vor b{font:400 13px/1.3 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;color:#c9b59a}
+.sc-memo__abschrift summary{cursor:pointer;font:400 13px/1.3 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.sc-memo__abschrift p{margin:8px 0 0;font:400 14.5px/1.55 var(--wo-sans);color:rgba(255,255,255,.8)}
+.sc-memo__fuss{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.sc-memo__fuss small{font:400 13px/1.3 var(--wo-sans);color:rgba(255,255,255,.6)}
+.sc-memo__leer{margin:0;color:rgba(255,255,255,.7)}
+@media (prefers-reduced-motion:reduce){.sc-memo__punkt{animation:none}}
+
+/* Formular «Besprochen»: die Schalter-Chips wieder wie gebaut (die Regeln für den grünen Versand-Haken teilen den Klassennamen und nahmen ihnen Fläche und Farbe).
+   Nicht abgehakt: helle Fläche, dunkle Schrift. Abgehakt: dunkle Fläche, helle Schrift, goldener Kreis mit Haken (Robert 11.11.2026: «dann sind die weiss … kann man nicht mehr lesen») */
+.sc-form label.sc-haken{display:inline-flex!important;align-items:center;gap:10px;padding:9px 14px 9px 10px;border-radius:var(--wo-r3);background:rgba(255,255,255,.75)!important;box-shadow:inset 0 0 0 1px rgba(17,20,33,.12),0 6px 14px -10px rgba(17,20,33,.35)!important;color:var(--wo-tinte)!important;width:auto;height:auto;margin:0}
+.sc-form label.sc-haken i{width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--wo-taupe);color:transparent}
+.sc-form label.sc-haken .wo-ic{width:12px!important;height:12px!important}
+.sc-form label.sc-haken:has(input:checked){background:#111421!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 10px 20px -12px rgba(17,20,33,.7)!important;color:#fff!important}
+.sc-form label.sc-haken:has(input:checked) i{background:#e6d2b5;color:#111421;box-shadow:none}
+
+/* Seitenblatt «Parat im Gespräch»: ein- und ausklappbar, ohne sichtbaren Rollbalken (Robert 11.11.2026) */
+body.sc .sc-parat{scrollbar-width:none;-ms-overflow-style:none}
+body.sc .sc-parat::-webkit-scrollbar{display:none}
+.sc-parat__auf{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:0 0 12px;margin:0;border:0;border-bottom:1px solid rgba(235,219,206,.12);background:none;cursor:pointer;color:inherit;text-align:left}
+.sc-parat__auf .wo-mk{margin:0;padding:0;color:#c9b59a;letter-spacing:.16em;font-size:13px}
+.sc-parat__auf i{display:grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(235,219,206,.16);color:#f1e6d8;transition:transform .35s cubic-bezier(.19,1,.22,1)}
+.sc-parat__auf .wo-ic{width:13px;height:13px}
+@media (min-width:1101px){body.sc .sc-mappe2.sc-parat-zu{grid-template-columns:minmax(0,1fr) 64px}body.sc .sc-parat-zu .sc-parat{width:64px;height:64px;padding:0!important;display:grid;place-items:center;border-radius:50%!important;overflow:hidden}body.sc .sc-parat-zu .sc-parat__auf{justify-content:center}body.sc .sc-parat-zu .sc-parat__auf .wo-mk{display:none}}
+.sc-parat-zu .sc-parat__inhalt{display:none}
+.sc-parat-zu .sc-parat__auf{padding:0;border-bottom:0}
+.sc-parat-zu .sc-parat__auf i{transform:rotate(180deg)}
+body.sc .sc-parat-zu .sc-parat{padding:14px 16px 14px 22px;border-radius:999px}
+
+/* ======================================================================================================================
+   Mappe als Gesprächsleitfaden: acht Schritte, immer einer offen (Robert 11.11.2026: «übersichtlicher im Gespräch») */
+body.sc .sc-mappe2--schritte:not(.sc-alle) .sc-teil:not(.an){display:none}
+body.sc .sc-mappe2--schritte .sc-teil{margin-top:clamp(28px,3vw,44px)}
+body.sc .sc-mappe2--schritte.sc-alle .sc-teil{margin-top:clamp(64px,7vw,104px)}
+
+/* Schrittleiste: oben in der Hauptspalte, bleibt beim Scrollen stehen */
+.sc-schritte{position:sticky;top:88px;z-index:20;display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:clamp(40px,4vw,64px);padding:8px;border-radius:22px;
+  background:linear-gradient(158deg,rgba(255,255,255,.92),rgba(255,255,255,.78));box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.6),0 18px 34px -22px rgba(17,20,33,.35)}
+.sc-schritt{display:inline-flex;align-items:center;gap:8px;padding:8px 13px 8px 8px;border:0;border-radius:999px;background:none;cursor:pointer;font:500 14px/1 var(--wo-sans);color:var(--wo-leise);transition:background .25s,color .25s}
+.sc-schritt b{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;font:700 13px/1 var(--wo-titel);background:rgba(17,20,33,.07);color:var(--wo-tinte)}
+.sc-schritt b .wo-ic{width:13px;height:13px;stroke-width:3}
+.sc-schritt.ok b{background:#3f8a5c;color:#fff}
+.sc-schritt.an{background:#111421;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 10px 20px -12px rgba(17,20,33,.7)}
+.sc-schritt.an b{background:#f1e6d8;color:#111421}
+.sc-schritt.an.ok b{background:#3f8a5c;color:#fff}
+@media (hover:hover){.sc-schritt:not(.an):hover{background:rgba(17,20,33,.05);color:var(--wo-tinte)}}
+.sc-schritte__alle{margin-left:auto;padding:9px 14px;border:0;border-radius:999px;background:none;cursor:pointer;font:400 13px/1 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--wo-akzent)}
+@media (hover:hover){.sc-schritte__alle:hover{color:var(--wo-tinte)}}
+@media (max-width:760px){.sc-schritte{top:72px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.sc-schritte::-webkit-scrollbar{display:none}.sc-schritt{flex:none}.sc-schritte__alle{flex:none}}
+
+/* Fuss je Schritt: abhaken und weiter */
+.sc-schrittfuss{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:clamp(26px,2.6vw,38px);padding-top:clamp(18px,2vw,24px);border-top:1px solid rgba(17,20,33,.10)}
+.sc-abhaken,.sc-weiter{display:inline-flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border:0;border-radius:999px;cursor:pointer;font:500 15px/1.2 var(--wo-sans)}
+.sc-abhaken{background:rgba(255,255,255,.8);color:var(--wo-tinte);box-shadow:inset 0 0 0 1px rgba(17,20,33,.12),0 8px 18px -12px rgba(17,20,33,.35)}
+.sc-abhaken i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(17,20,33,.25);color:transparent}
+.sc-abhaken .wo-ic{width:14px;height:14px;stroke-width:3}
+.sc-abhaken.ok{background:#e9f2ec;box-shadow:inset 0 0 0 1px rgba(63,138,92,.35)}
+.sc-abhaken.ok i{background:#3f8a5c;box-shadow:none;color:#fff}
+.sc-weiter{padding:12px 12px 12px 22px;background:#111421;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 12px 24px -12px rgba(17,20,33,.7)}
+.sc-weiter i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#f1e6d8;color:#111421}
+.sc-weiter .wo-ic{width:14px;height:14px}
+
+/* Preis: nur die drei Beträge */
+.sc-angebot--preis .sc-angebot__teil{padding-bottom:clamp(22px,2.4vw,34px)}
+
+/* Betreuung: zwei ruhige Spalten, je Betrag gross */
+.sc-abos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2.4vw,36px);margin-top:clamp(22px,2.4vw,32px)}
+.sc-abo{display:grid;align-content:start;gap:10px}
+.sc-abo .wo-mk{padding:0;margin:0;font-size:13px}
+.sc-abo b{display:flex;align-items:baseline;gap:10px;font:700 clamp(34px,3vw,46px)/1 var(--wo-titel);color:var(--wo-tinte)}
+.sc-abo b small{font:400 14px/1 var(--wo-sans);color:var(--wo-leise);text-transform:none}
+.sc-abo>p{margin:0;font:400 16px/1.5 var(--wo-sans);color:var(--wo-tinte)}
+@media (max-width:700px){.sc-abos{grid-template-columns:minmax(0,1fr)}}
+.sc-mehr{margin-top:clamp(22px,2.4vw,32px);border-top:1px solid rgba(17,20,33,.10)}
+.sc-mehr summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;cursor:pointer;list-style:none;font:400 13px/1.3 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--wo-akzent)}
+.sc-mehr summary::-webkit-details-marker{display:none}
+.sc-mehr summary i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),0 6px 14px -10px rgba(17,20,33,.4);transition:transform .35s cubic-bezier(.19,1,.22,1)}
+.sc-mehr[open] summary i{transform:rotate(45deg)}
+.sc-mehr summary .wo-ic{width:13px;height:13px}
+body.sc .sc-mehr .sc-zwei{margin-top:4px}
+
+/* Ablauf: acht Wochen, auf einen Blick nur Woche und Titel; ein Klick zeigt, wer was macht */
+.sc-wochen2{list-style:none;margin:clamp(22px,2.4vw,32px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.sc-wochen2 details{height:100%;border-radius:18px;background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.75),0 12px 24px -18px rgba(17,20,33,.35)}
+.sc-wochen2 summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:start;padding:16px;cursor:pointer;list-style:none}
+.sc-wochen2 summary::-webkit-details-marker{display:none}
+.sc-wochen2 summary span{grid-column:1;font:400 13px/1.2 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--wo-akzent)}
+.sc-wochen2 summary b{grid-column:1;font:700 18px/1.12 var(--wo-titel);text-transform:uppercase;letter-spacing:.012em;color:var(--wo-tinte)}
+.sc-wochen2 summary i{grid-column:2;grid-row:1/span 2;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(17,20,33,.06);color:var(--wo-tinte);transition:transform .35s cubic-bezier(.19,1,.22,1)}
+.sc-wochen2 summary .wo-ic{width:12px;height:12px}
+.sc-wochen2 details[open] summary i{transform:rotate(45deg)}
+.sc-wochen2 details p{margin:0;padding:0 16px 12px;display:grid;gap:2px;font:400 14px/1.45 var(--wo-sans);color:var(--wo-tinte)}
+.sc-wochen2 details p em{font:400 13px/1.2 var(--wo-mono);font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--wo-akzent)}
+@media (max-width:980px){.sc-wochen2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Was wir vom Haus brauchen: fünf grosse, nummerierte Zeilen */
+.sc-braucht2{list-style:none;margin:clamp(22px,2.4vw,32px) 0 0;padding:0;display:grid;gap:10px}
+.sc-braucht2 li{display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:18px;background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.75),0 12px 24px -18px rgba(17,20,33,.35);font:500 17px/1.35 var(--wo-sans);color:var(--wo-tinte)}
+.sc-braucht2 li span{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;background:#111421;color:#f1e6d8;font:700 15px/1 var(--wo-titel)}
+
+/* Schrittleiste: deckend, gleitet beim Runterscrollen weg und beim Hochscrollen zurück (nur transform und opacity) */
+.sc-schritte{background:linear-gradient(158deg,rgba(255,255,255,.98),rgba(250,247,242,.96))!important;transition:transform .45s cubic-bezier(.19,1,.22,1),opacity .3s ease}
+.sc-schritte.sc-weg{transform:translateY(calc(-100% - 110px));opacity:0;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.sc-schritte{transition:none}}
+
+/* ======================================================================================================================
+   Abschnitte sichtbar machen (Robert 11.11.2026: «mehr sichtlich, dass es verschiedene Abschnitte gibt … keine kleinen Buchstaben auf leerem Untergrund») */
+
+/* Schrittnummer über jeder Überschrift der Mappe */
+body.sc .sc-mappe2--schritte .sc-mappe2__haupt{counter-reset:teil}
+body.sc .sc-mappe2--schritte .sc-teil{counter-increment:teil}
+body.sc .sc-mappe2--schritte .sc-teil>.sc-kopf{position:relative;padding-top:34px}
+body.sc .sc-mappe2--schritte .sc-teil>.sc-kopf::before{content:"Schritt " counter(teil);position:absolute;left:0;top:0;padding:6px 12px;border-radius:999px;background:#111421;color:#f1e6d8;font:400 12.5px/1 var(--wo-mono);letter-spacing:.14em;text-transform:uppercase}
+body.sc .sc-mappe2--schritte .sc-teil+.sc-teil{padding-top:clamp(40px,4vw,64px);border-top:1px solid rgba(17,20,33,.10)}
+
+/* Ablauf: acht Wochen-Kacheln, gewählte dunkel; darunter eine Tafel mit «Wir» und «Das Haus» nebeneinander */
+.sc-ablauf{margin-top:clamp(22px,2.4vw,32px);display:grid;gap:14px}
+.sc-wochen3{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.sc-wochen3 button{display:grid;gap:6px;width:100%;height:100%;padding:16px;border:0;border-radius:18px;cursor:pointer;text-align:left;
+  background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.75),0 12px 24px -18px rgba(17,20,33,.35);transition:background .25s,box-shadow .25s,transform .25s}
+.sc-wochen3 span{font:400 13px/1.2 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--wo-akzent)}
+.sc-wochen3 b{font:700 18px/1.12 var(--wo-titel);text-transform:uppercase;letter-spacing:.012em;color:var(--wo-tinte)}
+.sc-wochen3 button.an{background:#111421;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 14px 26px -14px rgba(17,20,33,.7)}
+.sc-wochen3 button.an span{color:#c9b59a}.sc-wochen3 button.an b{color:#fff}
+@media (hover:hover){.sc-wochen3 button:not(.an):hover{transform:translateY(-2px)}}
+.sc-woche__teil{display:none}
+.sc-woche__teil.an{display:grid;gap:16px;padding:clamp(20px,2.2vw,30px);border-radius:24px;background:linear-gradient(165deg,#272b42 0%,#181b2c 60%,#121423 100%);color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(235,219,206,.10),0 30px 60px -36px rgba(10,12,22,.7);animation:scAuf .4s cubic-bezier(.19,1,.22,1) both}
+.sc-woche__kopf{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.sc-woche__kopf span{font:400 13px/1 var(--wo-mono);letter-spacing:.14em;text-transform:uppercase;color:#c9b59a}
+.sc-woche__kopf b{font:700 clamp(24px,2.2vw,32px)/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.012em}
+.sc-woche__zwei{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sc-woche__zwei>div{display:grid;align-content:start;gap:8px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(235,219,206,.12)}
+.sc-woche__zwei em{display:flex;align-items:center;gap:8px;font:400 13px/1 var(--wo-mono);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:#c9b59a}
+.sc-woche__zwei em .wo-ic{width:15px;height:15px}
+.sc-woche__zwei p{margin:0;font:400 16px/1.5 var(--wo-sans);color:rgba(255,255,255,.9)}
+.sc-woche__haus{background:rgba(235,219,206,.10)!important}
+@media (max-width:980px){.sc-wochen3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.sc-woche__zwei{grid-template-columns:minmax(0,1fr)}}
+
+/* Listen als Karten: Kopfband mit Zeichen, Zeilen mit Haken */
+.sc-karten2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:clamp(22px,2.4vw,32px)}
+.sc-karte2{display:grid;align-content:start;border-radius:24px;overflow:hidden;background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.75),0 18px 34px -24px rgba(17,20,33,.4)}
+.sc-karte2__kopf{display:flex;align-items:center;gap:12px;padding:16px 18px;background:linear-gradient(165deg,#272b42,#15182a);color:#fff}
+.sc-karte2__kopf i{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;background:#f1e6d8;color:#111421}
+.sc-karte2__kopf i .wo-ic{width:16px;height:16px}
+.sc-karte2__kopf b{font:700 19px/1.15 var(--wo-titel);text-transform:uppercase;letter-spacing:.015em}
+.sc-karte2__preis{margin-left:auto;display:flex;align-items:baseline;gap:8px;font:700 26px/1 var(--wo-titel);color:#f4ece2;white-space:nowrap}
+.sc-karte2__preis small{font:400 13px/1 var(--wo-sans);color:rgba(255,255,255,.6)}
+.sc-karte2__satz{margin:0;padding:16px 18px 0;font:500 16px/1.5 var(--wo-sans);color:var(--wo-tinte)}
+.sc-karte2 ul{list-style:none;margin:0;padding:10px 18px 16px;display:grid}
+.sc-karte2 li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start;padding:10px 0;border-top:1px solid rgba(17,20,33,.08);font:400 15px/1.5 var(--wo-sans);color:var(--wo-tinte)}
+.sc-karte2 li:first-child{border-top:0}
+.sc-karte2 li i{display:grid;place-items:center;width:22px;height:22px;margin-top:1px;border-radius:50%;background:rgba(63,138,92,.12);color:#3f8a5c}
+.sc-karte2 li i .wo-ic{width:12px;height:12px;stroke-width:3}
+.sc-karten2--hell .sc-karte2__kopf{background:linear-gradient(165deg,#f4ece2,#e6d8c6);color:#111421}
+.sc-karten2--hell .sc-karte2__kopf i{background:#111421;color:#f1e6d8}
+@media (max-width:760px){.sc-karten2{grid-template-columns:minmax(0,1fr)}}
+
+/* Karten nebeneinander gleich hoch, die Zeilen verteilen sich über die ganze Höhe (keine leere Fläche unten in der kürzeren Karte) */
+.sc-karte2{display:flex;flex-direction:column}
+.sc-karte2 ul{flex:1;align-content:space-evenly}
+
+/* Grundannahmen unter der Zahlenzeile, zum Aufklappen */
+.sc-annahmen{margin-top:10px}
+.sc-annahmen summary{display:inline-flex;align-items:center;gap:12px;padding:8px 8px 8px 18px;border-radius:999px;cursor:pointer;list-style:none;font:400 13px/1 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--wo-akzent);
+  background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),0 8px 18px -12px rgba(17,20,33,.35)}
+.sc-annahmen summary::-webkit-details-marker{display:none}
+.sc-annahmen summary i{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#111421;color:#f1e6d8;transition:transform .35s cubic-bezier(.19,1,.22,1)}
+.sc-annahmen summary .wo-ic{width:12px;height:12px}
+.sc-annahmen[open] summary i{transform:rotate(45deg)}
+.sc-ann{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px;animation:scAuf .4s cubic-bezier(.19,1,.22,1) both}
+.sc-ann__teil{display:grid;align-content:start;gap:10px;padding:18px;border-radius:22px;background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.75),0 14px 28px -20px rgba(17,20,33,.4)}
+.sc-ann__teil .wo-mk{padding:0;margin:0;font-size:13px}
+.sc-ann__teil ul{list-style:none;margin:0;padding:0;display:grid}
+.sc-ann__teil li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:10px 0;border-top:1px solid rgba(17,20,33,.08)}
+.sc-ann__teil li:first-child{border-top:0;padding-top:0}
+.sc-ann__rechnung{font:500 15px/1.3 var(--wo-sans);color:var(--wo-tinte)}
+.sc-ann__teil li b{font:700 18px/1.1 var(--wo-titel);white-space:nowrap;color:var(--wo-tinte)}
+.sc-ann__teil li small{grid-column:1/-1;font:400 13px/1.4 var(--wo-sans);color:var(--wo-leise)}
+.sc-ann__summe{display:flex;justify-content:space-between;align-items:baseline;margin:0;padding-top:10px;border-top:2px solid #111421}
+.sc-ann__summe span{font:400 13px/1 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--wo-akzent)}
+.sc-ann__summe b{font:700 22px/1 var(--wo-titel);color:var(--wo-tinte)}
+.sc-ann__fein{margin:0;font:400 13px/1.45 var(--wo-sans);color:var(--wo-leise)}
+.sc-ann__teil--dunkel{background:linear-gradient(165deg,#272b42,#15182a);color:#fff}
+.sc-ann__teil--dunkel .wo-mk{color:#c9b59a}
+.sc-ann__teil--dunkel li{border-top-color:rgba(235,219,206,.12)}
+.sc-ann__teil--dunkel .sc-ann__rechnung,.sc-ann__teil--dunkel li b{color:#fff}
+.sc-ann__teil--dunkel li small,.sc-ann__teil--dunkel .sc-ann__fein{color:rgba(255,255,255,.62)}
+@media (max-width:1180px){.sc-ann{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.sc-ann{grid-template-columns:minmax(0,1fr)}}
+
+/* Weniger Leerraum zwischen den Abschnitten der Mappe (Robert 11.11.2026) */
+body.sc .sc-mappe2--schritte .sc-mappe2__haupt>.sc-teil,body.sc .sc-mappe2--schritte.sc-alle .sc-teil{margin-top:0!important}
+body.sc .sc-mappe2--schritte .sc-teil+.sc-teil{padding-top:clamp(26px,2.6vw,36px)}
+body.sc .sc-mappe2--schritte .sc-schritte+.sc-teil{margin-top:clamp(22px,2.4vw,30px)!important}
+body.sc .sc-mappe2--schritte .sc-teil>.sc-kopf{padding-bottom:clamp(12px,1.4vw,18px)}
+body.sc .sc-mappe2--schritte .sc-teil>.sc-kopf .sc-t{margin-bottom:0}
+.sc-schrittfuss{margin-top:clamp(16px,1.8vw,24px);padding-top:0;padding-bottom:clamp(22px,2.4vw,30px);border-top:0}
+body.sc .sc-mappe2--schritte .sc-karten2,body.sc .sc-mappe2--schritte .sc-ablauf,body.sc .sc-mappe2--schritte .sc-braucht2,body.sc .sc-mappe2--schritte .sc-angebot{margin-top:clamp(16px,1.8vw,22px)}
+
+/* Kopf der Mappe: die drei Stände als dichte dunkle Tafeln, das Foto scheint nicht mehr durch */
+body.sc .sc-stand__t{background:linear-gradient(165deg,rgba(32,35,56,.94),rgba(17,20,33,.94))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(235,219,206,.14),0 24px 40px -24px rgba(0,0,0,.8)!important}
+body.sc .sc-schritte{margin-top:clamp(22px,2.4vw,32px)}
+body.sc .sc-mappe2 .sc-parat{margin-top:clamp(22px,2.4vw,32px)}
+
+/* ======================================================================================================================
+   Bewegung wie auf den Websites (Robert 11.11.2026: «die kommen rein und dann überschneidet sich das alles … das muss flüssiger sein … das luxuriöse, edle Gefühl»).
+   Hochschweben aus dem UI-Fundus (Grand Beau-Rivage): weich einblenden und ruhig steigen, ohne Überschwinger; Bilder darin kommen aus 1,08 zur Ruhe. Nur transform und opacity. */
+body.sc [data-r]{opacity:0;transform:translate3d(0,56px,0) scale(.975);transform-origin:50% 100%;animation:none!important;
+  transition:opacity .7s cubic-bezier(.19,1,.22,1),transform 1.15s cubic-bezier(.19,1,.22,1);transition-delay:calc(min(var(--i,0),4) * 90ms)}
+body.sc [data-r].da{opacity:1;transform:none}
+body.sc [data-r] .sc-geraet__schirm img{transform:scale(1.08);transition:transform 1.6s cubic-bezier(.19,1,.22,1);transition-delay:calc(min(var(--i,0),4) * 90ms + 120ms)}
+body.sc [data-r].da .sc-geraet__schirm img{transform:none}
+
+/* Kopf: Zeile für Zeile einblenden, jeder Teil erst, wenn der darüber steht; kurze Wege, damit sich nichts überschneidet */
+@keyframes scKopf{from{opacity:0;translate:0 16px}to{opacity:1;translate:0 0}}
+@media (prefers-reduced-motion:no-preference){
+  html:not(.still) body.sc :is(.wo-sb__zier,.wo-sb__h,.wo-sb__satz,.wo-sb__kn){animation:scKopf .9s cubic-bezier(.19,1,.22,1) both!important}
+  html:not(.still) body.sc .wo-sb__zier{animation-delay:.05s!important}
+  html:not(.still) body.sc .wo-sb__h{animation-delay:.15s!important}
+  html:not(.still) body.sc .wo-sb__h.wo-zl{animation:none!important}
+  html:not(.still) body.sc .wo-sb__h.wo-zl .wo-w{animation:scKopf .9s cubic-bezier(.19,1,.22,1) both!important;animation-delay:calc(.15s + var(--z,0) * .09s)!important}
+  html:not(.still) body.sc .wo-sb__satz{animation-delay:.4s!important}
+  html:not(.still) body.sc .wo-sb__kn{animation-delay:.55s!important}
+  html:not(.still) body.sc .sc-stand__t{animation:scKopf .9s cubic-bezier(.19,1,.22,1) both;animation-delay:calc(.75s + var(--t,0) * .1s)}
+  html:not(.still) body.sc .sc-stand__t:nth-child(2){--t:1}
+  html:not(.still) body.sc .sc-stand__t:nth-child(3){--t:2}
+}
+@media (prefers-reduced-motion:reduce){body.sc [data-r]{opacity:1;transform:none;transition:none}body.sc [data-r] .sc-geraet__schirm img{transform:none;transition:none}}
+
+/* Grundannahmen: Kacheln gleich hoch, Summe und Hinweis stehen unten, die Zeilen verteilen sich */
+.sc-ann__teil{display:flex;flex-direction:column}
+.sc-ann__teil ul{flex:1;align-content:space-evenly}
+
+/* ---------- Tapete: der Anker klein im feinen Raster (Robert 11.11.2026: «eine Tapete einbauen an einigen Stellen … den Anker benutzen als Logo») ----------
+   Dunkel auf den Tafeln (Kopf, Zahlen, Angebot, Woche, Memo, Seitenblatt, Leiste), hell ganz leise in den Familien. Liegt unter dem Inhalt, bewegt sich nicht. */
+body.sc{--sc-tapete:url("bilder/tapete-anker-dunkel.svg");--sc-tapete-h:url("bilder/tapete-anker-hell.svg")}
+body.sc .wo-sb::after{background:#111421 var(--sc-tapete) 0 0/168px 168px!important;opacity:1!important}
+body.sc .wo-kopf::after{background:var(--sc-tapete) 0 0/168px 168px!important;opacity:1!important}
+body.sc :is(.sc-lage--eins,.sc-angebot,.sc-woche__teil.an,.sc-memo,.sc-parat,.wo-leiste,.sc-ann__teil--dunkel){background-image:var(--sc-tapete),linear-gradient(165deg,#272b42 0%,#181b2c 60%,#121423 100%)!important;background-size:168px 168px,auto!important}
+body.sc .sc-familie{background-image:var(--sc-tapete-h),var(--glas)!important;background-size:168px 168px,auto!important}
+
+/* ---------- Flüssigkeit (Robert 11.11.2026: «Bereiche aus dem Nichts … hakelig reingeflogen»), gemessen bei 4× gedrosselter Rechenleistung ----------
+   Einschweben kürzer und früher, Schatten leichter, der Hintergrund steht still. */
+body.sc [data-r]{transform:translate3d(0,26px,0);transition:opacity .55s cubic-bezier(.19,1,.22,1),transform .8s cubic-bezier(.19,1,.22,1);transition-delay:calc(min(var(--i,0),3) * 60ms)}
+body.sc [data-r] .sc-geraet__schirm img{transform:scale(1.04);transition:transform 1s cubic-bezier(.19,1,.22,1)}
+.sc-raum{will-change:auto}
+body.sc{--glas-schatten:0 1px 1px rgba(17,20,33,.04),0 16px 28px -18px rgba(17,20,33,.28)}
+body.sc .sc-karte2,body.sc .sc-wochen3 button,body.sc .sc-braucht2 li,body.sc .sc-k{box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),0 10px 18px -14px rgba(17,20,33,.3)!important}
+/* Tapete auch in den Häuser-Abschnitten der Übersicht, ganz leise */
+body.sc #sc-haeuser .sc-zeile{background-image:var(--sc-tapete-h),var(--glas)!important;background-size:168px 168px,auto!important}
+
+/* Laptops: schweben mit ihrem Abschnitt, nicht noch einmal eigens weit von unten (doppelte Bewegung war das «Hakelige») */
+.sc-geraet.sc-schweb{transform:translate3d(0,18px,0) scale(.985);transition:opacity .55s cubic-bezier(.19,1,.22,1),transform .8s cubic-bezier(.19,1,.22,1)}
+
+/* ======================================================================================================================
+   Kräftige Bewegung wie beim Rivage, ohne Flackern (Robert 11.11.2026: «die ganzen Effekte mit dem reinen Zoom und reinen Fliegen sind weg … flackert zwischendurch»)
+   Abschnitte schweben weit von unten hoch, sobald sie ins Bild kommen; die Bilder darin zoomen aus 1,12 zur Ruhe. Laptops bewegen sich nicht doppelt. */
+body.sc [data-r]{opacity:0;transform:translate3d(0,88px,0) scale(.95);transform-origin:50% 100%;
+  transition:opacity .7s cubic-bezier(.19,1,.22,1),transform 1.2s cubic-bezier(.19,1,.22,1);transition-delay:calc(min(var(--i,0),3) * 80ms)}
+body.sc [data-r].da{opacity:1;transform:none}
+body.sc [data-r] .sc-geraet__schirm img{transform:scale(1.12);transition:transform 1.6s cubic-bezier(.19,1,.22,1);transition-delay:calc(min(var(--i,0),3) * 80ms + 100ms)}
+body.sc [data-r].da .sc-geraet__schirm img{transform:none}
+.sc-geraet.sc-schweb{opacity:1;transform:none;transition:none}
+.sc-geraet.sc-schweb .sc-geraet__schirm img{transform:scale(1.12);transition:transform 1.6s cubic-bezier(.19,1,.22,1)}
+.sc-geraet.sc-schweb.sc-schweb--da .sc-geraet__schirm img{transform:none}
+/* Safari-Flackern: keine 3D-Tiefe, kein Mischeffekt, der Hintergrund liegt als eigene ruhige Ebene */
+body.sc .sc-fort{perspective:none}
+body.sc .sc-fort__f{transform:none!important;transform-style:flat}
+body.sc .sc-fort__f>*{transform:none!important}
+body.sc .sc-fort__f::after{display:none}
+@media (hover:hover){body.sc button.sc-fort__f:hover{transform:translateY(-2px)!important}}
+.sc-raum{transform:translateZ(0)!important;backface-visibility:hidden}
+@media (prefers-reduced-motion:reduce){body.sc [data-r],body.sc [data-r] .sc-geraet__schirm img,.sc-geraet.sc-schweb .sc-geraet__schirm img{opacity:1;transform:none;transition:none}}
+
+/* ---------- Aufschlüsselung direkt unter der Zahlenzeile, dieselben sechs Spalten, durchlaufende Trennlinien ---------- */
+body.sc .sc-lage--eins{position:relative;padding-bottom:22px}
+.sc-lage__auf{position:absolute;left:50%;bottom:6px;z-index:2;display:grid;place-items:center;width:34px;height:34px;margin-left:-17px;padding:0;border:0;border-radius:50%;cursor:pointer;
+  background:rgba(255,255,255,.1);color:#f1e6d8;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 1px rgba(235,219,206,.2);transition:background .25s}
+.sc-lage__auf .wo-ic{width:15px;height:15px;transform:rotate(180deg);transition:transform .35s cubic-bezier(.19,1,.22,1)}
+.sc-lage--eins.auf .sc-lage__auf .wo-ic{transform:none}
+@media (hover:hover){.sc-lage__auf:hover{background:rgba(255,255,255,.18)}}
+body.sc .sc-lage--eins.auf{border-bottom-left-radius:0;border-bottom-right-radius:0}
+.sc-ann2{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin-top:-1px;border-radius:0 0 24px 24px;overflow:hidden;color:#fff;
+  background:var(--sc-tapete),linear-gradient(180deg,#1b1e30,#121423);background-size:168px 168px,auto;box-shadow:inset 0 0 0 1px rgba(235,219,206,.10),0 30px 50px -34px rgba(10,12,22,.7)}
+.sc-ann2[hidden]{display:none}
+.sc-ann2__r{display:contents}
+.sc-ann2__r>*{padding:14px 18px;border-top:1px solid rgba(235,219,206,.10)}
+.sc-ann2__r>*+*{border-left:1px solid rgba(235,219,206,.10)}
+.sc-ann2__k{grid-column:span 2;display:grid;align-content:start;gap:4px}
+.sc-ann2__r--kopf>*{padding-top:12px;padding-bottom:10px;border-top-color:rgba(235,219,206,.18)}
+.sc-ann2__r--kopf span{font:400 12.5px/1.2 var(--wo-mono);letter-spacing:.12em;text-transform:uppercase;color:#c9b59a}
+.sc-ann2__k b{display:flex;align-items:baseline;gap:10px;font:700 18px/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.02em}
+.sc-ann2__k b em{font:400 13px/1 var(--wo-mono);font-style:normal;color:#111421;background:#f1e6d8;border-radius:999px;padding:3px 8px}
+.sc-ann2__k small{font:400 13px/1.4 var(--wo-sans);color:rgba(255,255,255,.58);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sc-ann2__w{display:grid;align-content:start;gap:4px}
+.sc-ann2__w small{font:400 13px/1.3 var(--wo-mono);color:rgba(255,255,255,.6)}
+.sc-ann2__w b{font:700 20px/1.1 var(--wo-titel);letter-spacing:.01em;white-space:nowrap}
+.sc-ann2__w--leer b{color:rgba(255,255,255,.3)}
+.sc-ann2__w--zus{background:rgba(235,219,206,.05)}
+.sc-ann2__r--summe>*{border-top:2px solid rgba(235,219,206,.35);background:rgba(235,219,206,.07)}
+.sc-ann2__r--summe .sc-ann2__k b{font-size:15px;color:#c9b59a}
+.sc-ann2__r--summe .sc-ann2__w b{font-size:24px;color:#f4ece2}
+.sc-ann2__fuss{grid-column:1/-1;margin:0;padding:12px 18px 16px;border-top:1px solid rgba(235,219,206,.10);font:400 13px/1.45 var(--wo-sans);color:rgba(255,255,255,.6)}
+/* schmaler: die Zahlenzeile bricht um, die Aufschlüsselung wird zu einer Liste je Gruppe mit benannten Spalten */
+@media (max-width:1180px){
+  .sc-ann2{grid-template-columns:minmax(0,1fr) repeat(4,minmax(0,1fr))}
+  .sc-ann2__k{grid-column:auto}
+}
+@media (max-width:760px){
+  .sc-ann2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sc-ann2__r--kopf{display:none}
+  .sc-ann2__k{grid-column:1/-1;background:rgba(235,219,206,.05)}
+  .sc-ann2__r>*+*{border-left:0}
+  .sc-ann2__w::before{display:block;font:400 12px/1.2 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;color:#c9b59a}
+  .sc-ann2__r>.sc-ann2__w:nth-child(2)::before{content:'Einmalig'}
+  .sc-ann2__r>.sc-ann2__w:nth-child(3)::before{content:'Betreuung'}
+  .sc-ann2__r>.sc-ann2__w:nth-child(4)::before{content:'Werkzeuge'}
+  .sc-ann2__r>.sc-ann2__w:nth-child(5)::before{content:'Zusammen'}
+}
+@media (min-width:1181px){.sc-ann2__r--kopf{display:none}}
+
+/* Zeile «Ergibt insgesamt»: das erste Jahr, hell abgesetzt, die grösste Zahl der Tafel */
+.sc-ann2__w--breit{grid-column:span 2}
+.sc-ann2__r--gesamt>*{border-top:1px solid rgba(235,219,206,.25);background:linear-gradient(180deg,#f4ece2,#e8dccb);color:#111421}
+.sc-ann2__r--gesamt>*+*{border-left-color:rgba(17,20,33,.12)}
+.sc-ann2__r--gesamt .sc-ann2__k b{font-size:17px;color:#111421}
+.sc-ann2__r--gesamt .sc-ann2__k small,.sc-ann2__r--gesamt .sc-ann2__w small{color:rgba(17,20,33,.6)}
+.sc-ann2__r--gesamt .sc-ann2__w b{font-size:24px;color:#111421}
+.sc-ann2__r--gesamt .sc-ann2__w--zus{background:linear-gradient(180deg,#111421,#1f2238);color:#fff}
+.sc-ann2__r--gesamt .sc-ann2__w--zus small{color:#c9b59a}
+.sc-ann2__r--gesamt .sc-ann2__w--zus b{font-size:30px;color:#f4ece2}
+@media (max-width:760px){.sc-ann2__w--breit{grid-column:auto}.sc-ann2__r--gesamt .sc-ann2__w::before{content:none!important}}
+.sc-ann2__r--gesamt .sc-ann2__w--zus b{font-size:clamp(20px,1.75vw,26px)!important}
+
+.sc-ann2__hinweis{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0;padding:12px 18px;border-top:1px solid rgba(235,219,206,.18);
+  background:rgba(235,219,206,.08);font:400 14px/1.45 var(--wo-sans);color:rgba(255,255,255,.82)}
+.sc-ann2__hinweis b{flex:none;padding:5px 11px;border-radius:999px;background:#f1e6d8;color:#111421;font:400 12.5px/1 var(--wo-mono);letter-spacing:.12em;text-transform:uppercase}
+
+/* Nüchtern statt Ziel: die Startzeile wie die Summenzeile, keine helle Fläche, keine grösste Zahl; der Hinweis ruhig, ohne Abzeichen-Pille */
+.sc-ann2__r--gesamt>*{background:rgba(235,219,206,.04)!important;color:#fff!important;border-top:1px solid rgba(235,219,206,.18)!important}
+.sc-ann2__r--gesamt>*+*{border-left-color:rgba(235,219,206,.10)!important}
+.sc-ann2__r--gesamt .sc-ann2__k b{color:#c9b59a!important;font-size:15px!important}
+.sc-ann2__r--gesamt .sc-ann2__k small,.sc-ann2__r--gesamt .sc-ann2__w small{color:rgba(255,255,255,.55)!important}
+.sc-ann2__r--gesamt .sc-ann2__w b,.sc-ann2__r--gesamt .sc-ann2__w--zus b{font-size:20px!important;color:rgba(255,255,255,.88)!important}
+.sc-ann2__r--summe .sc-ann2__w b{font-size:22px}
+.sc-ann2__hinweis{display:block;padding:14px 18px;font-size:14.5px;color:rgba(255,255,255,.86)}
+.sc-ann2__hinweis b{display:inline;margin-right:8px;padding:0;background:none;color:#f1e6d8;font:700 15px/1 var(--wo-titel);letter-spacing:.04em}
+
+/* Aufgeklappte Hauszeile: Laptop oben, Schrift darunter, Fakten rechts daneben (Robert 12.11.2026) */
+@media (min-width:1101px){
+  body.sc #sc-haeuser .sc-zeile.auf{grid-template-columns:minmax(0,1.15fr) minmax(330px,1fr);grid-template-areas:"bild fakten" "text fakten";grid-template-rows:auto 1fr;align-items:start;row-gap:clamp(20px,2vw,30px)}
+  body.sc #sc-haeuser .sc-zeile.auf>.sc-zeile__bild{grid-area:bild;width:min(100%,560px);justify-self:center;margin-top:clamp(6px,1vw,16px)}
+  body.sc #sc-haeuser .sc-zeile.auf>.sc-zeile__text{grid-area:text}
+  body.sc #sc-haeuser .sc-zeile.auf>.sc-zeile__fakten{grid-area:fakten}
+}
+
+/* ---------- Kleine Laptops (Häuserzeilen, Familienkarten): eigener Reinzoom beim Hereinkommen (Robert 12.11.2026: «bei den kleineren PCs passiert noch nicht so viel») ----------
+   Der Laptop wächst aus 84 % zur vollen Grösse, das Bild darin zoomt aus 1,3 zur Ruhe. Nur transform, ein Takt. */
+body.sc :is(.sc-zeile__bild,.sc-karte__bild) .sc-geraet.sc-schweb{transform:translate3d(0,24px,0) scale(.84);transform-origin:50% 100%;transition:none}
+body.sc :is(.sc-zeile__bild,.sc-karte__bild) .sc-geraet.sc-schweb .sc-geraet__schirm img{transform:scale(1.3);transition:none}
+body.sc :is(.sc-zeile__bild,.sc-karte__bild) .sc-geraet.sc-schweb.sc-schweb--da{transform:none;transition:transform 1.3s cubic-bezier(.19,1,.22,1) .08s}
+body.sc :is(.sc-zeile__bild,.sc-karte__bild) .sc-geraet.sc-schweb.sc-schweb--da .sc-geraet__schirm img{transform:none;transition:transform 1.8s cubic-bezier(.19,1,.22,1) .12s}
+@media (prefers-reduced-motion:reduce){body.sc :is(.sc-zeile__bild,.sc-karte__bild) .sc-geraet.sc-schweb,body.sc :is(.sc-zeile__bild,.sc-karte__bild) .sc-geraet.sc-schweb .sc-geraet__schirm img{transform:none;transition:none}}
+
+/* ---------- Bildschirm unter der Maus: leiser Schleier und ein kleiner Knopf im Hausstil, kein Schriftband, kein Systemhinweis ---------- */
+.sc-geraet[data-live] .sc-geraet__schirm{container-type:inline-size}
+.sc-geraet[data-live] .sc-geraet__schirm::before{content:'';position:absolute;inset:0;z-index:1;background:rgba(17,20,33,.26);opacity:0;pointer-events:none;transition:opacity .4s cubic-bezier(.19,1,.22,1)}
+.sc-live__tipp{left:50%;top:50%;bottom:auto;display:inline-flex;align-items:center;gap:10px;padding:5px 5px 5px 16px;border-radius:99px;
+  background:#f4ece2;color:#111421;font:400 13px/1 var(--wo-mono);letter-spacing:.12em;text-transform:uppercase;
+  box-shadow:inset 0 1px 0 #fff,0 14px 26px -12px rgba(10,12,22,.6);transform:translate(-50%,-50%) scale(.88);transition:opacity .4s cubic-bezier(.19,1,.22,1),transform .55s cubic-bezier(.19,1,.22,1)}
+.sc-live__tipp i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#111421;color:#f1e6d8}
+.sc-live__tipp i .wo-ic{width:15px;height:15px}
+@container (max-width:240px){.sc-live__tipp{padding:6px}.sc-live__tipp>span{display:none}.sc-live__tipp i{width:34px;height:34px}}
+@media (hover:hover){
+  .sc-geraet[data-live]:not(.live):hover .sc-geraet__schirm::before{opacity:1}
+  .sc-geraet[data-live]:not(.live):hover .sc-live__tipp{opacity:1;transform:translate(-50%,-50%) scale(1)}
+}
+
+/* Mappe, Schritt Preis: alle drei Beträge in einer Zeile, gleich gebaut (Robert 12.11.2026: «in einer Zeile … und nicht in zwei») */
+.sc-angebot--preis{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sc-angebot--preis .sc-angebot__teil--gross{grid-column:auto;grid-template-columns:minmax(0,1fr);align-items:start;border-bottom:0}
+.sc-angebot--preis .sc-angebot__teil--gross>p{grid-column:1;justify-self:start;text-align:left;padding-bottom:0}
+.sc-angebot--preis .sc-angebot__teil+.sc-angebot__teil{border-left:1px solid rgba(235,219,206,.12)}
+.sc-angebot--preis .sc-angebot__teil b,.sc-angebot--preis .sc-angebot__teil--gross b{font-size:clamp(36px,3.4vw,56px)}
+@media (max-width:900px){.sc-angebot--preis{grid-template-columns:minmax(0,1fr)}.sc-angebot--preis .sc-angebot__teil+.sc-angebot__teil{border-left:0;border-top:1px solid rgba(235,219,206,.12)}}
+/* Preiszeile passt sich ihrer Breite an (neben dem Seitenblatt schmaler): erste Spalte etwas breiter, Zahl nach Tafelbreite */
+.sc-angebot--preis{container-type:inline-size;grid-template-columns:1.3fr 1fr 1fr}
+.sc-angebot--preis .sc-angebot__teil{padding-left:clamp(18px,3cqi,40px);padding-right:clamp(14px,2.4cqi,32px)}
+.sc-angebot--preis .sc-angebot__teil b,.sc-angebot--preis .sc-angebot__teil--gross b{font-size:clamp(30px,5.6cqi,62px)}
+@media (max-width:900px){.sc-angebot--preis{grid-template-columns:minmax(0,1fr)}.sc-angebot--preis .sc-angebot__teil b,.sc-angebot--preis .sc-angebot__teil--gross b{font-size:clamp(36px,11cqi,56px)}}
+/* Bezeichnung, Betrag und Satz stehen in allen drei Spalten auf derselben Höhe, auch wenn eine Bezeichnung umbricht */
+@media (min-width:901px){
+  .sc-angebot--preis{grid-template-rows:auto auto auto}
+  .sc-angebot--preis .sc-angebot__teil,.sc-angebot--preis .sc-angebot__teil--gross{grid-row:span 3;grid-template-rows:subgrid;align-content:normal;row-gap:10px}
+  .sc-angebot--preis .sc-angebot__teil .wo-mk{align-self:end}
+}
+
+/* ---------- Laptop nach vorne: grosser Bildschirm zum Scrollen (Robert 12.11.2026) ---------- */
+@media (min-width:761px){
+  body.sc #sc-haeuser .sc-zeile.gross{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"bild text" "bild fakten";grid-template-rows:auto 1fr;align-items:start;column-gap:clamp(24px,3vw,44px)}
+  body.sc #sc-haeuser .sc-zeile.gross>.sc-zeile__bild{grid-area:bild;width:100%;max-width:none;justify-self:stretch;margin-top:8px}
+  body.sc #sc-haeuser .sc-zeile.gross>.sc-zeile__text{grid-area:text}
+  body.sc #sc-haeuser .sc-zeile.gross>.sc-zeile__fakten{grid-area:fakten}
+}
+.sc-buehne{display:grid;justify-items:center;padding:clamp(26px,3vw,44px) 0 clamp(8px,1vw,16px)}
+.sc-buehne>.sc-geraet{width:50%;min-width:min(100%,520px)}
+.sc-baum .sc-karte .sc-geraet{transition:opacity .45s cubic-bezier(.19,1,.22,1)}
+.sc-baum .sc-karte .sc-geraet.sc-auf-buehne{opacity:.38}
+/* Beenden: kleiner Knopf im Hausstil über der rechten oberen Ecke des Bildschirms */
+.sc-live__zu{top:-20px;right:calc(9.72% - 6px);width:auto;height:auto;display:inline-flex;align-items:center;gap:10px;padding:5px 5px 5px 16px;border-radius:99px;
+  background:#f4ece2;color:#111421;font:400 13px/1 var(--wo-mono);letter-spacing:.12em;text-transform:uppercase;box-shadow:inset 0 1px 0 #fff,0 12px 24px -12px rgba(10,12,22,.6)}
+.sc-live__zu i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#111421;color:#f1e6d8}
+.sc-live__zu i .wo-ic{width:14px;height:14px;transform:rotate(45deg)}
+.sc-geraet.sc-auf-buehne .sc-live__tipp,.sc-geraet.sc-auf-buehne .sc-geraet__schirm::before{opacity:0!important}
+
+/* ---------- Quellen unten in der Mappe: ruhige Tafel, je Quelle eine Zeile, rechts der Knopf zum Öffnen ---------- */
+.sc-quellen{margin:clamp(40px,4.4vw,64px) 0 0;padding:clamp(18px,2vw,26px) clamp(18px,2.2vw,30px) clamp(10px,1.2vw,16px);border-radius:26px;
+  background:var(--sc-tapete-h),var(--glas);background-size:168px 168px,auto;box-shadow:var(--glas-kante),var(--glas-schatten)}
+.sc-quellen>.wo-mk{display:block;margin:0 0 6px;color:var(--wo-akzent);letter-spacing:.14em}
+.sc-quellen ul{list-style:none;margin:0;padding:0;display:grid}
+.sc-quellen li{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr) auto;gap:8px 22px;align-items:center;padding:13px 0;border-top:1px solid rgba(17,20,33,.08)}
+.sc-quellen li:first-child{border-top:0}
+.sc-quellen li>b{font:400 13px/1.35 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--wo-tinte)}
+.sc-quellen li>span{font:400 15px/1.45 var(--wo-sans);color:var(--wo-leise)}
+.sc-quellen li>em{width:0}
+.sc-quellen a{display:inline-flex;align-items:center;gap:10px;padding:4px 4px 4px 14px;border-radius:99px;text-decoration:none;white-space:nowrap;
+  background:#fff;color:var(--wo-tinte);font:400 13px/1 var(--wo-mono);letter-spacing:.1em;text-transform:uppercase;box-shadow:inset 0 0 0 1px rgba(17,20,33,.08),0 6px 14px -10px rgba(17,20,33,.4);transition:transform .25s cubic-bezier(.19,1,.22,1)}
+.sc-quellen a i{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#111421;color:#f1e6d8}
+.sc-quellen a i .wo-ic{width:13px;height:13px}
+@media (hover:hover){.sc-quellen a:hover{transform:translateY(-1px)}}
+@media (max-width:760px){.sc-quellen li{grid-template-columns:minmax(0,1fr) auto}.sc-quellen li>b{grid-column:1/-1}.sc-quellen li>em{display:none}}
+
+/* ---------- Laptop vorne: dunkler Raum, Laptop in der Mitte, Beenden darunter (Robert 12.11.2026) ---------- */
+html.sc-vorne-an,html.sc-vorne-an body{overflow:hidden}
+.sc-vorne{position:fixed;inset:0;z-index:1000;display:grid;place-items:center}
+.sc-vorne__dunkel{position:absolute;inset:0;background:rgba(9,10,18,.8);opacity:0;transition:opacity .6s cubic-bezier(.19,1,.22,1);cursor:pointer}
+.sc-vorne.da .sc-vorne__dunkel{opacity:1}
+.sc-vorne.geht .sc-vorne__dunkel{opacity:0;transition-duration:.55s}
+.sc-vorne__platz{position:relative;display:grid;justify-items:center;gap:26px;margin-top:-44px}
+.sc-vorne__platz>.sc-geraet{display:block;max-width:none}
+.sc-vorne__zu{position:absolute;left:50%;bottom:clamp(22px,4vh,44px);z-index:2;display:inline-flex;align-items:center;gap:12px;padding:6px 6px 6px 20px;border:0;border-radius:99px;cursor:pointer;
+  background:#f4ece2;color:#111421;font:400 13.5px/1 var(--wo-mono);letter-spacing:.14em;text-transform:uppercase;box-shadow:inset 0 1px 0 #fff,0 16px 30px -14px rgba(0,0,0,.7);
+  opacity:0;transform:translate(-50%,14px);transition:opacity .45s cubic-bezier(.19,1,.22,1) .25s,transform .6s cubic-bezier(.19,1,.22,1) .25s}
+.sc-vorne.da .sc-vorne__zu{opacity:1;transform:translate(-50%,0)}
+.sc-vorne.geht .sc-vorne__zu{opacity:0;transition-delay:0s}
+.sc-vorne__zu i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#111421;color:#f1e6d8}
+.sc-vorne__zu i .wo-ic{width:15px;height:15px;transform:rotate(45deg)}
+.sc-geraet.sc-ist-vorne{opacity:0}
+.sc-vorne__dunkel{background:rgba(9,10,18,.88)}
+.sc-vorne__hinweis{position:absolute;left:50%;bottom:calc(clamp(22px,4vh,44px) + 58px);z-index:2;margin:0;transform:translateX(-50%);white-space:nowrap;font:400 15px/1.4 var(--wo-sans);color:rgba(255,255,255,.82);opacity:0;transition:opacity .4s}
+.sc-vorne__hinweis.da{opacity:1}
+.sc-vorne__hinweis a{color:#f1e6d8;text-decoration:underline;text-underline-offset:3px;margin-left:6px}
+.sc-vorne.geht{pointer-events:none}   /* während der Laptop zurückfliegt, geht das Mausrad schon an die Mappe */
+
+/* ---------- Schulung in der Mappe: Phasen, Modul-Ablauf, Module nach Nutzen, Nutzen fürs Haus (12.11.2026) ---------- */
+.sc-unterkopf{display:block;margin:clamp(26px,2.6vw,38px) 0 12px;color:var(--wo-akzent);letter-spacing:.14em}
+.sc-module{border-radius:24px;overflow:hidden;background:var(--sc-tapete-h),var(--glas);background-size:168px 168px,auto;box-shadow:var(--glas-kante),var(--glas-schatten)}
+.sc-module ol{list-style:none;margin:0;padding:6px clamp(16px,2vw,26px)}
+.sc-module li{display:grid;grid-template-columns:34px minmax(0,1.3fr) minmax(0,1fr) 110px;gap:6px 18px;align-items:center;padding:13px 0;border-top:1px solid rgba(17,20,33,.08)}
+.sc-module li:first-child{border-top:0}
+.sc-module li em{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#111421;color:#f1e6d8;font:400 13px/1 var(--wo-mono);font-style:normal}
+.sc-module li:nth-child(2) em{background:#f1e6d8;color:#111421;box-shadow:inset 0 0 0 1px rgba(17,20,33,.15)}
+.sc-module li b{font:500 16px/1.35 var(--wo-sans);color:var(--wo-tinte)}
+.sc-module li span{font:400 14.5px/1.4 var(--wo-sans);color:var(--wo-leise)}
+.sc-module li small{font:400 13px/1.3 var(--wo-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--wo-akzent);text-align:right}
+.sc-module>p{margin:0;padding:14px clamp(16px,2vw,26px) 18px;border-top:1px solid rgba(17,20,33,.08);font:400 15px/1.5 var(--wo-sans);color:var(--wo-tinte);background:rgba(241,230,216,.35)}
+.sc-nutzen{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.sc-nutzen>div{display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:20px;background:var(--glas-fest);box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(255,255,255,.7),0 10px 18px -14px rgba(17,20,33,.3)}
+.sc-nutzen i{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;background:rgba(63,138,92,.12);color:#3f8a5c}
+.sc-nutzen i .wo-ic{width:13px;height:13px;stroke-width:3}
+.sc-nutzen span{font:500 15px/1.35 var(--wo-sans);color:var(--wo-tinte)}
+.sc-braucht .wo-kn{margin-top:14px}
+@media (max-width:1100px){.sc-nutzen{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.sc-module li{grid-template-columns:34px minmax(0,1fr)}.sc-module li span,.sc-module li small{grid-column:2;text-align:left}.sc-nutzen{grid-template-columns:minmax(0,1fr)}}
+/* vier Kacheln: zwei mal zwei statt drei und eine einzelne; Nutzen-Kacheln ebenso, damit der Text nicht in schmale Spalten fällt */
+@media (min-width:1001px){.sc-wochen--zwei{grid-template-columns:repeat(2,minmax(0,1fr))!important;row-gap:22px}
+  .sc-wochen--zwei li:nth-child(odd){padding-left:0!important;border-left:0!important}
+  .sc-wochen--zwei li:nth-child(n+3){padding-top:20px;border-top:1px solid var(--wo-linie)}}
+.sc-nutzen{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.sc-nutzen{grid-template-columns:minmax(0,1fr)}}
+.sc-module li:nth-child(2) em{background:#111421;color:#f1e6d8;box-shadow:none}
+
+/* Kooperationen (Robert 13.11.2026): je Partnerart eine Karte mit Bild oben, Text darunter; zwei nebeneinander, am Handy eine */
+.sc-koop{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);align-items:stretch}
+.sc-koop__k{display:grid;grid-template-rows:auto 1fr;border-radius:24px;overflow:hidden;background:var(--wo-blatt);box-shadow:inset 0 0 0 1px var(--wo-linie)}
+.sc-koop__bild{position:relative;aspect-ratio:16/9;overflow:hidden;background:#1f213b}
+.sc-koop__bild img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.sc-koop__fuer{position:absolute;left:14px;top:14px;font:500 13px/1 var(--wo-mono);letter-spacing:.1em;padding:8px 11px;border-radius:999px;background:#111421;color:#ebdbce}
+.sc-koop__text{display:flex;flex-direction:column;gap:16px;padding:clamp(20px,2.2vw,30px)}
+.sc-koop__text h3{margin:0;font:700 clamp(22px,1.8vw,28px)/1.08 var(--wo-titel);text-transform:uppercase;letter-spacing:.012em;color:var(--wo-tinte);overflow-wrap:anywhere}
+.sc-koop__text dl{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.sc-koop__text dt{font:500 13px/1.2 var(--wo-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--wo-leise);margin-bottom:6px}
+.sc-koop__text dd{margin:0;font:400 15.5px/1.5 var(--wo-sans);color:var(--wo-tinte)}
+.sc-koop__kand{flex:1 1 auto;padding:16px 18px;border-radius:18px;background:#111421;color:#fff}
+.sc-koop__kand .wo-mk{display:block;color:#c9b59a;letter-spacing:.14em;margin:0 0 10px;padding:0}
+.sc-koop__kand ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.sc-koop__kand li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;align-items:start;font:400 15px/1.45 var(--wo-sans);color:rgba(244,236,226,.9)}
+.sc-koop__kand li svg{width:14px;height:14px;margin-top:4px;fill:none;stroke:#c9b59a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sc-koop__achtung{margin:0;padding:12px 16px;border-radius:14px;font:500 15px/1.45 var(--wo-sans);color:#111421;background:#ebdbce}
+.sc-koop__weg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.4vw,18px)}
+.sc-koop__weg>div{display:grid;align-content:start;gap:8px;padding:clamp(20px,2.2vw,28px);border-radius:22px;background:var(--wo-blatt);box-shadow:inset 0 0 0 1px var(--wo-linie)}
+.sc-koop__weg .wo-mk{color:var(--wo-leise);padding:0;margin:0}
+.sc-koop__weg b{font:700 clamp(20px,1.6vw,24px)/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.012em;color:var(--wo-tinte)}
+.sc-koop__weg p{margin:0;font:400 15.5px/1.5 var(--wo-sans);color:var(--wo-leise)}
+@media (max-width:1100px){.sc-koop__text dl{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:860px){.sc-koop,.sc-koop__weg{grid-template-columns:minmax(0,1fr)}}
+
+/* Unsere Kunden: was wir schon gemacht haben (14.11.2026). Zwei Spalten, jede Karte gleich hoch, ungerade letzte Karte über die ganze Breite */
+.sc-arb{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);align-items:stretch}
+.sc-arb__k{display:grid;grid-template-rows:auto 1fr;border-radius:24px;overflow:hidden;background:var(--wo-blatt);box-shadow:inset 0 0 0 1px var(--wo-linie)}
+.sc-arb__k:last-child:nth-child(odd){grid-column:1/-1}
+.sc-arb__buehne{display:grid;place-items:center;padding:clamp(22px,2.6vw,38px) clamp(26px,4vw,64px) clamp(14px,1.6vw,22px);background:#1f213b}
+.sc-arb__geraet{width:100%;max-width:560px}
+.sc-arb__text{display:flex;flex-direction:column;gap:10px;padding:clamp(20px,2.2vw,30px)}
+.sc-arb__text .wo-mk{padding:0;margin:0;color:var(--wo-akzent)}
+.sc-arb__text h3{margin:0;font:700 clamp(22px,1.8vw,28px)/1.08 var(--wo-titel);text-transform:uppercase;letter-spacing:.012em;color:var(--wo-tinte);overflow-wrap:anywhere}
+.sc-arb__text p{margin:0;font:400 16px/1.5 var(--wo-sans);color:var(--wo-leise)}
+.sc-arb__auf{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:5px 5px 5px 16px;border-radius:99px;text-decoration:none;font:500 14px/1 var(--wo-sans);color:var(--wo-tinte);box-shadow:inset 0 0 0 1px var(--wo-linie)}
+.sc-arb__auf i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#111421;color:#f1e6d8}
+.sc-arb__auf i .wo-ic{width:13px;height:13px}
+@media (hover:hover){.sc-arb__auf:hover{transform:translateY(-1px)}}
+.sc-dazu>div>span{font:500 14.5px/1.5 var(--wo-sans);color:var(--wo-tinte)}
+@media (max-width:760px){.sc-arb{grid-template-columns:minmax(0,1fr)}.sc-arb__k:last-child:nth-child(odd){grid-column:auto}}
+
+/* Wie es weitergeht: Betreuung, Wartung, Takt (14.11.2026) */
+.sc-weiter2{margin-top:clamp(14px,1.6vw,20px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.6vw,22px)}
+.sc-weiter2>div{padding:clamp(18px,2vw,26px);border-radius:24px;background:var(--wo-blatt);box-shadow:inset 0 0 0 1px var(--wo-linie)}
+.sc-weiter2 b{display:block;font:700 clamp(19px,1.5vw,23px)/1.15 var(--wo-titel);text-transform:uppercase;letter-spacing:.012em;color:var(--wo-tinte)}
+.sc-weiter2 p{margin:8px 0 0;font:400 16px/1.5 var(--wo-sans);color:var(--wo-leise)}
+.sc-warten{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.6vw,22px)}
+.sc-warten__k{display:grid;align-content:start;gap:10px;padding:clamp(22px,2.4vw,32px);border-radius:24px;background:linear-gradient(165deg,#272b42,#15182a);color:#fff}
+.sc-warten__k i{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(235,219,206,.12);color:#ebdbce}
+.sc-warten__k i .wo-ic{width:20px;height:20px}
+.sc-warten__k b{font:700 clamp(21px,1.7vw,26px)/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.012em}
+.sc-warten__k p{margin:0;font:400 16px/1.55 var(--wo-sans);color:rgba(244,236,226,.8)}
+.sc-takt{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,22px)}
+.sc-takt__k{display:grid;align-content:start;gap:10px;padding:clamp(20px,2.2vw,28px);border-radius:24px;background:var(--wo-blatt);box-shadow:inset 0 0 0 1px var(--wo-linie)}
+.sc-takt__k>.wo-mk{padding:0;margin:0;color:var(--wo-akzent)}
+.sc-takt__k>b{font:700 clamp(21px,1.7vw,26px)/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.012em;color:var(--wo-tinte)}
+.sc-takt__k ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.sc-takt__k li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;align-items:start;font:400 15.5px/1.45 var(--wo-sans);color:var(--wo-leise)}
+.sc-takt__k li .wo-ic{width:14px;height:14px;margin-top:4px;color:var(--wo-akzent)}
+@media (max-width:1100px){.sc-takt{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.sc-weiter2,.sc-warten,.sc-takt{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Laptop vorne: Vergrössern neben Beenden, der Bildschirm füllt das Fenster (Robert 14.11.2026) ---------- */
+.sc-vorne__knoepfe{position:absolute;left:50%;bottom:clamp(22px,4vh,44px);z-index:4;display:flex;gap:12px;opacity:0;transform:translate(-50%,14px);
+  transition:opacity .45s cubic-bezier(.19,1,.22,1) .25s,transform .6s cubic-bezier(.19,1,.22,1) .25s}
+.sc-vorne.da .sc-vorne__knoepfe{opacity:1;transform:translate(-50%,0)}
+.sc-vorne.geht .sc-vorne__knoepfe{opacity:0;transition-delay:0s}
+.sc-vorne__knoepfe .sc-vorne__zu,.sc-vorne__gross{position:static;opacity:1;transform:none;transition:none;display:inline-flex;align-items:center;gap:12px;padding:6px 6px 6px 20px;border:0;border-radius:99px;cursor:pointer;
+  background:#f4ece2;color:#111421;font:400 13.5px/1 var(--wo-mono);letter-spacing:.14em;text-transform:uppercase;box-shadow:inset 0 1px 0 #fff,0 16px 30px -14px rgba(0,0,0,.7)}
+.sc-vorne__gross i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#111421;color:#f1e6d8}
+.sc-vorne__gross i .wo-ic{width:15px;height:15px}
+.sc-vorne__platz>.sc-geraet{transition:transform .7s cubic-bezier(.19,1,.22,1)}
+.sc-vorne.gross .sc-vorne__hinweis{opacity:0;pointer-events:none}
+
+.sc-segment{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.6vw,22px)}
+.sc-segment__k{display:grid;align-content:start;gap:8px;padding:clamp(20px,2.2vw,28px);border-radius:24px;background:linear-gradient(165deg,#272b42,#15182a);color:#fff}
+.sc-segment__k>.wo-mk{padding:0;margin:0;color:#c9b59a}
+.sc-segment__k>b{font:700 clamp(22px,1.8vw,28px)/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.012em}
+.sc-segment__k dl{margin:6px 0 0;display:grid}
+.sc-segment__k dl>div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px solid rgba(235,219,206,.14)}
+.sc-segment__k dt{font:400 15.5px/1.4 var(--wo-sans);color:rgba(244,236,226,.78)}
+.sc-segment__k dd{margin:0;font:600 16px/1.4 var(--wo-sans);color:#fff;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (max-width:760px){.sc-segment{grid-template-columns:minmax(0,1fr)}}
+
+/* Preise ändern in der Kachel (14.11.2026): Knopf unter der Preisliste, Formular mit drei Beträgen, gleiche Schrift und Linien wie die Liste */
+.sc-preis-kn{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:7px 14px;border:1px solid var(--wo-linie);border-radius:999px;background:transparent;font:500 12px/1 var(--wo-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--wo-tinte);cursor:pointer;transition:background .2s,border-color .2s}
+.sc-preis-kn:hover,.sc-preis-kn:focus-visible{background:rgba(17,20,33,.05);border-color:var(--wo-tinte)}
+.sc-preisform{display:grid;gap:10px;margin:2px 0 0}
+.sc-preisform__z{display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,150px);gap:12px;align-items:center;padding:6px 0;border-top:1px solid rgba(17,20,33,.08)}
+.sc-preisform__z:first-child{border-top:0}
+.sc-preisform__z>span:first-child{font:500 14px/1.3 var(--wo-sans);color:var(--wo-tinte)}
+.sc-preisform__z small{display:block;font:400 12.5px/1.3 var(--wo-sans);color:var(--wo-leise)}
+.sc-preisform__f{display:flex;align-items:center;gap:6px;padding:0 10px;height:38px;border:1px solid var(--wo-linie);border-radius:10px;background:var(--wo-weiss,#fff)}
+.sc-preisform__f:focus-within{border-color:var(--wo-tinte)}
+.sc-preisform__f i{font:500 11px/1 var(--wo-mono);letter-spacing:.08em;font-style:normal;color:var(--wo-leise)}
+.sc-preisform__f input{flex:1;min-width:0;border:0;background:transparent;font:500 15px/1 var(--wo-sans);color:var(--wo-tinte);text-align:right;outline:none;font-variant-numeric:tabular-nums}
+.sc-preisform__hinweis{margin:2px 0 0;font:400 12.5px/1.4 var(--wo-sans);color:var(--wo-leise)}
+.sc-preisform__kn{display:flex;gap:10px;align-items:center}
+.sc-preisform__ok{padding:9px 18px;border:0;border-radius:999px;background:var(--wo-tinte);color:var(--wo-weiss,#fff);font:500 12px/1 var(--wo-mono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.sc-preisform__ok[disabled]{opacity:.6;cursor:progress}
+.sc-preisform__ab{padding:9px 6px;border:0;background:transparent;font:500 12px/1 var(--wo-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--wo-leise);cursor:pointer}
+.sc-preis-kn{justify-self:start;width:auto}
+.sc-preisform__f input:focus,.sc-preisform__f input:focus-visible{outline:none!important;box-shadow:none!important}
+/* Preis-Tafeln: Worte statt Zahl brechen um und bleiben in ihrer Tafel (17.11.2026) */
+.sc-angebot__teil b{min-width:0}
+.sc-angebot__teil b.sc-wort,.sc-angebot--preis .sc-angebot__teil b.sc-wort{white-space:normal;overflow-wrap:break-word;hyphens:manual;font-size:clamp(28px,4.2cqi,48px)!important;line-height:1.02}

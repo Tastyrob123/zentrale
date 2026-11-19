@@ -1,0 +1,46 @@
+/* pruefung-haus.css · Prüfseite des Feinschliffs im Kleid von Tasty Studios. Aufbau und Masse aus der Prüfseite der Culinarium-Werkzeuge (Vorlage),
+   Werte nur aus kleid/tasty.css (--wo-…): Kopf in Nacht mit Raster, Raum im Papier, Knöpfe wie die Platten der Seite. */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body.wsp{margin:0;font:15px/1.6 var(--wo-sans);color:var(--wo-tinte);background:var(--wo-papier)}
+.kopf{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px clamp(16px,4vw,56px);color:#fff;background:var(--wo-tapete);box-shadow:0 0 0 1px var(--wo-linie-d)}
+.kopf__z{width:30px;height:30px;flex:none;background:var(--wo-g2);-webkit-mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/contain no-repeat;mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/contain no-repeat}
+.kopf b{display:block;font:700 22px/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.015em}
+.kopf small{font:400 11px/1.4 var(--wo-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--wo-g2)}
+.kopf .re{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.wsp .kn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 18px;border:0;border-radius:999px;font:400 11px/1 var(--wo-mono);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;cursor:pointer;
+  color:var(--wo-tief);background:linear-gradient(180deg,var(--wo-g1),var(--wo-g2) 46%,var(--wo-g3));box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 -3px 0 rgba(0,0,0,.18),0 10px 18px -12px rgba(0,0,0,.55)}
+.wsp .kn--linie{color:#fff;background:transparent;box-shadow:inset 0 0 0 1px var(--wo-linie-d)}
+.wsp .kn:focus-visible{outline:2px solid var(--wo-g2);outline-offset:3px}
+main{max-width:1080px;margin:0 auto;padding:28px clamp(16px,4vw,40px) 64px}
+h1{font:700 clamp(32px,4vw,46px)/1.05 var(--wo-titel);text-transform:uppercase;letter-spacing:.01em;color:var(--wo-tief);margin:0 0 8px}
+h2{font:700 26px/1.15 var(--wo-titel);text-transform:uppercase;letter-spacing:.015em;color:var(--wo-tief);margin:38px 0 12px}
+.satz{max-width:70ch;color:var(--wo-leise);margin:0 0 18px}
+.blatt{background:var(--wo-blatt);border-radius:var(--wo-r2);box-shadow:0 0 0 1px var(--wo-linie),0 16px 30px -22px rgba(17,20,33,.5);overflow:hidden}
+.z{display:grid;grid-template-columns:14px minmax(0,1.1fr) minmax(0,2fr) 110px;gap:14px;align-items:center;padding:12px 18px;border-top:1px solid var(--wo-linie)}
+.z:first-child{border-top:0}
+.z i{width:12px;height:12px;border-radius:50%;background:var(--wo-gut)}
+.z.gelb i{background:var(--wo-taupe)}.z.rot i{background:var(--wo-rot)}
+.z b{font-weight:500}
+.z span{color:var(--wo-leise);overflow-wrap:anywhere}
+.z a{justify-self:end;font:400 11px var(--wo-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--wo-akzent)}
+.gr{font:400 11px var(--wo-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--wo-akzent);padding:14px 18px 4px;background:var(--wo-papier2)}
+.lex{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.lex article{padding:16px 18px;background:var(--wo-blatt);border-radius:var(--wo-r2);box-shadow:0 0 0 1px var(--wo-linie);scroll-margin-top:20px}
+.lex article:target{box-shadow:0 0 0 2px var(--wo-tief),0 16px 30px -18px rgba(17,20,33,.5)}
+.lex h3{margin:0 0 6px;font:400 12px var(--wo-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--wo-tief)}
+.lex p{margin:4px 0;font-size:14px}.lex p b{font-weight:600;color:var(--wo-akzent)}
+.fl{margin:0;padding:0;list-style:none}
+.fl li{padding:10px 18px;border-top:1px solid var(--wo-linie);font-size:13px;overflow-wrap:anywhere}
+.fl li:first-child{border-top:0}
+.fl time{color:var(--wo-akzent);margin-right:10px}
+.rep{display:flex;gap:10px;flex-wrap:wrap}
+.rep .kn.scharf{color:#fff;background:var(--wo-tief);box-shadow:none}
+.leer{padding:14px 18px;color:var(--wo-leise)}
+@media (max-width:640px){.z{grid-template-columns:12px minmax(0,1fr);row-gap:2px}.z span,.z a{grid-column:2}.kopf .re{margin-left:0}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* 17.11.2026 (Prüfpunkte 10/13/17/34): Lexikon in festen Spalten (26 Stichworte = 2 je Reihe, nie auto-fill), Schrift mindestens 13 px */
+.lex{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+@media (max-width:760px){.lex{grid-template-columns:minmax(0,1fr)}}
+.kopf small,.wsp .kn,.lex h3{font-size:13px}

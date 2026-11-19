@@ -1,0 +1,59 @@
+[
+  {
+    "id": "a-001", "nummer": 1, "titel": "Was ein Chat an der Rezeption wirklich beantwortet", "betreff": "Post aus dem Studio · Die Rezeption im Chat, nach drei Monaten",
+    "vorschau": "Drei Häuser, 1 400 Fragen, und was davon ein Mensch hätte beantworten müssen.",
+    "stand": "versendet", "liste": "l-post", "erstellt": "2026-09-22", "geaendert": "2026-09-29", "versendet_am": "2026-09-30", "empfaenger_zahl": 11,
+    "bausteine": [
+      {"art": "titel", "text": "Drei Monate Rezeption im Chat"},
+      {"art": "text", "text": "Seit Juli beantwortet in drei Häusern ein Chat die Fragen der Gäste: Zimmer, Karten, Umgebung, Anreise. Wir haben die Fragen gelesen, alle.\n\nDas Ergebnis überrascht nicht, aber es beruhigt: Neun von zehn Fragen hätten die Gäste auch auf der Seite finden können. Sie haben es nur nicht getan, weil fragen schneller ist als suchen."},
+      {"art": "zitat", "text": "Die Gäste fragen abends um elf nach dem Frühstück. Morgens um sieben wissen sie es schon.", "von": "Sabine Keller, Grand Beau-Rivage"},
+      {"art": "text", "text": "Was wir daraus gemacht haben: Die Antworten des Chats fliessen zurück in die Seite. Was dreimal gefragt wird, steht beim vierten Mal oben."},
+      {"art": "projekt", "projekt": "p-schaefli"},
+      {"art": "knopf", "text": "Die Rezeption im Chat ansehen", "link": "https://tastystudios.vercel.app/#betreuung"}
+    ]
+  },
+  {
+    "id": "a-002", "nummer": 2, "titel": "Karten aus einer Quelle", "betreff": "Post aus dem Studio · Eine Karte, die überall stimmt",
+    "vorschau": "Speisekarte, Aushang, Seite und PDF aus derselben Zeile. Wie das im Schäfli läuft.",
+    "stand": "versendet", "liste": "l-post", "erstellt": "2026-10-10", "geaendert": "2026-10-14", "versendet_am": "2026-10-15", "empfaenger_zahl": 16,
+    "bausteine": [
+      {"art": "titel", "text": "Die Karte wird einmal geschrieben"},
+      {"art": "text", "text": "In der Taverne zum Schäfli ändert sich die Karte jede Woche. Früher hiess das: Word-Datei, Druckerei, Seite, Google, Instagram. Fünf Orte, fünf Fehlerquellen.\n\nHeute schreibt die Küche die Gerichte an einem Ort. Daraus entstehen die Karte für den Tisch, der Aushang vor der Tür, die Seite und das PDF für die Reservierungsmail."},
+      {"art": "bild", "link": "/zentrale/zentrale/oberflaeche/kleid/anker/anker-emblem.webp", "alt": "Das Zeichen von Tasty Studios", "zeile": "Eine Quelle, vier Ausgaben."},
+      {"art": "projekt", "projekt": "p-schloessli"},
+      {"art": "knopf", "text": "Karten und Drucksachen", "link": "https://tastystudios.vercel.app/werkzeuge.html"}
+    ]
+  },
+  {
+    "id": "a-003", "nummer": 3, "titel": "Wie ChatGPT Ihr Haus beschreibt", "betreff": "Post aus dem Studio · Was die KI über Ihr Haus sagt",
+    "vorschau": "Wir haben zwanzig Häuser gefragt, was ChatGPT über sie weiss. Die Hälfte war falsch.",
+    "stand": "versendet", "liste": "l-kicheck", "erstellt": "2026-10-20", "geaendert": "2026-10-27", "versendet_am": "2026-10-28", "empfaenger_zahl": 5,
+    "bausteine": [
+      {"art": "titel", "text": "Der KI-Check, und was dabei herauskam"},
+      {"art": "text", "text": "Wir haben ChatGPT, Gemini und Perplexity nach zwanzig Häusern gefragt: Lage, Küche, Preise, Besonderheiten. Bei jedem zweiten Haus stimmte mindestens eine Angabe nicht. Alte Öffnungszeiten, ein Koch, der seit 2023 nicht mehr da ist, ein Preis von vor der Teuerung.\n\nDie gute Nachricht: Die KI nimmt, was sie findet. Steht es sauber auf der Seite, steht es bald auch sauber in der Antwort."},
+      {"art": "knopf", "text": "Meinen KI-Check anfordern", "link": "https://tastystudios.vercel.app/contact.html?anliegen=ki-check"}
+    ]
+  },
+  {
+    "id": "a-004", "nummer": 4, "titel": "Neue Werkzeuge im Studio", "betreff": "Post aus dem Studio · Was im November neu ist",
+    "vorschau": "Ein Newsletter-Werkzeug, eine Werkstatt für Drucksachen und ein Blick nach Hannover.",
+    "stand": "entwurf", "liste": "l-post", "erstellt": "2026-11-03", "geaendert": "2026-11-05", "versendet_am": "", "empfaenger_zahl": 0,
+    "bausteine": [
+      {"art": "titel", "text": "Was im November neu ist"},
+      {"art": "text", "text": "Diese Post kommt zum ersten Mal aus unserem eigenen Werkzeug. Vorher war es eine Mail aus dem Postfach, jetzt ist es eine Ausgabe mit Bausteinen, Vorschau und Archiv.\n\nDrei Dinge aus den letzten Wochen:"},
+      {"art": "projekt", "projekt": "p-culinarium"},
+      {"art": "text", "text": "In Hannover haben wir mit Rudi die Seite für die Culinarium-Abende gebaut. Zehn Plätze pro Abend, die Reservierung läuft direkt über die Seite."},
+      {"art": "zitat", "text": "Ich wollte keine Seite, die mehr verspricht als mein Abend hält.", "von": "Rudi Hartmann, Walk on the Wild Side"},
+      {"art": "knopf", "text": "Alle Arbeiten ansehen", "link": "https://tastystudios.vercel.app/work.html"}
+    ]
+  },
+  {
+    "id": "a-005", "nummer": 5, "titel": "Vier Häuser, ein System", "betreff": "",
+    "vorschau": "",
+    "stand": "entwurf", "liste": "l-hotel", "erstellt": "2026-11-05", "geaendert": "2026-11-05", "versendet_am": "", "empfaenger_zahl": 0,
+    "bausteine": [
+      {"art": "titel", "text": "Vier Häuser, ein System"},
+      {"art": "text", "text": "Familie Maeder führt vier Häuser in Kandersteg. Jedes hat seinen Charakter, alle teilen eine Buchung."}
+    ]
+  }
+]

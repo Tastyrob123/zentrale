@@ -1,0 +1,11 @@
+[
+  {"nr": 1, "titel": "Rückruf Salt & Silver wegen Angebot", "haus": "Salt & Silver", "wer": "Robert", "bis": "-1", "stand": "offen"},
+  {"nr": 2, "titel": "Speisekarte Grand Beau-Rivage gegenlesen", "haus": "Grand Beau-Rivage", "wer": "Anna", "bis": "0", "stand": "in Arbeit"},
+  {"nr": 3, "titel": "Fotos vom Küchenteam Hofgut Lindenau einsammeln", "haus": "Hofgut Lindenau", "wer": "Anna", "bis": "0", "stand": "wartet auf Antwort"},
+  {"nr": 4, "titel": "Rechnung Oktober an Trattoria Nonna Pia schicken", "haus": "Trattoria Nonna Pia", "wer": "Robert", "bis": "0", "stand": "offen"},
+  {"nr": 5, "titel": "Teamseite: neue Texte von Anna übernehmen", "haus": "", "wer": "Robert", "bis": "1", "stand": "offen"},
+  {"nr": 6, "titel": "Hotel Seeblick: Entwurf zur Freigabe schicken", "haus": "Hotel Seeblick", "wer": "Robert", "bis": "3", "stand": "in Arbeit"},
+  {"nr": 7, "titel": "Schriften auf der Startseite prüfen", "haus": "", "wer": "Anna", "bis": "5", "stand": "offen"},
+  {"nr": 8, "titel": "Newsletter November entwerfen", "haus": "", "wer": "Anna", "bis": "", "stand": "offen"},
+  {"nr": 9, "titel": "Angebot Weinbar Rotlicht nachfassen", "haus": "Weinbar Rotlicht", "wer": "Robert", "bis": "-4", "stand": "erledigt"}
+]

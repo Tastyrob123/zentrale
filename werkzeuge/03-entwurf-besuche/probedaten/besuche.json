@@ -1,0 +1,997 @@
+{
+ "erzeugt": "2026-11-06T09:00:00+01:00",
+ "quelle": "probedaten",
+ "haeuser": {
+  "seeblick": {
+   "name": "Hotel Seeblick",
+   "ort": "Thun",
+   "land": "CH",
+   "entwurf": "https://seeblick-entwurf.vercel.app",
+   "seiten": {
+    "index.html": "Startseite",
+    "zimmer.html": "Zimmer",
+    "restaurant.html": "Restaurant",
+    "wellness.html": "Wellness",
+    "anreise.html": "Anreise",
+    "kontakt.html": "Kontakt"
+   }
+  },
+  "sonne": {
+   "name": "Landgasthof Sonne",
+   "ort": "Weggis",
+   "land": "CH",
+   "entwurf": "https://sonne-weggis-entwurf.vercel.app",
+   "seiten": {
+    "index.html": "Startseite",
+    "stube.html": "Die Stube",
+    "karte.html": "Karte",
+    "zimmer.html": "Zimmer",
+    "kontakt.html": "Kontakt"
+   }
+  },
+  "bellevue": {
+   "name": "Grandhotel Bellevue",
+   "ort": "Montreux",
+   "land": "CH",
+   "entwurf": "https://bellevue-entwurf.vercel.app",
+   "seiten": {
+    "index.html": "Startseite",
+    "suiten.html": "Suiten",
+    "spa.html": "Spa",
+    "bankett.html": "Bankett",
+    "kontakt.html": "Kontakt"
+   }
+  },
+  "kranich": {
+   "name": "Restaurant Kranich",
+   "ort": "Hamburg",
+   "land": "DE",
+   "entwurf": "https://kranich-entwurf.vercel.app",
+   "seiten": {
+    "index.html": "Startseite",
+    "karte.html": "Karte",
+    "abende.html": "Abende",
+    "reservieren.html": "Reservieren"
+   }
+  },
+  "alpina": {
+   "name": "Berghaus Alpina",
+   "ort": "Zermatt",
+   "land": "CH",
+   "entwurf": "https://alpina-entwurf.vercel.app",
+   "seiten": {
+    "index.html": "Startseite",
+    "zimmer.html": "Zimmer",
+    "huette.html": "Die Hütte",
+    "anreise.html": "Anreise"
+   }
+  },
+  "linden": {
+   "name": "Weinstube Linden",
+   "ort": "Hannover",
+   "land": "DE",
+   "entwurf": "https://linden-entwurf.vercel.app",
+   "seiten": {
+    "index.html": "Startseite",
+    "weine.html": "Weine",
+    "kueche.html": "Küche",
+    "feiern.html": "Feiern",
+    "kontakt.html": "Kontakt"
+   }
+  }
+ },
+ "empfaenger": {
+  "s7k2": {
+   "haus": "seeblick",
+   "name": "Daniel Marti",
+   "rolle": "Direktor"
+  },
+  "p4m9": {
+   "haus": "seeblick",
+   "name": "Lea Keller",
+   "rolle": "Marketing"
+  },
+  "w3q8": {
+   "haus": "sonne",
+   "name": "Ruth Amstutz",
+   "rolle": "Wirtin"
+  },
+  "b6n1": {
+   "haus": "bellevue",
+   "name": "Philippe Rochat",
+   "rolle": "General Manager"
+  },
+  "b2v5": {
+   "haus": "bellevue",
+   "name": "Sophie Brunner",
+   "rolle": "Leitung Marketing"
+  },
+  "k9t4": {
+   "haus": "kranich",
+   "name": "Jonas Petersen",
+   "rolle": "Inhaber"
+  },
+  "a1r7": {
+   "haus": "alpina",
+   "name": "Familie Julen",
+   "rolle": "Gastgeber"
+  },
+  "l5h3": {
+   "haus": "linden",
+   "name": "Marion Busch",
+   "rolle": "Inhaberin"
+  }
+ },
+ "besuche": [
+  {
+   "id": "pb001",
+   "haus": "seeblick",
+   "code": "s7k2",
+   "tag": "2026-11-04",
+   "z": "09:41",
+   "zs": "09:41:12",
+   "l": "CH",
+   "o": "Thun",
+   "r": "BE",
+   "g": "rechner",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15",
+   "dauer": 336,
+   "seiten": 4,
+   "tief": 100,
+   "weg": [
+    {
+     "z": "09:41",
+     "s": "index.html",
+     "sek": 94,
+     "tief": 100
+    },
+    {
+     "z": "09:42",
+     "s": "zimmer.html",
+     "sek": 141,
+     "tief": 82
+    },
+    {
+     "z": "09:45",
+     "s": "restaurant.html",
+     "sek": 63,
+     "tief": 55
+    },
+    {
+     "z": "09:46",
+     "s": "kontakt.html",
+     "sek": 38,
+     "tief": 40
+    }
+   ]
+  },
+  {
+   "id": "pb002",
+   "haus": "seeblick",
+   "code": "",
+   "tag": "2026-11-04",
+   "z": "09:43",
+   "zs": "09:43:50",
+   "l": "CH",
+   "o": "Thun",
+   "r": "BE",
+   "g": "maschine",
+   "sp": "",
+   "h": "Direkt",
+   "ua": "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
+   "dauer": 0,
+   "seiten": 1,
+   "tief": 0,
+   "weg": [
+    {
+     "z": "09:43",
+     "s": "index.html",
+     "sek": 0,
+     "tief": 0
+    }
+   ],
+   "art": "maschine"
+  },
+  {
+   "id": "pb003",
+   "haus": "seeblick",
+   "code": "s7k2",
+   "tag": "2026-11-05",
+   "z": "21:17",
+   "zs": "21:17:03",
+   "l": "CH",
+   "o": "Thun",
+   "r": "BE",
+   "g": "handy",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Mobile/15E148 Safari/604.1",
+   "dauer": 237,
+   "seiten": 3,
+   "tief": 95,
+   "weg": [
+    {
+     "z": "21:17",
+     "s": "index.html",
+     "sek": 48,
+     "tief": 70
+    },
+    {
+     "z": "21:17",
+     "s": "wellness.html",
+     "sek": 112,
+     "tief": 95
+    },
+    {
+     "z": "21:19",
+     "s": "zimmer.html",
+     "sek": 77,
+     "tief": 60
+    }
+   ]
+  },
+  {
+   "id": "pb004",
+   "haus": "seeblick",
+   "code": "p4m9",
+   "tag": "2026-11-06",
+   "z": "08:12",
+   "zs": "08:12:44",
+   "l": "CH",
+   "o": "Bern",
+   "r": "BE",
+   "g": "rechner",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+   "dauer": 447,
+   "seiten": 5,
+   "tief": 100,
+   "weg": [
+    {
+     "z": "08:12",
+     "s": "index.html",
+     "sek": 61,
+     "tief": 100
+    },
+    {
+     "z": "08:13",
+     "s": "zimmer.html",
+     "sek": 203,
+     "tief": 100
+    },
+    {
+     "z": "08:17",
+     "s": "wellness.html",
+     "sek": 88,
+     "tief": 100
+    },
+    {
+     "z": "08:18",
+     "s": "anreise.html",
+     "sek": 24,
+     "tief": 35
+    },
+    {
+     "z": "08:19",
+     "s": "kontakt.html",
+     "sek": 71,
+     "tief": 100
+    }
+   ]
+  },
+  {
+   "id": "pb005",
+   "haus": "seeblick",
+   "code": "robert",
+   "tag": "2026-11-06",
+   "z": "07:30",
+   "zs": "07:30:10",
+   "l": "DE",
+   "o": "Hamburg",
+   "r": "HH",
+   "g": "rechner",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15",
+   "dauer": 35,
+   "seiten": 2,
+   "tief": 100,
+   "weg": [
+    {
+     "z": "07:30",
+     "s": "index.html",
+     "sek": 20,
+     "tief": 100
+    },
+    {
+     "z": "07:30",
+     "s": "zimmer.html",
+     "sek": 15,
+     "tief": 100
+    }
+   ],
+   "eigen": true
+  },
+  {
+   "id": "pb006",
+   "haus": "seeblick",
+   "code": "",
+   "tag": "2026-11-06",
+   "z": "03:02",
+   "zs": "03:02:19",
+   "l": "??",
+   "o": "",
+   "r": "",
+   "g": "maschine",
+   "sp": "",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+   "dauer": 0,
+   "seiten": 3,
+   "tief": 0,
+   "weg": [
+    {
+     "z": "03:02",
+     "s": "index.html",
+     "sek": 0,
+     "tief": 0
+    },
+    {
+     "z": "03:02",
+     "s": "zimmer.html",
+     "sek": 0,
+     "tief": 0
+    },
+    {
+     "z": "03:02",
+     "s": "kontakt.html",
+     "sek": 0,
+     "tief": 0
+    }
+   ],
+   "art": "maschine"
+  },
+  {
+   "id": "pb007",
+   "haus": "sonne",
+   "code": "w3q8",
+   "tag": "2026-10-31",
+   "z": "19:05",
+   "zs": "19:05:27",
+   "l": "CH",
+   "o": "Weggis",
+   "r": "LU",
+   "g": "tablet",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Mobile/15E148 Safari/604.1",
+   "dauer": 437,
+   "seiten": 3,
+   "tief": 100,
+   "weg": [
+    {
+     "z": "19:05",
+     "s": "index.html",
+     "sek": 132,
+     "tief": 100
+    },
+    {
+     "z": "19:07",
+     "s": "stube.html",
+     "sek": 95,
+     "tief": 75
+    },
+    {
+     "z": "19:09",
+     "s": "karte.html",
+     "sek": 210,
+     "tief": 100
+    }
+   ]
+  },
+  {
+   "id": "pb008",
+   "haus": "sonne",
+   "code": "",
+   "tag": "2026-11-02",
+   "z": "11:40",
+   "zs": "11:40:00",
+   "l": "??",
+   "o": "",
+   "r": "",
+   "g": "maschine",
+   "sp": "",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+   "dauer": 0,
+   "seiten": 1,
+   "tief": 0,
+   "weg": [
+    {
+     "z": "11:40",
+     "s": "index.html",
+     "sek": 0,
+     "tief": 0
+    }
+   ],
+   "art": "maschine"
+  },
+  {
+   "id": "pb009",
+   "haus": "bellevue",
+   "code": "robert",
+   "tag": "2026-11-03",
+   "z": "16:20",
+   "zs": "16:20:05",
+   "l": "DE",
+   "o": "Hamburg",
+   "r": "HH",
+   "g": "rechner",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15",
+   "dauer": 125,
+   "seiten": 3,
+   "tief": 100,
+   "weg": [
+    {
+     "z": "16:20",
+     "s": "index.html",
+     "sek": 40,
+     "tief": 100
+    },
+    {
+     "z": "16:20",
+     "s": "suiten.html",
+     "sek": 55,
+     "tief": 100
+    },
+    {
+     "z": "16:21",
+     "s": "bankett.html",
+     "sek": 30,
+     "tief": 100
+    }
+   ],
+   "eigen": true
+  },
+  {
+   "id": "pb010",
+   "haus": "bellevue",
+   "code": "",
+   "tag": "2026-11-03",
+   "z": "16:21",
+   "zs": "16:21:40",
+   "l": "??",
+   "o": "",
+   "r": "",
+   "g": "maschine",
+   "sp": "",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Mobile Safari/537.36 (compatible; LinkPreview)",
+   "dauer": 0,
+   "seiten": 1,
+   "tief": 0,
+   "weg": [
+    {
+     "z": "16:21",
+     "s": "index.html",
+     "sek": 0,
+     "tief": 0
+    }
+   ],
+   "art": "maschine"
+  },
+  {
+   "id": "pb011",
+   "haus": "bellevue",
+   "code": "b6n1",
+   "tag": "2026-11-04",
+   "z": "10:02",
+   "zs": "10:02:33",
+   "l": "US",
+   "o": "",
+   "r": "",
+   "g": "maschine",
+   "sp": "",
+   "h": "Direkt",
+   "ua": "WhatsApp/2.24.20 A",
+   "dauer": 0,
+   "seiten": 1,
+   "tief": 0,
+   "weg": [
+    {
+     "z": "10:02",
+     "s": "index.html",
+     "sek": 0,
+     "tief": 0
+    }
+   ],
+   "art": "maschine"
+  },
+  {
+   "id": "pb012",
+   "haus": "bellevue",
+   "code": "",
+   "tag": "2026-11-05",
+   "z": "04:11",
+   "zs": "04:11:09",
+   "l": "??",
+   "o": "",
+   "r": "",
+   "g": "maschine",
+   "sp": "",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)",
+   "dauer": 0,
+   "seiten": 4,
+   "tief": 0,
+   "weg": [
+    {
+     "z": "04:11",
+     "s": "index.html",
+     "sek": 0,
+     "tief": 0
+    },
+    {
+     "z": "04:11",
+     "s": "spa.html",
+     "sek": 0,
+     "tief": 0
+    },
+    {
+     "z": "04:11",
+     "s": "suiten.html",
+     "sek": 0,
+     "tief": 0
+    },
+    {
+     "z": "04:11",
+     "s": "kontakt.html",
+     "sek": 0,
+     "tief": 0
+    }
+   ],
+   "art": "maschine"
+  },
+  {
+   "id": "pb013",
+   "haus": "kranich",
+   "code": "k9t4",
+   "tag": "2026-11-03",
+   "z": "12:48",
+   "zs": "12:48:51",
+   "l": "DE",
+   "o": "Hamburg",
+   "r": "HH",
+   "g": "handy",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Mobile/15E148 Safari/604.1",
+   "dauer": 26,
+   "seiten": 1,
+   "tief": 45,
+   "weg": [
+    {
+     "z": "12:48",
+     "s": "index.html",
+     "sek": 26,
+     "tief": 45
+    }
+   ]
+  },
+  {
+   "id": "pb014",
+   "haus": "kranich",
+   "code": "k9t4",
+   "tag": "2026-11-05",
+   "z": "22:31",
+   "zs": "22:31:14",
+   "l": "DE",
+   "o": "Hamburg",
+   "r": "HH",
+   "g": "rechner",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15",
+   "dauer": 529,
+   "seiten": 5,
+   "tief": 100,
+   "weg": [
+    {
+     "z": "22:31",
+     "s": "index.html",
+     "sek": 118,
+     "tief": 100
+    },
+    {
+     "z": "22:33",
+     "s": "karte.html",
+     "sek": 167,
+     "tief": 100
+    },
+    {
+     "z": "22:35",
+     "s": "abende.html",
+     "sek": 141,
+     "tief": 90
+    },
+    {
+     "z": "22:38",
+     "s": "reservieren.html",
+     "sek": 59,
+     "tief": 100
+    },
+    {
+     "z": "22:39",
+     "s": "karte.html",
+     "sek": 44,
+     "tief": 60
+    }
+   ]
+  },
+  {
+   "id": "pb015",
+   "haus": "kranich",
+   "code": "",
+   "tag": "2026-11-05",
+   "z": "22:33",
+   "zs": "22:33:02",
+   "l": "??",
+   "o": "",
+   "r": "",
+   "g": "maschine",
+   "sp": "",
+   "h": "Direkt",
+   "ua": "vercel-screenshot/1.0",
+   "dauer": 0,
+   "seiten": 1,
+   "tief": 0,
+   "weg": [
+    {
+     "z": "22:33",
+     "s": "index.html",
+     "sek": 0,
+     "tief": 0
+    }
+   ],
+   "art": "maschine"
+  },
+  {
+   "id": "pb016",
+   "haus": "linden",
+   "code": "l5h3",
+   "tag": "2026-11-05",
+   "z": "15:22",
+   "zs": "15:22:38",
+   "l": "DE",
+   "o": "Hannover",
+   "r": "NI",
+   "g": "rechner",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+   "dauer": 731,
+   "seiten": 5,
+   "tief": 100,
+   "weg": [
+    {
+     "z": "15:22",
+     "s": "index.html",
+     "sek": 152,
+     "tief": 100
+    },
+    {
+     "z": "15:25",
+     "s": "weine.html",
+     "sek": 231,
+     "tief": 100
+    },
+    {
+     "z": "15:29",
+     "s": "kueche.html",
+     "sek": 98,
+     "tief": 100
+    },
+    {
+     "z": "15:30",
+     "s": "feiern.html",
+     "sek": 184,
+     "tief": 100
+    },
+    {
+     "z": "15:33",
+     "s": "kontakt.html",
+     "sek": 66,
+     "tief": 100
+    }
+   ]
+  },
+  {
+   "id": "pb017",
+   "haus": "linden",
+   "code": "robert",
+   "tag": "2026-11-05",
+   "z": "15:50",
+   "zs": "15:50:02",
+   "l": "DE",
+   "o": "Hamburg",
+   "r": "HH",
+   "g": "handy",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Mobile/15E148 Safari/604.1",
+   "dauer": 30,
+   "seiten": 1,
+   "tief": 100,
+   "weg": [
+    {
+     "z": "15:50",
+     "s": "index.html",
+     "sek": 30,
+     "tief": 100
+    }
+   ],
+   "eigen": true
+  },
+  {
+   "id": "pb018",
+   "haus": "sonne",
+   "code": "w3q8",
+   "tag": "2026-10-24",
+   "z": "20:14",
+   "zs": "20:14:07",
+   "l": "CH",
+   "o": "Weggis",
+   "r": "LU",
+   "g": "tablet",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Mobile/15E148 Safari/604.1",
+   "dauer": 190,
+   "seiten": 2,
+   "tief": 100,
+   "weg": [
+    {
+     "z": "20:14",
+     "s": "index.html",
+     "sek": 72,
+     "tief": 100
+    },
+    {
+     "z": "20:15",
+     "s": "karte.html",
+     "sek": 118,
+     "tief": 90
+    }
+   ]
+  },
+  {
+   "id": "pb019",
+   "haus": "seeblick",
+   "code": "s7k2",
+   "tag": "2026-10-15",
+   "z": "17:52",
+   "zs": "17:52:07",
+   "l": "CH",
+   "o": "Thun",
+   "r": "BE",
+   "g": "rechner",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15",
+   "dauer": 147,
+   "seiten": 2,
+   "tief": 80,
+   "weg": [
+    {
+     "z": "17:52",
+     "s": "index.html",
+     "sek": 51,
+     "tief": 80
+    },
+    {
+     "z": "17:53",
+     "s": "zimmer.html",
+     "sek": 96,
+     "tief": 70
+    }
+   ]
+  },
+  {
+   "id": "pb020",
+   "haus": "bellevue",
+   "code": "b2v5",
+   "tag": "2026-10-13",
+   "z": "11:06",
+   "zs": "11:06:07",
+   "l": "CH",
+   "o": "Lausanne",
+   "r": "VD",
+   "g": "rechner",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36",
+   "dauer": 233,
+   "seiten": 3,
+   "tief": 100,
+   "weg": [
+    {
+     "z": "11:06",
+     "s": "index.html",
+     "sek": 64,
+     "tief": 100
+    },
+    {
+     "z": "11:07",
+     "s": "suiten.html",
+     "sek": 122,
+     "tief": 85
+    },
+    {
+     "z": "11:09",
+     "s": "spa.html",
+     "sek": 47,
+     "tief": 40
+    }
+   ]
+  },
+  {
+   "id": "pb021",
+   "haus": "linden",
+   "code": "l5h3",
+   "tag": "2026-10-20",
+   "z": "09:30",
+   "zs": "09:30:07",
+   "l": "DE",
+   "o": "Hannover",
+   "r": "NI",
+   "g": "handy",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Mobile/15E148 Safari/604.1",
+   "dauer": 38,
+   "seiten": 1,
+   "tief": 60,
+   "weg": [
+    {
+     "z": "09:30",
+     "s": "index.html",
+     "sek": 38,
+     "tief": 60
+    }
+   ]
+  },
+  {
+   "id": "pb022",
+   "haus": "kranich",
+   "code": "k9t4",
+   "tag": "2026-10-02",
+   "z": "14:25",
+   "zs": "14:25:07",
+   "l": "DE",
+   "o": "Hamburg",
+   "r": "HH",
+   "g": "rechner",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15",
+   "dauer": 144,
+   "seiten": 2,
+   "tief": 100,
+   "weg": [
+    {
+     "z": "14:25",
+     "s": "index.html",
+     "sek": 83,
+     "tief": 100
+    },
+    {
+     "z": "14:26",
+     "s": "karte.html",
+     "sek": 61,
+     "tief": 75
+    }
+   ]
+  },
+  {
+   "id": "pb023",
+   "haus": "sonne",
+   "code": "w3q8",
+   "tag": "2026-09-26",
+   "z": "19:40",
+   "zs": "19:40:07",
+   "l": "CH",
+   "o": "Weggis",
+   "r": "LU",
+   "g": "tablet",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Mobile/15E148 Safari/604.1",
+   "dauer": 45,
+   "seiten": 1,
+   "tief": 70,
+   "weg": [
+    {
+     "z": "19:40",
+     "s": "index.html",
+     "sek": 45,
+     "tief": 70
+    }
+   ]
+  },
+  {
+   "id": "pb024",
+   "haus": "alpina",
+   "code": "a1r7",
+   "tag": "2026-09-18",
+   "z": "08:47",
+   "zs": "08:47:07",
+   "l": "CH",
+   "o": "Zermatt",
+   "r": "VS",
+   "g": "rechner",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36",
+   "dauer": 358,
+   "seiten": 4,
+   "tief": 100,
+   "weg": [
+    {
+     "z": "08:47",
+     "s": "index.html",
+     "sek": 97,
+     "tief": 100
+    },
+    {
+     "z": "08:48",
+     "s": "zimmer.html",
+     "sek": 143,
+     "tief": 90
+    },
+    {
+     "z": "08:50",
+     "s": "huette.html",
+     "sek": 88,
+     "tief": 65
+    },
+    {
+     "z": "08:51",
+     "s": "anreise.html",
+     "sek": 30,
+     "tief": 40
+    }
+   ]
+  },
+  {
+   "id": "pb025",
+   "haus": "alpina",
+   "code": "a1r7",
+   "tag": "2026-08-25",
+   "z": "21:03",
+   "zs": "21:03:07",
+   "l": "CH",
+   "o": "Zermatt",
+   "r": "VS",
+   "g": "handy",
+   "sp": "de",
+   "h": "Direkt",
+   "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Mobile/15E148 Safari/604.1",
+   "dauer": 41,
+   "seiten": 1,
+   "tief": 55,
+   "weg": [
+    {
+     "z": "21:03",
+     "s": "index.html",
+     "sek": 41,
+     "tief": 55
+    }
+   ]
+  }
+ ]
+}

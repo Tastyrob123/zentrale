@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="de" class="wartet">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kunden-Übersicht · Tasty Studios</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/zentrale/zentrale/grund.css">
+<style>
+/* Kunden-Übersicht. Farben und Schrift kommen nur aus /zentrale/grund.css. Die Seite wird erst gezeigt, wenn Schrift und Daten da sind (html.wartet). */
+html.wartet body{visibility:hidden}
+body{min-height:100vh;display:flex;flex-direction:column}
+button{cursor:pointer;color:inherit;background:none;border:0;padding:0}
+button:disabled{cursor:default;opacity:.45}
+:focus-visible{outline:1.5px solid var(--gold);outline-offset:3px;border-radius:6px}
+a{text-decoration:none}
+a:hover{text-decoration:underline}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.leise{color:var(--leise)}
+.ok{color:var(--gruen)}
+.aus{color:var(--rot)}
+.gold{color:var(--gold)}
+
+/* Knöpfe: einer hell, einer ruhig, einer nur Text */
+.kn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;font:500 13px/1 var(--schrift);white-space:nowrap;
+  background:var(--creme);color:var(--nacht);transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .3s}
+.kn:hover{transform:translateY(-1px)}
+.kn:active{transform:translateY(1px)}
+.kn--ruhig{background:transparent;color:var(--text);box-shadow:inset 0 0 0 1px var(--linie)}
+.kn--klein{height:32px;padding:0 13px;font-size:12px}
+.kn--text{height:auto;padding:0;background:none;color:var(--gold);border-radius:0;font-size:13px}
+.kn--text:hover{text-decoration:underline;transform:none}
+.kn--rot{color:var(--rot)}
+
+/* Kopf */
+.kopf{padding:28px var(--luft) 18px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--linie)}
+.kopf h1{font-size:34px;text-transform:uppercase;letter-spacing:.03em;margin:0 0 6px}
+.kopf__summe{margin:0;max-width:72ch;color:var(--leise);font-size:14px;line-height:1.5}
+.kopf__summe b{color:var(--text);font-weight:500}
+.kopf__knoepfe{display:flex;gap:10px;flex-wrap:wrap}
+
+/* Quittung nach jeder Änderung: vorher, nachher, Rückgängig */
+.quittung{margin:16px var(--luft) 0;padding:14px 18px;border-radius:var(--rund);background:var(--tief);box-shadow:inset 0 0 0 1px var(--linie);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:start}
+.quittung[hidden]{display:none}
+.quittung__kopf{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.quittung__kopf b{font-weight:500}
+.quittung__zeilen{margin:6px 0 0;padding:0;list-style:none;font-size:13.5px;color:var(--leise)}
+.quittung__zeilen li{padding:2px 0}
+.quittung__zeilen em{font-style:normal;color:var(--text)}
+.quittung__zeilen s{color:var(--leise)}
+.quittung__knoepfe{display:flex;gap:8px;align-items:center}
+.quittung--fehler{box-shadow:inset 0 0 0 1px var(--rot)}
+
+/* Bühne: links die Liste, rechts das Detail */
+.buehne{flex:1;display:grid;grid-template-columns:380px minmax(0,1fr);gap:0;min-height:0}
+.liste{border-right:1px solid var(--linie);padding:14px 0 24px}
+.liste__kopf{padding:4px var(--luft) 10px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.zeile{display:block;width:100%;text-align:left;padding:14px var(--luft);border-top:1px solid var(--linie);transition:background .2s}
+.zeile:last-child{border-bottom:1px solid var(--linie)}
+.zeile:hover{background:rgba(243,236,226,.04)}
+.zeile.an{background:var(--flaeche)}
+.zeile__oben{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.zeile__name{font-family:var(--titel);font-size:19px;letter-spacing:.02em;text-transform:uppercase;line-height:1.1}
+.zeile__ort{display:block;margin-top:3px;font-size:13px;color:var(--leise)}
+.zeile__stand{flex:none;font-size:12px;white-space:nowrap}
+.zeile__unten{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--leise)}
+.zeile__unten .rot{color:var(--rot)}
+.leer{padding:40px var(--luft);color:var(--leise)}
+
+/* Detail */
+.detail{padding:24px var(--luft) 60px;min-width:0}
+.detail__kopf{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;margin-bottom:22px}
+.detail__kopf h2{font-size:38px;text-transform:uppercase;letter-spacing:.02em;margin:0 0 4px}
+.detail__zeile{color:var(--leise);font-size:14px}
+.detail__zeile a{color:var(--gold)}
+.zurueck{display:none}
+.abschnitte{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.abschnitt{background:var(--flaeche);border-radius:var(--rund-gross);padding:20px 22px 22px;box-shadow:inset 0 0 0 1px var(--linie);min-width:0}
+.abschnitt--breit{grid-column:1/-1}
+.abschnitt__kopf{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
+.abschnitt__kopf h3{font-size:22px;text-transform:uppercase;letter-spacing:.03em;margin:0}
+.abschnitt__knoepfe{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.gross{font-family:var(--titel);font-size:30px;letter-spacing:.02em;line-height:1;text-transform:uppercase}
+.gross small{display:block;margin-top:6px;font:400 13px/1.5 var(--schrift);text-transform:none;letter-spacing:0;color:var(--leise)}
+.paare{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px 18px;font-size:14px;margin:0}
+.paare dt{color:var(--leise)}
+.paare dd{margin:0;overflow-wrap:anywhere}
+.paare dd a{color:var(--gold)}
+.offen{color:var(--gold)}
+.text{font-size:14px;line-height:1.55;margin:0;white-space:pre-line}
+
+/* Verlauf der Erreichbarkeit: ein Strich je Abruf, von alt nach neu */
+.balken{display:flex;gap:3px;align-items:flex-end;height:26px;margin:14px 0 6px}
+.balken i{flex:1 1 0;min-width:2px;max-width:9px;height:100%;border-radius:2px;background:var(--gruen);opacity:.75}
+.balken i.aus{background:var(--rot);opacity:.95}
+.balken i.leer{background:var(--linie)}
+.abrufe{margin:12px 0 0;padding:0;list-style:none;font-size:13px}
+.abrufe li{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:5px 0;border-top:1px solid var(--linie)}
+.abrufe li span:first-child{color:var(--leise);font-variant-numeric:tabular-nums}
+
+/* Tabellen (Kosten, Termine, Wünsche) */
+.tab{width:100%;border-collapse:collapse;font-size:14px}
+.tab th{text-align:left;font-weight:400;color:var(--leise);font-size:12px;padding:0 10px 8px 0;border-bottom:1px solid var(--linie)}
+.tab td{padding:9px 10px 9px 0;border-bottom:1px solid var(--linie);vertical-align:top}
+.tab tr:last-child td{border-bottom:0}
+.tab .zahl{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tab th.zahl{text-align:right}
+.tab .ende{padding-right:0}
+.tab .rot{color:var(--rot)}
+.summe{margin-top:14px;padding-top:12px;border-top:1px solid var(--linie);display:flex;justify-content:space-between;gap:12px;font-size:14px}
+.summe b{font-weight:500}
+
+/* Eingabefelder */
+.feld{display:block;width:100%;padding:9px 11px;border-radius:9px;border:0;background:var(--nacht);color:var(--text);font:400 14px/1.4 var(--schrift);box-shadow:inset 0 0 0 1px var(--linie)}
+.feld:focus{outline:none;box-shadow:inset 0 0 0 1px var(--gold)}
+textarea.feld{min-height:90px;resize:vertical}
+select.feld{appearance:none}
+.feld--klein{padding:6px 9px;font-size:13px}
+.form{display:grid;gap:12px}
+.form label{display:grid;gap:5px;font-size:12px;color:var(--leise)}
+.form--zwei{grid-template-columns:repeat(2,minmax(0,1fr))}
+.form .voll{grid-column:1/-1}
+.form__knoepfe{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.tab--form td{padding:5px 8px 5px 0}
+.tab--form td:last-child{padding-right:0}
+.tab--form .b-posten{width:150px}.tab--form .b-betrag{width:96px}.tab--form .b-waehrung{width:78px}.tab--form .b-stand{width:156px}.tab--form .b-wann{width:156px}.tab--form .b-stand-w{width:170px}
+.zeile-plus{margin-top:10px}
+
+/* Rückfrage als Fenster */
+dialog{border:0;border-radius:var(--rund-gross);background:var(--flaeche);color:var(--text);padding:26px 28px;max-width:min(92vw,460px);box-shadow:inset 0 0 0 1px var(--linie),0 30px 60px -20px rgba(0,0,0,.8)}
+dialog::backdrop{background:rgba(17,20,33,.72)}
+dialog h3{font-size:24px;text-transform:uppercase;letter-spacing:.03em;margin:0 0 10px}
+dialog p{margin:0 0 18px;color:var(--leise);font-size:14px;line-height:1.5}
+dialog .form__knoepfe{justify-content:flex-end;margin:0}
+
+.fuss{padding:18px var(--luft);border-top:1px solid var(--linie);display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:12px;color:var(--leise)}
+
+@media (max-width:1000px){
+  .abschnitte{grid-template-columns:minmax(0,1fr)}
+  .buehne{grid-template-columns:320px minmax(0,1fr)}
+}
+@media (max-width:760px){
+  :root{--luft:16px}
+  .kopf{padding-top:22px}
+  .kopf h1{font-size:28px}
+  .buehne{display:block}
+  .liste{border-right:0}
+  .detail{display:none}
+  body.zeigt-detail .liste{display:none}
+  body.zeigt-detail .detail{display:block}
+  .zurueck{display:inline-flex;margin-bottom:14px}
+  .detail__kopf h2{font-size:30px}
+  .quittung{grid-template-columns:minmax(0,1fr)}
+  .form--zwei{grid-template-columns:minmax(0,1fr)}
+  .paare{grid-template-columns:minmax(0,1fr);gap:2px 0}
+  .paare dt{margin-top:8px}
+  .abrufe li{grid-template-columns:minmax(0,1fr)}
+  .tab th,.tab td{white-space:normal}
+  .tab td.wann{white-space:normal;width:auto}
+  /* Formulartabellen am Handy: jede Zeile ein Block, die Felder untereinander */
+  .tab--form,.tab--form tbody,.tab--form tr,.tab--form td{display:block;width:auto!important}
+  .tab--form thead{display:none}
+  .tab--form tr{padding:10px 0 12px;border-bottom:1px solid var(--linie)}
+  .tab--form td{padding:3px 0;border:0}
+  .tab--form td.ende{text-align:right;padding-top:6px}
+  .tab--form td[data-l]::before{content:attr(data-l);display:block;font-size:11px;color:var(--leise);margin:4px 0 3px}
+}
+</style>
+</head>
+<body>
+
+<header class="kopf">
+  <div>
+    <h1>Kunden-Übersicht</h1>
+    <p class="kopf__summe" id="summe"></p>
+  </div>
+  <div class="kopf__knoepfe">
+    <button class="kn kn--ruhig" id="kn-alle">Alle Seiten jetzt abrufen</button>
+    <button class="kn" id="kn-neu">Kunde anlegen</button>
+  </div>
+</header>
+
+<div class="quittung" id="quittung" hidden></div>
+
+<main class="buehne">
+  <nav class="liste" id="liste" aria-label="Kunden"></nav>
+  <section class="detail" id="detail"></section>
+</main>
+
+<footer class="fuss">
+  <span id="fuss-text">Daten liegen in daten/07-kunden-uebersicht/ auf diesem Rechner.</span>
+  <button class="kn--text" id="kn-probe">Probedaten zurücksetzen</button>
+</footer>
+
+<dialog id="frage">
+  <h3 id="frage-titel"></h3>
+  <p id="frage-text"></p>
+  <div class="form__knoepfe">
+    <button class="kn kn--ruhig" id="frage-nein">Abbrechen</button>
+    <button class="kn" id="frage-ja">Ja</button>
+  </div>
+</dialog>
+
+<dialog id="neu">
+  <h3>Kunde anlegen</h3>
+  <form class="form" id="neu-form" method="dialog">
+    <label>Name <input class="feld" name="name" required autocomplete="off"></label>
+    <label>Ort <input class="feld" name="ort" autocomplete="off"></label>
+    <label>Art <input class="feld" name="art" placeholder="Hotel, Restaurant, Bar, Webshop …" autocomplete="off"></label>
+    <label>Adresse der Seite <input class="feld" name="adresse" placeholder="https://…" autocomplete="off"></label>
+    <div class="form__knoepfe">
+      <button type="button" class="kn kn--ruhig" id="neu-nein">Abbrechen</button>
+      <button type="submit" class="kn">Anlegen</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+(function () {
+  'use strict';
+  const API = '/zentrale/api/07-kunden-uebersicht/';
+  const param = new URLSearchParams(location.search);
+  const WER = param.get('wer') || '';
+  const zustand = { kunden: [], heute: '', gewaehlt: null, kunde: null, bearbeite: null, entwurf: null, laeuft: false };
+
+  // ---------- Hilfen ----------
+  const h = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const $ = (sel, el) => (el || document).querySelector(sel);
+  const $$ = (sel, el) => Array.from((el || document).querySelectorAll(sel));
+  const kopie = o => JSON.parse(JSON.stringify(o));
+  const datum = iso => { const d = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || ''); return d ? `${d[3]}.${d[2]}.${d[1]}` : (iso || ''); };
+  const zeit = iso => { if (!iso) return ''; const d = new Date(iso); return isNaN(d) ? iso : datum(iso) + ', ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); };
+  const vorZeit = iso => {
+    if (!iso) return '';
+    const s = Math.max(0, Math.round((Date.now() - new Date(iso)) / 1000));
+    if (s < 60) return 'gerade eben';
+    const m = Math.round(s / 60); if (m < 60) return `vor ${m} Minute${m === 1 ? '' : 'n'}`;
+    const st = Math.round(m / 60); if (st < 48) return `vor ${st} Stunde${st === 1 ? '' : 'n'}`;
+    const t = Math.round(st / 24); return `vor ${t} Tagen`;
+  };
+  const geld = (b, w) => {
+    if (b == null || b === '') return 'offen';
+    try { return new Intl.NumberFormat('de-DE', { style: 'currency', currency: w || 'EUR' }).format(b); }
+    catch (e) { return `${Number(b).toFixed(2)} ${w || ''}`; }
+  };
+  const summeText = ks => {
+    const teile = Object.entries(ks.summen || {}).map(([w, b]) => geld(b, w));
+    if (!teile.length) return ks.posten ? 'offen' : 'keine Posten';
+    return teile.join(' und ') + (ks.offen ? `, ${ks.offen} Posten offen` : '');
+  };
+  const tageBis = iso => { const d = new Date(iso + 'T00:00:00'), t = new Date(zustand.heute + 'T00:00:00'); return Math.round((d - t) / 86400000); };
+  const oderOffen = v => v ? h(v) : '<span class="offen">offen</span>';
+
+  async function api(weg, methode, daten) {
+    const r = await fetch(API + weg, { method: methode || 'GET', headers: { 'Content-Type': 'application/json' }, body: daten ? JSON.stringify(Object.assign({ wer: WER }, daten)) : undefined });
+    const d = await r.json().catch(() => ({ fehler: 'keine lesbare Antwort' }));
+    if (!r.ok) throw new Error(d.fehler || ('Fehler ' + r.status));
+    return d;
+  }
+
+  function frage(titel, text, ja) {
+    return new Promise(res => {
+      const dlg = $('#frage');
+      $('#frage-titel').textContent = titel; $('#frage-text').textContent = text; $('#frage-ja').textContent = ja || 'Ja';
+      const fertig = v => { dlg.close(); $('#frage-ja').onclick = $('#frage-nein').onclick = null; res(v); };
+      $('#frage-ja').onclick = () => fertig(true); $('#frage-nein').onclick = () => fertig(false);
+      dlg.oncancel = e => { e.preventDefault(); fertig(false); };
+      dlg.showModal();
+    });
+  }
+
+  // ---------- Laden ----------
+  async function laden() {
+    const d = await api('kunden');
+    zustand.kunden = d.kunden; zustand.heute = d.heute;
+    if (zustand.gewaehlt && !zustand.kunden.some(k => k.id === zustand.gewaehlt)) zustand.gewaehlt = null;
+  }
+  async function ladeKunde(id) {
+    zustand.kunde = await api('kunden/' + encodeURIComponent(id));
+    const i = zustand.kunden.findIndex(k => k.id === id);
+    if (i >= 0) zustand.kunden[i] = Object.assign({}, zustand.kunden[i], zustand.kunde, { abrufe: zustand.kunde.abrufe.slice(-48) });
+  }
+
+  // ---------- Kopf ----------
+  function zeigeSumme() {
+    const ks = zustand.kunden, n = ks.length;
+    const aus = ks.filter(k => k.erreichbarkeit.zuletzt && !k.erreichbarkeit.zuletzt.ok).length;
+    const ohne = ks.filter(k => !k.erreichbarkeit.zuletzt).length;
+    const kosten = {}; let offen = 0;
+    ks.forEach(k => { Object.entries(k.kosten_summe.summen).forEach(([w, b]) => kosten[w] = (kosten[w] || 0) + b); offen += k.kosten_summe.offen; });
+    const betreuung = {}; let ohneVertrag = 0;
+    ks.forEach(k => { const v = k.vertrag || {}; if (v.betrag == null) ohneVertrag++; else betreuung[v.waehrung || 'EUR'] = (betreuung[v.waehrung || 'EUR'] || 0) + v.betrag; });
+    let termine = 0, ueberfaellig = 0;
+    ks.forEach(k => (k.betreuung.termine || []).forEach(t => { if (!t.wann) return; const d = tageBis(t.wann); if (d < 0) ueberfaellig++; else if (d <= 7) termine++; }));
+    const kt = Object.entries(kosten).map(([w, b]) => geld(b, w)).join(' und ');
+    const bt = Object.entries(betreuung).map(([w, b]) => geld(b, w)).join(' und ');
+    const teile = [
+      `<b>${n} Kunde${n === 1 ? '' : 'n'}</b>`,
+      aus ? `<b class="aus">${aus} Seite${aus === 1 ? '' : 'n'} antwortet nicht</b>` : (n ? `<b class="ok">alle Seiten erreichbar</b>` : ''),
+      ohne ? `${ohne} noch nie abgerufen` : '',
+      `Kosten für uns im Monat <b>${kt || 'offen'}</b>${offen ? ` (${offen} Posten offen)` : ''}`,
+      `Betreuung im Monat <b>${bt || 'offen'}</b>${ohneVertrag ? ` (${ohneVertrag} ohne Vertrag)` : ''}`,
+      ueberfaellig ? `<b class="aus">${ueberfaellig} Termin${ueberfaellig === 1 ? '' : 'e'} überfällig</b>` : '',
+      termine ? `${termine} Termin${termine === 1 ? '' : 'e'} in den nächsten sieben Tagen` : ''
+    ].filter(Boolean);
+    $('#summe').innerHTML = teile.join(' · ');
+  }
+
+  // ---------- Liste ----------
+  function zeigeListe() {
+    const el = $('#liste');
+    const ks = zustand.kunden.slice().sort((a, b) => {
+      const ea = a.erreichbarkeit.zuletzt && !a.erreichbarkeit.zuletzt.ok ? 0 : 1, eb = b.erreichbarkeit.zuletzt && !b.erreichbarkeit.zuletzt.ok ? 0 : 1;
+      return ea - eb || a.name.localeCompare(b.name, 'de');
+    });
+    if (!ks.length) { el.innerHTML = '<p class="leer">Noch kein Kunde. Oben rechts «Kunde anlegen».</p>'; return; }
+    el.innerHTML = `<div class="liste__kopf"><span class="mono leise">Kunden mit fertiger Website</span><span class="mono leise">${ks.length}</span></div>` + ks.map(k => {
+      const z = k.erreichbarkeit.zuletzt;
+      const stand = !z ? '<span class="zeile__stand leise">nie abgerufen</span>' : z.ok ? '<span class="zeile__stand ok">erreichbar</span>' : '<span class="zeile__stand aus">antwortet nicht</span>';
+      const naechst = (k.betreuung.termine || []).filter(t => t.wann).sort((a, b) => a.wann.localeCompare(b.wann))[0];
+      const nt = naechst ? (tageBis(naechst.wann) < 0 ? `<span class="rot">überfällig ${datum(naechst.wann)}: ${h(naechst.was)}</span>` : `${datum(naechst.wann)}: ${h(naechst.was)}`) : 'nichts anstehend';
+      const w = (k.betreuung.wuensche || []).filter(x => x.stand !== 'erledigt').length;
+      return `<button class="zeile${k.id === zustand.gewaehlt ? ' an' : ''}" data-id="${h(k.id)}">
+        <span class="zeile__oben"><span class="zeile__name">${h(k.name)}<span class="zeile__ort">${h([k.ort, k.art].filter(Boolean).join(' · '))}</span></span>${stand}</span>
+        <span class="zeile__unten"><span>Kosten ${h(summeText(k.kosten_summe))}</span><span>${nt}</span>${w ? `<span>${w} Wunsch${w === 1 ? '' : 'e'} offen</span>` : ''}</span>
+      </button>`;
+    }).join('');
+    $$('.zeile', el).forEach(b => b.onclick = () => waehle(b.dataset.id));
+  }
+
+  async function waehle(id) {
+    zustand.gewaehlt = id; zustand.bearbeite = null; zustand.entwurf = null;
+    const url = new URL(location.href); url.searchParams.set('kunde', id); history.replaceState(null, '', url);
+    document.body.classList.add('zeigt-detail');
+    zeigeListe();
+    try { await ladeKunde(id); } catch (e) { fehler(e.message); return; }
+    zeigeDetail();
+    window.scrollTo(0, 0);
+  }
+
+  // ---------- Detail ----------
+  function zeigeDetail() {
+    const el = $('#detail'), k = zustand.kunde;
+    if (!zustand.gewaehlt || !k) { el.innerHTML = zustand.kunden.length ? '<p class="leer">Links einen Kunden wählen.</p>' : ''; return; }
+    const b = zustand.bearbeite;
+    el.innerHTML = `
+      <button class="kn kn--ruhig kn--klein zurueck" id="kn-zurueck">Zurück zur Liste</button>
+      <div class="detail__kopf">
+        <div>
+          <h2>${h(k.name)}</h2>
+          <div class="detail__zeile">${h([k.ort, k.art].filter(Boolean).join(' · '))}${k.online_seit ? ` · online seit ${datum(k.online_seit)}` : ''}${k.adresse ? ` · <a href="${h(k.adresse)}" target="_blank" rel="noopener">${h(k.adresse.replace(/^https?:\/\//, ''))}</a>` : ''}</div>
+        </div>
+        <div class="abschnitt__knoepfe">${b === 'stammdaten' ? '' : '<button class="kn kn--ruhig kn--klein" data-bearbeite="stammdaten">Stammdaten bearbeiten</button>'}</div>
+      </div>
+      ${b === 'stammdaten' ? formStammdaten(k) : ''}
+      <div class="abschnitte">
+        ${abschnittSeite(k)}
+        ${abschnittBesucher(k)}
+        ${b === 'kosten' ? formKosten() : abschnittKosten(k)}
+        ${b === 'vertrag' ? formVertrag() : abschnittVertrag(k)}
+        ${b === 'betreuung' ? formBetreuung() : abschnittBetreuung(k)}
+        ${k.notiz && b !== 'stammdaten' ? `<section class="abschnitt abschnitt--breit"><div class="abschnitt__kopf"><h3>Notiz</h3></div><p class="text">${h(k.notiz)}</p></section>` : ''}
+      </div>
+      <p style="margin-top:28px"><button class="kn--text kn--rot" id="kn-entfernen">Kunden aus der Übersicht entfernen</button></p>`;
+    verdrahte(el);
+  }
+
+  function abschnittSeite(k) {
+    const e = k.erreichbarkeit, z = e.zuletzt;
+    const kopfzeile = !z ? '<div class="gross leise">Noch nie abgerufen<small>Unten «Jetzt abrufen» drücken.</small></div>'
+      : z.ok ? `<div class="gross ok">Erreichbar<small>seit ${zeit(e.seit)} · zuletzt ${vorZeit(z.zeit)}${z.dauer_ms != null ? `, Antwort in ${z.dauer_ms} ms` : ''}</small></div>`
+      : `<div class="gross aus">Antwortet nicht<small>seit ${zeit(e.seit)} · zuletzt ${vorZeit(z.zeit)}${z.fehler ? ` · ${h(z.fehler)}` : ''}</small></div>`;
+    const abrufe = (k.abrufe || []).slice(-48);
+    const balken = abrufe.length ? abrufe.map(a => `<i class="${a.ok ? '' : 'aus'}" title="${h(zeit(a.zeit))}: ${a.ok ? 'erreichbar' : h(a.fehler || 'antwortet nicht')}"></i>`).join('') : '<i class="leer"></i>';
+    const letzte = (k.abrufe || []).slice(-6).reverse();
+    const verlaufText = e.abrufe_30 ? `Letzte 30 Tage: ${e.ausfaelle_30 === 0 ? 'kein Ausfall' : e.ausfaelle_30 === 1 ? 'ein Ausfall' : e.ausfaelle_30 + ' Ausfälle'}, ${String(e.anteil_30).replace('.', ',')} % von ${e.abrufe_30} Abrufen erreichbar.` : 'Noch kein Verlauf.';
+    return `<section class="abschnitt">
+      <div class="abschnitt__kopf"><h3>Die Seite</h3><button class="kn kn--ruhig kn--klein" id="kn-pruefen"${zustand.laeuft ? ' disabled' : ''}>Jetzt abrufen</button></div>
+      ${kopfzeile}
+      <div class="balken" aria-label="Verlauf der letzten Abrufe">${balken}</div>
+      <p class="leise" style="font-size:13px;margin:0">${verlaufText}</p>
+      ${letzte.length ? `<ul class="abrufe">${letzte.map(a => `<li><span>${h(zeit(a.zeit))}</span><span class="${a.ok ? 'ok' : 'aus'}">${a.ok ? `erreichbar${a.status ? ', Antwort ' + a.status : ''}${a.dauer_ms != null ? ', ' + a.dauer_ms + ' ms' : ''}` : h(a.fehler || 'antwortet nicht')}${a.probe ? ' <span class="leise">(Probe)</span>' : ''}</span></li>`).join('')}</ul>` : ''}
+    </section>`;
+  }
+
+  function abschnittBesucher(k) {
+    return `<section class="abschnitt">
+      <div class="abschnitt__kopf"><h3>Besucher</h3></div>
+      <div class="gross offen">Offen<small>Die Zahlen liefert später das Werkzeug 03 «Entwurf-Besuche». Hier wird nichts geschätzt.</small></div>
+      <dl class="paare" style="margin-top:16px"><dt>Kürzel des Hauses</dt><dd>${oderOffen(k.besuche_kuerzel)}</dd><dt>Ansprechpartner</dt><dd>${oderOffen(k.ansprechpartner)}</dd></dl>
+    </section>`;
+  }
+
+  function abschnittKosten(k) {
+    const zeilen = (k.kosten || []).map(p => `<tr><td>${h(p.posten) || '<span class="leise">ohne Namen</span>'}</td><td class="zahl${p.betrag == null ? ' offen' : ''}">${geld(p.betrag, p.waehrung)}</td><td class="leise">${h(p.quelle) || '<span class="offen">Quelle offen</span>'}${p.stand ? ` <span class="leise">(Stand ${datum(p.stand)})</span>` : ''}</td></tr>`).join('');
+    return `<section class="abschnitt">
+      <div class="abschnitt__kopf"><h3>Kosten für uns im Monat</h3><button class="kn kn--ruhig kn--klein" data-bearbeite="kosten">Bearbeiten</button></div>
+      ${zeilen ? `<table class="tab"><thead><tr><th>Posten</th><th class="zahl">im Monat</th><th>Quelle</th></tr></thead><tbody>${zeilen}</tbody></table>` : '<p class="leise" style="margin:0">Noch kein Posten. Hosting, Domain, Dienste: jeder mit Betrag und Quelle.</p>'}
+      <div class="summe"><span>Zusammen</span><b${k.kosten_summe.offen || !Object.keys(k.kosten_summe.summen).length ? ' class="offen"' : ''}>${h(summeText(k.kosten_summe))}</b></div>
+    </section>`;
+  }
+
+  function abschnittVertrag(k) {
+    const v = k.vertrag || {};
+    return `<section class="abschnitt">
+      <div class="abschnitt__kopf"><h3>Vertrag</h3><button class="kn kn--ruhig kn--klein" data-bearbeite="vertrag">Bearbeiten</button></div>
+      <div class="gross${v.betrag == null ? ' offen' : ''}">${v.betrag == null ? 'Offen' : h(geld(v.betrag, v.waehrung))}<small>${v.betrag == null ? 'Kein Betrag hinterlegt.' : 'Betreuung im Monat'}</small></div>
+      <dl class="paare" style="margin-top:16px">
+        <dt>Beginn</dt><dd>${v.beginn ? datum(v.beginn) : '<span class="offen">offen</span>'}</dd>
+        <dt>Laufzeit</dt><dd>${oderOffen(v.laufzeit)}${k.vertragsende ? ` <span class="leise">· endet am ${datum(k.vertragsende)}${tageBis(k.vertragsende) >= 0 && tageBis(k.vertragsende) <= 30 ? ', <span class="aus">in ' + tageBis(k.vertragsende) + ' Tagen</span>' : ''}</span>` : ''}</dd>
+        <dt>Betreuungsmodell</dt><dd>${v.modell ? `<span class="text">${h(v.modell)}</span>` : '<span class="offen">offen</span>'}</dd>
+      </dl>
+    </section>`;
+  }
+
+  function abschnittBetreuung(k) {
+    const t = (k.betreuung.termine || []).slice().sort((a, b) => (a.wann || '9999').localeCompare(b.wann || '9999'));
+    const w = k.betreuung.wuensche || [];
+    const termine = t.length ? `<table class="tab"><tbody>${t.map(x => { const d = x.wann ? tageBis(x.wann) : null; const wann = !x.wann ? '<span class="leise">ohne Datum</span>' : d < 0 ? `<span class="rot">${datum(x.wann)}, überfällig</span>` : d === 0 ? `<b>${datum(x.wann)}, heute</b>` : d === 1 ? `${datum(x.wann)}, morgen` : datum(x.wann); return `<tr><td class="wann" style="width:190px;white-space:nowrap">${wann}</td><td>${h(x.was)}</td></tr>`; }).join('')}</tbody></table>` : '<p class="leise" style="margin:0">Kein Termin.</p>';
+    const wuensche = w.length ? `<table class="tab"><tbody>${w.map(x => `<tr><td>${h(x.text)}</td><td style="width:190px" class="leise">${x.stand === 'erledigt' ? 'erledigt' : h(x.stand || 'offen')}${x.seit ? `, seit ${datum(x.seit)}` : ''}</td></tr>`).join('')}</tbody></table>` : '<p class="leise" style="margin:0">Kein offener Wunsch.</p>';
+    return `<section class="abschnitt abschnitt--breit">
+      <div class="abschnitt__kopf"><h3>Anstehende Betreuung</h3><button class="kn kn--ruhig kn--klein" data-bearbeite="betreuung">Bearbeiten</button></div>
+      <div class="abschnitte" style="gap:20px">
+        <div><p class="mono leise" style="margin:0 0 8px">Termine</p>${termine}</div>
+        <div><p class="mono leise" style="margin:0 0 8px">Offene Wünsche</p>${wuensche}</div>
+      </div>
+    </section>`;
+  }
+
+  // ---------- Formulare ----------
+  const inp = (name, wert, extra) => `<input class="feld" data-f="${h(name)}" value="${h(wert == null ? '' : wert)}" autocomplete="off"${extra || ''}>`;
+  function formStammdaten(k) {
+    const e = zustand.entwurf;
+    return `<section class="abschnitt abschnitt--breit" style="margin-bottom:16px"><div class="abschnitt__kopf"><h3>Stammdaten</h3></div>
+      <div class="form form--zwei" id="form">
+        <label>Name ${inp('name', e.name)}</label>
+        <label>Ort ${inp('ort', e.ort)}</label>
+        <label>Art ${inp('art', e.art, ' placeholder="Hotel, Restaurant, Bar, Webshop …"')}</label>
+        <label>Online seit ${inp('online_seit', e.online_seit, ' type="date"')}</label>
+        <label class="voll">Adresse der Seite ${inp('adresse', e.adresse, ' placeholder="https://…"')}</label>
+        <label class="voll">Ansprechpartner ${inp('ansprechpartner', e.ansprechpartner, ' placeholder="Name, Rolle, Mail oder Telefon"')}</label>
+        <label>Kürzel für Werkzeug 03 ${inp('besuche_kuerzel', e.besuche_kuerzel)}</label>
+        <label class="voll">Notiz <textarea class="feld" data-f="notiz">${h(e.notiz)}</textarea></label>
+        <div class="form__knoepfe voll"><button class="kn" data-speichern="stammdaten">Speichern</button><button class="kn kn--ruhig" data-abbrechen>Abbrechen</button></div>
+      </div></section>`;
+  }
+  function formKosten() {
+    const e = zustand.entwurf;
+    return `<section class="abschnitt abschnitt--breit"><div class="abschnitt__kopf"><h3>Kosten für uns im Monat</h3></div>
+      <table class="tab tab--form" id="form"><thead><tr><th>Posten</th><th class="zahl">im Monat</th><th></th><th>Quelle</th><th>Stand</th><th></th></tr></thead><tbody>
+      ${e.map((p, i) => `<tr data-i="${i}">
+        <td class="b-posten" data-l="Posten"><input class="feld feld--klein" data-f="posten" value="${h(p.posten)}" placeholder="Hosting"></td>
+        <td class="b-betrag" data-l="im Monat"><input class="feld feld--klein zahl" data-f="betrag" value="${p.betrag == null ? '' : h(p.betrag)}" placeholder="offen" inputmode="decimal"></td>
+        <td class="b-waehrung" data-l="Währung"><select class="feld feld--klein" data-f="waehrung">${['EUR', 'CHF', 'USD'].map(w => `<option${(p.waehrung || 'EUR') === w ? ' selected' : ''}>${w}</option>`).join('')}</select></td>
+        <td data-l="Quelle"><input class="feld feld--klein" data-f="quelle" value="${h(p.quelle)}" placeholder="Rechnung, Vertrag, Anbieter"></td>
+        <td class="b-stand" data-l="Stand"><input class="feld feld--klein" data-f="stand" type="date" value="${h(p.stand)}"></td>
+        <td class="ende"><button class="kn--text kn--rot" data-entferne="${i}" title="Posten entfernen">Entfernen</button></td></tr>`).join('')}
+      </tbody></table>
+      <p class="zeile-plus"><button class="kn--text" data-plus="kosten">Posten hinzufügen</button></p>
+      <p class="leise" style="font-size:12px;margin:8px 0 0">Betrag leer lassen heisst «offen». Nie schätzen; die Quelle sagt, woher die Zahl kommt.</p>
+      <div class="form__knoepfe"><button class="kn" data-speichern="kosten">Speichern</button><button class="kn kn--ruhig" data-abbrechen>Abbrechen</button></div>
+    </section>`;
+  }
+  function formVertrag() {
+    const e = zustand.entwurf;
+    return `<section class="abschnitt"><div class="abschnitt__kopf"><h3>Vertrag</h3></div>
+      <div class="form form--zwei" id="form">
+        <label>Beginn ${inp('beginn', e.beginn, ' type="date"')}</label>
+        <label>Laufzeit ${inp('laufzeit', e.laufzeit, ' placeholder="12 Monate, monatlich kündbar …"')}</label>
+        <label>Betreuung im Monat ${inp('betrag', e.betrag == null ? '' : e.betrag, ' placeholder="offen" inputmode="decimal"')}</label>
+        <label>Währung <select class="feld" data-f="waehrung">${['EUR', 'CHF', 'USD'].map(w => `<option${(e.waehrung || 'EUR') === w ? ' selected' : ''}>${w}</option>`).join('')}</select></label>
+        <label class="voll">Betreuungsmodell, in eigenen Worten <textarea class="feld" data-f="modell">${h(e.modell)}</textarea></label>
+        <div class="form__knoepfe voll"><button class="kn" data-speichern="vertrag">Speichern</button><button class="kn kn--ruhig" data-abbrechen>Abbrechen</button></div>
+      </div></section>`;
+  }
+  function formBetreuung() {
+    const e = zustand.entwurf;
+    return `<section class="abschnitt abschnitt--breit"><div class="abschnitt__kopf"><h3>Anstehende Betreuung</h3></div>
+      <div class="abschnitte" style="gap:20px" id="form">
+        <div><p class="mono leise" style="margin:0 0 8px">Termine</p>
+          <table class="tab tab--form" data-liste="termine"><tbody>${e.termine.map((t, i) => `<tr data-i="${i}">
+            <td class="b-wann" data-l="Wann"><input class="feld feld--klein" data-f="wann" type="date" value="${h(t.wann)}"></td>
+            <td data-l="Was"><input class="feld feld--klein" data-f="was" value="${h(t.was)}" placeholder="Was ist zu tun"></td>
+            <td class="ende"><button class="kn--text kn--rot" data-entferne="${i}" data-liste="termine">Entfernen</button></td></tr>`).join('')}</tbody></table>
+          <p class="zeile-plus"><button class="kn--text" data-plus="termine">Termin hinzufügen</button></p></div>
+        <div><p class="mono leise" style="margin:0 0 8px">Offene Wünsche</p>
+          <table class="tab tab--form" data-liste="wuensche"><tbody>${e.wuensche.map((w, i) => `<tr data-i="${i}">
+            <td data-l="Wunsch"><input class="feld feld--klein" data-f="text" value="${h(w.text)}" placeholder="Was wünscht sich das Haus"></td>
+            <td class="b-wann" data-l="Seit"><input class="feld feld--klein" data-f="seit" type="date" value="${h(w.seit)}" title="seit wann"></td>
+            <td class="b-stand-w" data-l="Stand"><select class="feld feld--klein" data-f="stand">${['offen', 'in Arbeit', 'wartet auf das Haus', 'erledigt'].map(s => `<option${(w.stand || 'offen') === s ? ' selected' : ''}>${s}</option>`).join('')}</select></td>
+            <td class="ende"><button class="kn--text kn--rot" data-entferne="${i}" data-liste="wuensche">Entfernen</button></td></tr>`).join('')}</tbody></table>
+          <p class="zeile-plus"><button class="kn--text" data-plus="wuensche">Wunsch hinzufügen</button></p></div>
+      </div>
+      <div class="form__knoepfe"><button class="kn" data-speichern="betreuung">Speichern</button><button class="kn kn--ruhig" data-abbrechen>Abbrechen</button></div>
+    </section>`;
+  }
+
+  // Eingaben in den Entwurf übernehmen (damit Zeilen dazu oder weg können, ohne Getipptes zu verlieren)
+  function leseEntwurf() {
+    const f = $('#form'); if (!f) return;
+    const b = zustand.bearbeite, e = zustand.entwurf;
+    if (b === 'stammdaten' || b === 'vertrag') { $$('[data-f]', f).forEach(i => e[i.dataset.f] = i.value); }
+    else if (b === 'kosten') { $$('tr[data-i]', f).forEach(tr => { const p = e[+tr.dataset.i]; $$('[data-f]', tr).forEach(i => p[i.dataset.f] = i.value); }); }
+    else if (b === 'betreuung') {
+      ['termine', 'wuensche'].forEach(l => $$(`table[data-liste="${l}"] tr[data-i]`, f).forEach(tr => { const p = e[l][+tr.dataset.i]; $$('[data-f]', tr).forEach(i => p[i.dataset.f] = i.value); }));
+    }
+  }
+
+  function verdrahte(el) {
+    const z = $('#kn-zurueck', el); if (z) z.onclick = () => { document.body.classList.remove('zeigt-detail'); zustand.gewaehlt = null; zustand.bearbeite = null; const url = new URL(location.href); url.searchParams.delete('kunde'); history.replaceState(null, '', url); zeigeListe(); zeigeDetail(); };
+    const p = $('#kn-pruefen', el); if (p) p.onclick = () => pruefen(zustand.kunde.id);
+    $$('[data-bearbeite]', el).forEach(b => b.onclick = () => {
+      const was = b.dataset.bearbeite, k = zustand.kunde;
+      zustand.bearbeite = was;
+      zustand.entwurf = was === 'stammdaten' ? { name: k.name, ort: k.ort, art: k.art, online_seit: k.online_seit, adresse: k.adresse, ansprechpartner: k.ansprechpartner, besuche_kuerzel: k.besuche_kuerzel, notiz: k.notiz }
+        : was === 'kosten' ? kopie(k.kosten || []) : was === 'vertrag' ? kopie(k.vertrag || {}) : kopie(k.betreuung || { termine: [], wuensche: [] });
+      zeigeDetail();
+      const erst = $('#form .feld'); if (erst) erst.focus();
+    });
+    $$('[data-abbrechen]', el).forEach(b => b.onclick = () => { zustand.bearbeite = null; zustand.entwurf = null; zeigeDetail(); });
+    $$('[data-plus]', el).forEach(b => b.onclick = () => {
+      leseEntwurf();
+      const l = b.dataset.plus;
+      if (l === 'kosten') zustand.entwurf.push({ posten: '', betrag: null, waehrung: 'EUR', quelle: '', stand: '' });
+      else if (l === 'termine') zustand.entwurf.termine.push({ wann: '', was: '' });
+      else zustand.entwurf.wuensche.push({ text: '', seit: zustand.heute, stand: 'offen' });
+      zeigeDetail();
+      const felder = $$(l === 'kosten' ? '#form tr[data-i] .feld' : `#form table[data-liste="${l}"] tr[data-i] .feld`);
+      const letzteZeile = $$(l === 'kosten' ? '#form tr[data-i]' : `#form table[data-liste="${l}"] tr[data-i]`).pop();
+      if (letzteZeile) { const f = $('.feld', letzteZeile); if (f) f.focus(); }
+    });
+    $$('[data-entferne]', el).forEach(b => b.onclick = async () => {
+      leseEntwurf();
+      const i = +b.dataset.entferne, l = b.dataset.liste || 'kosten';
+      const liste = l === 'kosten' ? zustand.entwurf : zustand.entwurf[l];
+      const eintrag = liste[i];
+      const text = l === 'kosten' ? (eintrag.posten || 'dieser Posten') : l === 'termine' ? (eintrag.was || 'dieser Termin') : (eintrag.text || 'dieser Wunsch');
+      const leer = !Object.values(eintrag).some(v => v !== '' && v != null && v !== 'EUR' && v !== 'offen' && v !== zustand.heute);
+      if (!leer && !(await frage('Wirklich entfernen?', `«${text}» wird aus der Liste genommen. Endgültig wird es erst mit «Speichern», und auch dann geht es über die Quittung zurück.`, 'Entfernen'))) return;
+      liste.splice(i, 1);
+      zeigeDetail();
+    });
+    $$('[data-speichern]', el).forEach(b => b.onclick = () => speichern(b.dataset.speichern));
+    const e = $('#kn-entfernen', el); if (e) e.onclick = entfernen;
+    const f = $('#form', el);
+    if (f) f.addEventListener('keydown', ev => { if (ev.key === 'Enter' && ev.target.tagName === 'INPUT') { ev.preventDefault(); speichern(zustand.bearbeite); } if (ev.key === 'Escape') { zustand.bearbeite = null; zustand.entwurf = null; zeigeDetail(); } });
+  }
+
+  async function speichern(feld) {
+    leseEntwurf();
+    const wert = kopie(zustand.entwurf);
+    try {
+      const d = await api('kunden/' + encodeURIComponent(zustand.kunde.id), 'PUT', { feld, wert });
+      zustand.bearbeite = null; zustand.entwurf = null;
+      await laden();
+      zustand.kunde = d.kunde;
+      zeigeAlles();
+      if (d.quittung) quittung(d.quittung); else hinweis('Nichts geändert.');
+    } catch (e) { fehler(e.message); }
+  }
+
+  async function entfernen() {
+    const k = zustand.kunde;
+    if (!(await frage('Kunden entfernen?', `«${k.name}» verschwindet aus der Übersicht, samt Kosten, Terminen und Vertrag. Über die Quittung lässt es sich zurückholen.`, 'Entfernen'))) return;
+    try {
+      const d = await api('kunden/' + encodeURIComponent(k.id), 'DELETE', {});
+      zustand.gewaehlt = null; zustand.kunde = null; document.body.classList.remove('zeigt-detail');
+      const url = new URL(location.href); url.searchParams.delete('kunde'); history.replaceState(null, '', url);
+      await laden(); zeigeAlles(); quittung(d.quittung);
+    } catch (e) { fehler(e.message); }
+  }
+
+  async function pruefen(id) {
+    if (zustand.laeuft) return;
+    zustand.laeuft = true;
+    const kn = $('#kn-alle'); kn.disabled = true; kn.textContent = id ? 'Alle Seiten jetzt abrufen' : 'Ruft ab …';
+    const kp = $('#kn-pruefen'); if (kp) { kp.disabled = true; kp.textContent = 'Ruft ab …'; }
+    try {
+      const d = await api('pruefen', 'POST', id ? { id } : { alle: true });
+      await laden();
+      if (zustand.gewaehlt) await ladeKunde(zustand.gewaehlt);
+      zeigeAlles();
+      const erg = Object.values(d.ergebnisse), aus = erg.filter(e => !e.ok).length;
+      hinweis(id ? (erg[0].ok ? `Abgerufen: erreichbar, Antwort in ${erg[0].dauer_ms} ms.` : `Abgerufen: antwortet nicht. ${erg[0].fehler}`) : `${erg.length} Seiten abgerufen, ${aus ? aus + ' antwortet' + (aus === 1 ? '' : 'en') + ' nicht' : 'alle erreichbar'}.`);
+    } catch (e) { fehler(e.message); }
+    zustand.laeuft = false;
+    kn.disabled = false; kn.textContent = 'Alle Seiten jetzt abrufen';
+    const kp2 = $('#kn-pruefen'); if (kp2) { kp2.disabled = false; kp2.textContent = 'Jetzt abrufen'; }
+  }
+
+  // ---------- Quittung ----------
+  const FELDNAME = { stammdaten: 'Stammdaten', kosten: 'Kosten', vertrag: 'Vertrag', betreuung: 'Betreuung', kunde: 'Kunde', name: 'Name', ort: 'Ort', art: 'Art', adresse: 'Adresse', online_seit: 'Online seit', ansprechpartner: 'Ansprechpartner', besuche_kuerzel: 'Kürzel', notiz: 'Notiz', beginn: 'Beginn', laufzeit: 'Laufzeit', modell: 'Betreuungsmodell', betrag: 'Betrag', waehrung: 'Währung' };
+  const wort = (f, v) => v == null || v === '' ? 'offen' : f === 'betrag' ? String(v).replace('.', ',') : f === 'beginn' || f === 'online_seit' ? datum(v) : String(v);
+  const postenText = p => `${p.posten || 'ohne Namen'} ${geld(p.betrag, p.waehrung)}${p.quelle ? ' (' + p.quelle + ')' : ''}`;
+  const terminText = t => `${t.wann ? datum(t.wann) : 'ohne Datum'}: ${t.was}`;
+  const wunschText = w => `${w.text} (${w.stand || 'offen'})`;
+  function listenDiff(vorher, nachher, text) {
+    const a = (vorher || []).map(text), b = (nachher || []).map(text), zeilen = [];
+    b.forEach((x, i) => { if (!a.includes(x)) zeilen.push(a[i] != null && !b.includes(a[i]) ? `<s>${h(a[i])}</s> <em>${h(x)}</em>` : `neu: <em>${h(x)}</em>`); });
+    a.forEach((x, i) => { if (!b.includes(x) && !(b[i] != null && !a.includes(b[i]))) zeilen.push(`entfernt: <s>${h(x)}</s>`); });
+    return zeilen;
+  }
+  function beschreibe(q) {
+    const f = q.feld, v = q.vorher, n = q.nachher;
+    if (f === 'kunde') return v == null ? ['Kunde angelegt'] : ['Kunde entfernt, mit allen Angaben'];
+    if (f === 'stammdaten' || f === 'vertrag') { const keys = Object.keys(Object.assign({}, v, n)); return keys.filter(k => wort(k, v && v[k]) !== wort(k, n && n[k])).map(k => `${FELDNAME[k] || k}: <s>${h(wort(k, v && v[k]))}</s> <em>${h(wort(k, n && n[k]))}</em>`); }
+    if (f === 'kosten') return listenDiff(v, n, postenText);
+    if (f === 'betreuung') return listenDiff(v && v.termine, n && n.termine, terminText).concat(listenDiff(v && v.wuensche, n && n.wuensche, wunschText));
+    return [`${FELDNAME[f] || f}: <s>${h(wort(f, v))}</s> <em>${h(wort(f, n))}</em>`];
+  }
+  function quittung(q) {
+    const el = $('#quittung');
+    el.className = 'quittung'; el.hidden = false;
+    const zeilen = beschreibe(q);
+    el.innerHTML = `<div><div class="quittung__kopf"><span class="mono gold">${q.rueckgaengig_von ? 'Rückgängig gemacht' : 'Gespeichert'}</span><b>${h(FELDNAME[q.feld] || q.feld)} · ${h(q.kunde_name)}</b><span class="leise" style="font-size:12px">${h(zeit(q.zeit))}${q.wer ? ', ' + h(q.wer) : ''}</span></div>
+      <ul class="quittung__zeilen">${zeilen.length ? zeilen.map(z => `<li>${z}</li>`).join('') : '<li>Geändert.</li>'}</ul></div>
+      <div class="quittung__knoepfe"><button class="kn kn--ruhig kn--klein" id="kn-rueck">Rückgängig</button><button class="kn--text" id="kn-zu">Schliessen</button></div>`;
+    $('#kn-rueck').onclick = async () => {
+      try {
+        const d = await api('rueckgaengig', 'POST', { quittung: q.quittung });
+        await laden();
+        if (zustand.gewaehlt) { if (zustand.kunden.some(k => k.id === zustand.gewaehlt)) await ladeKunde(zustand.gewaehlt); else { zustand.gewaehlt = null; zustand.kunde = null; document.body.classList.remove('zeigt-detail'); } }
+        else if (d.kunde && q.feld === 'kunde' && q.nachher == null) { zustand.gewaehlt = d.kunde.id; await ladeKunde(d.kunde.id); }
+        zeigeAlles(); quittung(d.quittung);
+      } catch (e) { fehler(e.message); }
+    };
+    $('#kn-zu').onclick = () => { el.hidden = true; };
+  }
+  function hinweis(text) {
+    const el = $('#quittung'); el.className = 'quittung'; el.hidden = false;
+    el.innerHTML = `<div class="quittung__kopf"><span>${h(text)}</span></div><div class="quittung__knoepfe"><button class="kn--text" id="kn-zu">Schliessen</button></div>`;
+    $('#kn-zu').onclick = () => { el.hidden = true; };
+  }
+  function fehler(text) {
+    const el = $('#quittung'); el.className = 'quittung quittung--fehler'; el.hidden = false;
+    el.innerHTML = `<div class="quittung__kopf"><span class="mono aus">Das ging nicht</span><span>${h(text)}</span></div><div class="quittung__knoepfe"><button class="kn--text" id="kn-zu">Schliessen</button></div>`;
+    $('#kn-zu').onclick = () => { el.hidden = true; };
+  }
+
+  function zeigeAlles() { zeigeSumme(); zeigeListe(); zeigeDetail(); }
+
+  // ---------- Kopf-Knöpfe ----------
+  $('#kn-alle').onclick = () => pruefen(null);
+  $('#kn-neu').onclick = () => { $('#neu-form').reset(); $('#neu').showModal(); };
+  $('#neu-nein').onclick = () => $('#neu').close();
+  $('#neu-form').onsubmit = async ev => {
+    ev.preventDefault();
+    const f = new FormData(ev.target), daten = {}; f.forEach((v, k) => daten[k] = v);
+    try {
+      const d = await api('kunden', 'POST', daten);
+      $('#neu').close();
+      await laden(); zustand.gewaehlt = d.kunde.id; await ladeKunde(d.kunde.id); document.body.classList.add('zeigt-detail');
+      zeigeAlles(); quittung(d.quittung);
+    } catch (e) { fehler(e.message); }
+  };
+  $('#kn-probe').onclick = async () => {
+    if (!(await frage('Probedaten zurücksetzen?', 'Alle Kunden, Kosten, Termine, Verträge und der Verlauf der Abrufe werden durch die Probedaten ersetzt. Das geht nicht rückgängig.', 'Zurücksetzen'))) return;
+    try { await api('probedaten', 'POST', {}); zustand.gewaehlt = null; zustand.kunde = null; document.body.classList.remove('zeigt-detail'); await laden(); zeigeAlles(); hinweis('Probedaten sind wieder da.'); }
+    catch (e) { fehler(e.message); }
+  };
+
+  // ---------- Start: erst zeigen, wenn Schrift und Daten da sind ----------
+  (async function start() {
+    const schrift = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    const wunsch = param.get('kunde');
+    try {
+      await Promise.all([laden(), schrift]);
+      if (wunsch && zustand.kunden.some(k => k.id === wunsch)) { zustand.gewaehlt = wunsch; await ladeKunde(wunsch); document.body.classList.add('zeigt-detail'); }
+      zeigeAlles();
+    } catch (e) { zeigeAlles(); fehler(e.message); }
+    document.documentElement.classList.remove('wartet');
+    setInterval(() => { if (!zustand.bearbeite && !zustand.laeuft) laden().then(() => { if (zustand.gewaehlt) return ladeKunde(zustand.gewaehlt); }).then(() => { if (!zustand.bearbeite) zeigeAlles(); }).catch(() => {}); }, 120000);
+  })();
+  setTimeout(() => document.documentElement.classList.remove('wartet'), 3000);
+})();
+</script>
+</body>
+</html>

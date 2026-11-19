@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vergleich · Zentrale · Tasty Studios</title>
+<meta name="robots" content="noindex, nofollow">
+<script src="/zentrale/zentrale/oberflaeche/kleid/tasty.js"></script>
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/grund.css">
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/kleid/tasty.css">
+<style>
+  /* Vergleichsseite 00-zentrale (Prüfung und Nachbesserung, 07.11.2026): Vorlage (Kontrollpanel) links, Neubau (Zentrale) rechts, je Ansicht bei 1440 und 390 px.
+     Bilder: node zentrale/vergleich/bilder.js (Playwright). Urteil und Abweichungen: PRUEFUNG.md */
+  body{margin:0}
+  .vg{max-width:1360px;margin:0 auto;padding:56px clamp(16px,3vw,40px) 80px}
+  .vg h1{font:700 clamp(40px,5vw,64px)/1 var(--wo-titel);text-transform:uppercase;letter-spacing:.015em;margin:0}
+  .vg>p{max-width:70ch;margin:16px 0 0;color:var(--wo-leise)}
+  .vg section{margin-top:64px;padding-top:28px;border-top:1px solid var(--wo-linie)}
+  .vg h2{font:700 28px/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.02em;margin:0}
+  .vg h2+p{margin:8px 0 0;max-width:80ch;color:var(--wo-leise);font-size:14.5px}
+  .paar{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+  .paar--handy{grid-template-columns:repeat(2,minmax(0,300px));justify-content:start}
+  figure{margin:0;min-width:0}
+  figcaption{font:400 10px/1.4 var(--wo-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--wo-akzent);margin-bottom:8px}
+  img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:inset 0 0 0 1px var(--wo-linie),0 20px 34px -24px color-mix(in srgb,var(--wo-tief) 50%,transparent)}
+  @media (max-width:700px){.paar{grid-template-columns:1fr}.paar--handy{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body class="wo-app">
+<main class="vg">
+  <h1>Zentrale: Vorlage und Neubau</h1>
+  <p>Zweite Nachbesserung vom 7. November 2026 (Zweig neubau/00-zentrale-e), alle Bilder neu aufgenommen. Links Kontrollpanel («Kontrollpanel» des Culinarium), rechts die Zentrale von Tasty Studios. Jede Ansicht bei 1440 px und darunter am Handy bei 390 px. Was behoben ist: NACHBESSERUNG.md.</p>
+  <div id="ansichten"></div>
+</main>
+<script>
+  const A = [
+    ['start', 'Startbild', 'Kopf wie Kontrollpanel: links «Anleitungen», in der Mitte die Insel (Zeichen, Name, Heute, Werkzeuge, Suchen), rechts «Website ansehen»; dazwischen der Schalter Robert/Anna (Auftrag 00). Titel, Gruss nach Tageszeit (normal, nicht halbfett), Datum, Zeile «Heute», fünf Türen mit Tasten 1 bis 5. Am Handy steht der Pfeil der Tür rechts neben dem Namen.'],
+    ['band', 'Laufband', 'Läuft wie die Vorlage (70 s, hält beim Überfahren, nur im Bild), Punkte als Trenner. Die Namen der Werkzeuge öffnen das Werkzeug.'],
+    ['saal-hell', 'Werkzeug-Saal hell', 'Ein Saal je Werkzeug wie Kontrollpanel: Zeichen, «N° 2 von 11 · Zweck», Name, Satz, Linie mit Punkt; links Bildschirmbilder aus dem Werkzeug (zwei, leicht versetzt), rechts «So geht’s».'],
+    ['saal-dunkel', 'Werkzeug-Saal dunkel', 'Dunkle Säle wechseln mit hellen wie in der Vorlage. Zahlen und Knopf ohne Tafel auf dunklem Grund, wie «Karten & Preislisten».'],
+    ['saal-tafel', 'Tafel «So geht’s» und Zahlen', 'Drei Schritte mit den echten Knopf-Namen des Werkzeugs, darunter die Zahlen (nur aus der Schnittstelle des Werkzeugs, nichts geschätzt), der Stand in einem Satz und «… öffnen». Die Zahlen zählen beim Hereinkommen hoch, ohne dass die Zeile höher wird (nachgemessen: Höhe bleibt bei 1440 und 390 px gleich).'],
+    ['weg', 'Zahlenzeile', 'Wie «Der Weg zur Buchung» der Vorlage: der Weg eines Hauses in der Kundenliste (gefunden, angeschrieben, im Gespräch, Vertrag), aus den echten Ständen.'],
+    ['heute', 'Heute', 'Nur in der Zentrale (Auftrag 00, Startansicht «Heute» bleibt): alle Punkte aus dem Vertrag VERTRAG-HEUTE.md, rechts die Tafel. Links zum Vergleich der erste Saal der Vorlage.'],
+    ['fuss', 'Fuss', 'Platte mit Marke und drei Spalten wie die Vorlage: das Studio, «Anleitungen» (je Werkzeug «Schritt für Schritt», öffnet das Werkzeug mit seinem Rundgang) und «Fragen» (Robert Reff, Mail, Prüfung der Zentrale). Unten angekommen bleibt der Kopf weg, auch am Handy.'],
+    ['tuer', 'Werkzeug offen', 'Vorlage: die erste Tür führt auf die Seite des Werkzeugs (Website bearbeiten). Neubau: das Werkzeug öffnet sich im Rahmen mit der Leiste (Auftrag 00). Im Rahmen läuft noch die erste Fassung, bis Phase 2 sie neu baut.'],
+    ['fenster', 'Offenes Fenster', 'Vorlage: Karte des Rundgangs. Neubau: Suche mit Strg+K (Auftrag 00).'],
+    ['rundgang', 'Rundgang', 'Beide mit ?rundgang: Lichtkegel und Karte, fünf Schritte, Kopie von rundgang.js der Vorlage im Kleid. Beim ersten Öffnen ohne ?rundgang erscheint unten rechts das Schild «Kurzer Rundgang».'],
+    ['rundgang-5', 'Rundgang, letzter Schritt', '«Jedes Werkzeug stellt sich vor»: der Kegel liegt auf dem ersten Werkzeug-Saal.'],
+    ['anleitung', 'Anleitungen', 'Knopf «Anleitungen» oben links angeklickt: die Seite springt zum Fuss mit den Anleitungen. Am Handy blendet die Vorlage den Knopf aus (unter 760 px), der Neubau auch.'],
+    ['quittung', 'Quittung', 'Baustein des Kleids wie in muster.html: Titel, Satz, «Vorher, nachher» (klappt Vorher Robert / Nachher Anna auf), «Rückgängig», Schliessen. Am Handy bleibt Schliessen oben neben dem Text. Kontrollpanel selbst ändert nichts; links Website bearbeiten.'],
+    ['startfehler', 'Startfehler-Tür', 'Programm der Seite blockiert (Kontrollpanel: maison.js, Neubau: zentrale.js): unten erscheint «… startet nicht» mit dem Grund und den Knöpfen «Prüfung öffnen» und «Neu laden». Wie in der Vorlage stehen «Anleitungen» und «Website ansehen» im Kopf und das Zeichen fest in der Seite und gehen auch ohne Programm.'],
+    ['pruefung', 'Prüfseite mit Lexikon', 'Wohin «Prüfung öffnen» führt: Server, Kleid, Schriften, Dateien, jedes Werkzeug mit «Heute», gemerkte Fehler (leeren nur mit Rückfrage, Quittung mit Rückgängig) und das Lexikon (was man sieht, warum, was tun).']
+  ];
+  document.getElementById('ansichten').innerHTML = A.map(([k, t, s]) => '<section><h2>' + t + '</h2><p>' + s + '</p>'
+    + '<div class="paar">' + ['vorlage', 'neubau'].map(x => '<figure><figcaption>' + (x === 'vorlage' ? 'Vorlage' : 'Neubau') + ' · 1440 px</figcaption><img src="bilder/' + k + '-1440-' + x + '.jpg" alt="' + t + ', ' + x + ', 1440 px" loading="lazy" width="1440" height="900"></figure>').join('') + '</div>'
+    + '<div class="paar paar--handy">' + ['vorlage', 'neubau'].map(x => '<figure><figcaption>' + (x === 'vorlage' ? 'Vorlage' : 'Neubau') + ' · 390 px</figcaption><img src="bilder/' + k + '-390-' + x + '.jpg" alt="' + t + ', ' + x + ', 390 px" loading="lazy" width="390" height="844"></figure>').join('') + '</div></section>').join('');
+</script>
+</body>
+</html>

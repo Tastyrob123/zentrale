@@ -1,0 +1,192 @@
+OK   1440 Gruss nach Tageszeit
+OK   1440 Foto im Startbild geladen
+OK   1440 Lage mit drei Fächern
+OK   1440 kein Überlauf Start — scrollWidth+0
+OK   1440 Lage-Knopf heute
+OK   1440 Lage-Knopf brett
+OK   1440 Lage-Knopf verlauf
+OK   1440 Kachel heute
+OK   1440 Kachel brett
+OK   1440 Kachel liste
+OK   1440 Kachel bestand
+OK   1440 Kachel Notiz fragt nach Haus
+OK   1440 Kachel Notiz öffnet Notizfenster
+OK   1440 Kachel Schritt öffnet Haus mit Feld
+OK   1440 Bereich-Kachel Gespräch
+OK   1440 Rand start
+OK   1440 kein Überlauf start — scrollWidth+0
+OK   1440 Rand liste
+OK   1440 kein Überlauf liste — scrollWidth+0
+OK   1440 Rand brett
+OK   1440 kein Überlauf brett — scrollWidth+0
+OK   1440 Rand heute
+OK   1440 kein Überlauf heute — scrollWidth+0
+OK   1440 Rand stand:gefunden
+OK   1440 kein Überlauf stand:gefunden — scrollWidth+0
+OK   1440 Rand stand:geprüft
+OK   1440 kein Überlauf stand:geprüft — scrollWidth+0
+OK   1440 Rand stand:angeschrieben
+OK   1440 kein Überlauf stand:angeschrieben — scrollWidth+0
+OK   1440 Rand stand:Entwurf geschickt
+OK   1440 kein Überlauf stand:Entwurf geschickt — scrollWidth+0
+OK   1440 Rand stand:Gespräch
+OK   1440 kein Überlauf stand:Gespräch — scrollWidth+0
+OK   1440 Rand stand:Angebot
+OK   1440 kein Überlauf stand:Angebot — scrollWidth+0
+OK   1440 Rand stand:Vertrag
+OK   1440 kein Überlauf stand:Vertrag — scrollWidth+0
+OK   1440 Rand stand:abgesagt
+OK   1440 kein Überlauf stand:abgesagt — scrollWidth+0
+OK   1440 Rand bestand
+OK   1440 kein Überlauf bestand — scrollWidth+0
+OK   1440 Rand verlauf
+OK   1440 kein Überlauf verlauf — scrollWidth+0
+OK   1440 Neues Haus ohne Namen warnt
+OK   1440 Neues Haus angelegt
+OK   1440 Quittung nach Anlegen mit Rückgängig
+OK   1440 Rückgängig nimmt Anlegen zurück
+OK   1440 Leiste gelb bei offener Eingabe
+OK   1440 Vorher, nachher zeigt beide Werte
+OK   1440 Verwerfen stellt zurück
+OK   1440 Strg+S speichert
+OK   1440 Leiste grün nach Speichern
+OK   1440 Quittung vorher/nachher — Gespeichert Stand · Elbdeck: «Gespräch» wird «Angebot» VORHER/NACHHER ANSEHEN ANSEHEN RÜCKGÄNGIG
+OK   1440 Rückgängig Stand
+OK   1440 Leiste wieder grau
+OK   1440 Suche nach Ort
+OK   1440 Filter Fälligkeit
+OK   1440 Filter Stand
+OK   1440 Filter Art — 4 Restaurants
+OK   1440 Sortierung nach Name
+OK   1440 Brett: Karte gezogen wartet gelb
+OK   1440 Brett: gespeichert
+OK   1440 Brett: Rückgängig
+OK   1440 Haus: 4 Eingaben offen
+OK   1440 Haus: Felder gespeichert
+OK   1440 Haus: Verlauf mit wer und wann
+OK   1440 Haus: Rückgängig
+OK   1440 Haus: Besuche-Platzhalter mit Kürzel
+OK   1440 Notiz mit wer und wann
+OK   1440 Notiz sichtbar im Haus
+OK   1440 Notiz Rückgängig
+OK   1440 Löschen fragt nach
+OK   1440 Behalten löscht nicht
+OK   1440 Löschen nach Rückfrage
+OK   1440 Löschen Rückgängig
+OK   1440 Heute-Schnittstelle — {"text":"Elbdeck: Fotos vom Haus abholen, Startseite bauen (überfällig seit 02.11.2026)","wann":"2026-11-02","link":"?haus=cafe-bar-elbdeck-hamburg"}
+OK   1440 Link aus Heute öffnet Haus
+OK   1440 Import mit Bericht
+OK   1440 Import übernimmt echte Häuser, Stände wo belegt — 14 Häuser, Stände Entwurf geschickt/angeschrieben/offen/Vertrag
+OK   1440 Import: keine Nicht-Kunden, keine Doppelten — Grand Hotel Beau-Rivage, Carlton-Europe Vintage Adults Hotel, Waldhotel Doldenhorn, Landgasthof Ruedihus, Berghotel Gasterntal, Salt & Silver, Hotel Monte-Moro, Wellness & Spa Pirmin Zurbriggen, Suitenhotel Zurbriggen, Wirtschaft am Schlössli, Taverne zum Schäfli, Castell Son Claret, Walk on the Wild Side (Culinarium Hannover), txtme.social
+OK   1440 Import Rückgängig
+OK   1440 Probedaten laden mit Quittung
+OK   1440 Kopf-Links — ?ansicht=start|KUNDENLISTE
+KUNDEN · TASTY STUDIOS ; /seite/index.html|Le Bureau ; #|La Carte ; #|La Réception ; #|Le Livre ; #|Le Registre ; #|L’Imprimerie ; /|Zentrale ; pruefung.html|Prüfung ; anleitung.html|Anleitung ; /seite/index.html|WEBSITE ANSEHEN
+OK   1440 Ziel erreichbar pruefung.html
+OK   1440 Ziel erreichbar anleitung.html
+OK   1440 Ziel erreichbar /
+OK   1440 Ziel erreichbar /seite/index.html
+OK   1440 Rundgang lässt sich durchklicken — 5 Klicks
+OK   1440 Prüfseite mit Lexikon
+OK   1440 Prüfseite Knöpfe — KUNDENLISTE
+PRÜFUNG · TASTY STUDIOS | ZUM WERKZEUG | HERUNTERLADEN | FEHLER LEEREN | VERGESSEN
+OK   kein Überlauf 1440 Prüfseite — +0
+OK   1440 Anleitung Bilder geladen
+OK   kein Überlauf 1440 Anleitung — +0
+OK   1440 Konsole Prüf/Anleitung leer
+OK   1440 Konsole Werkzeug leer
+OK   390 Gruss nach Tageszeit
+OK   390 Foto im Startbild geladen
+OK   390 Lage mit drei Fächern
+OK   390 kein Überlauf Start — scrollWidth+0
+OK   390 Lage-Knopf heute
+OK   390 Lage-Knopf brett
+OK   390 Lage-Knopf verlauf
+OK   390 Kachel heute
+OK   390 Kachel brett
+OK   390 Kachel liste
+OK   390 Kachel bestand
+OK   390 Kachel Notiz fragt nach Haus
+OK   390 Kachel Notiz öffnet Notizfenster
+OK   390 Kachel Schritt öffnet Haus mit Feld
+OK   390 Bereich-Kachel Gespräch
+OK   390 Rand start
+OK   390 kein Überlauf start — scrollWidth+0
+OK   390 Rand liste
+OK   390 kein Überlauf liste — scrollWidth+0
+OK   390 Rand brett
+OK   390 kein Überlauf brett — scrollWidth+0
+OK   390 Rand heute
+OK   390 kein Überlauf heute — scrollWidth+0
+OK   390 Rand stand:gefunden
+OK   390 kein Überlauf stand:gefunden — scrollWidth+0
+OK   390 Rand stand:geprüft
+OK   390 kein Überlauf stand:geprüft — scrollWidth+0
+OK   390 Rand stand:angeschrieben
+OK   390 kein Überlauf stand:angeschrieben — scrollWidth+0
+OK   390 Rand stand:Entwurf geschickt
+OK   390 kein Überlauf stand:Entwurf geschickt — scrollWidth+0
+OK   390 Rand stand:Gespräch
+OK   390 kein Überlauf stand:Gespräch — scrollWidth+0
+OK   390 Rand stand:Angebot
+OK   390 kein Überlauf stand:Angebot — scrollWidth+0
+OK   390 Rand stand:Vertrag
+OK   390 kein Überlauf stand:Vertrag — scrollWidth+0
+OK   390 Rand stand:abgesagt
+OK   390 kein Überlauf stand:abgesagt — scrollWidth+0
+OK   390 Rand bestand
+OK   390 kein Überlauf bestand — scrollWidth+0
+OK   390 Rand verlauf
+OK   390 kein Überlauf verlauf — scrollWidth+0
+OK   390 Neues Haus ohne Namen warnt
+OK   390 Neues Haus angelegt
+OK   390 Quittung nach Anlegen mit Rückgängig
+OK   390 Rückgängig nimmt Anlegen zurück
+OK   390 Leiste gelb bei offener Eingabe
+OK   390 Vorher, nachher zeigt beide Werte
+OK   390 Verwerfen am Handy ausgeblendet (wie Vorlage: zwei Knöpfe)
+OK   390 Strg+S speichert
+OK   390 Leiste grün nach Speichern
+OK   390 Quittung vorher/nachher — Gespeichert Stand · Elbdeck: «Gespräch» wird «Angebot» VORHER/NACHHER ANSEHEN ANSEHEN RÜCKGÄNGIG
+OK   390 Rückgängig Stand
+OK   390 Leiste wieder grau
+OK   390 Suche nach Ort
+OK   390 Filter Fälligkeit
+OK   390 Filter Stand
+OK   390 Filter Art — 4 Restaurants
+OK   390 Sortierung nach Name
+OK   390 Haus: 4 Eingaben offen
+OK   390 Haus: Felder gespeichert
+OK   390 Haus: Verlauf mit wer und wann
+OK   390 Haus: Rückgängig
+OK   390 Haus: Besuche-Platzhalter mit Kürzel
+OK   390 Notiz mit wer und wann
+OK   390 Notiz sichtbar im Haus
+OK   390 Notiz Rückgängig
+OK   390 Löschen fragt nach
+OK   390 Behalten löscht nicht
+OK   390 Löschen nach Rückfrage
+OK   390 Löschen Rückgängig
+OK   390 Heute-Schnittstelle — {"text":"Elbdeck: Fotos vom Haus abholen, Startseite bauen (überfällig seit 02.11.2026)","wann":"2026-11-02","link":"?haus=cafe-bar-elbdeck-hamburg"}
+OK   390 Link aus Heute öffnet Haus
+OK   390 Import mit Bericht
+OK   390 Import übernimmt echte Häuser, Stände wo belegt — 14 Häuser, Stände Entwurf geschickt/angeschrieben/offen/Vertrag
+OK   390 Import: keine Nicht-Kunden, keine Doppelten — Grand Hotel Beau-Rivage, Carlton-Europe Vintage Adults Hotel, Waldhotel Doldenhorn, Landgasthof Ruedihus, Berghotel Gasterntal, Salt & Silver, Hotel Monte-Moro, Wellness & Spa Pirmin Zurbriggen, Suitenhotel Zurbriggen, Wirtschaft am Schlössli, Taverne zum Schäfli, Castell Son Claret, Walk on the Wild Side (Culinarium Hannover), txtme.social
+OK   390 Import Rückgängig
+OK   390 Probedaten laden mit Quittung
+OK   390 Kopf-Links — ?ansicht=start|KUNDENLISTE ; /seite/index.html|Le Bureau ; #|La Carte ; #|La Réception ; #|Le Livre ; #|Le Registre ; #|L’Imprimerie ; /|Zentrale ; pruefung.html|Prüfung ; anleitung.html|Anleitung ; /seite/index.html|Website ansehen
+OK   390 Ziel erreichbar pruefung.html
+OK   390 Ziel erreichbar anleitung.html
+OK   390 Ziel erreichbar /
+OK   390 Ziel erreichbar /seite/index.html
+OK   390 Handy: Rand klappt auf
+OK   390 Handy: Wahl klappt zu
+OK   390 Rundgang lässt sich durchklicken — 5 Klicks
+OK   390 Prüfseite mit Lexikon
+OK   390 Prüfseite Knöpfe — KUNDENLISTE
+PRÜFUNG · TASTY STUDIOS | ZUM WERKZEUG | HERUNTERLADEN | FEHLER LEEREN | VERGESSEN
+OK   kein Überlauf 390 Prüfseite — +0
+OK   390 Anleitung Bilder geladen
+OK   kein Überlauf 390 Anleitung — +0
+OK   390 Konsole Prüf/Anleitung leer
+OK   390 Konsole Werkzeug leer

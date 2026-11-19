@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Markenbuch · Tasty Studios</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111421">
+<link rel="icon" href="/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg">
+<script src="/zentrale/zentrale/oberflaeche/kleid/tasty.js"></script>
+<link rel="preload" href="buch/schriften/Antonio-normal-100_700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="buch/schriften/InstrumentSans-normal-400_600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="buch/schriften/DMMono-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="buch/schriften.css">
+<link rel="stylesheet" href="buch/marke.css">
+<link rel="stylesheet" href="buch/tasty.css">
+<script>document.documentElement.classList.add('js')</script>
+<!-- Markenbuch Tasty Studios, gebaut von buch_bau.py aus der Vorlage Culinarium (Fehlerbuch 13.11.2026: jedes Markenbuch aus dem Culinarium-Markenbuch). Nicht von Hand ändern, buch_bau.py anpassen. -->
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><mask id="schlitz" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="1000"><rect width="1000" height="1000" fill="#fff"/><path d="M 482 0 L 518 0 L 505 1000 L 495 1000 Z" fill="#000"/></mask><symbol id="anker" viewBox="125 125 750 750"><g transform="translate(500 500) scale(0.9733) translate(-500.0 -505.0)" fill="currentColor" fill-rule="evenodd"><path d="M 500.0 130.0 L 572.0 202.0 L 500.0 274.0 L 428.0 202.0 Z M 500.0 172.0 L 530.0 202.0 L 500.0 232.0 L 470.0 202.0 Z"/><path d="M 318.0 300.0 L 682.0 300.0 L 662.0 352.0 L 338.0 352.0 Z"/><path d="M 462.0 382.0 L 492.0 382.0 L 492.0 820.0 L 462.0 795.0 Z"/><path d="M 538.0 795.0 L 508.0 820.0 L 508.0 382.0 L 538.0 382.0 Z"/><path d="M 486.0 880.0 L 300.0 832.0 L 185.0 712.0 L 150.0 560.0 L 252.0 642.0 L 226.0 668.0 L 330.0 766.0 L 486.0 812.0 Z"/><path d="M 514.0 812.0 L 670.0 766.0 L 774.0 668.0 L 748.0 642.0 L 850.0 560.0 L 815.0 712.0 L 700.0 832.0 L 514.0 880.0 Z"/></g></symbol><symbol id="hut" viewBox="125 125 750 750"><g mask="url(#schlitz)"><g transform="translate(500 500) scale(0.9707) translate(-506.0 -492.5)" fill="currentColor" fill-rule="evenodd"><path d="M 130.0 360.0 L 500.0 245.0 L 870.0 360.0 L 500.0 475.0 Z"/><path d="M 290.0 440.0 L 500.0 505.0 L 710.0 440.0 L 710.0 600.0 L 500.0 665.0 L 290.0 600.0 Z"/><path d="M 836.0 380.0 L 858.0 373.0 L 858.0 640.0 L 836.0 640.0 Z"/><path d="M 812.0 662.0 L 882.0 662.0 L 847.0 740.0 Z"/></g></g></symbol><symbol id="tee" viewBox="125 125 750 750"><g transform="translate(500 500) scale(0.9995) translate(-500.0 -500.0)" fill="currentColor" fill-rule="evenodd"><path d="M 134.785156 147.179688 L 500.003906 264.585938 L 865.214844 147.179688 Z"/><path d="M 475.039062 286.417969 C 481.609375 475.210938 488.191406 664.027344 494.761719 852.820312 L 429.503906 756.734375 L 394.929688 362.035156 L 170.394531 292.515625 L 143.554688 183.175781 C 143.554688 183.175781 364.949219 252.128906 475.039062 286.417969 Z"/><path d="M 524.960938 286.417969 C 518.390625 475.210938 511.808594 664.027344 505.238281 852.820312 L 570.496094 756.734375 L 605.070312 362.035156 L 829.605469 292.515625 L 856.445312 183.175781 C 856.445312 183.175781 635.050781 252.128906 524.960938 286.417969 Z"/></g></symbol></defs></svg>
+<nav class="leiste" aria-label="Markenbuch">
+  <a class="leiste__m" href="#oben" title="Nach oben"><svg class="" viewBox="0 0 750 750" fill="currentColor" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg><span><b><span class="kw">MARKENBUCH</span></b><small>Tasty Studios</small></span></a>
+  <a class="kn kn--leiste kn--linie" href="werkstatt.html"><span class="kw">ABGLEICH</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a>
+  <button class="kn kn--leiste" type="button" id="bu-pdf"><span class="kw">ALS PDF</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></button>
+</nav>
+<main>
+<section class="titel tapete" id="oben">
+  <div class="titel__in">
+    <p class="titel__kap" data-r="hero" style="--i:0"><i></i><b><span class="kw">MARKENBUCH · NOVEMBER 2026</span></b><i></i></p>
+    <div class="titel__z" data-r="zeichen"><svg class="" viewBox="0 0 750 750" fill="currentColor" role="img" aria-label="Der Anker, das Zeichen von Tasty Studios"><use href="#anker" width="750" height="750"/></svg></div>
+    <h1 class="titel__w" data-r="maske"><span class="z"><span class="wm">TASTY STUDIOS</span></span></h1>
+    <p class="titel__zl tz" data-r="hero" style="--i:1">Digital Hospitality Studio</p>
+    <p class="titel__ort" data-r="hero" style="--i:2"><span class="kw">HAMBURG</span></p>
+    <p class="titel__lead" data-r="hero" style="--i:3">Alles, was Tasty Studios erkennbar macht, an einem Ort: die drei Zeichen von Agentur, Masterclass und Backoffice, die Farben und woher sie kommen, die Schriften der Website und der Dokumente, die Bilder, die Bausteine und die Sprache. Damit jedes neue Stück, ob Website, Werkzeug, Brief oder Beitrag, im gleichen Stil entsteht.</p>
+    <div class="knr knr--mitte" data-r="hero" style="--i:4"><a class="kn" href="#haltung"><span class="kw">LESEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+  </div>
+  <nav class="index" aria-label="Inhalt" data-g><a href="#haltung" data-r style="--i:0"><span>Haltung</span></a><a href="#familie" data-r style="--i:1"><span>Drei Zeichen</span></a><a href="#zeichen" data-r style="--i:2"><span>Anker und Name</span></a><a href="#logo" data-r style="--i:3"><span>Richtig und falsch</span></a><a href="#farben" data-r style="--i:4"><span>Farben</span></a><a href="#herkunft" data-r style="--i:5"><span>Herkunft</span></a><a href="#schrift" data-r style="--i:6"><span>Schrift</span></a><a href="#dokumente" data-r style="--i:7"><span>Dokumente</span></a><a href="#bilder" data-r style="--i:8"><span>Bildsprache</span></a><a href="#bausteine" data-r style="--i:9"><span>Bausteine</span></a><a href="#sprache" data-r style="--i:10"><span>Sprache</span></a><a href="#mitnehmen" data-r style="--i:11"><span>Mitnehmen</span></a></nav>
+  <span class="titel__runter" aria-hidden="true"><i></i></span>
+</section>
+<section class="ab blatt papier" id="haltung">
+  <div class="in">
+    <header class="mk" data-r="kopf">
+      <div><p class="mk__kap"><b><span class="kw">HALTUNG</span></b><i></i></p>
+      <h2 class="mk__t"><span class="z"><span>Digital</span></span><span class="z"><span><em>Hospitality.</em></span></span></h2></div>
+      <p class="mk__lead">Tasty Studios baut für Gastronomie und Hotellerie: Websites mit Werkzeugen, das Backoffice und die Masterclass. Für kleine und mittelständische Betriebe, familien- und inhabergeführt, auch mit mehreren Häusern. Der Grund dahinter: die Vielfalt in Gastronomie und Hotellerie bewahren, bevor unabhängige Betriebe von grossen Systemen verdrängt werden. Robert bringt zwölf Jahre Gastronomie mit, Anna die Hotellerie.</p>
+    </header>
+    <div class="drei" data-g>
+      <article class="k3 k3--karte" data-r="feder" style="--i:0">
+        <div class="k3__b"><img src="buch/bilder/k-studio-1600.webp" alt="Das Studio am Fenster zum Hafen" loading="lazy" decoding="async" style="object-position:50% 50%"></div>
+        <div class="k3__n"><small><span class="kw">DER ORT</span></small><b>Am Hafen.</b><p>Speicherstadt, Kaimauer, Werkstatt. Die Bilder zeigen den Ort, das Logo bleibt klein.</p></div>
+      </article>
+      <article class="k3 k3--karte" data-r="feder" style="--i:1">
+        <div class="k3__b"><img src="buch/bilder/k-kn-plan-900.webp" alt="Ein Plan auf dem Tisch, daneben Notizbuch und Kaffee" loading="lazy" decoding="async" style="object-position:50% 50%"></div>
+        <div class="k3__n"><small><span class="kw">DIE AUSWAHL</span></small><b>Das Relevante.</b><p>Wir filtern vor, was im Betrieb etwas bringt, und erklären es am Beispiel des Betriebs.</p></div>
+      </article>
+      <article class="k3 k3--karte" data-r="feder" style="--i:2">
+        <div class="k3__b"><img src="buch/bilder/k-kn-bildschirm-900.webp" alt="Gespräch am Laptop in einer Lobby" loading="lazy" decoding="async" style="object-position:50% 50%"></div>
+        <div class="k3__n"><small><span class="kw">DAS SYSTEM</span></small><b>Notion und KI.</b><p>Notion-Backoffice, KI und Second Brain als Antwort auf die Probleme, die im Betrieb jeden Tag auftauchen.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="fenster" aria-label="Der Speicher am Hafen bei Nacht">
+  <div class="fenster__f">
+    <div class="fenster__b"><img src="buch/bilder/k-aussen-2400.webp" alt="Der Speicher am Hafen bei Nacht" decoding="async"></div>
+    <div class="fenster__t"><p class="fenster__s"><span class="z"><span>Hamburg</span></span><span class="z"><span><em>bei Nacht.</em></span></span></p><p class="fenster__u">Die Bilder der Website spielen in der Speicherstadt.</p></div>
+  </div>
+</section>
+<section class="ab blatt marine" id="familie">
+  <div class="in">
+    <header class="mk" data-r="kopf">
+      <div><p class="mk__kap"><b><span class="kw">EIN DACH, DREI ZEICHEN</span></b><i></i></p>
+      <h2 class="mk__t"><span class="z"><span>Ein Dach.</span></span><span class="z"><span><em>Drei Zeichen.</em></span></span></h2></div>
+      <p class="mk__lead">Jedes Zeichen steht für sich. Gemeinsam sind ihnen scharfe Schnitte, schmale Spalten und glatte Flächen. Der Mittelschnitt verbindet alle drei.</p>
+    </header>
+    <div class="pls" data-g>
+      <article class="pl" data-r="feder" style="--i:0">
+        <div class="pl__f" style="background:#1F213B;color:#FFFFFF"><svg class="pl__z" viewBox="0 0 750 750" fill="currentColor" role="img" aria-label="Zeichen Agentur"><use href="#anker" width="750" height="750"/></svg><span class="pl__n" style="color:#FFFFFF">AGENTUR</span></div>
+        <div class="pl__t"><small><span class="kw">01 · AGENTUR</span></small><h3>Websites aus dem Hafen.</h3><p>Backstein, Tau, Stahl und Wasser. Jede Seite gebaut wie ein Schiff.</p><p class="pl__ps"><span class="pl__p"><i style="background:#1F213B"></i>Navy</span><span class="pl__p"><i style="background:#9E947F"></i>Taupe</span><span class="pl__p"><i style="background:#FF3132"></i>Signalrot</span></p></div>
+      </article>
+      <article class="pl" data-r="feder" style="--i:1">
+        <div class="pl__f" style="background:#1F212C;color:#FFFFFF"><svg class="pl__z" viewBox="0 0 750 750" fill="currentColor" role="img" aria-label="Zeichen Backoffice"><use href="#tee" width="750" height="750"/></svg><span class="pl__n" style="color:#FFFFFF">BACKOFFICE</span></div>
+        <div class="pl__t"><small><span class="kw">02 · BACKOFFICE</span></small><h3>Nach Feierabend stimmt alles.</h3><p>Ordnung im Betrieb. Die Arbeit, die der Gast nie sieht. Licht nur dort, wo gearbeitet wird.</p><p class="pl__ps"><span class="pl__p"><i style="background:#111421"></i>Nacht</span><span class="pl__p"><i style="background:#1F212C"></i>Schiefer</span><span class="pl__p"><i style="background:#FFFFFF"></i>Weiss</span></p></div>
+      </article>
+      <article class="pl" data-r="feder" style="--i:2">
+        <div class="pl__f" style="background:#EBDBCE;color:#111421"><svg class="pl__z" viewBox="0 0 750 750" fill="currentColor" role="img" aria-label="Zeichen Masterclass"><use href="#hut" width="750" height="750"/></svg><span class="pl__n" style="color:#111421">MASTERCLASS</span></div>
+        <div class="pl__t"><small><span class="kw">03 · MASTERCLASS</span></small><h3>Lernen am langen Tisch.</h3><p>Wissen für Gastgeber. Gastgeber unter sich, in Backstein und Abendlicht.</p><p class="pl__ps"><span class="pl__p"><i style="background:#EBDBCE"></i>Creme</span><span class="pl__p"><i style="background:#9E947F"></i>Taupe</span><span class="pl__p"><i style="background:#111421"></i>Nacht</span></p></div>
+      </article>
+    </div>
+    <div class="fam-regel" data-r><span class="fam-regel__z"><svg class="" viewBox="0 0 750 750" fill="currentColor" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></span><p><b>Der Anker ist das Zeichen von Tasty Studios, überall:</b> Briefe, Werkzeuge, Unterlagen, Cockpit. Das T gehört nur zum Backoffice, der Doktorhut nur zur Masterclass.</p></div>
+    <p class="mk__kap" data-r style="margin-top:clamp(56px,6vw,96px)"><b><span class="kw">IM EINSATZ</span></b><i></i></p>
+    <div class="eins" data-g>
+      <figure class="ein" data-r="feder" style="--i:0"><div class="ein__b"><img src="buch/bilder/geraet-agentur.webp?v=1117b" alt="Der Anker auf der Website" loading="lazy" decoding="async"></div><figcaption><small><span class="kw">AGENTUR</span></small><b>Der Anker auf der Website</b><p>Oben links in der Leiste der Agentur-Website vor dem Namen und im runden Knopf unten rechts.</p></figcaption></figure>
+      <figure class="ein" data-r="feder" style="--i:1"><div class="ein__b"><img src="buch/bilder/geraet-backoffice.webp?v=1117b" alt="Das T in der Notion-Vorlage" loading="lazy" decoding="async"></div><figcaption><small><span class="kw">BACKOFFICE</span></small><b>Das T in der Notion-Vorlage</b><p>Als Zeichen der Seite und gross im Titelbild des Notion AI Backoffice.</p></figcaption></figure>
+      <figure class="ein" data-r="feder" style="--i:2"><div class="ein__b"><img src="buch/bilder/geraet-masterclass.webp?v=1117b" alt="Der Doktorhut auf der Kursseite" loading="lazy" decoding="async"></div><figcaption><small><span class="kw">MASTERCLASS</span></small><b>Der Doktorhut auf der Kursseite</b><p>In der Leiste der Gastronomie AI Masterclass, vor dem Namen des Kurses.</p></figcaption></figure>
+    </div>
+  </div>
+</section>
+<section class="ab blatt creme" id="zeichen">
+  <div class="in">
+    <header class="mk" data-r="kopf">
+      <div><p class="mk__kap"><b><span class="kw">ANKER UND NAME</span></b><i></i></p>
+      <h2 class="mk__t"><span class="z"><span>Der Anker</span></span><span class="z"><span><em>und der Name.</em></span></span></h2></div>
+      <p class="mk__lead">Der Anker ist eine Datei und wird so eingesetzt, wie er geliefert ist. Daneben steht der Name wie auf der Website: Antonio 700, in Versalien, leicht gesperrt, in einer Farbe.</p>
+    </header>
+    <div class="lks" data-g><figure class="lk lk--hoch" data-r="feder" style="--i:0"><div class="lk__f" style="background:#111421"><svg class="lk__z" viewBox="0 0 750 750" fill="currentColor" aria-hidden="true" style="color:#FFFFFF"><use href="#anker" width="750" height="750"/></svg><span class="wm lk__w" style="color:#FFFFFF">TASTY STUDIOS</span></div><figcaption class="kerbe"><span class="kw">HAUPTFORM: WEISS AUF NACHT</span></figcaption></figure><figure class="lk lk--quer" data-r="feder" style="--i:1"><div class="lk__f" style="background:#FFFFFF"><svg class="lk__z lk__z--q" viewBox="0 0 750 750" fill="currentColor" aria-hidden="true" style="color:#111421"><use href="#anker" width="750" height="750"/></svg><span class="lk__strich" style="background:#111421"></span><span class="lk__q"><span class="wm lk__w lk__w--q" style="color:#111421">TASTY STUDIOS</span><small style="color:#111421">DIGITAL HOSPITALITY STUDIO</small></span></div><figcaption class="kerbe"><span class="kw">QUER, WIE IM KOPF DER WERKZEUGE</span></figcaption></figure><figure class="lk lk--hoch" data-r="feder" style="--i:2"><div class="lk__f" style="background:#EBDBCE"><svg class="lk__z" viewBox="0 0 750 750" fill="currentColor" aria-hidden="true" style="color:#1F213B"><use href="#anker" width="750" height="750"/></svg><span class="wm lk__w" style="color:#1F213B">TASTY STUDIOS</span></div><figcaption class="kerbe"><span class="kw">NAVY AUF CREME, FÜR BRIEFE</span></figcaption></figure></div>
+    <p class="mk__kap" id="logo" data-r style="margin-top:clamp(56px,6vw,96px)"><b><span class="kw">RICHTIG</span></b><i></i><span>Vier Fassungen</span></p>
+    <div class="regeln regeln--4" data-g style="margin-top:18px"><div class="regel regel--r" data-r="feder" style="--i:0"><div class="regel__f"><div class="lf" style="background:#111421"><svg viewBox="0 0 750 750" style="fill:#FFFFFF;color:#FFFFFF;" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></div></div><h3>Weiss auf Nacht</h3><p>Die Hauptfassung, auf dunklem Grund.</p></div><div class="regel regel--r" data-r="feder" style="--i:1"><div class="regel__f"><div class="lf" style="background:#1F213B"><svg viewBox="0 0 750 750" style="fill:#EBDBCE;color:#EBDBCE;" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></div></div><h3>Creme auf Navy</h3><p>Auf der Markenfläche in warmem Creme.</p></div><div class="regel regel--r" data-r="feder" style="--i:2"><div class="regel__f"><div class="lf" style="background:#FBF6EE"><svg viewBox="0 0 750 750" style="fill:#111421;color:#111421;" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></div></div><h3>Nacht auf Papier</h3><p>Auf hellem Grund dunkel, Form unverändert.</p></div><div class="regel regel--r" data-r="feder" style="--i:3"><div class="regel__f"><div class="lf" style="background:#EBDBCE"><svg viewBox="0 0 750 750" style="fill:#1F213B;color:#1F213B;" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></div></div><h3>Navy auf Creme</h3><p>Auf Creme in Navy, für Briefe und Drucksachen.</p></div></div>
+    <p class="mk__kap" data-r style="margin-top:clamp(48px,5vw,80px)"><b><span class="kw">FALSCH</span></b><i></i><span>Acht Dinge, die nie vorkommen</span></p>
+    <div class="regeln regeln--4" data-g style="margin-top:18px"><div class="regel regel--f" data-r="feder" style="--i:0"><div class="regel__f"><div class="lf" style="background:#FBF6EE"><svg viewBox="0 0 750 750" style="fill:#111421;color:#111421;transform:scaleX(1.45)" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></div></div><h3>Gestreckt</h3><p>Die Proportion bleibt, nie breiter oder höher gezogen.</p></div><div class="regel regel--f" data-r="feder" style="--i:1"><div class="regel__f"><div class="lf" style="background:#FBF6EE"><svg viewBox="0 0 750 750" style="fill:#111421;color:#111421;transform:rotate(-22deg)" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></div></div><h3>Gedreht</h3><p>Der Anker steht gerade.</p></div><div class="regel regel--f" data-r="feder" style="--i:2"><div class="regel__f"><div class="lf" style="background:#FBF6EE"><svg viewBox="0 0 750 750" style="fill:#2AA198;color:#2AA198;" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></div></div><h3>Umgefärbt</h3><p>Nur Weiss, Creme, Nacht und Navy.</p></div><div class="regel regel--f" data-r="feder" style="--i:3"><div class="regel__f"><div class="lf" style="background:#111421"><svg viewBox="0 0 750 750" style="fill:#FFFFFF;color:#FFFFFF;filter:drop-shadow(0 6px 10px rgba(0,0,0,.9)) drop-shadow(0 0 18px rgba(199,180,137,.9))" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></div></div><h3>Schatten und Glanz</h3><p>Das Zeichen liegt flach, ohne Leuchten.</p></div><div class="regel regel--f" data-r="feder" style="--i:0"><div class="regel__f"><div class="lf" style="background:#FBF6EE"><svg viewBox="0 0 750 750" style="fill:none;color:none;stroke:#111421;stroke-width:14;fill:none" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></div></div><h3>Nachgezeichnet</h3><p>Der Anker ist eine Datei und wird nie als Umriss gesetzt.</p></div><div class="regel regel--f" data-r="feder" style="--i:1"><div class="regel__f"><div class="lf" style="background:url(buch/bilder/fen-raeder-900.webp) 50% 50%/cover"><svg viewBox="0 0 750 750" style="fill:#FFFFFF;color:#FFFFFF;" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></div></div><h3>Auf unruhigem Foto</h3><p>Zwischen Licht und Kanten geht das Zeichen verloren.</p></div><div class="regel regel--f" data-r="feder" style="--i:2"><div class="regel__f"><div class="lf" style="background:#FBF6EE"><svg viewBox="0 0 750 750" style="fill:#FFFFFF;color:#FFFFFF;filter:drop-shadow(0 0 1px rgba(17,20,33,.08))" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></div></div><h3>Weiss auf Hell</h3><p>Das weisse Zeichen gehört auf dunklen Grund.</p></div><div class="regel regel--f" data-r="feder" style="--i:3"><div class="regel__f"><div class="lf" style="background:#111421"><svg viewBox="0 0 750 750" style="fill:#FFFFFF;color:#FFFFFF;" aria-hidden="true"><use href="#tee" width="750" height="750"/></svg></div></div><h3>Das T</h3><p>Das T gehört zum Backoffice. Für Tasty Studios steht der Anker.</p></div></div>
+  </div>
+</section>
+<section class="ab blatt papier" id="farben">
+  <div class="in">
+    <header class="mk" data-r="kopf">
+      <div><p class="mk__kap"><b><span class="kw">FARBEN</span></b><i></i></p>
+      <h2 class="mk__t"><span class="z"><span>28 Töne,</span></span><span class="z"><span><em>sechs Familien.</em></span></span></h2></div>
+      <p class="mk__lead">Die acht Farben aus dem Branding sind die Basis. Dazu kommen die Töne, die die Website benutzt: Gold, Licht und Wasser, Papier und Leinen, die Tiefen der Nacht, Holz und Stein. Ein Klick auf eine Farbe kopiert ihren Wert.</p>
+    </header>
+    <div class="faecher" data-r="faecher"><div class="faecher__in"><button class="fa" type="button" data-hex="#111421" style="--c:#111421;--t:#FBF6EE;--j:0;--w:-36.0deg" aria-label="Nacht #111421 kopieren"><span class="fa__n"><b>Nacht</b><small>#111421</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#1F213B" style="--c:#1F213B;--t:#FBF6EE;--j:1;--w:-33.3deg" aria-label="Navy #1F213B kopieren"><span class="fa__n"><b>Navy</b><small>#1F213B</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#1F212C" style="--c:#1F212C;--t:#FBF6EE;--j:2;--w:-30.7deg" aria-label="Schiefer #1F212C kopieren"><span class="fa__n"><b>Schiefer</b><small>#1F212C</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#FFFFFF" style="--c:#FFFFFF;--t:#111421;--j:3;--w:-28.0deg" aria-label="Weiss #FFFFFF kopieren"><span class="fa__n"><b>Weiss</b><small>#FFFFFF</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#9E947F" style="--c:#9E947F;--t:#111421;--j:4;--w:-25.3deg" aria-label="Taupe #9E947F kopieren"><span class="fa__n"><b>Taupe</b><small>#9E947F</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#EBDBCE" style="--c:#EBDBCE;--t:#111421;--j:5;--w:-22.7deg" aria-label="Creme #EBDBCE kopieren"><span class="fa__n"><b>Creme</b><small>#EBDBCE</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#FF3132" style="--c:#FF3132;--t:#111421;--j:6;--w:-20.0deg" aria-label="Signalrot #FF3132 kopieren"><span class="fa__n"><b>Signalrot</b><small>#FF3132</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#000000" style="--c:#000000;--t:#FBF6EE;--j:7;--w:-17.3deg" aria-label="Schwarz #000000 kopieren"><span class="fa__n"><b>Schwarz</b><small>#000000</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#C7B489" style="--c:#C7B489;--t:#111421;--j:8;--w:-14.7deg" aria-label="Gold #C7B489 kopieren"><span class="fa__n"><b>Gold</b><small>#C7B489</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#A8844F" style="--c:#A8844F;--t:#111421;--j:9;--w:-12.0deg" aria-label="Messing #A8844F kopieren"><span class="fa__n"><b>Messing</b><small>#A8844F</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#A07C3F" style="--c:#A07C3F;--t:#111421;--j:10;--w:-9.3deg" aria-label="Altgold #A07C3F kopieren"><span class="fa__n"><b>Altgold</b><small>#A07C3F</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#EFE6D2" style="--c:#EFE6D2;--t:#111421;--j:11;--w:-6.7deg" aria-label="Goldschimmer #EFE6D2 kopieren"><span class="fa__n"><b>Goldschimmer</b><small>#EFE6D2</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#E2AE68" style="--c:#E2AE68;--t:#111421;--j:12;--w:-4.0deg" aria-label="Licht #E2AE68 kopieren"><span class="fa__n"><b>Licht</b><small>#E2AE68</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#FFECBE" style="--c:#FFECBE;--t:#111421;--j:13;--w:-1.3deg" aria-label="Kerzenschein #FFECBE kopieren"><span class="fa__n"><b>Kerzenschein</b><small>#FFECBE</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#1C2140" style="--c:#1C2140;--t:#FBF6EE;--j:14;--w:1.3deg" aria-label="Hafenmarine #1C2140 kopieren"><span class="fa__n"><b>Hafenmarine</b><small>#1C2140</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#2E3A80" style="--c:#2E3A80;--t:#FBF6EE;--j:15;--w:4.0deg" aria-label="Kobalt #2E3A80 kopieren"><span class="fa__n"><b>Kobalt</b><small>#2E3A80</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#FBF6EE" style="--c:#FBF6EE;--t:#111421;--j:16;--w:6.7deg" aria-label="Papier #FBF6EE kopieren"><span class="fa__n"><b>Papier</b><small>#FBF6EE</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#EFE7DA" style="--c:#EFE7DA;--t:#111421;--j:17;--w:9.3deg" aria-label="Leinen #EFE7DA kopieren"><span class="fa__n"><b>Leinen</b><small>#EFE7DA</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#F3ECE2" style="--c:#F3ECE2;--t:#111421;--j:18;--w:12.0deg" aria-label="Creme hell #F3ECE2 kopieren"><span class="fa__n"><b>Creme hell</b><small>#F3ECE2</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#F4F1EB" style="--c:#F4F1EB;--t:#111421;--j:19;--w:14.7deg" aria-label="Leinen hell #F4F1EB kopieren"><span class="fa__n"><b>Leinen hell</b><small>#F4F1EB</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#10151D" style="--c:#10151D;--t:#FBF6EE;--j:20;--w:17.3deg" aria-label="Hafennacht #10151D kopieren"><span class="fa__n"><b>Hafennacht</b><small>#10151D</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#0B0C10" style="--c:#0B0C10;--t:#FBF6EE;--j:21;--w:20.0deg" aria-label="Tinte #0B0C10 kopieren"><span class="fa__n"><b>Tinte</b><small>#0B0C10</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#0A0C1A" style="--c:#0A0C1A;--t:#FBF6EE;--j:22;--w:22.7deg" aria-label="Tiefnacht #0A0C1A kopieren"><span class="fa__n"><b>Tiefnacht</b><small>#0A0C1A</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#0E1124" style="--c:#0E1124;--t:#FBF6EE;--j:23;--w:25.3deg" aria-label="Fensternacht #0E1124 kopieren"><span class="fa__n"><b>Fensternacht</b><small>#0E1124</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#1C1A17" style="--c:#1C1A17;--t:#FBF6EE;--j:24;--w:28.0deg" aria-label="Espresso #1C1A17 kopieren"><span class="fa__n"><b>Espresso</b><small>#1C1A17</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#3D372F" style="--c:#3D372F;--t:#FBF6EE;--j:25;--w:30.7deg" aria-label="Rauch #3D372F kopieren"><span class="fa__n"><b>Rauch</b><small>#3D372F</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#8C4B34" style="--c:#8C4B34;--t:#FBF6EE;--j:26;--w:33.3deg" aria-label="Ziegel #8C4B34 kopieren"><span class="fa__n"><b>Ziegel</b><small>#8C4B34</small></span><span class="fa__ok">kopiert</span></button><button class="fa" type="button" data-hex="#9A6F45" style="--c:#9A6F45;--t:#111421;--j:27;--w:36.0deg" aria-label="Teak #9A6F45 kopieren"><span class="fa__n"><b>Teak</b><small>#9A6F45</small></span><span class="fa__ok">kopiert</span></button></div><p class="faecher__h">Über den Fächer fahren, ein Klick kopiert den Farbwert.</p></div>
+    <div class="anteil" data-r="anteil"><p class="mk__kap"><b><span class="kw">MENGENVERHÄLTNIS</span></b><i></i><span>Anteil an allen Farbstellen der Website</span></p><div class="anteil__b"><span style="--p:39;--j:0;background:#FBF6EE;color:#111421"><b><span data-zahl="39">0</span> %</b><small>Hell</small></span><span style="--p:28;--j:1;background:#C7B489;color:#111421"><b><span data-zahl="28">0</span> %</b><small>Gold und Licht</small></span><span style="--p:26;--j:2;background:#111421;color:#FBF6EE"><b><span data-zahl="26">0</span> %</b><small>Dunkel</small></span><span style="--p:7;--j:3;background:#8C4B34;color:#FBF6EE"><b><span data-zahl="7">0</span> %</b><small>Holz und Stein</small></span></div></div>
+    <div class="gr" data-g>
+        <div class="gr__k" data-r style="--i:0"><p class="mk__kap"><b><span class="kw">DIE BASIS</span></b><i></i></p><p class="gr__s">Die acht Farben aus dem Branding vom 16.06.2026: dunkle Flächen, Weiss und warme Akzente. Rot steht nur als Punkt.</p><p class="gr__z">8 Farben</p></div>
+        <div class="gr__l n4"><button class="fk" type="button" data-r="feder" data-hex="#111421" style="--i:0;--c:#111421;--t:#FBF6EE" aria-label="Nacht #111421 kopieren">
+            <span class="fk__f"><span class="fk__hex">#111421</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Nacht</span>
+            <span class="fk__r">tiefstes Dunkel, der Grund · 20 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#111421<span>RGB</span><span class="wo">17 · 20 · 33</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#1F213B" style="--i:1;--c:#1F213B;--t:#FBF6EE" aria-label="Navy #1F213B kopieren">
+            <span class="fk__f"><span class="fk__hex">#1F213B</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Navy</span>
+            <span class="fk__r">Markenfläche · 3 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#1F213B<span>RGB</span><span class="wo">31 · 33 · 59</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#1F212C" style="--i:2;--c:#1F212C;--t:#FBF6EE" aria-label="Schiefer #1F212C kopieren">
+            <span class="fk__f"><span class="fk__hex">#1F212C</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Schiefer</span>
+            <span class="fk__r">zweite dunkle Fläche · 3 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#1F212C<span>RGB</span><span class="wo">31 · 33 · 44</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#FFFFFF" style="--i:3;--c:#FFFFFF;--t:#111421" aria-label="Weiss #FFFFFF kopieren">
+            <span class="fk__f"><span class="fk__hex">#FFFFFF</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Weiss</span>
+            <span class="fk__r">Zeichen auf Dunkel, helle Flächen · 421 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#FFFFFF<span>RGB</span><span class="wo">255 · 255 · 255</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#9E947F" style="--i:0;--c:#9E947F;--t:#111421" aria-label="Taupe #9E947F kopieren">
+            <span class="fk__f"><span class="fk__hex">#9E947F</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Taupe</span>
+            <span class="fk__r">warmer Akzent, Sand · 2 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#9E947F<span>RGB</span><span class="wo">158 · 148 · 127</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#EBDBCE" style="--i:1;--c:#EBDBCE;--t:#111421" aria-label="Creme #EBDBCE kopieren">
+            <span class="fk__f"><span class="fk__hex">#EBDBCE</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Creme</span>
+            <span class="fk__r">helle warme Fläche, Text auf Dunkel · 71 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#EBDBCE<span>RGB</span><span class="wo">235 · 219 · 206</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#FF3132" style="--i:2;--c:#FF3132;--t:#111421" aria-label="Signalrot #FF3132 kopieren">
+            <span class="fk__f"><span class="fk__hex">#FF3132</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Signalrot</span>
+            <span class="fk__r">nur als Punkt · 3 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#FF3132<span>RGB</span><span class="wo">255 · 49 · 50</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#000000" style="--i:3;--c:#000000;--t:#FBF6EE" aria-label="Schwarz #000000 kopieren">
+            <span class="fk__f"><span class="fk__hex">#000000</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Schwarz</span>
+            <span class="fk__r">Schrift auf Hell, Dokumente · 213 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#000000<span>RGB</span><span class="wo">0 · 0 · 0</span></span>
+          </button></div>
+      </div>
+    <div class="gr" data-g>
+        <div class="gr__k" data-r style="--i:0"><p class="mk__kap"><b><span class="kw">GOLD</span></b><i></i></p><p class="gr__s">Die Betonung der Website. Gold steht an Linien, Kapitelzeilen und Knäufen.</p><p class="gr__z">4 Farben</p></div>
+        <div class="gr__l n4"><button class="fk" type="button" data-r="feder" data-hex="#C7B489" style="--i:0;--c:#C7B489;--t:#111421" aria-label="Gold #C7B489 kopieren">
+            <span class="fk__f"><span class="fk__hex">#C7B489</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Gold</span>
+            <span class="fk__r">die Betonung auf Dunkel · 280 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#C7B489<span>RGB</span><span class="wo">199 · 180 · 137</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#A8844F" style="--i:1;--c:#A8844F;--t:#111421" aria-label="Messing #A8844F kopieren">
+            <span class="fk__f"><span class="fk__hex">#A8844F</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Messing</span>
+            <span class="fk__r">Beschläge, Kanten · 17 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#A8844F<span>RGB</span><span class="wo">168 · 132 · 79</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#A07C3F" style="--i:2;--c:#A07C3F;--t:#111421" aria-label="Altgold #A07C3F kopieren">
+            <span class="fk__f"><span class="fk__hex">#A07C3F</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Altgold</span>
+            <span class="fk__r">Gold auf hellem Grund · 32 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#A07C3F<span>RGB</span><span class="wo">160 · 124 · 63</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#EFE6D2" style="--i:3;--c:#EFE6D2;--t:#111421" aria-label="Goldschimmer #EFE6D2 kopieren">
+            <span class="fk__f"><span class="fk__hex">#EFE6D2</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Goldschimmer</span>
+            <span class="fk__r">heller Glanz im Verlauf · 32 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#EFE6D2<span>RGB</span><span class="wo">239 · 230 · 210</span></span>
+          </button></div>
+      </div>
+    <div class="gr" data-g>
+        <div class="gr__k" data-r style="--i:0"><p class="mk__kap"><b><span class="kw">LICHT UND WASSER</span></b><i></i></p><p class="gr__s">Die Lampen über dem Fleet und das Wasser zur blauen Stunde. Diese Töne stehen dort, wo ein Bild leuchten soll.</p><p class="gr__z">4 Farben</p></div>
+        <div class="gr__l n4"><button class="fk" type="button" data-r="feder" data-hex="#E2AE68" style="--i:0;--c:#E2AE68;--t:#111421" aria-label="Licht #E2AE68 kopieren">
+            <span class="fk__f"><span class="fk__hex">#E2AE68</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Licht</span>
+            <span class="fk__r">warmes Licht, Lampen, Abend · 77 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#E2AE68<span>RGB</span><span class="wo">226 · 174 · 104</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#FFECBE" style="--i:1;--c:#FFECBE;--t:#111421" aria-label="Kerzenschein #FFECBE kopieren">
+            <span class="fk__f"><span class="fk__hex">#FFECBE</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Kerzenschein</span>
+            <span class="fk__r">Lichtschein, nur durchscheinend · 15 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#FFECBE<span>RGB</span><span class="wo">255 · 236 · 190</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#1C2140" style="--i:2;--c:#1C2140;--t:#FBF6EE" aria-label="Hafenmarine #1C2140 kopieren">
+            <span class="fk__f"><span class="fk__hex">#1C2140</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Hafenmarine</span>
+            <span class="fk__r">Schrift auf Papier, Marine · 41 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#1C2140<span>RGB</span><span class="wo">28 · 33 · 64</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#2E3A80" style="--i:3;--c:#2E3A80;--t:#FBF6EE" aria-label="Kobalt #2E3A80 kopieren">
+            <span class="fk__f"><span class="fk__hex">#2E3A80</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Kobalt</span>
+            <span class="fk__r">nur als Schimmer · 27 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#2E3A80<span>RGB</span><span class="wo">46 · 58 · 128</span></span>
+          </button></div>
+      </div>
+    <div class="gr" data-g>
+        <div class="gr__k" data-r style="--i:0"><p class="mk__kap"><b><span class="kw">PAPIER UND LEINEN</span></b><i></i></p><p class="gr__s">Die hellen Flächen. Grosse Seiten stehen auf warmem Papier und Leinen.</p><p class="gr__z">4 Farben</p></div>
+        <div class="gr__l n4"><button class="fk" type="button" data-r="feder" data-hex="#FBF6EE" style="--i:0;--c:#FBF6EE;--t:#111421" aria-label="Papier #FBF6EE kopieren">
+            <span class="fk__f"><span class="fk__hex">#FBF6EE</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Papier</span>
+            <span class="fk__r">helle Seiten · 59 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#FBF6EE<span>RGB</span><span class="wo">251 · 246 · 238</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#EFE7DA" style="--i:1;--c:#EFE7DA;--t:#111421" aria-label="Leinen #EFE7DA kopieren">
+            <span class="fk__f"><span class="fk__hex">#EFE7DA</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Leinen</span>
+            <span class="fk__r">Tafeln auf Papier · 49 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#EFE7DA<span>RGB</span><span class="wo">239 · 231 · 218</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#F3ECE2" style="--i:2;--c:#F3ECE2;--t:#111421" aria-label="Creme hell #F3ECE2 kopieren">
+            <span class="fk__f"><span class="fk__hex">#F3ECE2</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Creme hell</span>
+            <span class="fk__r">zweites Papier · 20 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#F3ECE2<span>RGB</span><span class="wo">243 · 236 · 226</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#F4F1EB" style="--i:3;--c:#F4F1EB;--t:#111421" aria-label="Leinen hell #F4F1EB kopieren">
+            <span class="fk__f"><span class="fk__hex">#F4F1EB</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Leinen hell</span>
+            <span class="fk__r">ruhige Fläche hinter Bildern · 20 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#F4F1EB<span>RGB</span><span class="wo">244 · 241 · 235</span></span>
+          </button></div>
+      </div>
+    <div class="gr" data-g>
+        <div class="gr__k" data-r style="--i:0"><p class="mk__kap"><b><span class="kw">DIE TIEFEN DER NACHT</span></b><i></i></p><p class="gr__s">Die dunklen Töne zwischen Nacht und Navy, aus denen die Website ihre dunklen Flächen baut.</p><p class="gr__z">4 Farben</p></div>
+        <div class="gr__l n4"><button class="fk" type="button" data-r="feder" data-hex="#10151D" style="--i:0;--c:#10151D;--t:#FBF6EE" aria-label="Hafennacht #10151D kopieren">
+            <span class="fk__f"><span class="fk__hex">#10151D</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Hafennacht</span>
+            <span class="fk__r">tiefe Fläche · 56 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#10151D<span>RGB</span><span class="wo">16 · 21 · 29</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#0B0C10" style="--i:1;--c:#0B0C10;--t:#FBF6EE" aria-label="Tinte #0B0C10 kopieren">
+            <span class="fk__f"><span class="fk__hex">#0B0C10</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Tinte</span>
+            <span class="fk__r">dunkelster Ton · 27 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#0B0C10<span>RGB</span><span class="wo">11 · 12 · 16</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#0A0C1A" style="--i:2;--c:#0A0C1A;--t:#FBF6EE" aria-label="Tiefnacht #0A0C1A kopieren">
+            <span class="fk__f"><span class="fk__hex">#0A0C1A</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Tiefnacht</span>
+            <span class="fk__r">Nacht mit Blau · 19 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#0A0C1A<span>RGB</span><span class="wo">10 · 12 · 26</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#0E1124" style="--i:3;--c:#0E1124;--t:#FBF6EE" aria-label="Fensternacht #0E1124 kopieren">
+            <span class="fk__f"><span class="fk__hex">#0E1124</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Fensternacht</span>
+            <span class="fk__r">Fenster und Rahmen · 19 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#0E1124<span>RGB</span><span class="wo">14 · 17 · 36</span></span>
+          </button></div>
+      </div>
+    <div class="gr" data-g>
+        <div class="gr__k" data-r style="--i:0"><p class="mk__kap"><b><span class="kw">HOLZ UND STEIN</span></b><i></i></p><p class="gr__s">Backstein, dunkles Holz, Espresso. Die erdigen Töne für Schrift auf Papier und für warme Flächen.</p><p class="gr__z">4 Farben</p></div>
+        <div class="gr__l n4"><button class="fk" type="button" data-r="feder" data-hex="#1C1A17" style="--i:0;--c:#1C1A17;--t:#FBF6EE" aria-label="Espresso #1C1A17 kopieren">
+            <span class="fk__f"><span class="fk__hex">#1C1A17</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Espresso</span>
+            <span class="fk__r">Schrift auf Papier · 43 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#1C1A17<span>RGB</span><span class="wo">28 · 26 · 23</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#3D372F" style="--i:1;--c:#3D372F;--t:#FBF6EE" aria-label="Rauch #3D372F kopieren">
+            <span class="fk__f"><span class="fk__hex">#3D372F</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Rauch</span>
+            <span class="fk__r">Lesetext auf Hell · 27 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#3D372F<span>RGB</span><span class="wo">61 · 55 · 47</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#8C4B34" style="--i:2;--c:#8C4B34;--t:#FBF6EE" aria-label="Ziegel #8C4B34 kopieren">
+            <span class="fk__f"><span class="fk__hex">#8C4B34</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Ziegel</span>
+            <span class="fk__r">Backstein · 22 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#8C4B34<span>RGB</span><span class="wo">140 · 75 · 52</span></span>
+          </button><button class="fk" type="button" data-r="feder" data-hex="#9A6F45" style="--i:3;--c:#9A6F45;--t:#111421" aria-label="Teak #9A6F45 kopieren">
+            <span class="fk__f"><span class="fk__hex">#9A6F45</span><span class="fk__ok">kopiert</span></span>
+            <span class="fk__n">Teak</span>
+            <span class="fk__r">Holz · 15 Stellen</span>
+            <span class="fk__w"><span>HEX</span>#9A6F45<span>RGB</span><span class="wo">154 · 111 · 69</span></span>
+          </button></div>
+      </div>
+    <div class="kontrast">
+      <div class="kontrast__k" data-r><p class="mk__kap"><b><span class="kw">LESBARKEIT</span></b><i></i></p><h3>Welche Farbe auf welcher stehen darf.</h3><p>Gerechnet nach dem internationalen Standard für Lesbarkeit im Netz (WCAG 2.1). Ab 4,5 zu 1 ist Lesetext gut lesbar, ab 3 zu 1 grosse Zeilen.</p></div>
+      <ul class="kontrast__l" data-g><li class="ko" data-r="feder" style="--i:0;--g:#111421;--s:#FFFFFF">
+          <span class="ko__p"><span>Aa</span><small>Tasty Studios</small></span>
+          <span class="ko__n"><b>Weiss auf Nacht</b><small>Lesetext auf Dunkel</small></span>
+          <span class="ko__z"><b><span data-zahl="18.3" data-komma>0</span></b><small>zu 1</small></span>
+          <em class="ko__u">Sehr gut, auch für langen Text</em>
+        </li><li class="ko" data-r="feder" style="--i:1;--g:#1F213B;--s:#EBDBCE">
+          <span class="ko__p"><span>Aa</span><small>Tasty Studios</small></span>
+          <span class="ko__n"><b>Creme auf Navy</b><small>Text auf der Markenfläche</small></span>
+          <span class="ko__z"><b><span data-zahl="11.6" data-komma>0</span></b><small>zu 1</small></span>
+          <em class="ko__u">Sehr gut, auch für langen Text</em>
+        </li><li class="ko" data-r="feder" style="--i:2;--g:#111421;--s:#C7B489">
+          <span class="ko__p"><span>Aa</span><small>Tasty Studios</small></span>
+          <span class="ko__n"><b>Gold auf Nacht</b><small>Betonung auf Dunkel</small></span>
+          <span class="ko__z"><b><span data-zahl="9.0" data-komma>0</span></b><small>zu 1</small></span>
+          <em class="ko__u">Sehr gut, auch für langen Text</em>
+        </li><li class="ko" data-r="feder" style="--i:0;--g:#FBF6EE;--s:#1C1A17">
+          <span class="ko__p"><span>Aa</span><small>Tasty Studios</small></span>
+          <span class="ko__n"><b>Espresso auf Papier</b><small>Lesetext auf Hell</small></span>
+          <span class="ko__z"><b><span data-zahl="16.1" data-komma>0</span></b><small>zu 1</small></span>
+          <em class="ko__u">Sehr gut, auch für langen Text</em>
+        </li><li class="ko" data-r="feder" style="--i:1;--g:#FBF6EE;--s:#A07C3F">
+          <span class="ko__p"><span>Aa</span><small>Tasty Studios</small></span>
+          <span class="ko__n"><b>Altgold auf Papier</b><small>Betonung auf Hell</small></span>
+          <span class="ko__z"><b><span data-zahl="3.6" data-komma>0</span></b><small>zu 1</small></span>
+          <em class="ko__u">Nur grosse Zeilen</em>
+        </li><li class="ko" data-r="feder" style="--i:2;--g:#111421;--s:#FF3132">
+          <span class="ko__p"><span>Aa</span><small>Tasty Studios</small></span>
+          <span class="ko__n"><b>Signalrot auf Nacht</b><small>der rote Punkt</small></span>
+          <span class="ko__z"><b><span data-zahl="5.0" data-komma>0</span></b><small>zu 1</small></span>
+          <em class="ko__u">Gut für Lesetext</em>
+        </li></ul>
+    </div>
+  </div>
+</section>
+<section class="ab blatt marine" id="herkunft">
+  <div class="in">
+    <header class="mk" data-r="kopf">
+      <div><p class="mk__kap"><b><span class="kw">HERKUNFT</span></b><i></i></p>
+      <h2 class="mk__t"><span class="z"><span>Woher die</span></span><span class="z"><span><em>Farben kommen.</em></span></span></h2></div>
+      <p class="mk__lead">Die Farben der Website stecken in ihren Fotos: Backstein, Messing, Wasser zur blauen Stunde. Unter jedem Foto stehen die fünf Töne, die beim Bau dieser Seite aus dem Foto gemessen wurden, mit Wert und Anteil am Bild. Darunter die Töne der Palette, die ihnen am nächsten liegen.</p>
+    </header>
+    <div class="hers" data-g><article class="her k3" data-r="feder" style="--i:0">
+        <div class="k3__b her__b"><img src="buch/bilder/k-bar-1600.webp" alt="Die Bar im Speicher" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="kerbe"><span class="kw">DIE BAR IM SPEICHER</span></span></div>
+        <ul class="her__ch" aria-label="Aus dem Foto gemessen"><li style="--j:0"><i style="background:#EAAE59"></i><b>#EAAE59</b><small>14 %</small></li><li style="--j:1"><i style="background:#A36931"></i><b>#A36931</b><small>13 %</small></li><li style="--j:2"><i style="background:#302D38"></i><b>#302D38</b><small>18 %</small></li><li style="--j:3"><i style="background:#21130A"></i><b>#21130A</b><small>28 %</small></li><li style="--j:4"><i style="background:#04090A"></i><b>#04090A</b><small>29 %</small></li></ul>
+        <p class="her__x">Warmes Licht hinter den Flaschen, dahinter das blaue Fenster zum Hafen.</p>
+        <p class="her__wird"><span><span class="kw">IN DER PALETTE</span></span><span class="mini"><i style="background:#E2AE68"></i>Licht</span><span class="mini"><i style="background:#9A6F45"></i>Teak</span><span class="mini"><i style="background:#3D372F"></i>Rauch</span></p>
+      </article><article class="her k3" data-r="feder" style="--i:1">
+        <div class="k3__b her__b"><img src="buch/bilder/fen-speicherstadt-1400.webp" alt="Speicherstadt bei Nacht" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="kerbe"><span class="kw">SPEICHERSTADT BEI NACHT</span></span></div>
+        <ul class="her__ch" aria-label="Aus dem Foto gemessen"><li style="--j:0"><i style="background:#38516B"></i><b>#38516B</b><small>16 %</small></li><li style="--j:1"><i style="background:#353941"></i><b>#353941</b><small>8 %</small></li><li style="--j:2"><i style="background:#261D20"></i><b>#261D20</b><small>26 %</small></li><li style="--j:3"><i style="background:#181114"></i><b>#181114</b><small>25 %</small></li><li style="--j:4"><i style="background:#060709"></i><b>#060709</b><small>24 %</small></li></ul>
+        <p class="her__x">Backstein, eine Brücke, Laternen über dem Fleet.</p>
+        <p class="her__wird"><span><span class="kw">IN DER PALETTE</span></span><span class="mini"><i style="background:#2E3A80"></i>Kobalt</span><span class="mini"><i style="background:#3D372F"></i>Rauch</span><span class="mini"><i style="background:#1C1A17"></i>Espresso</span></p>
+      </article><article class="her k3" data-r="feder" style="--i:2">
+        <div class="k3__b her__b"><img src="buch/bilder/k-empfang-1600.webp" alt="Der Empfang" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="kerbe"><span class="kw">DER EMPFANG</span></span></div>
+        <ul class="her__ch" aria-label="Aus dem Foto gemessen"><li style="--j:0"><i style="background:#70A7BD"></i><b>#70A7BD</b><small>14 %</small></li><li style="--j:1"><i style="background:#787266"></i><b>#787266</b><small>11 %</small></li><li style="--j:2"><i style="background:#503C2C"></i><b>#503C2C</b><small>22 %</small></li><li style="--j:3"><i style="background:#1F160E"></i><b>#1F160E</b><small>21 %</small></li><li style="--j:4"><i style="background:#060E12"></i><b>#060E12</b><small>32 %</small></li></ul>
+        <p class="her__x">Messinglampe, dunkles Holz, die Kräne vor dem Fenster.</p>
+        <p class="her__wird"><span><span class="kw">IN DER PALETTE</span></span><span class="mini"><i style="background:#9E947F"></i>Taupe</span><span class="mini"><i style="background:#9A6F45"></i>Teak</span><span class="mini"><i style="background:#3D372F"></i>Rauch</span></p>
+      </article><article class="her k3" data-r="feder" style="--i:0">
+        <div class="k3__b her__b"><img src="buch/bilder/fen-anleger-1400.webp" alt="Der Anleger" loading="lazy" decoding="async" style="object-position:50% 60%"><span class="kerbe"><span class="kw">DER ANLEGER</span></span></div>
+        <ul class="her__ch" aria-label="Aus dem Foto gemessen"><li style="--j:0"><i style="background:#375F7E"></i><b>#375F7E</b><small>24 %</small></li><li style="--j:1"><i style="background:#2B272D"></i><b>#2B272D</b><small>22 %</small></li><li style="--j:2"><i style="background:#1F1617"></i><b>#1F1617</b><small>19 %</small></li><li style="--j:3"><i style="background:#140E0D"></i><b>#140E0D</b><small>12 %</small></li><li style="--j:4"><i style="background:#050505"></i><b>#050505</b><small>23 %</small></li></ul>
+        <p class="her__x">Blaue Stunde, ein Licht am Steg, Wasser bis zum Horizont.</p>
+        <p class="her__wird"><span><span class="kw">IN DER PALETTE</span></span><span class="mini"><i style="background:#2E3A80"></i>Kobalt</span><span class="mini"><i style="background:#1F212C"></i>Schiefer</span><span class="mini"><i style="background:#1C1A17"></i>Espresso</span></p>
+      </article><article class="her k3" data-r="feder" style="--i:1">
+        <div class="k3__b her__b"><img src="buch/bilder/k-m-papier-1600.webp" alt="Brief mit Siegel" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="kerbe"><span class="kw">BRIEF MIT SIEGEL</span></span></div>
+        <ul class="her__ch" aria-label="Aus dem Foto gemessen"><li style="--j:0"><i style="background:#EFE3CE"></i><b>#EFE3CE</b><small>32 %</small></li><li style="--j:1"><i style="background:#A37B5A"></i><b>#A37B5A</b><small>12 %</small></li><li style="--j:2"><i style="background:#382422"></i><b>#382422</b><small>17 %</small></li><li style="--j:3"><i style="background:#1A191F"></i><b>#1A191F</b><small>18 %</small></li><li style="--j:4"><i style="background:#081018"></i><b>#081018</b><small>21 %</small></li></ul>
+        <p class="her__x">Papier, Siegellack und Messing auf altem Holz.</p>
+        <p class="her__wird"><span><span class="kw">IN DER PALETTE</span></span><span class="mini"><i style="background:#EFE6D2"></i>Goldschimmer</span><span class="mini"><i style="background:#A8844F"></i>Messing</span><span class="mini"><i style="background:#3D372F"></i>Rauch</span></p>
+      </article><article class="her k3" data-r="feder" style="--i:2">
+        <div class="k3__b her__b"><img src="buch/bilder/k-treppe-1200.webp" alt="Das Treppenhaus" loading="lazy" decoding="async" style="object-position:50% 40%"><span class="kerbe"><span class="kw">DAS TREPPENHAUS</span></span></div>
+        <ul class="her__ch" aria-label="Aus dem Foto gemessen"><li style="--j:0"><i style="background:#7F7A6E"></i><b>#7F7A6E</b><small>9 %</small></li><li style="--j:1"><i style="background:#5B4436"></i><b>#5B4436</b><small>18 %</small></li><li style="--j:2"><i style="background:#392B22"></i><b>#392B22</b><small>23 %</small></li><li style="--j:3"><i style="background:#181512"></i><b>#181512</b><small>21 %</small></li><li style="--j:4"><i style="background:#050B0E"></i><b>#050B0E</b><small>29 %</small></li></ul>
+        <p class="her__x">Ziegel, Stahl und eine Laterne vor dem Fenster.</p>
+        <p class="her__wird"><span><span class="kw">IN DER PALETTE</span></span><span class="mini"><i style="background:#9E947F"></i>Taupe</span><span class="mini"><i style="background:#3D372F"></i>Rauch</span><span class="mini"><i style="background:#1C1A17"></i>Espresso</span></p>
+      </article></div>
+  </div>
+</section>
+<section class="ab blatt papier" id="schrift">
+  <div class="in">
+    <header class="mk" data-r="kopf">
+      <div><p class="mk__kap"><b><span class="kw">SCHRIFT</span></b><i></i></p>
+      <h2 class="mk__t"><span class="z"><span>Drei</span></span><span class="z"><span><em>Schriften.</em></span></span></h2></div>
+      <p class="mk__lead">Auf der Website stehen drei Schriften, jede mit einer festen Aufgabe: Antonio für alle Überschriften, Instrument Sans für alles, was gelesen wird, DM Mono für Etiketten und Werte. Betont wird über Farbe, nie kursiv.</p>
+    </header>
+    <p class="mk__kap" data-r><b><span class="kw">SO STEHEN SIE ZUSAMMEN</span></b><i></i></p>
+    <div class="hier" data-r>
+      <div class="hier__s">
+        <p class="hier__e f-dmm">WIE WIR WEBSITES DENKEN</p>
+        <p class="hier__t f-ant">MITGEDACHT, <em>BEVOR DER GAST FRAGT.</em></p>
+        <p class="hier__z f-ins">Eine Hotel-Website ist mehr als schöne Bilder und ein Knopf zum Buchen.</p>
+        <p class="hier__f f-ins">Wir bauen sie entlang des Weges, den ein Gast wirklich geht: vom ersten Blick über die Anreise bis zum letzten Zug nach Hause.</p>
+      </div>
+      <dl class="hier__l"><dt>Etikett</dt><dd>DM Mono, Versalien, gesperrt</dd><dt>Überschrift</dt><dd>Antonio 700, Versalien, zweite Zeile in Sand</dd><dt>Satz</dt><dd>Instrument Sans 600</dd><dt>Fliesstext</dt><dd>Instrument Sans 400</dd></dl>
+    </div>
+    <div class="schs"><article class="sch" data-g>
+        <div class="sch__k" data-r style="--i:0"><p class="mk__kap"><b><span class="kw">ÜBERSCHRIFTEN</span></b><i></i></p><h3 class="sch__n f-ant">Antonio</h3><dl><dt>Stärken</dt><dd>500, 600, 700</dd><dt>Wofür</dt><dd>alle Überschriften und grossen Zahlen, in Versalien, Betonung über Farbe</dd><dt>Auf der Website</dt><dd><span data-zahl="171">0</span> Stellen</dd></dl></div>
+        <div class="sch__aa f-ant" data-r="maske" aria-hidden="true"><span class="z"><span>Aa</span></span></div>
+        <div class="sch__r" data-r style="--i:2"><p class="sch__satz f-ant" aria-label="MITGEDACHT, BEVOR DER GAST FRAGT."><span class="wo"><span class="ro" style="--k:0" data-c="M">M</span><span class="ro" style="--k:1" data-c="I">I</span><span class="ro" style="--k:2" data-c="T">T</span><span class="ro" style="--k:3" data-c="G">G</span><span class="ro" style="--k:4" data-c="E">E</span><span class="ro" style="--k:5" data-c="D">D</span><span class="ro" style="--k:6" data-c="A">A</span><span class="ro" style="--k:7" data-c="C">C</span><span class="ro" style="--k:8" data-c="H">H</span><span class="ro" style="--k:9" data-c="T">T</span><span class="ro" style="--k:10" data-c=",">,</span></span> <span class="wo"><span class="ro" style="--k:12" data-c="B">B</span><span class="ro" style="--k:13" data-c="E">E</span><span class="ro" style="--k:14" data-c="V">V</span><span class="ro" style="--k:15" data-c="O">O</span><span class="ro" style="--k:16" data-c="R">R</span></span> <span class="wo"><span class="ro" style="--k:18" data-c="D">D</span><span class="ro" style="--k:19" data-c="E">E</span><span class="ro" style="--k:20" data-c="R">R</span></span> <span class="wo"><span class="ro" style="--k:22" data-c="G">G</span><span class="ro" style="--k:23" data-c="A">A</span><span class="ro" style="--k:24" data-c="S">S</span><span class="ro" style="--k:25" data-c="T">T</span></span> <span class="wo"><span class="ro" style="--k:27" data-c="F">F</span><span class="ro" style="--k:28" data-c="R">R</span><span class="ro" style="--k:29" data-c="A">A</span><span class="ro" style="--k:30" data-c="G">G</span><span class="ro" style="--k:31" data-c="T">T</span><span class="ro" style="--k:32" data-c=".">.</span></span></p><p class="sch__abc f-ant">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyzäöüß<br>0123456789 · Hamburg · 20457</p></div>
+      </article><article class="sch" data-g>
+        <div class="sch__k" data-r style="--i:0"><p class="mk__kap"><b><span class="kw">LESETEXT</span></b><i></i></p><h3 class="sch__n f-ins">Instrument Sans</h3><dl><dt>Stärken</dt><dd>400, 500, 600</dd><dt>Wofür</dt><dd>Lesetext und grosse Sätze</dd><dt>Auf der Website</dt><dd><span data-zahl="57">0</span> Stellen</dd></dl></div>
+        <div class="sch__aa f-ins" data-r="maske" aria-hidden="true"><span class="z"><span>Aa</span></span></div>
+        <div class="sch__r" data-r style="--i:2"><p class="sch__satz f-ins" aria-label="Wir bauen für Hotels und Restaurants die Website und das System dahinter."><span class="wo"><span class="ro" style="--k:0" data-c="W">W</span><span class="ro" style="--k:1" data-c="i">i</span><span class="ro" style="--k:2" data-c="r">r</span></span> <span class="wo"><span class="ro" style="--k:4" data-c="b">b</span><span class="ro" style="--k:5" data-c="a">a</span><span class="ro" style="--k:6" data-c="u">u</span><span class="ro" style="--k:7" data-c="e">e</span><span class="ro" style="--k:8" data-c="n">n</span></span> <span class="wo"><span class="ro" style="--k:10" data-c="f">f</span><span class="ro" style="--k:11" data-c="ü">ü</span><span class="ro" style="--k:12" data-c="r">r</span></span> <span class="wo"><span class="ro" style="--k:14" data-c="H">H</span><span class="ro" style="--k:15" data-c="o">o</span><span class="ro" style="--k:16" data-c="t">t</span><span class="ro" style="--k:17" data-c="e">e</span><span class="ro" style="--k:18" data-c="l">l</span><span class="ro" style="--k:19" data-c="s">s</span></span> <span class="wo"><span class="ro" style="--k:21" data-c="u">u</span><span class="ro" style="--k:22" data-c="n">n</span><span class="ro" style="--k:23" data-c="d">d</span></span> <span class="wo"><span class="ro" style="--k:25" data-c="R">R</span><span class="ro" style="--k:26" data-c="e">e</span><span class="ro" style="--k:27" data-c="s">s</span><span class="ro" style="--k:28" data-c="t">t</span><span class="ro" style="--k:29" data-c="a">a</span><span class="ro" style="--k:30" data-c="u">u</span><span class="ro" style="--k:31" data-c="r">r</span><span class="ro" style="--k:32" data-c="a">a</span><span class="ro" style="--k:33" data-c="n">n</span><span class="ro" style="--k:34" data-c="t">t</span><span class="ro" style="--k:35" data-c="s">s</span></span> <span class="wo"><span class="ro" style="--k:37" data-c="d">d</span><span class="ro" style="--k:38" data-c="i">i</span><span class="ro" style="--k:39" data-c="e">e</span></span> <span class="wo"><span class="ro" style="--k:41" data-c="W">W</span><span class="ro" style="--k:42" data-c="e">e</span><span class="ro" style="--k:43" data-c="b">b</span><span class="ro" style="--k:44" data-c="s">s</span><span class="ro" style="--k:45" data-c="i">i</span><span class="ro" style="--k:46" data-c="t">t</span><span class="ro" style="--k:47" data-c="e">e</span></span> <span class="wo"><span class="ro" style="--k:49" data-c="u">u</span><span class="ro" style="--k:50" data-c="n">n</span><span class="ro" style="--k:51" data-c="d">d</span></span> <span class="wo"><span class="ro" style="--k:53" data-c="d">d</span><span class="ro" style="--k:54" data-c="a">a</span><span class="ro" style="--k:55" data-c="s">s</span></span> <span class="wo"><span class="ro" style="--k:57" data-c="S">S</span><span class="ro" style="--k:58" data-c="y">y</span><span class="ro" style="--k:59" data-c="s">s</span><span class="ro" style="--k:60" data-c="t">t</span><span class="ro" style="--k:61" data-c="e">e</span><span class="ro" style="--k:62" data-c="m">m</span></span> <span class="wo"><span class="ro" style="--k:64" data-c="d">d</span><span class="ro" style="--k:65" data-c="a">a</span><span class="ro" style="--k:66" data-c="h">h</span><span class="ro" style="--k:67" data-c="i">i</span><span class="ro" style="--k:68" data-c="n">n</span><span class="ro" style="--k:69" data-c="t">t</span><span class="ro" style="--k:70" data-c="e">e</span><span class="ro" style="--k:71" data-c="r">r</span><span class="ro" style="--k:72" data-c=".">.</span></span></p><p class="sch__abc f-ins">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyzäöüß<br>0123456789 · Hamburg · 20457</p></div>
+      </article><article class="sch" data-g>
+        <div class="sch__k" data-r style="--i:0"><p class="mk__kap"><b><span class="kw">ETIKETTEN</span></b><i></i></p><h3 class="sch__n f-dmm">DM Mono</h3><dl><dt>Stärken</dt><dd>400, 500, 600</dd><dt>Wofür</dt><dd>Etiketten, Knöpfe, Werte und Zeiten, gesperrt in Versalien</dd><dt>Auf der Website</dt><dd><span data-zahl="163">0</span> Stellen</dd></dl></div>
+        <div class="sch__aa f-dmm" data-r="maske" aria-hidden="true"><span class="z"><span>Aa</span></span></div>
+        <div class="sch__r" data-r style="--i:2"><p class="sch__satz f-dmm" aria-label="MARKENBUCH · 17.11.2026"><span class="wo"><span class="ro" style="--k:0" data-c="M">M</span><span class="ro" style="--k:1" data-c="A">A</span><span class="ro" style="--k:2" data-c="R">R</span><span class="ro" style="--k:3" data-c="K">K</span><span class="ro" style="--k:4" data-c="E">E</span><span class="ro" style="--k:5" data-c="N">N</span><span class="ro" style="--k:6" data-c="B">B</span><span class="ro" style="--k:7" data-c="U">U</span><span class="ro" style="--k:8" data-c="C">C</span><span class="ro" style="--k:9" data-c="H">H</span></span> <span class="wo"><span class="ro" style="--k:11" data-c="·">·</span></span> <span class="wo"><span class="ro" style="--k:13" data-c="1">1</span><span class="ro" style="--k:14" data-c="7">7</span><span class="ro" style="--k:15" data-c=".">.</span><span class="ro" style="--k:16" data-c="1">1</span><span class="ro" style="--k:17" data-c="1">1</span><span class="ro" style="--k:18" data-c=".">.</span><span class="ro" style="--k:19" data-c="2">2</span><span class="ro" style="--k:20" data-c="0">0</span><span class="ro" style="--k:21" data-c="2">2</span><span class="ro" style="--k:22" data-c="6">6</span></span></p><p class="sch__abc f-dmm">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyzäöüß<br>0123456789 · Hamburg · 20457</p></div>
+      </article></div>
+  </div>
+</section>
+<section class="ab blatt creme" id="dokumente">
+  <div class="in">
+    <header class="mk" data-r="kopf">
+      <div><p class="mk__kap"><b><span class="kw">DOKUMENTE</span></b><i></i></p>
+      <h2 class="mk__t"><span class="z"><span>Montserrat</span></span><span class="z"><span><em>in drei Schnitten.</em></span></span></h2></div>
+      <p class="mk__lead">Verträge, Konzepte und Angebote stehen in einer einzigen Schrift: Montserrat Light 300, Regular 400 und Medium 500. Betonung entsteht über das Gewicht 500 und über Abstand. Auf jeder Seite liegt mittig der Anker als Wasserzeichen, Deckkraft 6 Prozent.</p>
+    </header>
+    <div class="mschs" data-g><article class="msch" data-r="feder" style="--i:0"><span class="msch__aa" style="font-weight:300">Aa</span><p class="msch__n">Montserrat Light <small>300</small></p><p class="msch__abc" style="font-weight:300">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyzäöüß<br>0123456789 · § 1 (1) (2)</p><p class="msch__w">«zwischen» und «und» auf der Titelseite eines Vertrags</p></article><article class="msch" data-r="feder" style="--i:1"><span class="msch__aa" style="font-weight:400">Aa</span><p class="msch__n">Montserrat Regular <small>400</small></p><p class="msch__abc" style="font-weight:400">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyzäöüß<br>0123456789 · § 1 (1) (2)</p><p class="msch__w">Fliesstext, Aufzählungen, Kapitel und Untertitel</p></article><article class="msch" data-r="feder" style="--i:2"><span class="msch__aa" style="font-weight:500">Aa</span><p class="msch__n">Montserrat Medium <small>500</small></p><p class="msch__abc" style="font-weight:500">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyzäöüß<br>0123456789 · § 1 (1) (2)</p><p class="msch__w">Dokumenttitel, Überschriften und die Leitwörter «Umsetzung:» und «Was sich ändert:»</p></article></div>
+    <div class="skalen" data-g>
+      <div class="skala" data-r="feder" style="--i:0"><h3>Vertrag</h3><p>Mit §-Absätzen. Die Titelseite steht zentriert, nach einem Seitenumbruch beginnt der Vertrag mit §1.</p>
+        <table class="dok__tab"><colgroup><col style="width:40%"><col style="width:16%"><col style="width:24%"><col style="width:20%"></colgroup><thead><tr><th>Rolle</th><th>Grösse</th><th>Schnitt</th><th>Satz</th></tr></thead><tbody><tr><th><span>Dokumenttitel</span></th><td><span>28 pt</span></td><td><span>500</span></td><td><span>zentriert</span></td></tr><tr><th><span>Untertitel</span></th><td><span>17 pt</span></td><td><span>400</span></td><td><span>zentriert</span></td></tr><tr><th><span>«zwischen», «und»</span></th><td><span>10 pt</span></td><td><span>300</span></td><td><span>zentriert</span></td></tr><tr><th><span>§-Überschrift</span></th><td><span>12 pt</span></td><td><span>500</span></td><td><span>links</span></td></tr><tr><th><span>Unterüberschrift</span></th><td><span>11 pt</span></td><td><span>500</span></td><td><span>links</span></td></tr><tr><th><span>Fliesstext</span></th><td><span>11 pt</span></td><td><span>400</span></td><td><span>links</span></td></tr></tbody></table></div>
+      <div class="skala" data-r="feder" style="--i:1"><h3>Fachdokument</h3><p>Konzept, Angebot, Bericht. Zwei Ebenen: Kapitel zentriert mit Einleitung, Abschnitt links, die Nummer in 500, der Rest in 400.</p>
+        <table class="dok__tab"><colgroup><col style="width:40%"><col style="width:16%"><col style="width:24%"><col style="width:20%"></colgroup><thead><tr><th>Rolle</th><th>Grösse</th><th>Schnitt</th><th>Satz</th></tr></thead><tbody><tr><th><span>Kapitel</span></th><td><span>22 pt</span></td><td><span>400</span></td><td><span>zentriert</span></td></tr><tr><th><span>Einleitung</span></th><td><span>11 pt</span></td><td><span>400</span></td><td><span>zentriert</span></td></tr><tr><th><span>Abschnitt</span></th><td><span>15 pt</span></td><td><span>500 / 400</span></td><td><span>links</span></td></tr><tr><th><span>Leitwort</span></th><td><span>12 pt</span></td><td><span>500</span></td><td><span>links</span></td></tr><tr><th><span>Fliesstext</span></th><td><span>11 pt</span></td><td><span>400</span></td><td><span>links</span></td></tr><tr><th><span>Aufzählung</span></th><td><span>11 pt</span></td><td><span>400</span></td><td><span>Einzug 36 pt</span></td></tr></tbody></table></div>
+    </div>
+    <div class="satz3" data-g>
+      <div data-r style="--i:0"><h3>Reines Schwarz</h3><p>Schrift durchgehend #000000 auf weissem Grund. Keine Grautöne, kein Kursiv, keine Unterstreichung ausser in Links.</p></div>
+      <div data-r style="--i:1"><h3>Die Seite</h3><p>A4 hochkant, Ränder 72 pt (2,54 cm) auf allen Seiten, keine Kopf- und Fusszeile, keine Seitenzahlen.</p></div>
+      <div data-r style="--i:2"><h3>Abstände</h3><p>Zeilenabstand 1,15 überall, 12 pt über und unter jedem Absatz, 18 pt über jeder Überschrift. Fliesstext links, ohne Blocksatz.</p></div>
+    </div>
+  </div>
+</section>
+<section class="fenster" aria-label="Die Terrasse am Hafen mit Lichterkette">
+  <div class="fenster__f">
+    <div class="fenster__b"><img src="buch/bilder/k-terrasse-2400.webp" alt="Die Terrasse am Hafen mit Lichterkette" decoding="async"></div>
+    <div class="fenster__t"><p class="fenster__s"><span class="z"><span>Warmes Licht</span></span><span class="z"><span><em>im Dunkeln.</em></span></span></p><p class="fenster__u">Das erste Gesetz der Bildsprache.</p></div>
+  </div>
+</section>
+<section class="ab blatt papier" id="bilder">
+  <div class="in">
+    <header class="mk" data-r="kopf">
+      <div><p class="mk__kap"><b><span class="kw">BILDSPRACHE</span></b><i></i></p>
+      <h2 class="mk__t"><span class="z"><span>Der Ort</span></span><span class="z"><span><em>im Vordergrund.</em></span></span></h2></div>
+      <p class="mk__lead">Gezeigt wird, was man an einem echten Abend am Hafen sieht: Backstein, Messing, Wasser zur blauen Stunde, eine lange Tafel bei Kerzenlicht. Niemand posiert.</p>
+    </header>
+    <div class="collage" data-g><figure class="bi b1 k3" data-r="feder" style="--i:0"><div class="k3__b"><img src="buch/bilder/k-tafel-1600.webp" alt="Die lange Tafel" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="kerbe"><span class="kw">DIE LANGE TAFEL</span></figcaption></div></figure><figure class="bi b2 k3" data-r="feder" style="--i:1"><div class="k3__b"><img src="buch/bilder/fen-lobby-1400.webp" alt="Die Lobby am Wasser" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="kerbe"><span class="kw">DIE LOBBY AM WASSER</span></figcaption></div></figure><figure class="bi b3 k3" data-r="feder" style="--i:2"><div class="k3__b"><img src="buch/bilder/k-morgen-1600.webp" alt="Der Morgen am Fenster" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="kerbe"><span class="kw">DER MORGEN AM FENSTER</span></figcaption></div></figure><figure class="bi b4 k3" data-r="feder" style="--i:0"><div class="k3__b"><img src="buch/bilder/fen-faehre-1400.webp" alt="Die Barkasse" loading="lazy" decoding="async" style="object-position:40% 50%"><figcaption class="kerbe"><span class="kw">DIE BARKASSE</span></figcaption></div></figure><figure class="bi b5 k3" data-r="feder" style="--i:1"><div class="k3__b"><img src="buch/bilder/k-zimmer-1600.webp" alt="Das Zimmer zum Hafen" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="kerbe"><span class="kw">DAS ZIMMER ZUM HAFEN</span></figcaption></div></figure><figure class="bi b6 k3" data-r="feder" style="--i:2"><div class="k3__b"><img src="buch/bilder/k-kn-cafe-1600.webp" alt="Im Café, von hinten" loading="lazy" decoding="async" style="object-position:40% 50%"><figcaption class="kerbe"><span class="kw">IM CAFÉ, VON HINTEN</span></figcaption></div></figure><figure class="bi b7 k3" data-r="feder" style="--i:0"><div class="k3__b"><img src="buch/bilder/fen-pass-1400.webp" alt="Der Pass" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="kerbe"><span class="kw">DER PASS</span></figcaption></div></figure></div>
+    <p class="mk__kap" data-r style="margin-top:clamp(56px,6vw,96px)"><b><span class="kw">DIE ELF GESETZE</span></b><i></i><span>Design-DNA, 01.10.2026</span></p>
+    <ul class="ges" data-g><li data-r style="--i:0"><b>Warmes Licht im Dunkeln</b><p>Kerze, Laterne, Abendsonne, beleuchtete Theke: kleine warme Lichtpunkte gegen dunkles Holz, dunkles Blau, Backstein oder Nacht.</p></li><li data-r style="--i:1"><b>Wie auf Film</b><p>Korn, Gegenlicht, goldene Stunde, Bewegungsunschärfe, echte Schatten. Kein Bild sieht nach Studio, Stock oder KI aus.</p></li><li data-r style="--i:2"><b>Der Mensch von hinten</b><p>Rückenansicht, abgewandt, in einer echten Szene. Niemand posiert.</p></li><li data-r style="--i:3"><b>Der Ort vorne</b><p>Terminal, Holzdeck, Werkstatt, Roller, Tisch, Speicherstadt. Die Stimmung kommt vom Ort.</p></li><li data-r style="--i:0"><b>Kleines Logo</b><p>Das Logo steht klein. Ein Bild zeigt den Ort und die Menschen, nicht die Marke.</p></li><li data-r style="--i:1"><b>Ein Farbpunkt pro Bild</b><p>Rot und Orange sind Punkte, nie Flächen. Alles andere bleibt gedeckt: Creme, Sand, Oliv, Flaschengrün, Navy, Braun, Amber.</p></li><li data-r style="--i:2"><b>Gebrauchsspuren</b><p>Verblasster Druck, altes Holz, alter Lack, nasse Strasse. Nichts wird weggeputzt.</p></li><li data-r style="--i:3"><b>Gezeichnet, nicht geclippt</b><p>Illustration als feiner Strich oder Vintage-Stich. Kein Clipart, kein Verlauf, kein Neon.</p></li><li data-r style="--i:0"><b>Humor</b><p>Ein Witz nur, wenn er aus der Sache kommt. Keine Motivationssprüche.</p></li><li data-r style="--i:1"><b>Ort</b><p>Im Auftritt steht nur Hamburg.</p></li><li data-r style="--i:2"><b>KI-Bilder nur, wenn sie wie Fotos aussehen</b><p>Im Zweifel echtes Material aus Roberts Archiv nehmen und bearbeiten statt neu erzeugen.</p></li></ul>
+  </div>
+</section>
+<section class="ab blatt marine" id="bausteine">
+  <div class="in">
+    <header class="mk" data-r="kopf">
+      <div><p class="mk__kap"><b><span class="kw">BAUSTEINE</span></b><i></i></p>
+      <h2 class="mk__t"><span class="z"><span>Knopf</span></span><span class="z"><span><em>und Mass.</em></span></span></h2></div>
+      <p class="mk__lead">Die kleinen Teile, die auf der Website überall wiederkehren: der Knopf mit rundem Pfeil-Knauf und die festen Masse für Rand, Breite und Abstand.</p>
+    </header>
+    <div class="baus" data-g>
+      <div class="bau" data-r="feder" style="--i:0"><div class="bau__f knr knr--mitte"><a class="kn" href="#bausteine"><span class="kw">ANFRAGE SENDEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a><a class="kn kn--linie" href="#bausteine"><span class="kw">MEHR ANSEHEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div><h3>Knöpfe</h3><p>Etikettschrift in Versalien und ein runder Knauf mit Pfeil. Beim Überfahren hebt sich der Knopf. Die Beschriftung sagt, was passiert.</p></div>
+      <div class="bau" data-r="feder" style="--i:1"><div class="bau__f bau__f--masse"><ul class="masse"><li><span>Seitenrand</span><b>20 bis 76 px</b><small>wächst mit der Breite</small></li><li><span>Grösste Breite</span><b>1480 px</b><small>Inhalt</small></li><li><span>Abstand der Abschnitte</span><b>72 bis 140 px</b><small>wächst mit der Breite</small></li></ul></div><h3>Masse</h3><p>Rand und Abstand wachsen mit dem Bildschirm, aber nur zwischen diesen Grenzen. Der Inhalt wird nie breiter als 1480 px.</p></div>
+    </div>
+  </div>
+</section>
+<section class="ab blatt creme" id="sprache">
+  <div class="in">
+    <header class="mk" data-r="kopf">
+      <div><p class="mk__kap"><b><span class="kw">SPRACHE</span></b><i></i></p>
+      <h2 class="mk__t"><span class="z"><span>So</span></span><span class="z"><span><em>schreiben wir.</em></span></span></h2></div>
+      <p class="mk__lead">Direkt und sachlich. Kein künstlicher Druck. Wenn etwas komplex ist, wird es verständlich gemacht. Wenn etwas einfach ist, wird es nicht unnötig aufgeblasen.</p>
+    </header>
+    <div class="spr" data-g>
+      <div class="spr__l" data-r style="--i:0"><h3>Ansprache</h3><p class="gross">Wir duzen.</p><h3>Prinzip</h3><p class="gross">Jeder Satz sagt etwas Bestimmtes: eine Tatsache, eine Zahl, einen Schritt. Sätze ohne Inhalt werden gestrichen.</p><h3>Diese Wörter nie</h3><p class="spr__nie">Ultimate · Master · Pro · Framework · Blueprint · Playbook · Toolkit</p></div>
+      <div class="spr__r" data-r style="--i:1"><h3>Namen</h3><ul><li>Gewöhnliche Wörter, präzise gesetzt. Keine Kunstwörter, keine englischen Tech-Namen, keine Kürzel.</li><li>Keine Doppelbegriffe mit «und», ein Wort reicht.</li><li>Der Name benennt die Haltung, nicht das Thema.</li><li>Vokabular aus Druck, Handwerk, Architektur und Küche.</li><li>Ein Name muss ohne Erklärung funktionieren und darf in zehn Jahren nicht albern wirken.</li></ul></div>
+    </div>
+    <div class="spr2" data-r><h3>Was wir vermeiden</h3><ul class="nicht"><li>Marketing-Sprache: grosse Versprechen, leere Superlative, Standardphrasen</li><li>Unnötiger Fachjargon; wenn nötig, Begriffe greifbar machen</li><li>Künstliche Dringlichkeit, Clickbait, emotionale Übertreibung, aufgesetzte Begeisterung</li><li>Emojis und Business-Floskeln</li><li>Gedankenstriche als Satztrenner und Leerzeichen vor Kommas</li><li>Dreier-Aufzählungen von Verben, wirkt generisch und nach KI</li><li>Sätze, die etwas verneinen, um danach das Gegenteil zu behaupten</li><li>«Trägt» oder «tragen» im übertragenen Sinn</li><li>«Vom X zum Y»-Sprüche und abstrakte Wortpaare als Überschrift</li><li>Kurz-Sprüche aus Gegensatzpaaren oder Stichwort-Fragmenten</li></ul></div>
+  </div>
+</section>
+<section class="ab blatt marine tapete schluss" id="mitnehmen">
+  <div class="in">
+    <header class="mk" data-r="kopf">
+      <div><p class="mk__kap"><b><span class="kw">ZUM MITNEHMEN</span></b><i></i></p>
+      <h2 class="mk__t"><span class="z"><span>Alles für das</span></span><span class="z"><span><em>nächste Stück.</em></span></span></h2></div>
+      <p class="mk__lead">Die drei Zeichen als Dateien, die Farben als fertige Datei, die Schriften der Website. Wer eine neue Seite, einen Brief oder einen Beitrag baut, findet hier alles, was dafür nötig ist.</p>
+    </header>
+    <ul class="laden" data-g><li data-r style="--i:0"><span><b>Der Anker, weiss</b><small>SVG, für dunklen Grund</small></span><a class="kn " href="buch/zeichen/anker-weiss.svg" download><span class="kw">LADEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></a></li><li data-r style="--i:1"><span><b>Der Anker, Nacht</b><small>SVG, für hellen Grund</small></span><a class="kn " href="buch/zeichen/anker-dunkel.svg" download><span class="kw">LADEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></a></li><li data-r style="--i:2"><span><b>Wasserzeichen</b><small>PNG, für Dokumente, 6 % Deckkraft</small></span><a class="kn " href="buch/zeichen/anker-wasserzeichen.png" download><span class="kw">LADEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></a></li><li data-r style="--i:3"><span><b>Der Doktorhut</b><small>SVG, Zeichen der Masterclass</small></span><a class="kn " href="buch/zeichen/hut-dunkel.svg" download><span class="kw">LADEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></a></li><li data-r style="--i:4"><span><b>Das T</b><small>SVG, Zeichen des Backoffice</small></span><a class="kn " href="buch/zeichen/t-dunkel.svg" download><span class="kw">LADEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></a></li><li data-r style="--i:5"><span><b>Alle Farben</b><small>28 Töne als CSS-Datei</small></span><a class="kn " href="buch/farben.css" download><span class="kw">LADEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></a></li><li data-r style="--i:6"><span><b>Antonio</b><small>WOFF2, 100 bis 700</small></span><a class="kn " href="buch/schriften/Antonio-normal-100_700.woff2" download><span class="kw">LADEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></a></li><li data-r style="--i:7"><span><b>Instrument Sans</b><small>WOFF2, 400 bis 600</small></span><a class="kn " href="buch/schriften/InstrumentSans-normal-400_600.woff2" download><span class="kw">LADEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></a></li><li data-r style="--i:8"><span><b>DM Mono</b><small>WOFF2, 400</small></span><a class="kn " href="buch/schriften/DMMono-normal-400.woff2" download><span class="kw">LADEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></a></li><li data-r style="--i:9"><span><b>Montserrat Light</b><small>WOFF2, 300, für Dokumente</small></span><a class="kn " href="buch/schriften/Montserrat-300-latin.woff2" download><span class="kw">LADEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></a></li><li data-r style="--i:10"><span><b>Montserrat Regular</b><small>WOFF2, 400, für Dokumente</small></span><a class="kn " href="buch/schriften/Montserrat-400-latin.woff2" download><span class="kw">LADEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></a></li><li data-r style="--i:11"><span><b>Montserrat Medium</b><small>WOFF2, 500, für Dokumente</small></span><a class="kn " href="buch/schriften/Montserrat-500-latin.woff2" download><span class="kw">LADEN</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v10M3.5 7.5 8 12l4.5-4.5M3 14h10"/></svg></i></a></li></ul>
+    <div class="ende" data-r="ende">
+      <span class="strich strich--gross"><svg class="" viewBox="0 0 750 750" fill="currentColor" aria-hidden="true"><use href="#anker" width="750" height="750"/></svg></span>
+      <p class="ende__w"><span class="wm " style="color:#FFFFFF">TASTY STUDIOS</span></p>
+      <p class="ende__s">Markenbuch · Tasty Studios · Stand 17.11.2026. Abgleich mit der Website, Werte und Dateien im <a href="werkstatt.html">Arbeitsbereich</a>.</p>
+    </div>
+  </div>
+</section>
+</main>
+<script src="buch/marke.js" defer></script>
+<script src="buch/druck.js"></script>
+</body>
+</html>

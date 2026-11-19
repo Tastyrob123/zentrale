@@ -1,0 +1,10 @@
+:root { --nacht: #111421; --creme: #f3ece2; }
+body { margin: 0; background: var(--nacht); color: var(--creme); font-family: system-ui, sans-serif; }
+header { display: flex; justify-content: space-between; padding: 20px 40px; }
+nav a { margin-left: 20px; color: inherit; }
+.auftakt img { width: 100%; height: auto; display: block; }
+main section { padding: 60px 40px; max-width: 1200px; margin: 0 auto; }
+.karte li { display: flex; justify-content: space-between; }
+@media (max-width: 1024px) { main section { padding: 40px 24px; } }
+@media (max-width: 720px) { header { flex-direction: column; } nav a { display: inline-block; margin: 8px 12px 0 0; } }
+@media (max-width: 480px) { h1 { font-size: 1.8rem; } }

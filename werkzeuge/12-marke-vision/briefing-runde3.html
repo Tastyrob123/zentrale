@@ -1,0 +1,120 @@
+<!doctype html><html lang="de"><head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Briefing Marke & Vision</title><link rel="stylesheet" href="/zentrale/zentrale/grund.css">
+<style>body{background:#f4efe8;color:#111421;margin:0}main{max-width:860px;margin:0 auto;padding:56px 16px 96px;font-size:17px;line-height:1.6}
+h1{font-size:clamp(30px,5vw,44px);line-height:1.1}h2{margin-top:48px;border-top:1px solid #11142133;padding-top:24px}h3{margin-top:32px}table{border-collapse:collapse;width:100%;font-size:15px}td,th{border-bottom:1px solid #11142122;padding:8px 6px;text-align:left}code{font-size:14px;word-break:break-word}li{margin:4px 0}</style></head>
+<body><main><h1>Marke &amp; Vision, Runde 3: vom Lesebuch zum Handbuch</h1>
+<p>Briefing vom 17.11.2026 für den Bau-Chat. Grundlage: Roberts Kritik am Stand vom 16.11.2026 (zwei Bildschirmfotos «Warum es uns gibt» und «Woran man uns erkennt»).</p>
+<h2>1 Was heute nicht funktioniert (gemessen bei 1440 px)</h2>
+<table><tr><th>Kapitel</th><th>Länge</th><th>Bilder</th><th>Wörter</th></tr>
+<tr><td>Auftakt</td><td>2,9 Bildschirme</td><td>9</td><td>266</td></tr>
+<tr><td>Warum es uns gibt</td><td>5,5</td><td>5</td><td>511</td></tr>
+<tr><td>Woran wir glauben</td><td>5,6</td><td>4</td><td>577</td></tr>
+<tr><td>Für wen wir arbeiten</td><td>5,9</td><td>5</td><td>548</td></tr>
+<tr><td>Woran man uns erkennt</td><td>7,5</td><td>10</td><td>616</td></tr>
+<tr><td>Was wir bauen</td><td>9,7</td><td>30</td><td>917</td></tr>
+<tr><td>Unsere Werkzeuge</td><td>15,2</td><td>72</td><td>2.124</td></tr>
+<tr><td>Wohin es geht</td><td>6,5</td><td>4</td><td>657</td></tr>
+</table>
+<ul><li>
+<strong>Man findet nichts.</strong> Jedes Kapitel ist ein langer Lesetext mit zehn und mehr Abschnitten. Wer im Kundengespräch schnell nachsehen will, wofür wir stehen, scrollt fünf bis fünfzehn Bildschirme.
+</li><li>
+<strong>Grosse Bild-Pflaster ohne Inhalt.</strong> Fotofenster über die ganze Breite mit einem einzigen Satz. Das Bild trägt keine Information.
+</li><li>
+<strong>Riesige Weiter-Kachel am Kapitelende</strong> (Bild links, «Weiter mit Kapitel 2» rechts). Ist laut Regel vom 11.11.2026 (Uncle Hung) «viel zu penetrant».
+</li><li>
+<strong>Fragen doppelt.</strong> Abschnitt «Etwas unklar in …?» mit Knopf und darunter die feste Frage-Leiste mit demselben Knopf.
+</li><li>
+<strong>Quellenzeile in Schreibmaschinenschrift</strong> unter jedem Kapitel. Das ist Prüfwissen, kein Lesewissen.
+</li><li>
+<strong>Werkzeuge ohne Erklärung.</strong> Bilder nebeneinander, man weiss nicht, was das Werkzeug tut. Dazu die alten Namen (La Maison, Le Bureau, La Carte …) statt der Namen, die seit 09.11.2026 für jedes Haus gelten.
+</li></ul>
+<h2>2 Die Leitidee</h2>
+<p><strong>Das Handbuch von Tasty Studios.</strong> Gebaut wie das Brand-Standards-Buch eines Luxushauses: ruhig, dicht, edel, und jede Frage in zehn Sekunden beantwortet. Zwei Gebrauchsweisen auf jeder Seite:</p>
+<ol><li>
+<strong>Nachschlagen:</strong> das Wichtigste sofort sichtbar, ohne Scrollen.
+</li><li>
+<strong>Vertiefen:</strong> Hintergrund, Beleg, Beispiel klappen bei Bedarf auf.
+</li></ol>
+<p>Edel heisst hier: Typografie und Ordnung tragen, nicht Bildmasse. Wenige, ausgesuchte Bilder, die etwas beweisen.</p>
+<h2>3 Was bleibt</h2>
+<ul><li>
+Roberts Gliederung vom 07.11.2026: erst warum, dann woran man uns erkennt, dann wohin. Dieselben Kapitel, dieselbe Reihenfolge.
+</li><li>
+Der Inhalt aus <code>grundlagen/</code>, nichts dazuerfunden. Gekürzt wird, nicht neu geschrieben.
+</li><li>
+Fragen und Notizen von Anna mit Quittung, Rückgängig, Antworten von Robert.
+</li><li>
+Prüfseite, Rundgang, Anleitung.
+</li><li>
+Kleid und Leiste wie im Sales Cockpit (Roberts Vorgabe vom 16.11.2026: alle Bereiche im Stil des Sales Cockpits).
+</li></ul>
+<h2>4 Der neue Aufbau</h2>
+<h3>4.1 Startseite «Auf einen Blick»</h3>
+<p>Die ganze Marke auf einem Bildschirm.</p>
+<ul><li>
+Oben der Satz «Tasty Studios is a Digital Hospitality Studio.» gross, dazu ein Satz Mission.
+</li><li>
+Darunter sechs Tafeln als 3+3 (feste Spalten, nie auto-fit): Warum es uns gibt · Woran wir glauben · Für wen wir arbeiten · Woran man uns erkennt · Was wir bauen · Wohin es geht. Jede Tafel: Titel, zwei bis drei Zeilen Kern, «Öffnen».
+</li><li>
+Ein Suchfeld «Was suchst du?», das über alle Einträge sucht (Begriffe wie «Preis», «Werkbank», «Nie», «Zielgruppe»).
+</li></ul>
+<h3>4.2 Jedes Kapitel: höchstens drei Bildschirme</h3>
+<ul><li>
+<strong>Kopf (ein Bildschirm):</strong> Titel gross, ein Satz, daneben eine Tafel «Das Wichtigste» mit drei Sätzen. Wer nur das liest, weiss genug fürs Gespräch.
+</li><li>
+<strong>Einträge:</strong> Zeilen mit Haarlinie, links der Begriff, rechts zwei Zeilen Erklärung. Ein Klick klappt auf: Hintergrund, Beleg am echten Haus, Quelle klein am Ende. So werden aus zehn Abschnitten zehn ruhige Zeilen.
+</li><li>
+<strong>«So sagen wir es»:</strong> je Kapitel eine Tafel mit den Sätzen, die Anna im Kundengespräch wörtlich verwenden kann. Nur Sätze, die in <code>grundlagen/</code> stehen (Positionierung, Schreibstil, LinkedIn-Stimme), nichts Neues.
+</li><li>
+<strong>Bilder:</strong> höchstens eine Bildbühne je Kapitel (drei bis vier echte Fotos Wand an Wand, eine helle Tafel liegt darin), und nur dort, wo das Bild etwas beweist, zum Beispiel vorher und nachher beim Culinarium. Keine Einzelfotos mit einem Satz.
+</li><li>
+<strong>Weiter:</strong> eine leise Zeile im Fuss, «Weiter: Woran wir glauben →». Keine Bildkachel.
+</li><li>
+<strong>Fragen:</strong> nur noch die feste Leiste unten. Den Abschnitt «Etwas unklar in …?» streichen. Gibt es zu einem Eintrag Fragen, steht am Eintrag ein kleiner Zähler.
+</li><li>
+<strong>Quellen:</strong> raus aus der Leseansicht, klein im aufgeklappten Eintrag und vollständig auf der Prüfseite.
+</li></ul>
+<h3>4.3 Kapitel «Unsere Werkzeuge»: ein Wähler statt fünfzehn Bildschirme</h3>
+<ul><li>
+Links die sieben Werkzeuge als Liste mit den Namen seit 09.11.2026: Kontrollpanel, Website bearbeiten, Karten &amp; Preislisten, Anfragen &amp; Chat, Markenbuch, Besucher, Drucksachen &amp; Feed. Klick wechselt rechts die Bühne. (Sieben Stück passen in kein volles Raster, darum Liste plus Bühne.)
+</li><li>
+Rechts je Werkzeug ein Blender-Laptop mit einer echten, gefüllten Aufnahme aus «Ihr Haus» (dem Beispielhaus für Werkzeuge), daneben eine einzige Tafel:
+<ul><li>
+<strong>Was es tut:</strong> ein Satz.
+</li><li>
+<strong>Wer im Haus damit arbeitet.</strong>
+</li><li>
+<strong>Was es kann:</strong> die Funktionen aus dem Werkzeug-Bau-Master, Abschnitt 4, als Zeilen (fünf bis acht).
+</li><li>
+<strong>Was es dem Haus bringt:</strong> ein Satz.
+</li><li>
+<strong>Kurzer Film der Bedienung</strong> (ein Klick, läuft im Laptop).
+</li></ul>
+</li><li>
+Darunter kurz und einmal: «Eigene Werkzeuge einzelner Häuser» und «Beigaben», je als Zeilen, ohne Bilderreihen.
+</li></ul>
+<h3>4.4 «Annas Fragen»</h3>
+<p>Bleibt, wie es ist. Fragen sind nach Kapitel geordnet, offene zuerst.</p>
+<h2>5 Gestaltung</h2>
+<ul><li>
+Kleid, Leiste, Tafeln, Schrift und Bewegung aus dem Sales Cockpit (<code>cockpit-stand.css/.js</code>), Farben nur aus <code>zentrale/grund.css</code>.
+</li><li>
+Fliesstext 17 bis 18 px, Zeilen mindestens 28 Zeichen breit, keine schmalen Textspalten.
+</li><li>
+Reinschweben einzeln beim Erscheinen, Aufklappen weich, nur über transform und opacity.
+</li><li>
+Keine Löcher, keine halben Reihen, nichts über den Rand, auf jeder Breite.
+</li></ul>
+<h2>6 Prüfung vor dem Zeigen</h2>
+<ul><li>
+<code>oberflaeche_pruefen.js</code> muss BESTANDEN melden, bei 1280, 1440, 1728, 1920 und 390, für die Startseite und jedes Kapitel.
+</li><li>
+Messwert je Kapitel: höchstens drei Bildschirme bei 1440 (heute 2,9 bis 15,2).
+</li><li>
+Jeder Knopf einmal bedient: Suche, Aufklappen, Werkzeug-Wähler, Film, Frage stellen, Quittung, Rückgängig.
+</li><li>
+Vorher den alten Stand sichern: <code>…vor-handbuch-2026-11-17</code>.
+</li></ul></main></body></html>

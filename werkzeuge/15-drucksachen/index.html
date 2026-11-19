@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<script>/* allein geöffnet: in der Zentrale öffnen, mit Leiste (wie kleid/tasty.js); ?einzeln zeigt die Seite allein */(function(){if(window.top!==window.self||/[?&](einzeln|rundgang)(=|&|$)/.test(location.search))return;location.replace("/?weiter="+encodeURIComponent(location.pathname+location.search+location.hash)+"#15-drucksachen")})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drucksachen · Tasty Studios</title>
+<meta name="description" content="22 Drucksachen und Vorlagen für Tasty Studios: Visitenkarten, Briefbogen, Umschläge, Pitch-Heft, Präsentation und mehr.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111421">
+<link rel="preload" href="assets/fonts/Antonio-normal-100_700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/werkbank.css?v=1795066963">
+<link rel="stylesheet" href="assets/seiten.css?v=1795066963">
+<style>
+.t1,.t2{font-family:var(--serif);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1.02}
+.t1 em,.t2 em{font-style:normal;color:var(--gold)}
+.fl--papier .t2 em,.fl--creme .t2 em{color:#a07c3f}
+.insel__m b{font-weight:700;letter-spacing:.06em}
+.karton{background:#8f8672}
+.karton figcaption{color:rgba(17,20,33,.78)}
+/* Robert 19.11.2026: «schatten und kästen weg» – keine Schatten und keine Kästen hinter den Stücken */
+.karton .sch img,.auslage .blattbild img,.auslage .form img{box-shadow:none!important;filter:none!important}
+.karton{box-shadow:none!important}
+.stueck .in{align-items:end}
+:root{--abschnitt:clamp(92px,10.6vw,150px)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="anker" viewBox="125 125 750 750"><g transform="translate(500 500) scale(0.9733) translate(-500.0 -505.0)" fill="currentColor" fill-rule="evenodd"><path d="M 500.0 130.0 L 572.0 202.0 L 500.0 274.0 L 428.0 202.0 Z M 500.0 172.0 L 530.0 202.0 L 500.0 232.0 L 470.0 202.0 Z"/><path d="M 318.0 300.0 L 682.0 300.0 L 662.0 352.0 L 338.0 352.0 Z"/><path d="M 462.0 382.0 L 492.0 382.0 L 492.0 820.0 L 462.0 795.0 Z"/><path d="M 538.0 795.0 L 508.0 820.0 L 508.0 382.0 L 538.0 382.0 Z"/><path d="M 486.0 880.0 L 300.0 832.0 L 185.0 712.0 L 150.0 560.0 L 252.0 642.0 L 226.0 668.0 L 330.0 766.0 L 486.0 812.0 Z"/><path d="M 514.0 812.0 L 670.0 766.0 L 774.0 668.0 L 748.0 642.0 L 850.0 560.0 L 815.0 712.0 L 700.0 832.0 L 514.0 880.0 Z"/></g></symbol></defs></svg>
+<div class="gang-linie" aria-hidden="true"></div>
+<header class="leiste leiste--sofort"><div class="insel">
+  <a class="insel__m" href="#oben"><svg viewBox="0 0 750 750" aria-hidden="true" fill="currentColor" style="width:25px"><use href="#anker" width="750" height="750"/></svg><b>TASTY STUDIOS</b><span>Drucksachen</span></a>
+  <a class="glanz" href="/zentrale/werkzeuge/11-markenbuch/">Zum Markenbuch<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
+</div></header>
+<main id="oben">
+<section class="sk">
+  <div class="in">
+    <div>
+      <p class="kap" data-a="auf"><b>22</b><i></i><span>Drucksachen und Vorlagen</span></p>
+      <h1 class="t1 zt"><span class="z"><span>Papier für</span></span><span class="z"><span><em>Tasty Studios.</em></span></span></h1>
+      <div class="lauf"><p data-a="worte" style="--vz:700ms">22 Stücke mit 54 Seiten, gesetzt nach dem Markenbuch: der Anker für Tasty Studios, das T für das Backoffice, der Doktorhut für die Masterclass. Jedes Stück liegt als druckfertige PDF bereit.</p></div>
+      <div class="kn-reihe" data-a="auf" style="--i:8"><a class="kn " href="#visitenkarten">Zu den Stücken<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a><a class="kn kn--linie" href="/zentrale/werkzeuge/11-markenbuch/">Zum Markenbuch<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="auslage" aria-hidden="true"><div class="blattbild" data-a="schweb" style="left:30%;top:0%;width:40%;--r:3deg;--r0:9deg;--i:2"><img src="img/vk-vorne.webp" width="966" height="627" alt="" decoding="sync"></div><div class="blattbild" data-a="schweb" style="left:0%;top:4%;width:22%;--r:-6deg;--r0:-18deg;--i:3"><img src="img/heft-1.webp" width="1000" height="1420" alt="" decoding="sync"></div><div class="blattbild" data-a="schweb" style="left:76%;top:2%;width:22%;--r:6deg;--r0:18deg;--i:4"><img src="img/c4.webp" width="1000" height="1415" alt="" decoding="sync"></div><div class="blattbild" data-a="schweb" style="left:36%;top:44%;width:46%;--r:-3deg;--r0:-9deg;--i:5"><img src="img/termin.webp" width="1000" height="711" alt="" decoding="sync"></div><div class="blattbild" data-a="schweb" style="left:2%;top:60%;width:26%;--r:-4deg;--r0:-12deg;--i:6"><img src="img/aufkleber-creme.webp" width="684" height="684" alt="" decoding="sync"></div><div class="blattbild" data-a="schweb" style="left:66%;top:50%;width:22%;--r:5deg;--r0:15deg;--i:7"><img src="img/briefbogen.webp" width="1000" height="1416" alt="" decoding="sync"></div></div>
+  </div>
+</section>
+<section class="fl fl--papier blatt stueck" id="visitenkarten">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>01</b><i></i><span>Visitenkarten</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Für Anna</span></span><span class="z"><span><em>und Robert.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Vorne der Anker auf Navy mit dem Anker-Muster aus dem Markenbuch, hinten Name, Aufgabe und Nummer auf Papier. Beide Karten sind gleich gebaut, mit Nummer und eigener Adresse unter tasty-studios.de.</p></div>
+      <p class="stueck__f" data-a="auf">85 × 55 mm, Vorderseite und je eine Rückseite für Anna und Robert</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-visitenkarten.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:56%;--i:0"><img src="img/vk-vorne.webp" width="966" height="627" alt="vk-vorne" decoding="async"><figcaption>Vorderseite</figcaption></figure><figure class=" sch" data-a="schweb" style="width:42%;--i:1"><img src="img/vk-robert.webp" width="966" height="627" alt="vk-robert" decoding="async"><figcaption>Robert</figcaption></figure><figure class=" sch" data-a="schweb" style="width:42%;--i:2"><img src="img/vk-anna.webp" width="966" height="627" alt="vk-anna" decoding="async"><figcaption>Anna</figcaption></figure></div>
+  </div>
+</section>
+<section class="fl fl--creme blatt stueck stueck--r" id="briefbogen">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>02</b><i></i><span>Briefbogen</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Der Brief</span></span><span class="z"><span><em>im Dokumentstil.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Oben die quere Fassung mit Anker und Namen, in der Mitte der Anker als Wasserzeichen mit 6 Prozent, geschrieben wird in Montserrat. Fenster, Falz- und Lochmarken sitzen nach DIN 5008, damit die Anschrift im Fensterumschlag steht.</p></div>
+      <p class="stueck__f" data-a="auf">A4, erste Seite und Folgeseite, Fenster nach DIN 5008</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-briefbogen.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:38%;--i:0"><img src="img/briefbogen.webp" width="1000" height="1416" alt="briefbogen" decoding="async"><figcaption>Erste Seite</figcaption></figure><figure class=" sch" data-a="schweb" style="width:38%;--i:1"><img src="img/briefbogen-2.webp" width="1000" height="1416" alt="briefbogen-2" decoding="async"><figcaption>Folgeseite</figcaption></figure></div>
+  </div>
+</section>
+<section class="fl fl--nacht blatt stueck" id="umschlaege">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>03</b><i></i><span>Umschläge</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Die Banderole,</span></span><span class="z"><span><em>jetzt mit dem Anker.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Der C4-Umschlag nimmt die Banderole 05, die im Oktober gewählt wurde, und trägt jetzt den Anker; das T gehört seit dem Markenbuch nur noch zum Backoffice. Hinten schliesst ein runder Aufkleber die Klappe. Dazu ein heller DL-Umschlag mit Fenster für den Briefbogen.</p></div>
+      <p class="stueck__f" data-a="auf">DL mit Fenster 220 × 110 mm · C4 229 × 324 mm, vorne und hinten</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-umschlaege.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:23%;--i:0"><img src="img/c4.webp" width="1000" height="1415" alt="c4" decoding="async"><figcaption>C4 vorne</figcaption></figure><figure class=" sch" data-a="schweb" style="width:23%;--i:1"><img src="img/c4-r.webp" width="1000" height="1415" alt="c4-r" decoding="async"><figcaption>C4 hinten</figcaption></figure><figure class=" sch" data-a="schweb" style="width:46%;--i:2"><img src="img/dl.webp" width="1000" height="501" alt="dl" decoding="async"><figcaption>DL mit Fenster</figcaption></figure></div>
+  </div>
+</section>
+<section class="fl fl--papier blatt stueck stueck--r" id="mailkopf">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>04</b><i></i><span>E-Mail-Kopf</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Oben in</span></span><span class="z"><span><em>jeder Pitch-Mail.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Ein Bildstreifen über ganze Mailbreite, so wie es die Mail-Regel verlangt: nie Bildstücke nebeneinander. Darunter folgt die Signatur, die es seit dem 4. November für Anna und Robert gibt (Ordner _Signaturen).</p></div>
+      <p class="stueck__f" data-a="auf">600 × 160 px für Pitch-Mails, dunkel und hell</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-mailkopf.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:92%;--i:0"><img src="img/mail-dunkel.webp" width="1000" height="268" alt="mail-dunkel" decoding="async"><figcaption>Dunkel</figcaption></figure><figure class=" sch" data-a="schweb" style="width:92%;--i:1"><img src="img/mail-hell.webp" width="1000" height="268" alt="mail-hell" decoding="async"><figcaption>Hell</figcaption></figure></div>
+  </div>
+</section>
+<section class="fl fl--creme blatt stueck" id="angebot">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>05</b><i></i><span>Angebotsvorlage</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Das Angebot</span></span><span class="z"><span><em>auf einer Seite.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Kapitel zentriert, Abschnitte mit Nummer in Medium, alles in Montserrat und reinem Schwarz, wie es der Dokumentstil vorgibt. Leistungen und Beträge bleiben leer, sie kommen je Haus aus dem Sales Cockpit.</p></div>
+      <p class="stueck__f" data-a="auf">A4, Fachdokument nach dem Dokumentstil</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-angebot.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:40%;--i:0"><img src="img/angebot.webp" width="1000" height="1416" alt="angebot" decoding="async"></figure></div>
+  </div>
+</section>
+<section class="fl fl--nacht blatt stueck stueck--r" id="rechnung">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>06</b><i></i><span>Rechnungsvorlage</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Die Rechnung</span></span><span class="z"><span><em>im selben Satz.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Gleicher Aufbau wie das Angebot, mit Rechnungsnummer, Leistungszeitraum und der Steuernummer aus den Stammdaten. Die Bankverbindung ist als Feld vorbereitet und bleibt leer, bis sie für Rechnungen festgelegt ist.</p></div>
+      <p class="stueck__f" data-a="auf">A4, Fachdokument nach dem Dokumentstil</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-rechnung.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:40%;--i:0"><img src="img/rechnung.webp" width="1000" height="1416" alt="rechnung" decoding="async"></figure></div>
+  </div>
+</section>
+<section class="fl fl--papier blatt stueck" id="aufkleber">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>07</b><i></i><span>Aufkleber und Siegel</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Zum Verschliessen</span></span><span class="z"><span><em>und Mitgeben.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Der runde Aufkleber schliesst den C4-Umschlag, wie beim gewählten Entwurf. Ringsum der Name und Hamburg in DM Mono. Der Streifen in der Farbe der Banderole verschliesst Mappen und Pakete.</p></div>
+      <p class="stueck__f" data-a="auf">rund 60 mm, Creme und Navy · Siegelstreifen 110 × 30 mm</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-aufkleber.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:44%;--i:0"><img src="img/aufkleber-creme.webp" width="684" height="684" alt="aufkleber-creme" decoding="async"><figcaption>Creme</figcaption></figure><figure class=" sch" data-a="schweb" style="width:44%;--i:1"><img src="img/aufkleber-navy.webp" width="684" height="681" alt="aufkleber-navy" decoding="async"><figcaption>Navy</figcaption></figure><figure class=" sch" data-a="schweb" style="width:92%;--i:2"><img src="img/siegel.webp" width="1000" height="274" alt="siegel" decoding="async"><figcaption>Siegelstreifen</figcaption></figure></div>
+  </div>
+</section>
+<section class="fl fl--creme blatt stueck stueck--r" id="pitchheft">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>08</b><i></i><span>Pitch-Heft</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Das Heft</span></span><span class="z"><span><em>für den Termin.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Titel, wer wir sind, die vier Teile, das Team, zwei Kunden, Kontakt. Jeder Satz steht so auf der Website oder in der Kundenakte, nichts ist dazugeschrieben. Preise und Abläufe stehen bewusst nicht drin.</p></div>
+      <p class="stueck__f" data-a="auf">A5 hoch, sechs Seiten</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-pitchheft.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:30%;--i:0"><img src="img/heft-1.webp" width="1000" height="1420" alt="heft-1" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:30%;--i:1"><img src="img/heft-2.webp" width="1000" height="1418" alt="heft-2" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:30%;--i:2"><img src="img/heft-3.webp" width="1000" height="1420" alt="heft-3" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:30%;--i:3"><img src="img/heft-4.webp" width="1000" height="1420" alt="heft-4" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:30%;--i:4"><img src="img/heft-5.webp" width="1000" height="1418" alt="heft-5" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:30%;--i:5"><img src="img/heft-6.webp" width="1000" height="1420" alt="heft-6" decoding="async"></figure></div>
+  </div>
+</section>
+<section class="fl fl--nacht blatt stueck" id="mappe">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>09</b><i></i><span>Mappe mit Einstecktasche</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Analyse und Angebot</span></span><span class="z"><span><em>in einer Mappe.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Aussen Navy mit dem Anker Ton in Ton und der Banderole, innen das helle Anker-Muster und eine Tasche mit Schlitz für die Visitenkarte. Darin liegen Potentialanalyse, Angebot und das Heft.</p></div>
+      <p class="stueck__f" data-a="auf">A4-Mappe, 220 × 310 mm, aussen und innen</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-mappe.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:44%;--i:0"><img src="img/mappe-aussen.webp" width="1000" height="1410" alt="mappe-aussen" decoding="async"><figcaption>Aussen</figcaption></figure><figure class=" sch" data-a="schweb" style="width:44%;--i:1"><img src="img/mappe-innen.webp" width="1000" height="1410" alt="mappe-innen" decoding="async"><figcaption>Innen</figcaption></figure></div>
+  </div>
+</section>
+<section class="fl fl--papier blatt stueck stueck--r" id="terminkarte">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>10</b><i></i><span>Karte nach dem Termin</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Was nach dem Termin</span></span><span class="z"><span><em>beim Hotel liegt.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Vorne die Analyse des Hauses, hinten der Name des Hauses von Hand, Anna als Ansprechpartnerin und ein QR-Code. Der Code führt hier noch auf tasty-studios.de, pro Haus wird er auf dessen Analyse gesetzt.</p></div>
+      <p class="stueck__f" data-a="auf">A6 quer, zwei Seiten, QR-Code je Haus</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-terminkarte.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:46%;--i:0"><img src="img/termin.webp" width="1000" height="711" alt="termin" decoding="async"><figcaption>Vorderseite</figcaption></figure><figure class=" sch" data-a="schweb" style="width:46%;--i:1"><img src="img/termin-r.webp" width="1000" height="711" alt="termin-r" decoding="async"><figcaption>Rückseite</figcaption></figure></div>
+  </div>
+</section>
+<section class="fl fl--creme blatt stueck" id="begleitbrief">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>11</b><i></i><span>Begleitbrief zur Potentialanalyse</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Ein Brief</span></span><span class="z"><span><em>zur Analyse.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Ein kurzer Brief in Wir-Form auf dem Briefbogen: was die Analyse ist, wo sie liegt, wer erreichbar ist. Die hellen Stellen werden je Haus ausgefüllt.</p></div>
+      <p class="stueck__f" data-a="auf">A4 auf dem Briefbogen</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-begleitbrief.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:40%;--i:0"><img src="img/brief.webp" width="1000" height="1416" alt="brief" decoding="async"></figure></div>
+  </div>
+</section>
+<section class="fl fl--nacht blatt stueck stueck--r" id="referenzkarten">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>12</b><i></i><span>Referenzkarten</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Je Kunde</span></span><span class="z"><span><em>eine Karte.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Nur Häuser, die Kunden sind: heute Walk on the Wild Side und txtme.social. Vorne die Website, hinten der Satz aus der Kundenakte. Mit jedem neuen Vertrag kommt eine Karte dazu.</p></div>
+      <p class="stueck__f" data-a="auf">A6 quer, je Kunde mit Vertrag eine Karte</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-referenzkarten.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:46%;--i:0"><img src="img/ref-wild.webp" width="1000" height="711" alt="ref-wild" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:46%;--i:1"><img src="img/ref-wild-r.webp" width="1000" height="711" alt="ref-wild-r" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:46%;--i:2"><img src="img/ref-txtme.webp" width="1000" height="711" alt="ref-txtme" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:46%;--i:3"><img src="img/ref-txtme-r.webp" width="1000" height="711" alt="ref-txtme-r" decoding="async"></figure></div>
+  </div>
+</section>
+<section class="fl fl--papier blatt stueck" id="uebergabe">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>13</b><i></i><span>Übergabeblatt der Agentur</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Der Tag,</span></span><span class="z"><span><em>an dem die Seite online geht.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Ein Blatt für den Start einer Website: Adresse, Datum, Sprachen, Werkzeuge, wo die Zugänge liegen, nie Passwörter. Anna steht als Ansprechpartnerin schon drin.</p></div>
+      <p class="stueck__f" data-a="auf">A4, Fachdokument</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-uebergabe.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:40%;--i:0"><img src="img/uebergabe.webp" width="1000" height="1416" alt="uebergabe" decoding="async"></figure></div>
+  </div>
+</section>
+<section class="fl fl--creme blatt stueck stueck--r" id="handbuch">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>14</b><i></i><span>Handbuch-Umschlag Backoffice</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Das T</span></span><span class="z"><span><em>auf dem Handbuch.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Die Titelseite für das Handbuch zum Notion AI Backoffice, in Nacht und Schiefer mit Weiss wie im Markenbuch. Der Inhalt kommt aus dem Produkt selbst, hier ist nur der Umschlag.</p></div>
+      <p class="stueck__f" data-a="auf">A4 hoch, Titelseite</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-handbuch.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:40%;--i:0"><img src="img/handbuch.webp" width="1000" height="1416" alt="handbuch" decoding="async"></figure></div>
+  </div>
+</section>
+<section class="fl fl--nacht blatt stueck" id="masterclass">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>15</b><i></i><span>Masterclass</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Vier Stücke</span></span><span class="z"><span><em>für die Masterclass.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Teilnahmeurkunde, Namensschild, Tischkarte und der Umschlag des Arbeitshefts, in Creme, Taupe und Nacht wie im Markenbuch. Die Masterclass ruht gerade, die Stücke liegen bereit, wenn sie wieder startet.</p></div>
+      <p class="stueck__f" data-a="auf">Urkunde A4 quer · Namensschild 90 × 55 mm · Tischkarte A6 · Arbeitsheft A4</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-masterclass.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:58%;--i:0"><img src="img/mc-urkunde.webp" width="1000" height="707" alt="mc-urkunde" decoding="async"><figcaption>Urkunde</figcaption></figure><figure class=" sch" data-a="schweb" style="width:30%;--i:1"><img src="img/mc-schild.webp" width="1000" height="608" alt="mc-schild" decoding="async"><figcaption>Namensschild</figcaption></figure><figure class=" sch" data-a="schweb" style="width:40%;--i:2"><img src="img/mc-tisch.webp" width="1000" height="711" alt="mc-tisch" decoding="async"><figcaption>Tischkarte</figcaption></figure><figure class=" sch" data-a="schweb" style="width:50%;--i:3"><img src="img/mc-heft.webp" width="1000" height="1414" alt="mc-heft" decoding="async"><figcaption>Arbeitsheft</figcaption></figure></div>
+  </div>
+</section>
+<section class="fl fl--papier blatt stueck stueck--r" id="linkedin">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>16</b><i></i><span>LinkedIn-Banner</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Das Band</span></span><span class="z"><span><em>über dem Profil.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Links bleibt Platz für das runde Profilbild, rechts stehen Anker, Name und in einer Zeile, was Tasty Studios baut. Unten die Banderole als Abschluss.</p></div>
+      <p class="stueck__f" data-a="auf">1584 × 396 px</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-linkedin.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:100%;--i:0"><img src="img/linkedin.webp" width="1000" height="250" alt="linkedin" decoding="async"></figure></div>
+  </div>
+</section>
+<section class="fl fl--creme blatt stueck" id="beitraege">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>17</b><i></i><span>Beitragsvorlagen</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Ein Karussell</span></span><span class="z"><span><em>mit fünf Bildern.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Die vier Teile der Website als Karussell: ein Titelbild, dann je Teil ein Bild mit Foto, Name und dem Satz von der Website. Hell und dunkel wechseln sich ab, damit es im Feed nicht flach wirkt.</p></div>
+      <p class="stueck__f" data-a="auf">1080 × 1350 px, Karussell mit fünf Bildern</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-beitraege.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:18%;--i:0"><img src="img/post-1.webp" width="1000" height="1249" alt="post-1" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:18%;--i:1"><img src="img/post-2.webp" width="1000" height="1249" alt="post-2" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:18%;--i:2"><img src="img/post-3.webp" width="1000" height="1249" alt="post-3" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:18%;--i:3"><img src="img/post-4.webp" width="1000" height="1248" alt="post-4" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:18%;--i:4"><img src="img/post-5.webp" width="1000" height="1248" alt="post-5" decoding="async"></figure></div>
+  </div>
+</section>
+<section class="fl fl--nacht blatt stueck stueck--r" id="praesentation">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>18</b><i></i><span>Präsentationsvorlage</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Vier Folien</span></span><span class="z"><span><em>für jeden Termin.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Titel auf Navy mit dem Anker-Muster, eine Kapitelfolie mit Foto, eine Inhaltsfolie mit vier Spalten und die Kontaktfolie. Alle Sätze stammen von der Website.</p></div>
+      <p class="stueck__f" data-a="auf">16:9, vier Folien: Titel, Kapitel, Inhalt, Kontakt</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-praesentation.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:46%;--i:0"><img src="img/folie-1.webp" width="1000" height="564" alt="folie-1" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:46%;--i:1"><img src="img/folie-2.webp" width="1000" height="564" alt="folie-2" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:46%;--i:2"><img src="img/folie-3.webp" width="1000" height="564" alt="folie-3" decoding="async"></figure><figure class=" sch" data-a="schweb" style="width:46%;--i:3"><img src="img/folie-4.webp" width="1000" height="564" alt="folie-4" decoding="async"></figure></div>
+  </div>
+</section>
+<section class="fl fl--papier blatt stueck" id="videocall">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>19</b><i></i><span>Hintergrund für Videocalls</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Hinter dem Kopf</span></span><span class="z"><span><em>der Anker.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Das Anker-Muster flächig, oben rechts die quere Fassung. Die Mitte bleibt ruhig, dort sitzt man selbst. Im Programm gespiegelt erscheint der Name für das Gegenüber richtig herum.</p></div>
+      <p class="stueck__f" data-a="auf">1920 × 1080 px, dunkel und hell</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-videocall.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:46%;--i:0"><img src="img/call-dunkel.webp" width="1000" height="564" alt="call-dunkel" decoding="async"><figcaption>Dunkel</figcaption></figure><figure class=" sch" data-a="schweb" style="width:46%;--i:1"><img src="img/call-hell.webp" width="1000" height="564" alt="call-hell" decoding="async"><figcaption>Hell</figcaption></figure></div>
+  </div>
+</section>
+<section class="fl fl--creme blatt stueck stueck--r" id="notizbuch">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>20</b><i></i><span>Notizbuch</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Für Notizen</span></span><span class="z"><span><em>im Gespräch.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Navy-Leinen, der Anker blind geprägt, die Banderole mit dem Namen und ein rotes Lesebändchen, das einzige Rot, wie der Punkt im Markenbuch.</p></div>
+      <p class="stueck__f" data-a="auf">A5 hoch, Leinen mit Prägung, Lesebändchen</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-notizbuch.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:40%;--i:0"><img src="img/notizbuch.webp" width="1000" height="1420" alt="notizbuch" decoding="async"></figure></div>
+  </div>
+</section>
+<section class="fl fl--nacht blatt stueck" id="laptop">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>21</b><i></i><span>Laptop-Aufkleber</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Drei Zeichen</span></span><span class="z"><span><em>zum Aufkleben.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Anker, T und Doktorhut je auf ihrer Farbe aus dem Markenbuch: Navy, Schiefer und Creme. Gestanzt mit schmalem weissem Rand.</p></div>
+      <p class="stueck__f" data-a="auf">60 × 60 mm, gestanzt mit weissem Rand, drei Zeichen</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-laptop.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:30%;--i:0"><img src="img/laptop-anker.webp" width="684" height="684" alt="laptop-anker" decoding="async"><figcaption>Anker</figcaption></figure><figure class=" sch" data-a="schweb" style="width:30%;--i:1"><img src="img/laptop-tee.webp" width="684" height="681" alt="laptop-tee" decoding="async"><figcaption>T</figcaption></figure><figure class=" sch" data-a="schweb" style="width:30%;--i:2"><img src="img/laptop-hut.webp" width="684" height="684" alt="laptop-hut" decoding="async"><figcaption>Doktorhut</figcaption></figure></div>
+  </div>
+</section>
+<section class="fl fl--papier blatt stueck stueck--r" id="anhaenger">
+  <div class="in">
+    <div class="stueck__t">
+      <p class="kap" data-a="auf"><b>22</b><i></i><span>Gepäckanhänger</span></p>
+      <h2 class="t2 zt"><span class="z"><span>Am Koffer</span></span><span class="z"><span><em>zum Termin.</em></span></span></h2>
+      <div class="lauf"><p data-a="worte">Vorne Anker und Name auf Navy, hinten Felder für Name, Telefon und das Haus, das man besucht. Das Gegenstück zu den Kofferetiketten der Hotels.</p></div>
+      <p class="stueck__f" data-a="auf">55 × 110 mm, mit Öse, vorne und hinten</p>
+      <div class="kn-reihe" data-a="auf"><a class="kn " href="pdf/tasty-studios-anhaenger.pdf" target="_blank" rel="noopener">Als PDF ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+    </div>
+    <div class="karton"><figure class=" sch" data-a="schweb" style="width:30%;--i:0"><img src="img/anhaenger.webp" width="624" height="1251" alt="anhaenger" decoding="async"><figcaption>Vorderseite</figcaption></figure><figure class=" sch" data-a="schweb" style="width:30%;--i:1"><img src="img/anhaenger-r.webp" width="624" height="1248" alt="anhaenger-r" decoding="async"><figcaption>Rückseite</figcaption></figure></div>
+  </div>
+</section>
+</main>
+<script src="assets/werkbank.js?v=1795066963"></script>
+<style id="abschnitt-kanten">.blatt{box-shadow:0 -1px 0 rgba(255,255,255,.04),0 -4px 12px rgba(0,0,0,.1)}.fl--papier.blatt,.fl--creme.blatt{box-shadow:0 -1px 0 rgba(255,255,255,.35),0 -4px 12px rgba(0,0,0,.07)}</style>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "_dauer": 1.9,
+  "/": {"kopf": {"last-modified": "Tue, 14 Mar 2017 09:12:41 GMT", "server": "Apache/2.2.22"}},
+  "/js/jquery-1.8.3.min.js": {"typ": "text/javascript", "laenge": 93636},
+  "/js/nivo-slider.js": {"typ": "text/javascript", "laenge": 41200},
+  "/js/slider-start.js": {"typ": "text/javascript", "laenge": 1300},
+  "/dateien/speisekarte-2017.pdf": {"typ": "application/pdf", "laenge": 1843000},
+  "/bilder/kopf.jpg": {"typ": "image/jpeg", "laenge": 142000, "breite": 980, "hoehe": 180},
+  "/bilder/slider1.jpg": {"typ": "image/jpeg", "laenge": 118000, "breite": 740, "hoehe": 320},
+  "/bilder/slider2.jpg": {"typ": "image/jpeg", "laenge": 121000, "breite": 740, "hoehe": 320},
+  "/bilder/slider3.jpg": {"typ": "image/jpeg", "laenge": 109000, "breite": 740, "hoehe": 320},
+  "/bilder/terrasse.jpg": {"typ": "image/jpeg", "laenge": 48000, "breite": 300, "hoehe": 200},
+  "/bilder/see.jpg": {"typ": "image/jpeg", "laenge": 51000, "breite": 300, "hoehe": 200},
+  "/bilder/zimmer1.jpg": {"typ": "image/jpeg", "laenge": 44000, "breite": 300, "hoehe": 200},
+  "/bilder/zimmer2.jpg": {"typ": "image/jpeg", "laenge": 46000, "breite": 300, "hoehe": 200},
+  "/bilder/restaurant.jpg": {"typ": "image/jpeg", "laenge": 52000, "breite": 300, "hoehe": 200},
+  "/bilder/anfahrt.gif": {"typ": "image/gif", "laenge": 88000, "breite": 400, "hoehe": 300},
+  "/bilder/booking-button.gif": {"typ": "image/gif", "laenge": 6000, "breite": 180, "hoehe": 50},
+  "/bilder/hrs-button.gif": {"typ": "image/gif", "laenge": 5800, "breite": 180, "hoehe": 50},
+  "/bilder/gplus.gif": {"typ": "image/gif", "laenge": 1200, "breite": 32, "hoehe": 32},
+  "/bilder/hintergrund.gif": {"typ": "image/gif", "laenge": 900, "breite": 10, "hoehe": 400}
+}

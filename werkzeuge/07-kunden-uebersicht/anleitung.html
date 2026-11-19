@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anleitung · Kunden-Übersicht · Tasty Studios</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111421">
+<!-- Anleitung der Kunden-Übersicht (Werkzeug 07), aus der Vorlage Le Registre (anleitung.html): gleicher Aufbau, gleiche Grössen und Bewegung,
+     Kleid von Tasty Studios: Farben nur über die Werte aus zentrale/oberflaeche/kleid/tasty.css (--wo-…), nie abgeschrieben.
+     Bilder: anleitung_bilder.js macht sie aus dem echten Werkzeug mit Probedaten. -->
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/kleid/tasty.css">
+<link rel="icon" href="/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg" type="image/svg+xml">
+<link rel="preload" href="/zentrale/grundlagen/marke/schriften/Antonio-normal-100_700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/zentrale/grundlagen/marke/schriften/InstrumentSans-normal-400_600.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Antonio';font-weight:100 700;font-display:swap;src:url('/zentrale/grundlagen/marke/schriften/Antonio-normal-100_700.woff2') format('woff2')}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 600;font-display:swap;src:url('/zentrale/grundlagen/marke/schriften/InstrumentSans-normal-400_600.woff2') format('woff2')}
+@font-face{font-family:'DM Mono';font-style:normal;font-weight:400;font-display:swap;src:url('/zentrale/grundlagen/marke/schriften/DMMono-normal-400.woff2') format('woff2')}
+/* Töne aus dem Kleid von Tasty Studios (kleid/tasty.css): Nacht und Navy als dunkle Flächen, Papier als Raum, Creme und Taupe als warme Akzente */
+:root{--nacht:var(--wo-nacht);--karte:var(--wo-tief);--papier:var(--wo-papier);--weiss:var(--wo-weiss);--creme:var(--wo-gold);--gold:var(--wo-akzent);--taupe:var(--wo-taupe);--tinte:var(--wo-tinte);--blatt:var(--wo-blatt);--linie:color-mix(in srgb,var(--wo-tinte) 13%,transparent);--leise:var(--wo-leise);
+  --titel:var(--wo-titel);--sans:var(--wo-sans);--mono:var(--wo-mono);--e1:var(--wo-e1);--e2:var(--wo-e2)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--papier);color:var(--tinte);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ol,ul,figure{margin:0;padding:0}ol,ul{list-style:none}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+/* Titel wie die Agentur-Seite: Antonio 700 in Versalien; Betonung über die Schriftstärke, nie über eine Farbe */
+h1,h2{font-family:var(--titel);font-weight:700;text-transform:uppercase;letter-spacing:.015em}
+h3{font-family:var(--titel);font-weight:600;letter-spacing:.01em}
+h1 em,h2 em{font-style:normal;font-weight:300}
+:focus-visible{outline:2px solid var(--taupe);outline-offset:3px;border-radius:6px}
+.mono{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+/* Knopf wie die Seite (.kn): dunkle Platte mit Tiefe und rundem Creme-Knauf; der helle Knopf ist eine Creme-Platte mit dunklem Knauf */
+.kn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:12px;height:50px;padding:0 5px 0 22px;border-radius:999px;font:500 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--weiss);background:linear-gradient(180deg,var(--wo-nacht2),var(--wo-nacht) 55%,var(--wo-tief));box-shadow:inset 0 1px 0 color-mix(in srgb,var(--wo-weiss) 18%,transparent),inset 0 0 0 1px color-mix(in srgb,var(--wo-gold) 16%,transparent),0 2px 0 var(--wo-tief),0 12px 22px -12px color-mix(in srgb,var(--wo-tinte) 75%,transparent);transition:transform .5s var(--e2)}
+.kn:hover{transform:translateY(-2px)}
+.kn i{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(var(--wo-g1),var(--wo-gold) 55%,var(--wo-g3));color:var(--karte);box-shadow:inset 0 1px 0 var(--wo-weiss),inset 0 -2px 0 color-mix(in srgb,var(--wo-tinte) 18%,transparent)}
+.kn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5}
+.kn--gold{color:var(--tinte);background:linear-gradient(180deg,var(--wo-g1),var(--wo-gold) 55%,var(--wo-g3));box-shadow:inset 0 1px 0 color-mix(in srgb,var(--wo-weiss) 85%,transparent),inset 0 -2px 0 color-mix(in srgb,var(--wo-tinte) 20%,transparent),0 10px 20px -12px color-mix(in srgb,var(--wo-tinte) 80%,transparent)}
+.kn--gold i{background:linear-gradient(180deg,var(--wo-nacht2),var(--wo-nacht) 55%,var(--wo-tief));color:var(--creme);box-shadow:inset 0 1px 0 color-mix(in srgb,var(--wo-weiss) 18%,transparent),inset 0 -2px 0 var(--wo-tief)}
+/* Kopf: Nacht mit dem feinen Raster der Agentur-Seite */
+.kopf{position:relative;color:var(--weiss);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M0 .5H120M.5 0V120' stroke='%23ebdbce' stroke-opacity='.05' fill='none'/%3E%3C/svg%3E") 0 0/120px 120px,var(--wo-tief);border-radius:0 0 34px 34px;overflow:hidden;box-shadow:inset 0 -1px 0 color-mix(in srgb,var(--wo-gold) 30%,transparent)}
+.kopf__in{max-width:1180px;margin:0 auto;padding:36px 28px 74px}
+.kopf nav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:56px;font:10.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--creme)}
+.kopf nav span{display:inline-flex;align-items:center;gap:12px}.kopf nav svg{width:24px;height:23px;fill:var(--creme)}
+.kopf nav a:hover{color:var(--wo-weiss)}
+.kopf__tafel{display:inline-block;max-width:760px;padding:30px 34px 34px;border-radius:24px;background:var(--nacht);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--wo-gold) 30%,transparent),inset 0 0 0 6px var(--nacht),inset 0 0 0 7px color-mix(in srgb,var(--wo-gold) 14%,transparent)}
+.kopf h1{font-size:clamp(2.4rem,5.4vw,4.6rem);line-height:1.04;max-width:14ch}.kopf h1 em{color:var(--weiss)}
+.kopf p{margin-top:20px;max-width:56ch;font-size:1.06rem;color:color-mix(in srgb,var(--wo-weiss) 84%,transparent)}
+.kopf .kn{margin-top:28px}
+.kopf .kn+.kn{margin-left:10px}
+/* Inhalt */
+main{max-width:1180px;margin:0 auto;padding:0 28px 120px}
+.inhalt{margin:58px 0 70px}
+.inhalt h2{font-size:clamp(2rem,3.6vw,3rem);line-height:1.08;margin:8px 0 8px}
+.inhalt>p{max-width:60ch;color:var(--leise)}
+.themen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:30px}
+.thema{background:var(--blatt);border-radius:22px;box-shadow:inset 0 0 0 1px var(--linie);padding:22px 24px}
+.thema h3{font-size:1.35rem;line-height:1.15;display:grid;gap:3px}.thema h3 small{font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}.thema h3 em{font:11px var(--mono);font-style:normal;color:var(--leise)}
+.thema ol{margin-top:12px;display:grid;gap:2px}
+.thema a{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:9px 6px;border-radius:12px;transition:background-color .3s}
+.thema a:hover{background:color-mix(in srgb,var(--wo-weiss) 75%,transparent)}.thema a b{font:12px var(--mono);color:var(--gold)}.thema a span{font-family:var(--titel);font-weight:500;font-size:1.06rem}.thema a i{font:10px var(--mono);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--leise)}
+/* Kapitel */
+.kap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,60px);align-items:start;padding:54px 0;border-top:1px solid var(--linie);scroll-margin-top:20px}
+.kap:nth-of-type(even) .kap__t{order:2}
+.kap h2{font-size:clamp(1.9rem,3.2vw,2.7rem);line-height:1.08;margin:12px 0 14px;text-wrap:balance}
+.einl{color:color-mix(in srgb,var(--wo-tinte) 78%,transparent);max-width:54ch}
+.schritte{display:grid;gap:12px;margin:22px 0}
+.schritte li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:14px;align-items:start}
+.schritte li span{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--nacht);color:var(--creme);font:12px var(--mono);box-shadow:inset 0 0 0 3px var(--nacht),inset 0 0 0 4px color-mix(in srgb,var(--wo-gold) 40%,transparent)}
+.schritte p{padding-top:3px}
+.wissen{padding:16px 18px;border-radius:16px;background:color-mix(in srgb,var(--wo-gold) 50%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--wo-taupe) 40%,transparent);font-size:14.5px;color:var(--wo-nacht)}.wissen b{display:block;margin-bottom:3px;font:10.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--tinte)}
+.kap__b{position:sticky;top:20px}
+.bild{position:relative;display:block;width:100%;border-radius:20px;overflow:hidden;background:var(--nacht);box-shadow:0 30px 50px -28px color-mix(in srgb,var(--wo-tief) 60%,transparent),inset 0 0 0 1px color-mix(in srgb,var(--wo-gold) 35%,transparent);cursor:zoom-in;transition:transform .6s var(--e2)}
+.bild:hover{transform:translateY(-3px)}.bild img{display:block;width:100%;height:auto}
+figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--leise)}
+/* Bild gross */
+.gross{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:3vmin;background:color-mix(in srgb,var(--wo-tief) 90%,transparent);cursor:zoom-out;animation:auf .35s var(--e1) both}
+.gross[hidden]{display:none}.gross img{max-width:100%;max-height:100%;border-radius:14px;box-shadow:0 40px 80px -30px var(--wo-tinte)}.gross small{position:absolute;bottom:14px;left:0;right:0;text-align:center;font:10px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--creme)}
+@keyframes auf{from{opacity:0}}
+.fuss{margin-top:20px;padding:34px 0 0;border-top:1px solid var(--linie);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--leise);font-size:14px}
+@media (max-width:900px){.themen{grid-template-columns:1fr}.kap{grid-template-columns:1fr;padding:40px 0}.kap:nth-of-type(even) .kap__t{order:0}.kap__b{position:static}.kopf__in{padding:26px 16px 44px}.kopf nav{margin-bottom:30px}.kopf__tafel{padding:22px 20px 26px}.kopf .kn+.kn{margin-left:0}.kopf .kn{display:flex;width:fit-content}main{padding:0 16px 80px}.thema a{grid-template-columns:30px minmax(0,1fr)}.thema a i{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* wie die Vorlage: kein einzelnes Wort allein in der letzten Titelzeile */
+h1,h2,h3,h4,figcaption{text-wrap:balance}
+.nw{white-space:nowrap}
+figcaption{flex-wrap:wrap;row-gap:4px}figcaption>span{white-space:nowrap}
+.kopf__ort{font-style:normal}.kopf__ort i{font-style:normal}
+.kopf nav a{white-space:nowrap}
+@media (max-width:600px){.kopf nav{flex-direction:column;align-items:flex-start;gap:12px}.kopf__ort i{display:none}}
+/* Hero breit wie in den Werkzeugen: die Tafel füllt die Spalte, kein Loch rechts daneben */
+@media (min-width:901px){.kopf__tafel{display:block;max-width:none;padding:40px 48px 44px}.kopf h1{max-width:none;font-size:clamp(4.4rem,7.3vw,6.6rem);line-height:1}.kopf p{max-width:62ch;font-size:20px;line-height:1.55}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="zeichen"></g></defs></svg>
+<header class="kopf"><div class="kopf__in">
+  <nav><span><svg viewBox="0 0 1744 1688" aria-hidden="true"><use href="#zeichen"/></svg><em class="kopf__ort">Anleitung · Tasty Studios<i> · Kunden-Übersicht</i></em></span><a href="./">Die Kunden-Übersicht öffnen</a></nav>
+  <div class="kopf__tafel"><h1>Läuft jede Seite, <em>und was sie uns bringt.</em></h1>
+  <p>10 kurze Kapitel. Wie du einen Kunden liest, ob seine Seite antwortet, was bei der Betreuung ansteht, was die Seite uns kostet und was der Vertrag einbringt.</p>
+  <a class="kn kn--gold" href="./">Die Kunden-Übersicht öffnen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a><a class="kn" href="#inhalt">Zu den Kapiteln<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4"/></svg></i></a></div>
+</div></header>
+<main>
+  <section class="inhalt" id="inhalt"><span class="mono">00 · Inhalt</span><h2>10 Kapitel, <em>vier Themen.</em></h2><p>Jedes Kapitel zeigt den Bereich und nennt die Schritte. Ein Klick macht das Bild gross, ein zweiter oder Esc bringt es zurück.</p>
+    <div class="themen"><section class="thema"><h3><small>Grundlagen</small>So geht die Kunden-Übersicht<em>2 Kapitel</em></h3><ol><li><a href="#k01"><b>01</b><span>So ist die <span class="nw">Kunden-Übersicht aufgebaut.</span></span><i>Übersicht</i></a></li><li><a href="#k02"><b>02</b><span>Die <span class="nw">Übersicht lesen.</span></span><i>Übersicht</i></a></li></ol></section><section class="thema"><h3><small>Die Kunden</small>Kunden, Erreichbarkeit und Betreuung<em>4 Kapitel</em></h3><ol><li><a href="#k03"><b>03</b><span>Einen <span class="nw">Kunden lesen.</span></span><i>Kunden</i></a></li><li><a href="#k04"><b>04</b><span>Wer zuerst <span class="nw">dran ist.</span></span><i>Kunden</i></a></li><li><a href="#k05"><b>05</b><span>Läuft jede <span class="nw">Seite gerade?</span></span><i>Erreichbarkeit</i></a></li><li><a href="#k06"><b>06</b><span>Was bei der <span class="nw">Betreuung ansteht.</span></span><i>Betreuung</i></a></li></ol></section><section class="thema"><h3><small>Das Geld</small>Kosten und Verträge<em>2 Kapitel</em></h3><ol><li><a href="#k07"><b>07</b><span>Was uns jede Seite <span class="nw">im Monat kostet.</span></span><i>Kosten</i></a></li><li><a href="#k08"><b>08</b><span>Was die Betreuung <span class="nw">einbringt.</span></span><i>Verträge</i></a></li></ol></section><section class="thema"><h3><small>Gut zu wissen</small>Ändern und die Rechnung<em>2 Kapitel</em></h3><ol><li><a href="#k09"><b>09</b><span>Eintragen, speichern, <span class="nw">zurücknehmen.</span></span><i>Kunden</i></a></li><li><a href="#k10"><b>10</b><span>Was die Übersicht weiss <span class="nw">und was nicht.</span></span><i>Gut zu wissen</i></a></li></ol></section></div></section>
+<article class="kap" id="k01">
+  <div class="kap__t"><span class="mono">01 · Übersicht</span><h2>So ist die <span class="nw">Kunden-Übersicht aufgebaut.</span></h2><p class="einl">Die Kunden-Übersicht zeigt jeden Kunden mit fertiger Website auf einen Blick: ob seine Seite antwortet, was sie uns im Monat kostet, was bei der Betreuung ansteht und was der Vertrag sagt. So lässt sich laufende Betreuung verkaufen und belegen.</p>
+    <ol class="schritte"><li><span>1</span><p>Links die Bereiche: «Übersicht», darunter «Kunden», «Erreichbarkeit» und «Betreuung», dann «Kosten» und «Verträge» für das Geld, zuletzt «So wird gerechnet». Die Zahl neben einem Bereich nennt, was Aufmerksamkeit braucht.</p></li><li><span>2</span><p>Unter dem Titel wählst du den Zeitraum: 7, 14 oder 30 Tage. Er gilt für den Verlauf, die Ausfälle und die anstehenden Termine.</p></li><li><span>3</span><p>Oben im Kopf stehen Titel und Stand der Ansicht, rechts der Weg zur Zentrale, die Prüfung, die Anleitung und «Website ansehen». Unten sagt die Leiste, ob alles gespeichert ist.</p></li><li><span>4</span><p>Beim ersten Mal zeigt ein kleines Schild unten rechts «Kurzer Rundgang». Er lässt sich jederzeit über den Rand wieder öffnen.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Die Bilder dieser Anleitung zeigen Probedaten. Die fünf Kunden sind erfunden und im Werkzeug so beschriftet. Echte Kunden kommen mit «Kunde anlegen» dazu.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen: So ist die Kunden-Übersicht aufgebaut."><img src="anleitung/k01.jpg" width="1200" height="750" decoding="async" alt="Kunden-Übersicht, Übersicht: So ist die Kunden-Übersicht aufgebaut. (Probedaten)"></button>
+    <figcaption><span>kunden-übersicht · übersicht</span><span>Probedaten · Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k02">
+  <div class="kap__t"><span class="mono">02 · Übersicht</span><h2>Die <span class="nw">Übersicht lesen.</span></h2><p class="einl">Oben drei Fächer: ob alle Seiten antworten, ob bei der Betreuung etwas fällig ist und ob Eingaben auf «Speichern» warten. Darunter «Häufig gebraucht», dann vier Zahlen: Kunden, wie oft die Seiten erreichbar waren, was sie uns kosten und was die Betreuung im Monat bringt.</p>
+    <ol class="schritte"><li><span>1</span><p>Mit der Maus über eine Säule bei «Erreichbar je Tag» fahren: Tag und Zahl der Abrufe mit Antwort erscheinen.</p></li><li><span>2</span><p>«Kosten für uns je Kunde», «Offene Wünsche» und «Erreichbar in 30 Tagen» zeigen jeden Kunden mit Balken. Der Link daneben führt zum ganzen Bereich.</p></li><li><span>3</span><p>Ganz unten «Wer zuerst dran ist»: die fünf Kunden, die Aufmerksamkeit brauchen, zuerst die mit einer Seite, die nicht antwortet. Ein Klick öffnet den Kunden.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Summen stehen je Währung, etwa Franken und Euro nebeneinander. Umgerechnet wird nie, und ein Posten ohne Betrag bleibt «offen».</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen: Die Übersicht lesen."><img src="anleitung/k02.jpg" width="1200" height="750" decoding="async" alt="Kunden-Übersicht, Übersicht: Die Übersicht lesen. (Probedaten)"></button>
+    <figcaption><span>kunden-übersicht · übersicht</span><span>Probedaten · Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k03">
+  <div class="kap__t"><span class="mono">03 · Kunden</span><h2>Einen <span class="nw">Kunden lesen.</span></h2><p class="einl">Unter «Kunden» steht jeder Kunde: links die Liste, oben die, die Aufmerksamkeit brauchen, rechts der gewählte Kunde auf einer Karte.</p>
+    <ol class="schritte"><li><span>1</span><p>Links einen Kunden anklicken. Die Seite bleibt, wo sie ist, nur die Karte rechts wechselt.</p></li><li><span>2</span><p>Oben auf der Karte Adresse, online seit, Besucher, Ansprechpartner und das Kürzel für Werkzeug 03. Darunter «Die Seite»: ob sie gerade antwortet, der Verlauf als feine Striche, erreichbar dunkel, Ausfälle rot, und die letzten fünf Abrufe.</p></li><li><span>3</span><p>Weiter unten die Kosten für uns mit jedem Posten und seiner Quelle, der Vertrag und die anstehende Betreuung mit Terminen und offenen Wünschen.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Besucher stehen auf «offen», bis Werkzeug 03 sie über das Kürzel liefert. Eine geschätzte Zahl steht hier nie.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen: Einen Kunden lesen."><img src="anleitung/k03.jpg" width="1200" height="750" decoding="async" alt="Kunden-Übersicht, Kunden: Einen Kunden lesen. (Probedaten)"></button>
+    <figcaption><span>kunden-übersicht · kunden</span><span>Probedaten · Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k04">
+  <div class="kap__t"><span class="mono">04 · Kunden</span><h2>Wer zuerst <span class="nw">dran ist.</span></h2><p class="einl">Über der Liste grenzt du ein: alle Kunden, nur die, deren Seite nicht antwortet, die mit einem fälligen Termin, die mit offenem Wunsch, oder die, deren Vertrag bald endet.</p>
+    <ol class="schritte"><li><span>1</span><p>Auf «Antwortet nicht» klicken. Die Liste zeigt nur noch Kunden, deren Seite beim letzten Abruf keine Antwort gab.</p></li><li><span>2</span><p>Den Kunden öffnen und «Jetzt abrufen» drücken: Antwortet die Seite wieder, steht sofort «Erreichbar» da, sonst der Grund, etwa keine Antwort in acht Sekunden.</p></li><li><span>3</span><p>«Termin fällig» zeigt, was überfällig ist oder in den nächsten sieben Tagen kommt, «Vertrag endet bald» die Verträge, die in 30 Tagen enden.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Mit «Alle Kunden als Tabelle sichern» unter der Liste nimmst du alles als Tabelle mit, etwa für ein Gespräch über die Betreuung.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen: Wer zuerst dran ist."><img src="anleitung/k04.jpg" width="1200" height="750" decoding="async" alt="Kunden-Übersicht, Kunden: Wer zuerst dran ist. (Probedaten)"></button>
+    <figcaption><span>kunden-übersicht · kunden</span><span>Probedaten · Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k05">
+  <div class="kap__t"><span class="mono">05 · Erreichbarkeit</span><h2>Läuft jede <span class="nw">Seite gerade?</span></h2><p class="einl">Unter «Erreichbarkeit» wird jede Kundenseite abgerufen und muss in acht Sekunden antworten. Oben vier Zahlen: wie viele gerade erreichbar sind, wie oft sie ausfielen, der Anteil mit Antwort und wie schnell sie im Schnitt antworten.</p>
+    <ol class="schritte"><li><span>1</span><p>«Alle Seiten abrufen» fragt jede Seite jetzt an. Jeder Abruf landet im Verlauf.</p></li><li><span>2</span><p>«Erreichbar je Tag» zeigt den Anteil der Abrufe mit Antwort als Säulen, mit der Maus darüber erscheinen die Zahlen.</p></li><li><span>3</span><p>Die Tabelle nennt je Kunde den Anteil, den Verlauf als Striche, die Antwortzeit und die Ausfälle. Ein Klick auf den Namen öffnet den Kunden.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Ein Ausfall ist eine Folge von Abrufen ohne Antwort und zählt einmal, egal wie lange er dauert.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen: Läuft jede Seite gerade?"><img src="anleitung/k05.jpg" width="1200" height="750" decoding="async" alt="Kunden-Übersicht, Erreichbarkeit: Läuft jede Seite gerade? (Probedaten)"></button>
+    <figcaption><span>kunden-übersicht · erreichbarkeit</span><span>Probedaten · Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k06">
+  <div class="kap__t"><span class="mono">06 · Betreuung</span><h2>Was bei der <span class="nw">Betreuung ansteht.</span></h2><p class="einl">Unter «Betreuung» stehen Termine und offene Wünsche aller Kunden an einem Ort: was überfällig ist, was im gewählten Zeitraum kommt und welche Verträge bald enden.</p>
+    <ol class="schritte"><li><span>1</span><p>Links «Termine»: überfällige zuerst, mit «vor … T.», dann die kommenden mit «in … T.».</p></li><li><span>2</span><p>Rechts «Offene Wünsche» mit ihrem Stand: offen, in Arbeit oder wartet auf das Haus. Darunter die Verträge mit ihrem Ende.</p></li><li><span>3</span><p>Ein Klick auf einen Kunden öffnet ihn; dort trägst du unter «Anstehende Betreuung» mit «Ändern» Termine und Wünsche ein.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Was überfällig ist, was in sieben Tagen kommt und welche Verträge in 30 Tagen enden, steht oben in der Übersicht.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen: Was bei der Betreuung ansteht."><img src="anleitung/k06.jpg" width="1200" height="750" decoding="async" alt="Kunden-Übersicht, Betreuung: Was bei der Betreuung ansteht. (Probedaten)"></button>
+    <figcaption><span>kunden-übersicht · betreuung</span><span>Probedaten · Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k07">
+  <div class="kap__t"><span class="mono">07 · Kosten</span><h2>Was uns jede Seite <span class="nw">im Monat kostet.</span></h2><p class="einl">Unter «Kosten» stehen Hosting, Domain und Dienste je Kunde, jeder Posten mit Betrag, Quelle und Stand. Oben die Summe im Monat, die Zahl der Posten, wie viele noch ohne Betrag und wie viele ohne Quelle sind.</p>
+    <ol class="schritte"><li><span>1</span><p>«Je Kunde» ordnet die Kunden nach ihren Kosten, «Nach Posten» zeigt, was am häufigsten anfällt.</p></li><li><span>2</span><p>«Jeder Posten» nennt jeden einzeln mit seiner Quelle, etwa die Rechnung eines Monats.</p></li><li><span>3</span><p>Einen Betrag trägst du beim Kunden unter «Kosten für uns im Monat» mit «Ändern» ein.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Fehlt ein Betrag, steht «offen», geschätzt wird nie. Die Quelle sagt, woher die Zahl kommt: Rechnung, Vertrag oder Anbieter.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen: Was uns jede Seite im Monat kostet."><img src="anleitung/k07.jpg" width="1200" height="750" decoding="async" alt="Kunden-Übersicht, Kosten: Was uns jede Seite im Monat kostet. (Probedaten)"></button>
+    <figcaption><span>kunden-übersicht · kosten</span><span>Probedaten · Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k08">
+  <div class="kap__t"><span class="mono">08 · Verträge</span><h2>Was die Betreuung <span class="nw">einbringt.</span></h2><p class="einl">Unter «Verträge» steht je Kunde der Betrag im Monat, Beginn, Laufzeit, Ende und das Betreuungsmodell in eigenen Worten.</p>
+    <ol class="schritte"><li><span>1</span><p>Oben je Kunde ein Blatt mit dem Betrag. «Ändern» öffnet den Vertrag im Fenster.</p></li><li><span>2</span><p>«Betreuung neben den Kosten» stellt den Betrag neben das, was uns die Seite kostet, und nennt, was bleibt.</p></li><li><span>3</span><p>«Betreuung im Monat» ordnet die Kunden nach ihrem Betrag; darunter, wer noch ohne Betrag ist.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>«Nicht vergleichbar» steht da, wenn ein Kostenposten offen ist oder Betrag und Kosten in verschiedenen Währungen stehen. Ein Ende gibt es nur bei einer Laufzeit in Monaten.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen: Was die Betreuung einbringt."><img src="anleitung/k08.jpg" width="1200" height="750" decoding="async" alt="Kunden-Übersicht, Verträge: Was die Betreuung einbringt. (Probedaten)"></button>
+    <figcaption><span>kunden-übersicht · verträge</span><span>Probedaten · Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k09">
+  <div class="kap__t"><span class="mono">09 · Kunden</span><h2>Eintragen, speichern, <span class="nw">zurücknehmen.</span></h2><p class="einl">Jedes «Ändern» öffnet ein Fenster über dem Werkzeug: Angaben, Kosten, Vertrag oder Betreuung. Nichts wird still gespeichert.</p>
+    <ol class="schritte"><li><span>1</span><p>Im Fenster eintragen und «Übernehmen» drücken. Die Karte zeigt den Kunden schon so, wie er nach dem Speichern wäre, und die Leiste unten wird gelb.</p></li><li><span>2</span><p>«Vorher, nachher» in der Leiste zeigt jede Eingabe einzeln. «Speichern» schreibt alles fest, die Leiste wird grün.</p></li><li><span>3</span><p>Danach erscheint eine Quittung mit vorher und nachher. «Rückgängig» nimmt die Änderung vollständig zurück.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Esc oder ein Klick neben das Fenster schliesst es, ohne etwas zu ändern. «Kunden entfernen» fragt vorher nach, und auch ein entfernter Kunde kommt über die Quittung zurück.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen: Eintragen, speichern, zurücknehmen."><img src="anleitung/k09.jpg" width="1200" height="750" decoding="async" alt="Kunden-Übersicht, Kunden: das Fenster für die Kosten. (Probedaten)"></button>
+    <figcaption><span>kunden-übersicht · fenster</span><span>Probedaten · Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k10">
+  <div class="kap__t"><span class="mono">10 · Gut zu wissen</span><h2>Was die Übersicht weiss <span class="nw">und was nicht.</span></h2><p class="einl">Die Kunden-Übersicht zeigt nur, was eingetragen oder abgerufen ist. «So wird gerechnet» im Rand sagt es in einem Blick.</p>
+    <ol class="schritte"><li><span>1</span><p>Sie weiss, ob eine Seite antwortet, die Kosten mit Quelle, den Vertrag, Termine und Wünsche, und wer etwas geändert hat und was vorher dastand.</p></li><li><span>2</span><p>Sie schätzt nie, rechnet nie Währungen um, verschickt nichts und fragt keinen bezahlten Dienst.</p></li><li><span>3</span><p>Die Daten liegen auf dem Rechner in der Ablage des Werkzeugs, nicht im Netz. «Probedaten zurücksetzen» holt die erfundenen Kunden wieder.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Geht etwas nicht, öffnet der Schild-Knopf oben die Prüfung. Jede Meldung mit «Was tun?» führt dort ins Lexikon.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen: Was die Übersicht weiss und was nicht."><img src="anleitung/k10.jpg" width="1200" height="750" decoding="async" alt="Kunden-Übersicht, So wird gerechnet: Was die Übersicht weiss und was nicht. (Probedaten)"></button>
+    <figcaption><span>kunden-übersicht · so wird gerechnet</span><span>Probedaten · Grösser ansehen</span></figcaption></figure>
+</article>
+  <div class="fuss"><span>Kunden-Übersicht · Tasty Studios · Probedaten in <span class="nw">allen Bildern</span></span><a href="./" style="border-bottom:1px solid currentColor">Zurück: Kunden-Übersicht</a></div>
+</main>
+<div class="gross" id="gross" hidden role="dialog" aria-modal="true" aria-label="Bild gross"><img alt=""><small>Klick oder Esc zum Schliessen</small></div>
+<script src="anleitung.js?v=2"></script>
+</body>
+</html>

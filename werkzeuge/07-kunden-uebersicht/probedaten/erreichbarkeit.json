@@ -1,0 +1,8 @@
+{
+  "_hinweis": "Muster für den Probe-Verlauf. api.py rechnet daraus beim ersten Start echte Zeitpunkte, rückwärts von jetzt: alle «takt_stunden» ein Abruf über «tage» Tage. «ausfaelle» sind Lücken (vor so vielen Stunden, so lange). «zuletzt_ok» bestimmt den letzten Eintrag.",
+  "seeblick":   {"takt_stunden": 6, "tage": 30, "dauer_ms": 180, "ausfaelle": [], "zuletzt_ok": true},
+  "linde":      {"takt_stunden": 6, "tage": 13, "dauer_ms": 240, "ausfaelle": [{"vor_stunden": 230, "dauer_stunden": 7}], "zuletzt_ok": true},
+  "nachtfalter":{"takt_stunden": 6, "tage": 22, "dauer_ms": 150, "ausfaelle": [], "zuletzt_ok": true},
+  "leisewort":  {"takt_stunden": 6, "tage": 30, "dauer_ms": 410, "ausfaelle": [{"vor_stunden": 410, "dauer_stunden": 2}], "zuletzt_ok": true},
+  "alpenrose":  {"takt_stunden": 6, "tage": 30, "dauer_ms": 210, "ausfaelle": [{"vor_stunden": 44, "dauer_stunden": 44}], "zuletzt_ok": false}
+}

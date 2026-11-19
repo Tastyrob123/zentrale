@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vergleich · Feinschliff · Tasty Studios</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg" type="image/svg+xml">
+<script src="/zentrale/zentrale/oberflaeche/kleid/tasty.js"></script>
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/grund.css">
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/kleid/tasty.css">
+<style>
+  /* Vergleichsseite der Prüfung (07.11.2026): Vorlage (Le Bureau, Culinarium) links, Neubau (Feinschliff) rechts, je Ansicht bei 1440 und 390 px.
+     Bilder: vergleich/pruefung/bilder.js (Playwright), Probedaten eingespielt, angemeldet als Robert. Befund: vergleich/PRUEFUNG.md */
+  body{margin:0}
+  .vg{max-width:1360px;margin:0 auto;padding:56px clamp(16px,3vw,40px) 80px}
+  .vg h1{font:700 clamp(40px,5vw,64px)/1 var(--wo-titel);text-transform:uppercase;letter-spacing:.015em;margin:0}
+  .vg>p{max-width:72ch;margin:16px 0 0;color:var(--wo-leise)}
+  .vg section{margin-top:64px;padding-top:28px;border-top:1px solid var(--wo-linie)}
+  .vg h2{font:700 28px/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.02em;margin:0}
+  .vg h2+p{margin:8px 0 0;max-width:80ch;color:var(--wo-leise);font-size:14.5px}
+  .paar{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+  .paar--handy{grid-template-columns:repeat(2,minmax(0,300px));justify-content:start}
+  .paar--viele{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .paar--drei{grid-template-columns:repeat(3,minmax(0,300px));justify-content:start}
+  figure{margin:0;min-width:0}
+  figcaption{font:400 10px/1.4 var(--wo-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--wo-akzent);margin-bottom:8px}
+  img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:inset 0 0 0 1px var(--wo-linie),0 20px 34px -24px rgba(0,0,0,.5)}
+  @media (max-width:700px){.paar{grid-template-columns:1fr}.paar--handy,.paar--drei{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body class="wo-app">
+<main class="vg">
+  <h1>Feinschliff: Vorlage und Neubau</h1>
+  <p>Links Le Bureau («Das Schaufenster» des Culinarium), rechts das Startblatt des Feinschliffs. Jedes Bild ist ein Fensterbild bei 1440 × 900 und 390 × 844 px, neu aufgenommen nach der Nachbesserung am 08.11.2026. Der Prüfbericht steht in PRUEFUNG.md, was behoben ist in NACHBESSERUNG.md im selben Ordner.</p>
+  <div id="ansichten"></div>
+</main>
+<script>
+  // [schlüssel, titel, satz, nur390]
+  const A = [
+    ['start', 'Übersicht', 'Kopf, Rand mit Gruppen und Zahlen, Startbild mit Gruss nach Tageszeit und Foto, Lage mit drei Fächern, Leiste.'],
+    ['haeufig', 'Häufig gebraucht', 'Kacheln mit Foto, die erste doppelt breit.'],
+    ['bereiche', 'Bereich für Bereich', 'Je Seite eine Kachel mit Foto, Zahl und Satz.'],
+    ['bereich', 'Eine Seite', 'Stellen links, die Seite rechts in der Vorschau mit Rechner/Handy und «Gross öffnen».'],
+    ['stelle', 'Stelle geöffnet', 'Neubau: Wunsch mit Stand und Antwortfeld. Vorlage: die Demo hat für einzelne Text-Stellen keine Daten, das Feld öffnet sich dort nicht (gezeigt ist die Seite davor).'],
+    ['alle', 'Für alle Seiten', 'Vorlage «Angaben des Hauses», Neubau «Alle Seiten».'],
+    ['wuensche', 'Liste mit Stand', 'Vorlage «Termine», Neubau «Wünsche» mit Filter.'],
+    ['entwurf', 'Vorher, nachher', 'Vorlage «Entwurf & Vergleich», Neubau «Vorher & nachher».'],
+    ['quelle', 'Eigene Liste', 'Vorlage «Google-Texte», Neubau «In die Quelle» (nur Robert setzt «übernommen»).'],
+    ['verlauf', 'Stand und Protokoll', 'Vorlage «Frühere Fassungen», Neubau «Prüfstand & Probedaten».'],
+    ['fenster', 'Offenes Fenster', 'Vorlage «Foto tauschen», Neubau «Ein Wunsch für Robert und Anna».'],
+    ['gelb', 'Leiste gelb', 'Eine Eingabe wartet, Speichern gelb.'],
+    ['quittung', 'Quittung, Leiste grün', 'Gespeichert, Quittung mit vorher, nachher und «Rückgängig». Vorlage: die Demo antwortet beim Speichern ohne Quittung; gezeigt ist derselbe Baustein der Vorlage, von Hand in die Demo gesetzt.'],
+    ['rand', 'Handy: Rand aufgeklappt', '«Bereiche» oben öffnet den Rand.', true],
+    ['rundgang', 'Kurzer Rundgang', 'Schritt 2. Vorlage 5 Schritte, Neubau 4.'],
+    ['anleitung', 'Anleitung', 'Kopf, Auftakt, Schritte mit Bild.'],
+    ['pruefung', 'Prüfseite', 'Vorlage: Prüfseite von La Réception (Le Bureau hat in der Demo keine).']
+  ];
+  const X = [
+    ['Leiste auf der Agentur-Seite: Schrift', ['seite-schrift-1440-neubau']],
+    ['Leiste auf der Agentur-Seite: Abschnitte mit Griffen', ['seite-abschnitte-1440-neubau', 'seite-ziehen-1440-neubau']],
+    ['Leiste auf der Agentur-Seite am Handy', ['seite-390-neubau', 'seite-liste-390-neubau'], true],
+    ['Rückfrage vor dem Zurücknehmen, Quittung, Konflikt', ['nb-blatt-zuruecknehmen-1440-neubau', 'nb-blatt-quittung-1440-neubau', 'konflikt-1440-neubau']],
+    ['Behoben 1 und 2: Probedaten noch einmal einspielen fragt nach, eigene Liste zurückholen mit Rückfrage, Quittung und Rückgängig', ['nb-probedaten-rueckfrage-1440-neubau', 'nb-zurueckholen-rueckfrage-1440-neubau', 'nb-zurueckgeholt-quittung-1440-neubau']],
+    ['Behoben 3: Quittung und Liste zeigen bei langen Texten die geänderte Stelle', ['nb-seite-quittung-1440-neubau', 'nb-seite-liste-1440-neubau', 'nb-blatt-aenderungen-1440-neubau', 'nb-blatt-uebernehmen-1440-neubau']],
+    ['Behoben 3 am Handy', ['nb-seite-quittung-390-neubau', 'nb-seite-liste-390-neubau', 'nb-blatt-quittung-390-neubau'], true],
+    ['Behoben 4: Suche findet den alten Wortlaut, ohne Treffer «Nichts gefunden.»', ['nb-suche-treffer-1440-neubau', 'nb-suche-leer-1440-neubau']],
+    ['Behoben 4 am Handy', ['nb-suche-treffer-390-neubau', 'nb-suche-leer-390-neubau'], true]
+  ];
+  const ort = document.getElementById('ansichten');
+  const fig = (src, cap) => `<figure><figcaption>${cap}</figcaption><img src="bilder/${src}.jpg" alt="${cap}" loading="lazy" width="${/-390-/.test(src) ? 390 : 1440}" height="${/-390-/.test(src) ? 844 : 900}"></figure>`;
+  A.forEach(([k, t, s, nur390]) => {
+    const sec = document.createElement('section');
+    sec.innerHTML = `<h2>${t}</h2><p>${s}</p>` +
+      (nur390 ? '' : `<div class="paar">${fig(k + '-1440-vorlage', 'Vorlage · 1440')}${fig(k + '-1440-neubau', 'Neubau · 1440')}</div>`) +
+      `<div class="paar paar--handy">${fig(k + '-390-vorlage', 'Vorlage · 390')}${fig(k + '-390-neubau', 'Neubau · 390')}</div>`;
+    ort.append(sec);
+  });
+  X.forEach(([t, bilder, handy]) => {
+    const sec = document.createElement('section');
+    sec.innerHTML = `<h2>${t}</h2><p>Nur im Neubau, ohne Gegenstück in der Vorlage.</p><div class="paar${handy ? ' paar--handy' : bilder.length > 2 ? ' paar--viele' : ''}">${bilder.map(b => fig(b, 'Neubau · ' + (/-390-/.test(b) ? '390' : '1440'))).join('')}</div>`;
+    ort.append(sec);
+  });
+</script>
+</body>
+</html>

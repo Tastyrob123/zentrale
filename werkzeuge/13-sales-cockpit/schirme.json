@@ -1,0 +1,564 @@
+{
+ "saltandsilver": {
+  "bureau": {
+   "url": "https://salt-and-silver-studie.vercel.app/studio/",
+   "bild": "schirme/saltandsilver-bureau.webp",
+   "titel": "Übersicht · Studio · Salt & Silver"
+  },
+  "livre": {
+   "url": "https://salt-and-silver-studie.vercel.app/marke/buch/",
+   "bild": "schirme/saltandsilver-livre.webp",
+   "titel": "Markenbuch · Salt & Silver"
+  },
+  "maison": {
+   "url": "https://salt-and-silver-studie.vercel.app/hafen/",
+   "bild": "schirme/saltandsilver-maison.webp",
+   "titel": "Hafen · Salt & Silver"
+  },
+  "carte": {
+   "url": "https://salt-and-silver-studie.vercel.app/hafen/karte/",
+   "bild": "schirme/saltandsilver-carte.webp",
+   "titel": "Karte · Salt & Silver"
+  },
+  "imprimerie": {
+   "url": "https://salt-and-silver-studie.vercel.app/hafen/druckerei/",
+   "bild": "schirme/saltandsilver-imprimerie.webp",
+   "titel": "Druckerei · Salt & Silver"
+  }
+ },
+ "beau-rivage": {
+  "maison": {
+   "url": "https://grand-beau-rivage-entwurf.vercel.app/maison/",
+   "bild": "schirme/beau-rivage-maison.webp",
+   "titel": "La Maison · Grand Beau-Rivage"
+  },
+  "bureau": {
+   "url": "https://grand-beau-rivage-entwurf.vercel.app/studio/",
+   "bild": "schirme/beau-rivage-bureau.webp",
+   "titel": "Le Bureau · Grand Beau-Rivage"
+  },
+  "carte": {
+   "url": "https://grand-beau-rivage-entwurf.vercel.app/mission-control/",
+   "bild": "schirme/beau-rivage-carte.webp",
+   "titel": "La Carte · Grand Beau-Rivage"
+  },
+  "reception": {
+   "url": "https://grand-beau-rivage-entwurf.vercel.app/rezeption/",
+   "bild": "schirme/beau-rivage-reception.webp",
+   "titel": "Rezeption im Chat · Grand Beau-Rivage Interlaken"
+  },
+  "livre": {
+   "url": "https://grand-beau-rivage-entwurf.vercel.app/marke/buch/",
+   "bild": "schirme/beau-rivage-livre.webp",
+   "titel": "Markenbuch · Grand Beau-Rivage Interlaken"
+  },
+  "registre": {
+   "url": "https://grand-beau-rivage-entwurf.vercel.app/registre/",
+   "bild": "schirme/beau-rivage-registre.webp",
+   "titel": "Übersicht · Le Registre · Grand Beau-Rivage"
+  },
+  "imprimerie": {
+   "url": "https://drucksachen-studio.vercel.app/",
+   "bild": "schirme/beau-rivage-imprimerie.webp",
+   "titel": "L’Imprimerie · Grand Beau-Rivage"
+  }
+ },
+ "carlton": {
+  "maison": {
+   "url": "https://carlton.tastystudios.ch/maison/",
+   "bild": "schirme/carlton-maison.webp",
+   "titel": "La Maison · Carlton-Europe"
+  },
+  "bureau": {
+   "url": "https://carlton.tastystudios.ch/control/",
+   "bild": "schirme/carlton-bureau.webp",
+   "titel": "Le Bureau · Carlton-Europe"
+  },
+  "reception": {
+   "url": "https://carlton.tastystudios.ch/werkzeuge/reception/",
+   "bild": "schirme/carlton-reception.webp",
+   "titel": "La Réception · Carlton-Europe Interlaken"
+  },
+  "carte": {
+   "url": "https://carlton.tastystudios.ch/_werkzeuge/carte/",
+   "bild": "schirme/carlton-carte.webp",
+   "titel": "La Carte · Carlton-Europe"
+  },
+  "livre": {
+   "url": "https://carlton.tastystudios.ch/werkzeuge/livre/",
+   "bild": "schirme/carlton-livre.webp",
+   "titel": "Le Livre · Carlton-Europe"
+  },
+  "registre": {
+   "url": "https://carlton.tastystudios.ch/werkzeuge/registre/",
+   "bild": "schirme/carlton-registre.webp",
+   "titel": "Übersicht · Le Registre · Carlton-Europe"
+  },
+  "imprimerie": {
+   "url": "https://carlton.tastystudios.ch/werkzeuge/imprimerie/",
+   "bild": "schirme/carlton-imprimerie.webp",
+   "titel": "L’Imprimerie · Carlton-Europe"
+  }
+ },
+ "doldenhorn": {
+  "bureau": {
+   "url": "https://doldenhorn.tastystudios.ch/studio/",
+   "bild": "schirme/doldenhorn-bureau.webp",
+   "titel": "Le Bureau · Waldhotel Doldenhorn"
+  },
+  "reception": {
+   "url": "https://doldenhorn.tastystudios.ch/_werkzeuge/reception/",
+   "bild": "schirme/doldenhorn-reception.webp",
+   "titel": "La Réception · Waldhotel Doldenhorn Kandersteg"
+  },
+  "maison": {
+   "url": "https://doldenhorn.tastystudios.ch/_werkzeuge/maison/?gruss=tag",
+   "bild": "schirme/doldenhorn-maison.webp",
+   "titel": "La Maison · Waldhotel Doldenhorn"
+  },
+  "carte": {
+   "url": "https://doldenhorn.tastystudios.ch/_werkzeuge/carte/",
+   "bild": "schirme/doldenhorn-carte.webp",
+   "titel": "La Carte · Waldhotel Doldenhorn"
+  },
+  "livre": {
+   "url": "https://doldenhorn.tastystudios.ch/_werkzeuge/livre/",
+   "bild": "schirme/doldenhorn-livre.webp",
+   "titel": "Le Livre · Waldhotel Doldenhorn"
+  },
+  "registre": {
+   "url": "https://doldenhorn.tastystudios.ch/_werkzeuge/registre/",
+   "bild": "schirme/doldenhorn-registre.webp",
+   "titel": "Übersicht · Le Registre · Waldhotel Doldenhorn"
+  },
+  "imprimerie": {
+   "url": "https://doldenhorn.tastystudios.ch/_werkzeuge/imprimerie/",
+   "bild": "schirme/doldenhorn-imprimerie.webp",
+   "titel": "L’Imprimerie · Waldhotel Doldenhorn"
+  }
+ },
+ "ruedihus": {
+  "bureau": {
+   "url": "https://ruedihus.tastystudios.ch/studio/",
+   "bild": "schirme/ruedihus-bureau.webp",
+   "titel": "Der Schreibtisch · Landgasthof Ruedihus"
+  },
+  "reception": {
+   "url": "https://ruedihus.tastystudios.ch/_werkzeuge/reception/",
+   "bild": "schirme/ruedihus-reception.webp",
+   "titel": "Der Gastgeber · Landgasthof Ruedihus Kandersteg"
+  },
+  "maison": {
+   "url": "https://ruedihus.tastystudios.ch/_werkzeuge/maison/?gruss=tag",
+   "bild": "schirme/ruedihus-maison.webp",
+   "titel": "Die Stube · Landgasthof Ruedihus"
+  },
+  "carte": {
+   "url": "https://ruedihus.tastystudios.ch/_werkzeuge/carte/",
+   "bild": "schirme/ruedihus-carte.webp",
+   "titel": "Die Tafel · Landgasthof Ruedihus"
+  },
+  "livre": {
+   "url": "https://ruedihus.tastystudios.ch/_werkzeuge/livre/",
+   "bild": "schirme/ruedihus-livre.webp",
+   "titel": "Das Hausbuch · Landgasthof Ruedihus"
+  },
+  "registre": {
+   "url": "https://ruedihus.tastystudios.ch/_werkzeuge/registre/",
+   "bild": "schirme/ruedihus-registre.webp",
+   "titel": "Übersicht · Das Besucherbuch · Landgasthof Ruedihus"
+  },
+  "imprimerie": {
+   "url": "https://ruedihus.tastystudios.ch/_werkzeuge/imprimerie/",
+   "bild": "schirme/ruedihus-imprimerie.webp",
+   "titel": "Die Werkstatt · Landgasthof Ruedihus"
+  }
+ },
+ "gasterntal": {
+  "bureau": {
+   "url": "https://berghotel-gasterntal-entwurf.vercel.app/studio/",
+   "bild": "schirme/gasterntal-bureau.webp",
+   "titel": "Der Schreibtisch · Berghotel Gasterntal"
+  },
+  "reception": {
+   "url": "https://berghotel-gasterntal-entwurf.vercel.app/_werkzeuge/reception/",
+   "bild": "schirme/gasterntal-reception.webp",
+   "titel": "Der Gastgeber · Berghotel Gasterntal Kandersteg"
+  },
+  "maison": {
+   "url": "https://berghotel-gasterntal-entwurf.vercel.app/_werkzeuge/maison/?gruss=tag",
+   "bild": "schirme/gasterntal-maison.webp",
+   "titel": "Die Stube · Berghotel Gasterntal"
+  },
+  "carte": {
+   "url": "https://berghotel-gasterntal-entwurf.vercel.app/_werkzeuge/carte/",
+   "bild": "schirme/gasterntal-carte.webp",
+   "titel": "Die Tafel · Berghotel Gasterntal"
+  },
+  "livre": {
+   "url": "https://berghotel-gasterntal-entwurf.vercel.app/_werkzeuge/livre/",
+   "bild": "schirme/gasterntal-livre.webp",
+   "titel": "Das Hausbuch · Berghotel Gasterntal"
+  },
+  "registre": {
+   "url": "https://berghotel-gasterntal-entwurf.vercel.app/_werkzeuge/registre/",
+   "bild": "schirme/gasterntal-registre.webp",
+   "titel": "Übersicht · Das Besucherbuch · Berghotel Gasterntal"
+  },
+  "imprimerie": {
+   "url": "https://berghotel-gasterntal-entwurf.vercel.app/_werkzeuge/imprimerie/",
+   "bild": "schirme/gasterntal-imprimerie.webp",
+   "titel": "Die Werkstatt · Berghotel Gasterntal"
+  }
+ },
+ "monte-moro": {
+  "maison": {
+   "url": "http://127.0.0.1:9381/_werkzeuge/maison/",
+   "bild": "schirme/monte-moro-maison.webp",
+   "titel": "Das Hotelbüro · Hotel Monte-Moro"
+  },
+  "bureau": {
+   "url": "http://127.0.0.1:9382/_werkzeuge/bureau/",
+   "bild": "schirme/monte-moro-bureau.webp",
+   "titel": "Das Schaufenster · Monte-Moro"
+  },
+  "carte": {
+   "url": "http://127.0.0.1:9383/_werkzeuge/carte/",
+   "bild": "schirme/monte-moro-carte.webp",
+   "titel": "Das Kartenbrett · Hotel Monte-Moro"
+  },
+  "reception": {
+   "url": "http://127.0.0.1:9384/_werkzeuge/reception/",
+   "bild": "schirme/monte-moro-reception.webp",
+   "titel": "Die Rezeption · Hotel Monte-Moro"
+  },
+  "livre": {
+   "url": "http://127.0.0.1:9385/_werkzeuge/livre/",
+   "bild": "schirme/monte-moro-livre.webp",
+   "titel": "Das Markenbuch · Hotel Monte-Moro, Saas-Almagell"
+  },
+  "registre": {
+   "url": "http://127.0.0.1:9386/_werkzeuge/registre/",
+   "bild": "schirme/monte-moro-registre.webp",
+   "titel": "Übersicht · Die Besucherliste · Monte-Moro"
+  },
+  "imprimerie": {
+   "url": "http://127.0.0.1:9387/_werkzeuge/imprimerie/",
+   "bild": "schirme/monte-moro-imprimerie.webp",
+   "titel": "Die Hausdruckerei · Hotel Monte-Moro"
+  }
+ },
+ "zermatt": {
+  "maison": {
+   "url": "http://127.0.0.1:9391/_werkzeuge/maison/",
+   "bild": "schirme/zermatt-maison.webp",
+   "titel": "Der Tresen · Suitenhotel Zurbriggen"
+  },
+  "bureau": {
+   "url": "http://127.0.0.1:9392/_werkzeuge/bureau/",
+   "bild": "schirme/zermatt-bureau.webp",
+   "titel": "Das Schaufenster · Suitenhotel Zurbriggen"
+  },
+  "carte": {
+   "url": "http://127.0.0.1:9393/_werkzeuge/carte/",
+   "bild": "schirme/zermatt-carte.webp",
+   "titel": "Die Pairing-Karte · Suitenhotel Zurbriggen"
+  },
+  "reception": {
+   "url": "http://127.0.0.1:9394/_werkzeuge/reception/",
+   "bild": "schirme/zermatt-reception.webp",
+   "titel": "Das Gästebuch · Suitenhotel Zurbriggen"
+  },
+  "livre": {
+   "url": "http://127.0.0.1:9395/_werkzeuge/livre/",
+   "bild": "schirme/zermatt-livre.webp",
+   "titel": "Das Markenbuch · Suitenhotel Zurbriggen, Zermatt"
+  },
+  "registre": {
+   "url": "http://127.0.0.1:9396/_werkzeuge/registre/",
+   "bild": "schirme/zermatt-registre.webp",
+   "titel": "Übersicht · Die Besucherliste · Suitenhotel Zurbriggen"
+  },
+  "imprimerie": {
+   "url": "http://127.0.0.1:9397/_werkzeuge/imprimerie/",
+   "bild": "schirme/zermatt-imprimerie.webp",
+   "titel": "Die Plakatwerkstatt · Suitenhotel Zurbriggen"
+  }
+ },
+ "wellness": {
+  "maison": {
+   "url": "http://127.0.0.1:9401/_werkzeuge/maison/",
+   "bild": "schirme/wellness-maison.webp",
+   "titel": "Der Tresen · Wellness & Spa Pirmin Zurbriggen"
+  },
+  "bureau": {
+   "url": "http://127.0.0.1:9402/_werkzeuge/bureau/",
+   "bild": "schirme/wellness-bureau.webp",
+   "titel": "Das Schaufenster · Pirmin Zurbriggen"
+  },
+  "carte": {
+   "url": "http://127.0.0.1:9403/_werkzeuge/carte/",
+   "bild": "schirme/wellness-carte.webp",
+   "titel": "Die Pairing-Karte · Pirmin Zurbriggen"
+  },
+  "reception": {
+   "url": "http://127.0.0.1:9404/_werkzeuge/reception/",
+   "bild": "schirme/wellness-reception.webp",
+   "titel": "Das Gästebuch · Wellness & Spa Pirmin Zurbriggen"
+  },
+  "livre": {
+   "url": "http://127.0.0.1:9405/_werkzeuge/livre/",
+   "bild": "schirme/wellness-livre.webp",
+   "titel": "Das Markenbuch · Wellness & Spa Pirmin Zurbriggen"
+  },
+  "registre": {
+   "url": "http://127.0.0.1:9406/_werkzeuge/registre/",
+   "bild": "schirme/wellness-registre.webp",
+   "titel": "Übersicht · Die Besucherliste · Pirmin Zurbriggen"
+  },
+  "imprimerie": {
+   "url": "http://127.0.0.1:9407/_werkzeuge/imprimerie/",
+   "bild": "schirme/wellness-imprimerie.webp",
+   "titel": "Die Plakatwerkstatt · Pirmin Zurbriggen"
+  }
+ },
+ "schaefli": {
+  "maison": {
+   "url": "https://schaefli.tastystudios.ch/_werkzeuge/maison/",
+   "bild": "schirme/schaefli-maison.webp",
+   "titel": "Die Stube · Taverne zum Schäfli"
+  },
+  "bureau": {
+   "url": "https://schaefli.tastystudios.ch/_werkzeuge/bureau/",
+   "bild": "schirme/schaefli-bureau.webp",
+   "titel": "Der Schreibtisch · Taverne zum Schäfli"
+  },
+  "carte": {
+   "url": "https://schaefli.tastystudios.ch/_werkzeuge/carte/",
+   "bild": "schirme/schaefli-carte.webp",
+   "titel": "Die Tafel · Taverne zum Schäfli"
+  },
+  "reception": {
+   "url": "https://schaefli.tastystudios.ch/_werkzeuge/reception/",
+   "bild": "schirme/schaefli-reception.webp",
+   "titel": "Der Gastgeber · Taverne zum Schäfli Wigoltingen"
+  },
+  "livre": {
+   "url": "https://schaefli.tastystudios.ch/_werkzeuge/livre/",
+   "bild": "schirme/schaefli-livre.webp",
+   "titel": "Das Hausbuch · Taverne zum Schäfli"
+  },
+  "registre": {
+   "url": "https://schaefli.tastystudios.ch/_werkzeuge/registre/",
+   "bild": "schirme/schaefli-registre.webp",
+   "titel": "Übersicht · Das Besucherbuch · Taverne zum Schäfli"
+  },
+  "imprimerie": {
+   "url": "https://schaefli.tastystudios.ch/_werkzeuge/imprimerie/",
+   "bild": "schirme/schaefli-imprimerie.webp",
+   "titel": "Die Werkstatt · Taverne zum Schäfli"
+  }
+ },
+ "schloessli": {
+  "maison": {
+   "url": "https://schloessli.tastystudios.ch/_werkzeuge/maison/",
+   "bild": "schirme/schloessli-maison.webp",
+   "titel": "Das Hafenbüro · Wirtschaft am Schlössli"
+  },
+  "bureau": {
+   "url": "https://schloessli.tastystudios.ch/_werkzeuge/bureau/",
+   "bild": "schirme/schloessli-bureau.webp",
+   "titel": "Das Schaufenster · Wirtschaft am Schlössli"
+  },
+  "carte": {
+   "url": "https://schloessli.tastystudios.ch/_werkzeuge/carte/",
+   "bild": "schirme/schloessli-carte.webp",
+   "titel": "Das Kartenpult · Wirtschaft am Schlössli"
+  },
+  "reception": {
+   "url": "https://schloessli.tastystudios.ch/_werkzeuge/reception/",
+   "bild": "schirme/schloessli-reception.webp",
+   "titel": "Das Reservationsbuch · Wirtschaft am Schlössli Bottighofen"
+  },
+  "livre": {
+   "url": "https://schloessli.tastystudios.ch/_werkzeuge/livre/",
+   "bild": "schirme/schloessli-livre.webp",
+   "titel": "Das Bildarchiv · Wirtschaft am Schlössli"
+  },
+  "registre": {
+   "url": "https://schloessli.tastystudios.ch/_werkzeuge/registre/",
+   "bild": "schirme/schloessli-registre.webp",
+   "titel": "Übersicht · Die Besucherliste · Wirtschaft am Schlössli"
+  },
+  "imprimerie": {
+   "url": "https://schloessli.tastystudios.ch/_werkzeuge/imprimerie/",
+   "bild": "schirme/schloessli-imprimerie.webp",
+   "titel": "Die Hausdruckerei · Wirtschaft am Schlössli"
+  }
+ },
+ "bareiss": {
+  "maison": {
+   "url": "http://127.0.0.1:9741/_werkzeuge/maison/",
+   "bild": "schirme/bareiss-maison.webp",
+   "titel": "Kontrollpanel · Hotel Bareiss"
+  },
+  "bureau": {
+   "url": "http://127.0.0.1:9742/_werkzeuge/bureau/",
+   "bild": "schirme/bareiss-bureau.webp",
+   "titel": "Website bearbeiten · Hotel Bareiss"
+  },
+  "carte": {
+   "url": "http://127.0.0.1:9743/_werkzeuge/carte/",
+   "bild": "schirme/bareiss-carte.webp",
+   "titel": "Karten & Preislisten · Hotel Bareiss"
+  },
+  "reception": {
+   "url": "http://127.0.0.1:9744/_werkzeuge/reception/",
+   "bild": "schirme/bareiss-reception.webp",
+   "titel": "Anfragen & Chat · Hotel Bareiss"
+  },
+  "livre": {
+   "url": "http://127.0.0.1:9745/_werkzeuge/livre/",
+   "bild": "schirme/bareiss-livre.webp",
+   "titel": "Markenbuch · Hotel Bareiss"
+  },
+  "registre": {
+   "url": "http://127.0.0.1:9746/_werkzeuge/registre/",
+   "bild": "schirme/bareiss-registre.webp",
+   "titel": "Übersicht · Besucher · Bareiss"
+  },
+  "imprimerie": {
+   "url": "http://127.0.0.1:9747/_werkzeuge/imprimerie/",
+   "bild": "schirme/bareiss-imprimerie.webp",
+   "titel": "Drucksachen & Feed · Hotel Bareiss"
+  }
+ },
+ "gilles-varone": {
+  "maison": {
+   "url": "http://127.0.0.1:9711/_werkzeuge/maison/",
+   "bild": "schirme/gilles-varone-maison.webp",
+   "titel": "Kontrollpanel · Restaurant Gilles Varone"
+  },
+  "bureau": {
+   "url": "http://127.0.0.1:9712/_werkzeuge/bureau/",
+   "bild": "schirme/gilles-varone-bureau.webp",
+   "titel": "Website bearbeiten · Gilles Varone"
+  },
+  "carte": {
+   "url": "http://127.0.0.1:9713/_werkzeuge/carte/",
+   "bild": "schirme/gilles-varone-carte.webp",
+   "titel": "Karten & Preislisten · Restaurant Gilles Varone"
+  },
+  "reception": {
+   "url": "http://127.0.0.1:9714/_werkzeuge/reception/",
+   "bild": "schirme/gilles-varone-reception.webp",
+   "titel": "Anfragen & Chat · Restaurant Gilles Varone"
+  },
+  "livre": {
+   "url": "http://127.0.0.1:9715/_werkzeuge/livre/",
+   "bild": "schirme/gilles-varone-livre.webp",
+   "titel": "Markenbuch · Restaurant Gilles Varone"
+  },
+  "registre": {
+   "url": "http://127.0.0.1:9716/_werkzeuge/registre/",
+   "bild": "schirme/gilles-varone-registre.webp",
+   "titel": "Übersicht · Besucher · Gilles Varone"
+  },
+  "imprimerie": {
+   "url": "http://127.0.0.1:9717/_werkzeuge/imprimerie/",
+   "bild": "schirme/gilles-varone-imprimerie.webp",
+   "titel": "Drucksachen & Feed · Restaurant Gilles Varone"
+  }
+ },
+ "roots": {
+  "maison": {
+   "url": "http://localhost:9301/_werkzeuge/maison/",
+   "bild": "schirme/roots-maison.webp",
+   "titel": "Kontrollpanel · roots Basel"
+  },
+  "bureau": {
+   "url": "http://localhost:9302/_werkzeuge/bureau/",
+   "bild": "schirme/roots-bureau.webp",
+   "titel": "Website bearbeiten · roots"
+  },
+  "carte": {
+   "url": "http://localhost:9303/_werkzeuge/carte/",
+   "bild": "schirme/roots-carte.webp",
+   "titel": "Karten & Preislisten · roots"
+  },
+  "reception": {
+   "url": "http://localhost:9304/_werkzeuge/reception/",
+   "bild": "schirme/roots-reception.webp",
+   "titel": "Anfragen & Chat · roots Basel"
+  },
+  "livre": {
+   "url": "http://localhost:9305/_werkzeuge/livre/",
+   "bild": "schirme/roots-livre.webp",
+   "titel": "Markenbuch · roots Basel"
+  },
+  "registre": {
+   "url": "http://localhost:9306/_werkzeuge/registre/",
+   "bild": "schirme/roots-registre.webp",
+   "titel": "Übersicht · Besucher · roots"
+  },
+  "imprimerie": {
+   "url": "http://localhost:9307/_werkzeuge/imprimerie/",
+   "bild": "schirme/roots-imprimerie.webp",
+   "titel": "Drucksachen & Feed · roots"
+  }
+ },
+ "rustica": {
+  "maison": {
+   "url": "http://127.0.0.1:9521/_werkzeuge/maison/",
+   "bild": "schirme/rustica-maison.webp",
+   "titel": "Kontrollpanel · Chalet Rustica"
+  },
+  "bureau": {
+   "url": "http://127.0.0.1:9522/_werkzeuge/bureau/",
+   "bild": "schirme/rustica-bureau.webp",
+   "titel": "Website bearbeiten · Chalet Rustica"
+  },
+  "carte": {
+   "url": "http://127.0.0.1:9523/_werkzeuge/carte/",
+   "bild": "schirme/rustica-carte.webp",
+   "titel": "Karten & Preislisten · Chalet Rustica"
+  },
+  "reception": {
+   "url": "http://127.0.0.1:9524/_werkzeuge/reception/",
+   "bild": "schirme/rustica-reception.webp",
+   "titel": "Anfragen & Chat · Chalet Rustica"
+  },
+  "livre": {
+   "url": "http://127.0.0.1:9525/_werkzeuge/livre/",
+   "bild": "schirme/rustica-livre.webp",
+   "titel": "Markenbuch · Chalet Rustica"
+  },
+  "registre": {
+   "url": "http://127.0.0.1:9526/_werkzeuge/registre/",
+   "bild": "schirme/rustica-registre.webp",
+   "titel": "Übersicht · Besucher · Chalet Rustica"
+  },
+  "imprimerie": {
+   "url": "http://127.0.0.1:9527/_werkzeuge/imprimerie/",
+   "bild": "schirme/rustica-imprimerie.webp",
+   "titel": "Drucksachen & Feed · Chalet Rustica"
+  }
+ },
+ "europaeischer-hof": {
+  "carte": {
+   "url": "http://127.0.0.1:9461/_werkzeuge/carte/",
+   "bild": "schirme/europaeischer-hof-carte.webp",
+   "titel": "Karten & Preislisten · Der Europäische Hof Heidelberg"
+  },
+  "livre": {
+   "url": "http://127.0.0.1:9462/_werkzeuge/livre/",
+   "bild": "schirme/europaeischer-hof-livre.webp",
+   "titel": "Markenbuch · Der Europäische Hof Heidelberg"
+  },
+  "imprimerie": {
+   "url": "http://127.0.0.1:9463/_werkzeuge/imprimerie/",
+   "bild": "schirme/europaeischer-hof-imprimerie.webp",
+   "titel": "Drucksachen & Feed · Der Europäische Hof Heidelberg"
+  }
+ }
+}

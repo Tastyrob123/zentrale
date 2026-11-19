@@ -1,0 +1,16 @@
+/* Grundlage aller Werkzeuge (Farben, Schrift, Abstände). Jedes Werkzeug bindet sie mit <link rel="stylesheet" href="/zentrale/zentrale/grund.css"> ein.
+   Nur hier ändern, nie in einem Werkzeug überschreiben, damit alles wie aus einem Guss aussieht. */
+@font-face { font-family: 'Instrument Sans'; src: url('/zentrale/grundlagen/marke/schriften/InstrumentSans-normal-400_600.woff2') format('woff2'); font-weight: 400 600; font-display: block; }
+@font-face { font-family: 'Antonio'; src: url('/zentrale/grundlagen/marke/schriften/Antonio-normal-100_700.woff2') format('woff2'); font-weight: 100 700; font-display: block; }
+@font-face { font-family: 'DM Mono'; src: url('/zentrale/grundlagen/marke/schriften/DMMono-normal-400.woff2') format('woff2'); font-weight: 400; font-display: block; }
+:root {
+  --nacht: #111421; --tief: #1f213b; --flaeche: #1f212c; --creme: #f3ece2; --leinen: #ece4d4; --gold: #c7b489; --goldd: #a07c3f;
+  --text: #f3ece2; --leise: rgba(243, 236, 226, .62); --linie: rgba(243, 236, 226, .12); --rot: #c8553d; --gruen: #7fa37a;
+  --schrift: 'Instrument Sans', system-ui, sans-serif; --titel: 'Antonio', 'Instrument Sans', sans-serif; --mono: 'DM Mono', ui-monospace, monospace;
+  --rund: 14px; --rund-gross: 22px; --luft: 24px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--nacht); color: var(--text); font: 400 15px/1.5 var(--schrift); -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--titel); font-weight: 500; letter-spacing: .01em; line-height: 1.05; margin: 0 0 .4em; }
+a { color: var(--gold); }
+button { font: inherit; }
