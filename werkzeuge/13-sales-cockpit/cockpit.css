@@ -1065,11 +1065,11 @@ body.sc .sc-kosten__alles>.sc-frage>.sc-frage__a{max-width:none}
 /* Familienpaket einmal je Familie, quer unter den Preis-Tafeln aller Häuser (Robert 15.11.2026: «nicht 4 × die Info», «unter den Preiskarten», «farblich abheben»).
    Die Karten teilen ihre Zeilen (subgrid); eine leere Zeile nach «Preise» hält Platz, die Tafel liegt im Raster der Familie quer darüber. */
 .sc-karten--paket>.sc-karte{grid-column:var(--c);grid-row:1/span 5}
-.sc-karten--paket>.sc-karte.auf{grid-row:1/span 10}
+.sc-karten--paket>.sc-karte.auf{grid-row:1/span 11}
 .sc-paketplatz{min-height:0}
 .sc-karten--paket>.sc-fampaket{grid-column:1/-1;grid-row:7;justify-self:stretch!important;width:auto!important;align-self:center}
 .sc-karten--paket:not(:has(>.sc-karte.auf))>.sc-fampaket{display:none!important}
-@media (max-width:1180px){.sc-karten--paket>.sc-karte{grid-column:auto;grid-row:span 5}.sc-karten--paket>.sc-karte.auf{grid-row:span 9}.sc-paketplatz{display:none}.sc-karten--paket>.sc-fampaket{grid-row:auto}}
+@media (max-width:1180px){.sc-karten--paket>.sc-karte{grid-column:auto;grid-row:span 5}.sc-karten--paket>.sc-karte.auf{grid-row:span 11}.sc-paketplatz{display:none}.sc-karten--paket>.sc-fampaket{grid-row:auto}}
 body.sc #sc-haeuser .sc-fampaket{margin:6px 0!important;padding:18px 24px!important;background:var(--wo-nacht)!important;box-shadow:0 22px 34px -22px rgba(17,20,33,.6),inset 0 1px 0 rgba(235,219,206,.14)!important}
 body.sc #sc-haeuser .sc-fampaket>dt{color:var(--wo-gold)!important}
 .sc-fampaket__reihe{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));column-gap:32px}
@@ -1377,7 +1377,7 @@ body.sc .sc-hb .sc-gs .sc-gs__auf i,body.sc .sc-hb .sc-gs .sc-gs__l li i{backgro
 .sc-karte .sc-hb{padding:16px}
 .sc-hb__ap{font:600 16px/1.3 var(--wo-sans)!important;text-transform:none}
 /* Häuser wieder mit den Kacheln (16.11.2026) */
-.sc-karte{grid-row:span 10}
+.sc-karte{grid-row:span 11} /* aufgeklappt elf Teile: Bild, Ort, Name, Knopf, sechs Tafeln, Knöpfe (19.11.2026: bei zehn lagen die Knöpfe über «Gespräch») */
 .sc-karte:not(.auf){grid-row:span 5}
 .sc-mb{transition:background .9s cubic-bezier(.4,0,.2,1),box-shadow .9s cubic-bezier(.4,0,.2,1),padding .35s ease}
 
