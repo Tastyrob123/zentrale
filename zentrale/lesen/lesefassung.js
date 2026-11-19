@@ -113,6 +113,7 @@ ${inhalt}
   const SC = 'werkzeuge/13-sales-cockpit/';
   for (const [n, t] of [['start/vertrag.html', 'Vertrag Anna Llorens (Entwurf)'], ['start/auftragsverarbeitung.html', 'Auftragsverarbeitung Anna Llorens (Entwurf)'], ['start/freigabe-name-bild.html', 'Freigabe Name und Bild Anna Llorens (Entwurf)']])
     if (fs.existsSync(path.join(WURZEL, SC, n))) dokumente.push({ art: 'Unser Start', titel: t, url: B + '/' + SC + n, html: await htmlText(B + '/' + SC + n) });
+  if (fs.existsSync(path.join(WURZEL, SC, 'vertrag-haus/vorlage.html'))) dokumente.push({ art: 'Vertrag mit den Häusern', titel: 'Vertrag Haus (Erster Entwurf, offene Punkte grau)', url: B + '/' + SC + 'vertrag-haus/vorlage.html', html: await htmlText(B + '/' + SC + 'vertrag-haus/vorlage.html') });
   for (const n of fs.readdirSync(path.join(WURZEL, SC, 'brief')).filter(x => x.endsWith('.html') && x !== 'vorlage.html').sort()) {
     const url = B + '/' + SC + 'brief/' + n; const html = await htmlText(url);
     dokumente.push({ art: 'Brief an das Haus', titel: (await page.title()) || n, url, html });

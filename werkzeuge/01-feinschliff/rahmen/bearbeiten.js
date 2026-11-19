@@ -808,7 +808,7 @@ function vergleich(opt = {}) {
   let geladen = 0;
   const fertig = () => { if (++geladen < 2) return; koppeln(oben, unten); koppeln(unten, oben); [oben, unten].forEach(f => { try { f.contentWindow.document.addEventListener('click', ev => { ev.preventDefault(); }, true); } catch (e) { /* */ } }); };
   oben.addEventListener('load', fertig, { once: true }); unten.addEventListener('load', fertig, { once: true });
-  unten.src = ORT + 'stand/' + datei + '?v=' + Date.now();
+  unten.src = ORT + 'ansicht/' + datei + '?v=' + Date.now();
   oben.src = ORT + 'ansicht/' + datei + '?v=' + Date.now();
   requestAnimationFrame(passe);
 }
@@ -870,7 +870,7 @@ const PROBLEM = { ueber: 'Text läuft über den Rand seiner Fläche', rand: 'Tex
 async function pruefeSeite(datei, breite, ids) {
   /* geprüft wird der Entwurf gegen die Seite, wie sie online steht: es zählt nur, was durch die Änderung neu dazukommt */
   const t = Date.now();
-  const [fe, fs] = await Promise.all([ladeVerdeckt(ORT + 'ansicht/' + datei + '?pruefung=' + t, breite), ladeVerdeckt(ORT + 'stand/' + datei + '?pruefung=' + t, breite)]);
+  const [fe, fs] = await Promise.all([ladeVerdeckt(ORT + 'ansicht/' + datei + '?pruefung=' + t, breite), ladeVerdeckt(ORT + 'ansicht/' + datei + '?pruefung=' + t, breite)]);
   const funde = [];
   try {
     const we = fe.contentWindow, de = we.document, ws = fs.contentWindow, ds = ws.document;

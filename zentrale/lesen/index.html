@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de"><head>
 <meta name="robots" content="noindex, nofollow">
-<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function kenn(t) { var h = 5381; for (var i = 0; i < t.length; i++) h = ((h * 33) ^ t.charCodeAt(i)) >>> 0; return h.toString(36) + "-" + t.length; }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); var n = pfad.split("/")[0] || "werkzeuge"; if (m !== "GET" && m !== "HEAD") { var koerper = (o && typeof o.body === "string") ? o.body : "";  return teil(n).then(function (K) { var e = K[pfad + url.search + "#" + kenn(koerper)]; if (e) return antw(e);   console.log("API-FEHLT " + JSON.stringify({ m: m, k: pfad + url.search, b: koerper.slice(0, 200000) })); return j({ fehler: "Online lässt sich nichts speichern." }, 403); }); } return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e) console.log("API-FEHLT " + JSON.stringify({ m: "GET", k: pfad + url.search })); if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Zentrale · Tasty Studios · Lesefassung</title>
@@ -12,7 +12,7 @@ h1{font-size:30px;line-height:1.15}h2{font-size:24px;margin-top:48px;border-top:
 table{display:block;max-width:100%;overflow-x:auto}</style></head>
 <body>
 <h1>Zentrale · Tasty Studios</h1>
-<p class="hinweis">Lesefassung der internen Zentrale von Tasty Studios: derselbe Inhalt wie in der Zentrale und ihren Werkzeugen (lokal unter http://localhost:9150/), als reiner Text, damit ihn jedes Programm vollständig lesen kann. Enthalten sind alle Werkzeuge mit jeder Ansicht ihrer Seitenleiste (11 Werkzeuge, 94 Ansichten), dazu 43 Dokumente: Vertrag, Auftragsverarbeitung und Freigabe für Anna, die Briefe an die Häuser und die Präsentationen je Haus und Familie. Bilder stehen als [Bild: Beschreibung]. Stand: 19.11.2026.</p>
+<p class="hinweis">Lesefassung der internen Zentrale von Tasty Studios: derselbe Inhalt wie in der Zentrale und ihren Werkzeugen (lokal unter http://localhost:9150/), als reiner Text, damit ihn jedes Programm vollständig lesen kann. Enthalten sind alle Werkzeuge mit jeder Ansicht ihrer Seitenleiste (11 Werkzeuge, 94 Ansichten), dazu 44 Dokumente: Vertrag, Auftragsverarbeitung und Freigabe für Anna, die Briefe an die Häuser und die Präsentationen je Haus und Familie. Bilder stehen als [Bild: Beschreibung]. Stand: 19.11.2026.</p>
 <h2>Inhalt</h2>
 <ol>
 <li><a href="#zentrale">Zentrale (Empfang)</a></li>
@@ -30,46 +30,47 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 <li><a href="#dokumente">Dokumente</a><ul><li>Unser Start: <a href="#dok-0">Vertrag Anna Llorens (Entwurf)</a></li>
 <li>Unser Start: <a href="#dok-1">Auftragsverarbeitung Anna Llorens (Entwurf)</a></li>
 <li>Unser Start: <a href="#dok-2">Freigabe Name und Bild Anna Llorens (Entwurf)</a></li>
-<li>Brief an das Haus: <a href="#dok-3">Brief an Hotel Bareiss · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-4">Brief an Grand Beau-Rivage · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-5">Brief an Carlton-Europe · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-6">Brief an Waldhotel Doldenhorn · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-7">Brief an Berghotel Gasterntal · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-8">Brief an Gilles Varone · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-9">Brief an Hotel Monte-Moro · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-10">Brief an roots · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-11">Brief an Landgasthof Ruedihus · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-12">Brief an Chalet Rustica · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-13">Brief an Salt &amp; Silver · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-14">Brief an Taverne zum Schäfli · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-15">Brief an Wirtschaft am Schlössli · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-16">Brief an Hotel Seiler au Lac · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-17">Brief an Uncle Hung · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-18">{{TITEL}}</a></li>
-<li>Brief an das Haus: <a href="#dok-19">Brief an Wellness &amp; Spa Pirmin Zurbriggen · Tasty Studios</a></li>
-<li>Brief an das Haus: <a href="#dok-20">Brief an Suitenhotel Zurbriggen · Tasty Studios</a></li>
-<li>Präsentation: <a href="#dok-21">Tasty Studios · Beau Rivage und Seiler Alle Haeuser</a></li>
-<li>Präsentation: <a href="#dok-22">Tasty Studios · Berghotel Gasterntal</a></li>
-<li>Präsentation: <a href="#dok-23">Tasty Studios · Carlton Europe</a></li>
-<li>Präsentation: <a href="#dok-24">Tasty Studios · Chalet Rustica</a></li>
-<li>Präsentation: <a href="#dok-25">Tasty Studios · Familie Kuchler Alle Haeuser</a></li>
-<li>Präsentation: <a href="#dok-26">Tasty Studios · Familie Maeder Alle Haeuser</a></li>
-<li>Präsentation: <a href="#dok-27">Tasty Studios · Familie Zurbriggen Alle Haeuser</a></li>
-<li>Präsentation: <a href="#dok-28">Tasty Studios · Gilles Varone</a></li>
-<li>Präsentation: <a href="#dok-29">Tasty Studios · Grand Beau Rivage</a></li>
-<li>Präsentation: <a href="#dok-30">Tasty Studios · Grand Beau Rivage.vor rivage intro 2026 11 16</a></li>
-<li>Präsentation: <a href="#dok-31">Tasty Studios · Hotel Bareiss</a></li>
-<li>Präsentation: <a href="#dok-32">Tasty Studios · Hotel Monte Moro</a></li>
-<li>Präsentation: <a href="#dok-33">Tasty Studios · Hotel Seiler au Lac</a></li>
-<li>Präsentation: <a href="#dok-34">Tasty Studios · Landgasthof Ruedihus</a></li>
-<li>Präsentation: <a href="#dok-35">Tasty Studios · Salt and Silver · Neue Website</a></li>
-<li>Präsentation: <a href="#dok-36">Tasty Studios · Suitenhotel Zurbriggen</a></li>
-<li>Präsentation: <a href="#dok-37">Tasty Studios · Taverne zum Schaefli</a></li>
-<li>Präsentation: <a href="#dok-38">Tasty Studios · Uncle Hung · Website</a></li>
-<li>Präsentation: <a href="#dok-39">Tasty Studios · Waldhotel Doldenhorn</a></li>
-<li>Präsentation: <a href="#dok-40">Tasty Studios · Wellness und Spa Pirmin Zurbriggen</a></li>
-<li>Präsentation: <a href="#dok-41">Tasty Studios · Wirtschaft am Schloessli</a></li>
-<li>Präsentation: <a href="#dok-42">Tasty Studios · roots</a></li></ul></li>
+<li>Vertrag mit den Häusern: <a href="#dok-3">Vertrag Haus (Erster Entwurf, offene Punkte grau)</a></li>
+<li>Brief an das Haus: <a href="#dok-4">Brief an Hotel Bareiss · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-5">Brief an Grand Beau-Rivage · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-6">Brief an Carlton-Europe · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-7">Brief an Waldhotel Doldenhorn · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-8">Brief an Berghotel Gasterntal · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-9">Brief an Gilles Varone · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-10">Brief an Hotel Monte-Moro · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-11">Brief an roots · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-12">Brief an Landgasthof Ruedihus · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-13">Brief an Chalet Rustica · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-14">Brief an Salt &amp; Silver · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-15">Brief an Taverne zum Schäfli · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-16">Brief an Wirtschaft am Schlössli · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-17">Brief an Hotel Seiler au Lac · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-18">Brief an Uncle Hung · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-19">{{TITEL}}</a></li>
+<li>Brief an das Haus: <a href="#dok-20">Brief an Wellness &amp; Spa Pirmin Zurbriggen · Tasty Studios</a></li>
+<li>Brief an das Haus: <a href="#dok-21">Brief an Suitenhotel Zurbriggen · Tasty Studios</a></li>
+<li>Präsentation: <a href="#dok-22">Tasty Studios · Beau Rivage und Seiler Alle Haeuser</a></li>
+<li>Präsentation: <a href="#dok-23">Tasty Studios · Berghotel Gasterntal</a></li>
+<li>Präsentation: <a href="#dok-24">Tasty Studios · Carlton Europe</a></li>
+<li>Präsentation: <a href="#dok-25">Tasty Studios · Chalet Rustica</a></li>
+<li>Präsentation: <a href="#dok-26">Tasty Studios · Familie Kuchler Alle Haeuser</a></li>
+<li>Präsentation: <a href="#dok-27">Tasty Studios · Familie Maeder Alle Haeuser</a></li>
+<li>Präsentation: <a href="#dok-28">Tasty Studios · Familie Zurbriggen Alle Haeuser</a></li>
+<li>Präsentation: <a href="#dok-29">Tasty Studios · Gilles Varone</a></li>
+<li>Präsentation: <a href="#dok-30">Tasty Studios · Grand Beau Rivage</a></li>
+<li>Präsentation: <a href="#dok-31">Tasty Studios · Grand Beau Rivage.vor rivage intro 2026 11 16</a></li>
+<li>Präsentation: <a href="#dok-32">Tasty Studios · Hotel Bareiss</a></li>
+<li>Präsentation: <a href="#dok-33">Tasty Studios · Hotel Monte Moro</a></li>
+<li>Präsentation: <a href="#dok-34">Tasty Studios · Hotel Seiler au Lac</a></li>
+<li>Präsentation: <a href="#dok-35">Tasty Studios · Landgasthof Ruedihus</a></li>
+<li>Präsentation: <a href="#dok-36">Tasty Studios · Salt and Silver · Neue Website</a></li>
+<li>Präsentation: <a href="#dok-37">Tasty Studios · Suitenhotel Zurbriggen</a></li>
+<li>Präsentation: <a href="#dok-38">Tasty Studios · Taverne zum Schaefli</a></li>
+<li>Präsentation: <a href="#dok-39">Tasty Studios · Uncle Hung · Website</a></li>
+<li>Präsentation: <a href="#dok-40">Tasty Studios · Waldhotel Doldenhorn</a></li>
+<li>Präsentation: <a href="#dok-41">Tasty Studios · Wellness und Spa Pirmin Zurbriggen</a></li>
+<li>Präsentation: <a href="#dok-42">Tasty Studios · Wirtschaft am Schloessli</a></li>
+<li>Präsentation: <a href="#dok-43">Tasty Studios · roots</a></li></ul></li>
 </ol>
 <section class="werkzeug" id="zentrale"><h2>Zentrale (Empfang)</h2>
   <section>
@@ -14707,7 +14708,16 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 <dd>Napierajrudolf@gmail.com</dd>
 <dt>Telefon</dt>
 <dd>+49 177 2117531</dd>
-</dl></div></section><section> Die Kalkulation <p>Rudi braucht eine Kalkulationsgrundlage für seine Speisen und Getränke. Aus dem Backoffice ziehen wir dafür die Kernessenz heraus: die Kalkulation.</p><ol><li>Inventar</li><li>Zutaten</li><li>Rezepte</li><li>Gerichte</li><li>Menü</li></ol><p>Die Kette wird mit Claude verbunden und entsteht gerade.</p></section>
+</dl></div></section><section>
+<a href="https://tastyrob123.github.io/rudi-san/">  [Bild: Micropage Rudi]  </a>
+<div> Die Micropage <h3>Rudi San</h3><p>Rudis eigene Seite als Private Chef und Eventkoch: über ihn, seine Stationen, seine Küche, seine Leistungen und die Anfrage.</p>
+<a href="https://tastyrob123.github.io/rudi-san/"> Öffnen </a>
+</div></section><section> Das Logo <p>Das Siegel, das Rudi gewählt hat: ein Ring mit RUDI SAN und PRIVATE CHEF, in der Mitte R, Kräuterzweig, S, darunter die Wortmarke. Jede Fassung liegt im Markenbuch als PNG, PDF und SVG.</p><div>
+<a href="https://tastyrob123.github.io/rudi-san/markenbuch/#logo"> [Bild: Logo auf dunkel]  Logo auf dunkel </a>
+<a href="https://tastyrob123.github.io/rudi-san/markenbuch/#logo"> [Bild: Logo auf hell]  Logo auf hell </a>
+</div><div>
+<a href="https://tastyrob123.github.io/rudi-san/markenbuch/#logo"> Öffnen </a>
+</div></section><section> Die Kalkulation <p>Rudi braucht eine Kalkulationsgrundlage für seine Speisen und Getränke. Aus dem Backoffice ziehen wir dafür die Kernessenz heraus: die Kalkulation.</p><ol><li>Inventar</li><li>Zutaten</li><li>Rezepte</li><li>Gerichte</li><li>Menü</li></ol><p>Die Kette wird mit Claude verbunden und entsteht gerade.</p></section>
 </section>
 <section class="ansicht" id="02-kundenliste-5">
 <h3>Kunden · Alle Kunden</h3>
@@ -14738,7 +14748,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 <b>Momo</b>  Bar, Signature Drinks der Culinarium-Abende; seit 19.11.2026 Ansprechperson für Website und Kommunikation des Wild Side </div></div><div><div> Culinarium Hannover  Walk on the Wild Side </div><p>Klarname noch offen. Hat am 02.11.2026 angeboten, Robert als Website-Bauer zu empfehlen.</p></div><div> Bearbeiten </div></li><li><div> [Bild: Rudolf «Rudi» Napieraj] <div>
 <b>Rudolf «Rudi» Napieraj</b>  Ansprechpartner Culinarium Hannover, Küche </div></div><div><div> Culinarium Hannover </div><div>
 <a href="mailto:Napierajrudolf@gmail.com">Napierajrudolf@gmail.com</a>
-<a href="tel:+491772117531">+49 177 2117531</a>  @rudi__san </div><p>Potenzieller Kandidat: Robert entwickelt mit ihm gerade ein Backoffice. Projektaufnahme und Projektanlage «Notion AI Backoffice» vom 23.03.2026. Micropage: Rudi wünscht sich eine eigene Micropage (Memo nach dem Gespräch vom 02.11.2026: «Micropage gewünschte Informationen»). Welche Inhalte darauf sollen, ist noch offen und wird mit Rudi geklärt.</p></div><div> Bearbeiten </div></li><li><div><div>
+<a href="tel:+491772117531">+49 177 2117531</a>  @rudi__san </div><p>Potenzieller Kandidat: Robert entwickelt mit ihm gerade ein Backoffice. Projektaufnahme und Projektanlage «Notion AI Backoffice» vom 23.03.2026. Micropage «Rudi San» und Logo hat Robert für ihn gebaut, beide stehen unter Backoffice.</p></div><div> Bearbeiten </div></li><li><div><div>
 <b>Yasmine</b>  Marketing txtme.social </div></div><div><div> txtme.social </div><p>Zuständig für das neue Bildmaterial, seit 01.09.2026 dabei.</p></div><div> Bearbeiten </div></li></ul>
 </section>
 <section class="ansicht" id="02-kundenliste-7">
@@ -20613,6 +20623,136 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 
 </section>
 <section class="ansicht" id="dok-3">
+<h3>Vertrag mit den Häusern: Vertrag Haus (Erster Entwurf, offene Punkte grau)</h3>
+<p>http://localhost:9150/werkzeuge/13-sales-cockpit/vertrag-haus/vorlage.html</p>
+
+<section>
+  <div>
+    <h1>Vertrag über Website, Werkzeuge und Betreuung</h1>
+    <p>für <span>Name des Hauses</span></p>
+    <p>zwischen</p>
+    <div>
+      <p>Tasty Studios</p>
+      <p>Inhaber: Robert Reff</p>
+      <p>Barmbeker Straße 26c, 22303 Hamburg</p>
+      <p>– nachfolgend „Tasty Studios“ genannt –</p>
+    </div>
+    <p>und</p>
+    <div>
+      <p><span>Firma des Hauses mit Rechtsform</span></p>
+      <p><span>Anschrift</span></p>
+      <p>vertreten durch <span>Name, Funktion</span></p>
+      <p>– nachfolgend „das Haus“ genannt –</p>
+    </div>
+    <p>schließen den folgenden Vertrag.</p>
+    <p>Erster Entwurf, Vorlage für alle Häuser · Stand 19. November 2026<br>Offene Stellen sind grau hinterlegt.</p>
+  </div>
+</section>
+<section>
+  <div>
+    <h2>§&nbsp;1 Gegenstand</h2>
+    <p>(1) Tasty Studios baut für das Haus eine Website auf Grundlage der Designstudie, die das Haus unter <span>Adresse der Designstudie</span> gesehen hat, und bringt sie unter der Adresse des Hauses online.</p>
+    <p>(2) Das Haus bucht die folgenden Teile:</p>
+    <ul>
+      <li><span></span>Website mit Werkzeugen, einmalig</li>
+      <li><span></span>Betreuung der Website, monatlich</li>
+      <li><span></span>Werkzeuge im Abo, monatlich</li>
+    </ul>
+    <p>(3) Zu den Werkzeugen gehören Kontrollpanel, Website bearbeiten, Karten &amp; Preislisten, Anfragen &amp; Chat, Markenbuch, Besucher sowie Drucksachen &amp; Feed. Welche Werkzeuge das Haus bekommt und unter welchem Namen, steht in Anlage A.</p>
+    <p>(4) Wünsche über diesen Umfang hinaus, etwa ein weiterer Bereich oder eine neue Funktion, sind nicht Teil dieses Vertrages. Dafür erhält das Haus vorher ein eigenes Angebot.</p>
+    <h2>§&nbsp;2 Ablauf bis zur Übergabe</h2>
+    <p>(1) Die Website entsteht in acht Schritten: Zugänge und Kennenlernen, Lesen und Berichtigen, Anbindungen, Fotos und Sprachen, eine gemeinsame Runde durch jede Seite und jedes Werkzeug, Vorbereitung des Umzugs mit Rechtstexten, Weiterleitungen und einem Probelauf, Einführung und Umzug.</p>
+    <p>(2) Ist die Designstudie fertig, geht die Website in ein bis zwei Wochen online, je nachdem, wie schnell die Rückmeldungen des Hauses kommen. Baut Tasty Studios ein Haus ganz neu, rechnen die Parteien mit zwei bis drei Wochen Bau und einer Woche für Rückmeldungen.</p>
+    <p>(3) Zu jedem Werkzeug gibt es eine Einführung von einer Stunde mit den Personen, die damit arbeiten.</p>
+    <p>(4) Tasty Studios übergibt die Website geprüft und mit allen nötigen Sicherheitsmaßnahmen. Nach dem Umzug sieht Tasty Studios zwei Wochen lang täglich nach der Website. Die Website braucht keine Betreuung, um zu laufen.</p>
+    <h2>§&nbsp;3 Mitwirkung des Hauses</h2>
+    <p>Das Haus stellt rechtzeitig bereit:</p>
+    <ul>
+      <li>die Zugänge zu Domain, Buchungssystem und Mail,</li>
+      <li>einen Ansprechpartner beim Buchungsanbieter,</li>
+      <li>den Entscheid zu den Fotos,</li>
+      <li>die Angaben aus dem Haus, die für die Seiten nötig sind,</li>
+      <li>das Gegenlesen der Seiten, Unterlagen und Übersetzungen,</li>
+      <li>die Freigabe der Rechtstexte und die Freigabe für den Umzug.</li>
+    </ul>
+    <h2>§&nbsp;4 Vergütung</h2>
+    <p>(1) Das Haus zahlt:</p>
+    <dl>
+      <div><dt>Website mit Werkzeugen</dt><dd><span>Betrag</span> einmalig</dd></div>
+      <div><dt>Betreuung der Website</dt><dd><span>Betrag</span> im Monat</dd></div>
+      <div><dt>Werkzeuge im Abo</dt><dd><span>Betrag</span> im Monat</dd></div>
+    </dl>
+    <p>(2) Alle Beträge verstehen sich netto in <span>Währung</span>. <span>Ob und wie Umsatzsteuer oder Mehrwertsteuer hinzukommt</span>.</p>
+    <p>(3) Bucht das Haus im Rahmen eines Familienpakets mehrere Häuser mit einer gemeinsamen Startseite, gilt der Paketpreis aus Anlage A. Die gemeinsame Startseite ist darin enthalten.</p>
+    <h2>§&nbsp;5 Zahlung</h2>
+    <p>(1) Ist die Designstudie bei Vertragsabschluss fertig, wird der einmalige Betrag mit Vertragsabschluss fällig. Baut Tasty Studios ein Haus ohne vorherige Designstudie, sind 50 % bei Vertragsabschluss und 50 % bei Fertigstellung fällig.</p>
+    <p>(2) Betreuung und Werkzeuge im Abo laufen ab dem Tag, an dem die Website online geht. Der erste und der letzte Monat werden anteilig berechnet, sonst immer im Monatszyklus.</p>
+    <p>(3) Tasty Studios stellt jede Zahlung in Rechnung. Zahlungsziel: <span>Tage</span>.</p>
+    <h2>§&nbsp;6 Betreuung und Werkzeuge im Abo</h2>
+    <p>(1) Mit der Betreuung hält Tasty Studios die Website am Laufen: Server, Domain, Sicherungen, Aktualisierungen, Sicherheit und Datenschutz. Fehler an der Website behebt Tasty Studios ohne Rechnung. Das Haus erhält spätestens am nächsten Werktag eine Antwort.</p>
+    <p>(2) Mit dem Abo stellt Tasty Studios die Werkzeuge bereit und hält sie am Laufen. Fehler an den Werkzeugen behebt Tasty Studios ohne Rechnung. Die Inhalte pflegt das Team des Hauses mit den Werkzeugen selbst. Das Haus erhält spätestens am nächsten Werktag eine Antwort.</p>
+    <p>(3) Die Gebühr für die Domain ist in der Betreuung enthalten. Ohne Betreuung zahlt das Haus die Domain und die übrigen laufenden Kosten der Website selbst.</p>
+    <h2>§&nbsp;7 Eigentum</h2>
+    <p>(1) Website, Unterlagen, Drucksachen, Mails, Beiträge und Markenbuch gehören dem Haus. Domain, Server und alle Zugänge laufen auf den Namen des Hauses. Der Ordner mit allen Dateien liegt beim Haus.</p>
+    <p>(2) Die Fotos bleiben beim Haus und seinen Fotografen.</p>
+    <p>(3) Die Werkzeuge gehören nicht dem Haus. Das Haus nutzt sie im Rahmen des Abos.</p>
+    <p>(4) Gehen die Parteien getrennte Wege, nimmt das Haus Website, Domain und seine Dateien mit. <span>Was mit den Inhalten geschieht, die das Haus in den Werkzeugen angelegt hat</span>.</p>
+    <h2>§&nbsp;8 Kosten Dritter und Betrieb</h2>
+    <p>(1) Website, Fotos, Dateien und Werkzeuge liegen auf einem eigenen Konto des Hauses bei Cloudflare, im kostenlosen Plan und ohne hinterlegtes Zahlungsmittel. Gebühren nach Besuchen, Änderungen oder Speicher entstehen dort nicht.</p>
+    <p>(2) Rechnungen von Druckerei, Fotografen und für Gegenlesen außer Haus trägt das Haus, ebenso die Gebühren seiner heutigen Systeme, etwa des Buchungssystems.</p>
+    <p>(3) Einzelne Werkzeuge nutzen Claude, das Sprachmodell von Anthropic, mit einer festen Obergrenze je Monat. Ist sie erreicht, arbeiten die Werkzeuge ohne KI weiter. <span>Wer die Kosten der KI trägt und wie hoch die Obergrenze ist</span>.</p>
+    <h2>§&nbsp;9 Datenschutz</h2>
+    <p>(1) Die Website setzt keine Cookies und verfolgt keine Besucher. Der Besucherzähler zählt Besuche ohne Namen. Im Chat werden keine Karten- oder Passdaten verarbeitet.</p>
+    <p>(2) <span>Ob und wie die Parteien eine Vereinbarung zur Auftragsverarbeitung schließen, soweit Tasty Studios personenbezogene Daten von Gästen im Auftrag des Hauses verarbeitet, etwa bei Anfragen und im Chat (Anlage B)</span>.</p>
+    <h2>§&nbsp;10 Verantwortung nach der Übergabe</h2>
+    <p>(1) Mit Betreuung reagiert Tasty Studios, wenn an Website oder Werkzeugen etwas ist, und behebt Fehler nach § 6.</p>
+    <p>(2) Ohne Betreuung ist das Haus für alles verantwortlich, was nach der Übergabe rund um die Website geschieht.</p>
+    <p>(3) <span>Haftung: wo die Verantwortung von Tasty Studios nach der Übergabe endet und in welcher Höhe gehaftet wird</span>.</p>
+    <h2>§&nbsp;11 Laufzeit und Kündigung</h2>
+    <p>(1) Betreuung und Werkzeuge im Abo sind monatlich kündbar, jeweils unabhängig voneinander. <span>Kündigungsfrist und Form der Kündigung</span>.</p>
+    <p>(2) Die Kündigung der Betreuung oder des Abos berührt das Eigentum des Hauses an Website und Domain nach § 7 nicht.</p>
+    <h2>§&nbsp;12 Schlussbestimmungen</h2>
+    <p>(1) Änderungen und Ergänzungen dieses Vertrages bedürfen der Textform.</p>
+    <p>(2) Sollten einzelne Bestimmungen dieses Vertrages unwirksam oder undurchführbar sein oder werden, bleibt die Wirksamkeit des Vertrages im Übrigen unberührt. Die Parteien ersetzen die betroffene Bestimmung durch eine wirksame Regelung, die dem gemeinsamen Zweck am nächsten kommt.</p>
+    <p>(3) <span>Anwendbares Recht und Gerichtsstand</span>.</p>
+    <div>
+      <div>Ort, Datum<span>Tasty Studios, Robert Reff</span></div>
+      <div>Ort, Datum<span><span>Name, Funktion</span>, für das Haus</span></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div>
+    <h2>Anlage A · Leistungen und Preise für <span>Name des Hauses</span></h2>
+    <dl>
+      <div><dt>Designstudie</dt><dd><span>Adresse</span></dd></div>
+      <div><dt>Seiten</dt><dd><span>Zahl und Namen der Seiten</span></dd></div>
+      <div><dt>Sprachen</dt><dd><span>Sprachen</span></dd></div>
+      <div><dt>Werkzeuge</dt><dd><span>Werkzeuge mit den Namen des Hauses</span></dd></div>
+      <div><dt>Familienpaket</dt><dd><span>Häuser, Paketpreis, gemeinsame Startseite, oder entfällt</span></dd></div>
+      <div><dt>Preise</dt><dd><span>aus dem Sales Cockpit übernehmen</span></dd></div>
+    </dl>
+    <h2>Anlage B · Auftragsverarbeitung</h2>
+    <p><span>Folgt, falls nach § 9 Abs. 2 nötig</span>.</p>
+  </div>
+</section>
+<section>
+  <div>
+    <h2>Hinweise zum Entwurf</h2>
+    <p>Dieser Entwurf übernimmt nur, was in unserem Angebot und im Sales Cockpit schon festgehalten ist. Alles andere ist offen geblieben und grau hinterlegt. Vor dem ersten Versand sollte eine Rechtsberatung den Vertrag prüfen, vor allem Haftung, Recht und Gerichtsstand, weil die meisten Häuser in der Schweiz liegen und Tasty Studios in Deutschland.</p>
+    <dl>
+      <div><dt>Beträge</dt><dd>Einmalig, Betreuung und Abo je Haus; Währung; Umsatz- und Mehrwertsteuer; Zahlungsziel.</dd></div>
+      <div><dt>Haftung</dt><dd>Laut Angebot «im schriftlichen Angebot bzw. Vertrag an das Haus verbindlich» zu regeln, Wortlaut noch offen.</dd></div>
+      <div><dt>KI-Kosten</dt><dd>Im Sales Cockpit stehen dazu zwei Fassungen: «über ein eigenes Konto des Hauses, abgerechnet nach Verbrauch» und «wer zahlt, wird gerade entschieden». Welche gilt?</dd></div>
+      <div><dt>Kündigung</dt><dd>Frist und Form; was mit den Inhalten in den Werkzeugen geschieht, wenn das Abo endet.</dd></div>
+      <div><dt>Datenschutz</dt><dd>Ob für Anfragen und Chat eine Vereinbarung zur Auftragsverarbeitung nötig ist.</dd></div>
+      <div><dt>Recht</dt><dd>Anwendbares Recht und Gerichtsstand. Im Vertrag mit Anna stehen deutsches Recht und Hamburg; bei Häusern in der Schweiz offen.</dd></div>
+    </dl>
+  </div>
+</section>
+
+</section>
+<section class="ansicht" id="dok-4">
 <h3>Brief an das Haus: Brief an Hotel Bareiss · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/bareiss.html</p>
 
@@ -20656,7 +20796,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-4">
+<section class="ansicht" id="dok-5">
 <h3>Brief an das Haus: Brief an Grand Beau-Rivage · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/beau-rivage.html</p>
 
@@ -20700,7 +20840,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-5">
+<section class="ansicht" id="dok-6">
 <h3>Brief an das Haus: Brief an Carlton-Europe · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/carlton.html</p>
 
@@ -20744,7 +20884,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-6">
+<section class="ansicht" id="dok-7">
 <h3>Brief an das Haus: Brief an Waldhotel Doldenhorn · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/doldenhorn.html</p>
 
@@ -20788,7 +20928,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-7">
+<section class="ansicht" id="dok-8">
 <h3>Brief an das Haus: Brief an Berghotel Gasterntal · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/gasterntal.html</p>
 
@@ -20832,7 +20972,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-8">
+<section class="ansicht" id="dok-9">
 <h3>Brief an das Haus: Brief an Gilles Varone · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/gilles-varone.html</p>
 
@@ -20876,7 +21016,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-9">
+<section class="ansicht" id="dok-10">
 <h3>Brief an das Haus: Brief an Hotel Monte-Moro · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/monte-moro.html</p>
 
@@ -20920,7 +21060,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-10">
+<section class="ansicht" id="dok-11">
 <h3>Brief an das Haus: Brief an roots · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/roots.html</p>
 
@@ -20964,7 +21104,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-11">
+<section class="ansicht" id="dok-12">
 <h3>Brief an das Haus: Brief an Landgasthof Ruedihus · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/ruedihus.html</p>
 
@@ -21008,7 +21148,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-12">
+<section class="ansicht" id="dok-13">
 <h3>Brief an das Haus: Brief an Chalet Rustica · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/rustica.html</p>
 
@@ -21052,7 +21192,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-13">
+<section class="ansicht" id="dok-14">
 <h3>Brief an das Haus: Brief an Salt &amp; Silver · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/saltandsilver.html</p>
 
@@ -21096,7 +21236,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-14">
+<section class="ansicht" id="dok-15">
 <h3>Brief an das Haus: Brief an Taverne zum Schäfli · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/schaefli.html</p>
 
@@ -21140,7 +21280,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-15">
+<section class="ansicht" id="dok-16">
 <h3>Brief an das Haus: Brief an Wirtschaft am Schlössli · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/schloessli.html</p>
 
@@ -21184,7 +21324,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-16">
+<section class="ansicht" id="dok-17">
 <h3>Brief an das Haus: Brief an Hotel Seiler au Lac · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/seiler.html</p>
 
@@ -21228,7 +21368,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-17">
+<section class="ansicht" id="dok-18">
 <h3>Brief an das Haus: Brief an Uncle Hung · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/uncle-hung.html</p>
 
@@ -21272,7 +21412,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-18">
+<section class="ansicht" id="dok-19">
 <h3>Brief an das Haus: {{TITEL}}</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/vorlage.vor-anker-2026-11-11.html</p>
 
@@ -21316,7 +21456,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-19">
+<section class="ansicht" id="dok-20">
 <h3>Brief an das Haus: Brief an Wellness &amp; Spa Pirmin Zurbriggen · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/wellness.html</p>
 
@@ -21360,7 +21500,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-20">
+<section class="ansicht" id="dok-21">
 <h3>Brief an das Haus: Brief an Suitenhotel Zurbriggen · Tasty Studios</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/brief/zermatt.html</p>
 
@@ -21404,7 +21544,7 @@ table{display:block;max-width:100%;overflow-x:auto}</style></head>
 </div>
 
 </section>
-<section class="ansicht" id="dok-21">
+<section class="ansicht" id="dok-22">
 <h3>Präsentation: Tasty Studios · Beau Rivage und Seiler Alle Haeuser</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Beau-Rivage-und-Seiler-Alle-Haeuser.pdf</p>
 <pre>EIN ENTWURF                         TASTY   STUDIOS    BEAU-RIVAGE   &amp;   SEILER   HAMBURG · NOVEMBER 2026
@@ -21550,7 +21690,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                   EIN   NEUER   WEBAUFTRITT   FÜR   BEAU-RIVAGE   &amp;   SEILER                                                     06    /   06</pre>
 </section>
-<section class="ansicht" id="dok-22">
+<section class="ansicht" id="dok-23">
 <h3>Präsentation: Tasty Studios · Berghotel Gasterntal</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Berghotel-Gasterntal.pdf</p>
 <pre>EIN ENTWURF                                   TASTY   STUDIOS    BERGHOTEL   GASTERNTAL      HAMBURG · NOVEMBER 2026
@@ -21710,7 +21850,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                     EINE   NEUE   WEBSITE   FÜR   BERGHOTEL   GASTERNTAL                                                          06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-23">
+<section class="ansicht" id="dok-24">
 <h3>Präsentation: Tasty Studios · Carlton Europe</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Carlton-Europe.pdf</p>
 <pre>EIN ENTWURF                               TASTY   STUDIOS       CARLTON-EUROPE        HAMBURG · NOVEMBER 2026
@@ -21869,7 +22009,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                        EINE   NEUE   WEBSITE   FÜR   CARLTON-EUROPE                                                              06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-24">
+<section class="ansicht" id="dok-25">
 <h3>Präsentation: Tasty Studios · Chalet Rustica</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Chalet-Rustica.pdf</p>
 <pre>EIN ENTWURF                                        TASTY   STUDIOS      CHALET   RUSTICA       HAMBURG · NOVEMBER 2026
@@ -22030,7 +22170,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                        EINE   NEUE   WEBSITE   FÜR   CHALET   RUSTICA                                                            06    /   06</pre>
 </section>
-<section class="ansicht" id="dok-25">
+<section class="ansicht" id="dok-26">
 <h3>Präsentation: Tasty Studios · Familie Kuchler Alle Haeuser</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Familie-Kuchler-Alle-Haeuser.pdf</p>
 <pre>EIN ENTWURF                                      TASTY   STUDIOS         FAMILIE      KUCHLER      HAMBURG · NOVEMBER 2026
@@ -22176,7 +22316,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                     EIN    NEUER   WEBAUFTRITT   FÜR    FAMILIE   KUCHLER                                                        06    /   06</pre>
 </section>
-<section class="ansicht" id="dok-26">
+<section class="ansicht" id="dok-27">
 <h3>Präsentation: Tasty Studios · Familie Maeder Alle Haeuser</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Familie-Maeder-Alle-Haeuser.pdf</p>
 <pre>EIN ENTWURF                                              TASTY       STUDIOS   FAMILIE   MAEDER               HAMBURG · NOVEMBER 2026
@@ -22326,7 +22466,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                      EIN   NEUER   WEBAUFTRITT   FÜR   FAMILIE   MAEDER                                                        06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-27">
+<section class="ansicht" id="dok-28">
 <h3>Präsentation: Tasty Studios · Familie Zurbriggen Alle Haeuser</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Familie-Zurbriggen-Alle-Haeuser.pdf</p>
 <pre>EIN ENTWURF                                         TASTY   STUDIOS    FAMILIE     ZURBRIGGEN            HAMBURG · NOVEMBER 2026
@@ -22488,7 +22628,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                    EIN   NEUER   WEBAUFTRITT   FÜR   FAMILIE   ZURBRIGGEN                                                         06    /   06</pre>
 </section>
-<section class="ansicht" id="dok-28">
+<section class="ansicht" id="dok-29">
 <h3>Präsentation: Tasty Studios · Gilles Varone</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Gilles-Varone.pdf</p>
 <pre>EIN ENTWURF                            TASTY   STUDIOS     GILLES   VARONE       HAMBURG · NOVEMBER 2026
@@ -22646,7 +22786,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                        EINE   NEUE   WEBSITE   FÜR   GILLES   VARONE                                                             06    /   06</pre>
 </section>
-<section class="ansicht" id="dok-29">
+<section class="ansicht" id="dok-30">
 <h3>Präsentation: Tasty Studios · Grand Beau Rivage</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Grand-Beau-Rivage.pdf</p>
 <pre>EIN ENTWURF                                   TASTY   STUDIOS       GRAND   BEAU-RIVAGE       HAMBURG · NOVEMBER 2026
@@ -22804,7 +22944,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                      EINE   NEUE   WEBSITE   FÜR   GRAND   BEAU-RIVAGE                                                            06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-30">
+<section class="ansicht" id="dok-31">
 <h3>Präsentation: Tasty Studios · Grand Beau Rivage.vor rivage intro 2026 11 16</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Grand-Beau-Rivage.vor-rivage-intro-2026-11-16.pdf</p>
 <pre>EIN ENTWURF                                   TASTY   STUDIOS       GRAND   BEAU-RIVAGE       HAMBURG · NOVEMBER 2026
@@ -22961,7 +23101,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                      EINE   NEUE   WEBSITE   FÜR   GRAND   BEAU-RIVAGE                                                            06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-31">
+<section class="ansicht" id="dok-32">
 <h3>Präsentation: Tasty Studios · Hotel Bareiss</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Hotel-Bareiss.pdf</p>
 <pre>EIN ENTWURF                                       TASTY   STUDIOS   HOTEL   BAREISS          HAMBURG · NOVEMBER 2026
@@ -23123,7 +23263,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                        EINE   NEUE   WEBSITE   FÜR   HOTEL   BAREISS                                                             06    /   06</pre>
 </section>
-<section class="ansicht" id="dok-32">
+<section class="ansicht" id="dok-33">
 <h3>Präsentation: Tasty Studios · Hotel Monte Moro</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Hotel-Monte-Moro.pdf</p>
 <pre>EIN ENTWURF                                  TASTY   STUDIOS   HOTEL   MONTE-MORO       HAMBURG · NOVEMBER 2026
@@ -23281,7 +23421,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                       EINE   NEUE   WEBSITE   FÜR   HOTEL   MONTE-MORO                                                            06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-33">
+<section class="ansicht" id="dok-34">
 <h3>Präsentation: Tasty Studios · Hotel Seiler au Lac</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Hotel-Seiler-au-Lac.pdf</p>
 <pre>EIN ENTWURF                            TASTY   STUDIOS       HOTEL   SEILER   AU   LAC       HAMBURG · NOVEMBER 2026
@@ -23448,7 +23588,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                     EINE   NEUE   WEBSITE   FÜR   HOTEL   SEILER   AU   LAC                                                      06    /   06</pre>
 </section>
-<section class="ansicht" id="dok-34">
+<section class="ansicht" id="dok-35">
 <h3>Präsentation: Tasty Studios · Landgasthof Ruedihus</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Landgasthof-Ruedihus.pdf</p>
 <pre>EIN ENTWURF                                   TASTY   STUDIOS      LANDGASTHOF   RUEDIHUS       HAMBURG · NOVEMBER 2026
@@ -23608,7 +23748,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                     EINE   NEUE   WEBSITE   FÜR   LANDGASTHOF   RUEDIHUS                                                          06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-35">
+<section class="ansicht" id="dok-36">
 <h3>Präsentation: Tasty Studios · Salt and Silver · Neue Website</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Salt-and-Silver_Neue-Website.pdf</p>
 <pre>EIN ENTWURF                             TASTY   STUDIOS       SALT   &amp;   SILVER                HAMBURG · NOVEMBER 2026
@@ -23785,7 +23925,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                      EINE   NEUE   WEBSITE   FÜR   SALT   &amp;   SILVER                                                            07   /   07</pre>
 </section>
-<section class="ansicht" id="dok-36">
+<section class="ansicht" id="dok-37">
 <h3>Präsentation: Tasty Studios · Suitenhotel Zurbriggen</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Suitenhotel-Zurbriggen.pdf</p>
 <pre>EIN ENTWURF                                  TASTY   STUDIOS     SUITENHOTEL   ZURBRIGGEN       HAMBURG · NOVEMBER 2026
@@ -23943,7 +24083,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                    EINE    NEUE   WEBSITE   FÜR   SUITENHOTEL   ZURBRIGGEN                                                         06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-37">
+<section class="ansicht" id="dok-38">
 <h3>Präsentation: Tasty Studios · Taverne zum Schaefli</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Taverne-zum-Schaefli.pdf</p>
 <pre>EIN ENTWURF                                     TASTY   STUDIOS       TAVERNE   ZUM   SCHÄFLI       HAMBURG · NOVEMBER 2026
@@ -24102,7 +24242,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                     EINE   NEUE   WEBSITE   FÜR   TAVERNE   ZUM   SCHÄFLI                                                         06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-38">
+<section class="ansicht" id="dok-39">
 <h3>Präsentation: Tasty Studios · Uncle Hung · Website</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Uncle-Hung_Website.pdf</p>
 <pre>EIN ENTWURF                                    TASTY   STUDIOS       UNCLE    HUNG            HAMBURG · NOVEMBER 2026
@@ -24263,7 +24403,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                            EINE   NEUE   WEBSITE   FÜR   UNCLE   HUNG                                                               06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-39">
+<section class="ansicht" id="dok-40">
 <h3>Präsentation: Tasty Studios · Waldhotel Doldenhorn</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Waldhotel-Doldenhorn.pdf</p>
 <pre>EIN ENTWURF                                   TASTY   STUDIOS      WALDHOTEL   DOLDENHORN         HAMBURG · NOVEMBER 2026
@@ -24423,7 +24563,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                     EINE   NEUE   WEBSITE   FÜR   WALDHOTEL   DOLDENHORN                                                            06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-40">
+<section class="ansicht" id="dok-41">
 <h3>Präsentation: Tasty Studios · Wellness und Spa Pirmin Zurbriggen</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Wellness-und-Spa-Pirmin-Zurbriggen.pdf</p>
 <pre>EIN ENTWURF                                  TASTY   STUDIOS    WELLNESS   &amp;   SPA   PIRMIN   ZURBRIGGEN         HAMBURG · NOVEMBER 2026
@@ -24584,7 +24724,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                EINE   NEUE   WEBSITE   FÜR   WELLNESS   &amp;   SPA   PIRMIN   ZURBRIGGEN                                                 06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-41">
+<section class="ansicht" id="dok-42">
 <h3>Präsentation: Tasty Studios · Wirtschaft am Schloessli</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_Wirtschaft-am-Schloessli.pdf</p>
 <pre>EIN ENTWURF                                       TASTY   STUDIOS   WIRTSCHAFT   AM   SCHLÖSSLI      HAMBURG · NOVEMBER 2026
@@ -24743,7 +24883,7 @@ TASTY STUDIOS · HAMBURG
 
 TASTY   STUDIOS   ·   HAMBURG                                   EINE   NEUE   WEBSITE   FÜR   WIRTSCHAFT   AM   SCHLÖSSLI                                                         06   /   06</pre>
 </section>
-<section class="ansicht" id="dok-42">
+<section class="ansicht" id="dok-43">
 <h3>Präsentation: Tasty Studios · roots</h3>
 <p>http://localhost:9150/werkzeuge/13-sales-cockpit/heft/pdf/Tasty-Studios_roots.pdf</p>
 <pre>EIN ENTWURF                                         TASTY   STUDIOS      ROOTS        HAMBURG · NOVEMBER 2026
