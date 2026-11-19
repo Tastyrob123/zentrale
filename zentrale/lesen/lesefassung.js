@@ -19,7 +19,7 @@ const PDF = 'Tasty-Studios-Zentrale-komplett.pdf';
 const WERKZEUGE = [
   ['Verkaufen', ['13-sales-cockpit', '02-kundenliste', '04-haus-check', '09-ki-check']],
   ['Nach aussen', ['14-social-cockpit', '14-social-cockpit/plan', '10-newsletter', '01-feinschliff']],
-  ['Marke', ['11-markenbuch', '12-marke-vision']]];
+  ['Marke', ['11-markenbuch', '12-marke-vision', '15-drucksachen']]];
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const anker = s => s.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase();

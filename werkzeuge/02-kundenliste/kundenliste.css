@@ -655,3 +655,12 @@ img.kl-pbild{object-fit:cover;object-position:50% 30%}
 .kl-bo__kette li+li::before{content:'';position:absolute;left:-7px;top:50%;width:12px;height:12px;border-top:1px solid var(--wo-g2);border-right:1px solid var(--wo-g2);transform:translateY(-50%) rotate(45deg)}
 .kl-bo__jetzt{margin:0;text-align:center;font-size:15px;line-height:1.5;color:var(--wo-leise)}
 @media (max-width:620px){.kl-bo__kette{grid-template-columns:minmax(0,1fr)}.kl-bo__kette li+li::before{left:50%;top:-7px;transform:translateX(-50%) rotate(135deg)}}
+
+/* Micropage und Logo im Backoffice (Robert 19.11.2026) */
+.kl-bo__logos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.kl-bo__logo{display:grid;grid-template-rows:auto auto;justify-items:center;gap:14px;padding:clamp(26px,3vw,44px) 20px 22px;border-radius:20px;text-decoration:none;font:500 12px/1.3 var(--wo-mono);letter-spacing:.16em;text-transform:uppercase}
+.kl-bo__logo img{width:min(100%,340px);height:auto;display:block}
+.kl-bo__logo--dunkel{background:#14110e;color:#c8a46a}
+.kl-bo__logo--hell{background:#ece2cf;color:#8a7350}
+.kl-bo__auf{display:flex;justify-content:center}
+@media (max-width:620px){.kl-bo__logos{grid-template-columns:minmax(0,1fr)}}

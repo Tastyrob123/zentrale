@@ -1195,6 +1195,17 @@ function zeichneBackoffice(id) {
       el('div', { class: 'kl-pp__z' }, personBild(p), el('div', { class: 'kl-pp__text' }, el('b', {}, p.name), p.rolle ? el('span', {}, p.rolle) : null,
         h ? el('button', { type: 'button', class: 'ws-link', onclick: () => geh('haus:' + h.id) }, h.name) : null)),
       el('dl', { class: 'kl-dl' }, ...zeilen.flatMap(z => [el('dt', {}, z[0]), el('dd', {}, z[0] === 'Stand' ? el('b', { class: 'kl-bo__stand' }, z[1]) : z[1])])))));
+  /* Micropage und Logo (Robert 19.11.2026: «die Micropage, die ich für Rudi gemacht hatte … Plus das Logo … in seiner Persona») */
+  if (b.micropage) m.append(el('section', { class: 'kl-arb__sales kl-breit kl-bo', 'aria-label': 'Die Micropage' },
+    laptop(b.micropage.bild, 'Micropage ' + rufname, b.micropage.url),
+    el('div', { class: 'kl-arb__text' }, el('span', { class: 'kl-ue__k' }, 'Die Micropage'), el('h3', {}, 'Rudi San'), el('p', {}, b.micropage.satz), oeffnen(b.micropage.url))));
+  if (b.logo) m.append(el('section', { class: 'kl-ue__block kl-ue__block--rahmen kl-breit kl-bo' },
+    el('span', { class: 'kl-ue__k' }, 'Das Logo'),
+    el('p', { class: 'kl-bo__satz' }, b.logo.satz),
+    el('div', { class: 'kl-bo__logos' },
+      el('a', { class: 'kl-bo__logo kl-bo__logo--dunkel', href: b.logo.url, target: '_blank', rel: 'noopener' }, el('img', { src: b.logo.dunkel, alt: 'Logo auf dunkel', loading: 'lazy', decoding: 'async' }), el('span', {}, 'Logo auf dunkel')),
+      el('a', { class: 'kl-bo__logo kl-bo__logo--hell', href: b.logo.url, target: '_blank', rel: 'noopener' }, el('img', { src: b.logo.hell, alt: 'Logo auf hell', loading: 'lazy', decoding: 'async' }), el('span', {}, 'Logo auf hell'))),
+    el('div', { class: 'kl-bo__auf' }, oeffnen(b.logo.url))));
   if (b.schritte && b.schritte.length) m.append(el('section', { class: 'kl-ue__block kl-ue__block--rahmen kl-breit kl-bo' },
     el('span', { class: 'kl-ue__k' }, 'Die Kalkulation'),
     b.worum ? el('p', { class: 'kl-bo__satz' }, b.worum) : null,
