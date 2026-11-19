@@ -1,6 +1,0 @@
-[
-  {"id": "l-post", "name": "Post aus dem Studio", "kurz": "Die Hauptliste. Alle, die sich über die Agentur-Seite angemeldet haben oder nach einem Gespräch dazukamen."},
-  {"id": "l-hotel", "name": "Hotellerie Schweiz", "kurz": "Häuser im Berner Oberland, im Wallis und am Genfersee."},
-  {"id": "l-gastro", "name": "Gastronomie Hannover", "kurz": "Bars und Restaurants rund um Linden und die Nordstadt."},
-  {"id": "l-kicheck", "name": "KI-Check Kontakte", "kurz": "Häuser, die einen KI-Check bekommen haben und mehr wissen wollen."}
-]

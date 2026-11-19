@@ -1,9 +1,0 @@
-:root { --holz: #4a3a2a; --creme: #f6f1e8; }
-body { margin: 0; font-family: Georgia, serif; background: var(--creme); color: #2b2217; }
-.kopf { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; }
-.held img { width: 100%; height: auto; }
-.drei { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 32px; }
-.karte ul { list-style: none; padding: 0; }
-.karte li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #d9cfc0; }
-@media (max-width: 900px) { .drei { grid-template-columns: 1fr; } }
-@media (max-width: 600px) { .kopf { flex-direction: column; } nav a { display: block; padding: 8px 0; } }

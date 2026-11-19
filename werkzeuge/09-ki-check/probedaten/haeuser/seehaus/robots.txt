@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /intern/
-
-Sitemap: https://www.hotel-seehaus-steckborn.ch/sitemap.xml
