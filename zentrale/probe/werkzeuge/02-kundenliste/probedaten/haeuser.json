@@ -1,0 +1,8 @@
+[
+  {"kuerzel": "salt-silver", "name": "Salt & Silver", "ort": "Hamburg", "stand": "Angebot verschickt", "naechster": "Nachfassen", "bis": "-2"},
+  {"kuerzel": "grand-beau-rivage", "name": "Grand Beau-Rivage", "ort": "Montreux", "stand": "Entwurf offen", "naechster": "Freigabe einholen", "bis": "0"},
+  {"kuerzel": "hofgut-lindenau", "name": "Hofgut Lindenau", "ort": "Bad Tölz", "stand": "im Bau", "naechster": "Fotos abwarten", "bis": "2"},
+  {"kuerzel": "nonna-pia", "name": "Trattoria Nonna Pia", "ort": "Berlin", "stand": "online", "naechster": "Rechnung Oktober", "bis": "0"},
+  {"kuerzel": "seeblick", "name": "Hotel Seeblick", "ort": "Tegernsee", "stand": "Erstgespräch", "naechster": "Angebot schreiben", "bis": "4"},
+  {"kuerzel": "rotlicht", "name": "Weinbar Rotlicht", "ort": "Wien", "stand": "offen", "naechster": "", "bis": ""}
+]

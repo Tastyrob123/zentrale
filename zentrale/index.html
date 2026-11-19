@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="de" class="wartet">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zentrale · Tasty Studios</title>
+<meta name="description" content="Alle Werkzeuge von Tasty Studios an einem Ort, für Robert und Anna.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111421">
+<link rel="icon" href="/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg" type="image/svg+xml">
+<!-- Fehlermelder zuerst (wie Kontrollpanel fehler.js): merkt jeden Skriptfehler, öffnet die Startfehler-Tür -->
+<script src="/zentrale/zentrale/fehler.js"></script>
+<!-- Kleid wie in jedem Werkzeug (zentrale/oberflaeche/LIESMICH.md); ohne Rahmen «Die Bühne», die Zentrale hat ihren eigenen Aufbau nach «Kontrollpanel» -->
+<script src="/zentrale/zentrale/oberflaeche/kleid/tasty.js?v=pf9"></script>
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/grund.css">
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/kleid/tasty.css">
+<script src="/zentrale/zentrale/oberflaeche/oberflaeche.js"></script>
+<link rel="stylesheet" href="/zentrale/zentrale/zentrale.css?v=an3">
+<link rel="stylesheet" href="/zentrale/zentrale/pult-fassungen.css?v=an2">
+<link rel="stylesheet" href="/zentrale/zentrale/kopf-fassungen.css?v=1">
+<link rel="preload" as="font" type="font/woff2" href="/zentrale/grundlagen/marke/schriften/Antonio-normal-100_700.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/zentrale/grundlagen/marke/schriften/InstrumentSans-normal-400_600.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/zentrale/grundlagen/marke/schriften/DMMono-normal-400.woff2" crossorigin>
+</head>
+<body class="wo-app ma" data-wo-zl-nie>
+<div class="m-tuer" id="tuer" role="alert" hidden><p class="m-tuer__t">Die Zentrale startet nicht.</p><p id="tuer-t">&nbsp;</p><!-- fest in der Seite: die Tür muss auch ohne zentrale.js bedienbar sein --><a class="wo-kn wo-kn--dunkel wo-kn--klein" href="/zentrale/zentrale/pruefung.html"><span>Prüfung öffnen</span><i><svg class="wo-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a><a class="wo-kn wo-kn--hell wo-kn--klein" href="/"><span>Neu laden</span><i><svg class="wo-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5M12 8v4l3 2"/></svg></i></a></div>
+
+<header class="m-oben" id="kopf">
+  <!-- fest in der Seite wie Kontrollpanel: «Website ansehen» geht auch ohne zentrale.js (Prüfung 2). Knopf «Anleitungen» entfernt (Robert 19.11.2026, mit der Spalte im Fuss) -->
+  <nav class="m-insel" aria-label="Zentrale">
+    <button class="m-ecke" type="button" data-start><span class="m-ecke__ring" data-zeichen><span class="wo-zeichen" aria-hidden="true" style="aspect-ratio:1.033175355450237;background:currentColor;-webkit-mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/contain no-repeat;mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/contain no-repeat"></span></span><span class="m-ecke__t"><b>Zentrale</b><small>Alle Werkzeuge · Tasty Studios</small></span></button>
+    <span class="m-insel__wege"><a class="m-insel__p" href="#werkzeuge"><span class="rl">Werkzeuge</span></a><button class="m-insel__p" type="button" data-suche><span class="rl">Suchen</span> <kbd>⌘K</kbd></button></span>
+  </nav>
+  <div class="m-oben__r">
+    <div class="m-wer" id="wer" role="group" aria-label="Wer arbeitet gerade"><button type="button" data-wer="Robert" aria-pressed="true">Robert</button><button type="button" data-wer="Anna" aria-pressed="false">Anna</button></div>
+    <button class="m-rund" type="button" id="werRund" aria-label="Wer arbeitet gerade, umschalten">R</button>
+    <a class="wo-kn wo-kn--hell wo-kn--klein m-oben__ecke" href="/zentrale/seite/index.html" target="_blank" rel="noopener"><span>Website ansehen</span><i><svg class="wo-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18zM3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></i></a>
+  </div>
+</header>
+
+<main id="start">
+  <section class="m-f5" id="oben" aria-label="Empfang">
+    <nav class="m-f5__reihe" aria-label="Häufig gebraucht"><ol id="tueren"></ol></nav>
+    <div class="m-f5__oben">
+      <p class="m-f5__ort"><span data-zeichen><span class="wo-zeichen" aria-hidden="true" style="aspect-ratio:1.033175355450237;background:currentColor;-webkit-mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/contain no-repeat;mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/contain no-repeat"></span></span><span class="m-pkt" aria-hidden="true">·</span><span>Tasty Studios</span><span class="m-pkt" aria-hidden="true">·</span><span>Hamburg</span></p>
+      <h1 class="m-f5__titel" id="titel">Zentrale</h1>
+      <p class="m-f5__gruss"><span id="gruss">Guten Tag.</span> Womit fangen wir heute an?</p>
+      <p class="m-f5__datum" id="datum">&nbsp;</p>
+      <!-- Zeile «Heute … überfällig» entfernt (Robert 08.11.2026: Aufgaben und Tagesübersicht laufen über Notion) -->
+    </div>
+  </section>
+
+  <div class="m-band" data-laufband><ul id="band" aria-label="Alle Werkzeuge"></ul></div>
+
+  <!-- Abschnitt «Was heute ansteht» entfernt (Robert 08.11.2026) -->
+
+  <div id="werkzeuge"></div>
+</main>
+
+<footer class="m-fuss tapete" id="fuss">
+  <div class="m-fuss__platte" data-r>
+    <div class="m-fuss__marke" data-r="t"><span data-zeichen><span class="wo-zeichen" aria-hidden="true" style="aspect-ratio:1.033175355450237;background:currentColor;-webkit-mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/contain no-repeat;mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/contain no-repeat"></span></span><b>Tasty Studios</b></div>
+    <div class="m-fuss__spalte" data-r="t" style="--i:1"><p class="m-fuss__k">Das Studio</p><p>Interne Werkzeuge für Robert und Anna</p><p>Tasty Studios, <span class="m-nb">Hamburg</span></p><a href="/zentrale/seite/index.html" target="_blank" rel="noopener">Website ansehen</a></div>
+    <!-- Spalte «Anleitungen» entfernt (Robert 19.11.2026: «Ja, raus») -->
+    <div class="m-fuss__spalte" data-r="t" style="--i:2"><p class="m-fuss__k">Fragen</p><p>Robert Reff · Tasty Studios</p><p>robert@tasty-studios.de</p><a href="/zentrale/zentrale/pruefung.html">Prüfung der Zentrale</a></div>
+  </div>
+</footer>
+
+<div class="m-werk" id="werk" hidden>
+  <nav class="m-leiste" id="leiste" aria-label="Werkzeuge"></nav>
+  <iframe class="m-rahmen" id="rahmen" title="Werkzeug"></iframe>
+</div>
+<div class="m-lk-name" id="lkName" aria-hidden="true"></div>
+
+<div class="m-suche" id="suche" hidden>
+  <div class="m-suche__platte" role="dialog" aria-label="Werkzeug suchen">
+    <label class="wo-such"><span data-ic="suche"></span><input id="sucheFeld" type="search" placeholder="Werkzeug tippen, Enter öffnet" autocomplete="off" spellcheck="false"></label>
+    <ul class="m-treffer" id="treffer"></ul>
+    <div class="m-suche__fuss"><kbd>↑ ↓ wählen</kbd><kbd>Enter öffnet</kbd><kbd>Esc schliesst</kbd></div>
+  </div>
+</div>
+
+<div class="wo-quittung m-quittung weg" id="quittung" role="status" aria-live="polite"><i data-ic="haken"></i><span data-q-text><b></b></span><span class="m-q-wege"><button type="button" class="m-q-k" data-q-vn aria-expanded="false">Vorher, nachher</button><button type="button" class="m-q-k" data-q-zurueck>Rückgängig</button></span><button type="button" data-q-zu aria-label="Schliessen" data-ic="x"></button></div>
+
+<script src="/zentrale/zentrale/saele.js?v=pf9"></script>
+<script src="/zentrale/zentrale/pult-fassungen.js?v=an2"></script>
+<script src="/zentrale/zentrale/zentrale.js?v=an3"></script>
+<script src="/zentrale/zentrale/kopf-fassungen.js?v=2"></script>
+<script src="/zentrale/zentrale/rundgang.js?v=pf1" defer data-werkzeug="zentrale"></script>
+</body>
+</html>

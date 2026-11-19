@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prüfung · Zentrale · Tasty Studios</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg" type="image/svg+xml">
+<script src="/zentrale/zentrale/oberflaeche/kleid/tasty.js"></script>
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/grund.css">
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/kleid/tasty.css">
+<script src="/zentrale/zentrale/oberflaeche/oberflaeche.js"></script>
+<link rel="stylesheet" href="/zentrale/zentrale/zentrale.css">
+<style>
+  /* Prüfseite der Zentrale (nach der Prüfseite der Vorlage, Le Bureau): was läuft, was nicht, und im Lexikon zu jeder Meldung: was man sieht, warum, was tun. */
+  .pr{max-width:1100px;margin:0 auto;padding:110px var(--rand) 80px}
+  .pr h1{font:700 clamp(2.6rem,5vw,4.2rem)/1 var(--wo-titel);text-transform:uppercase;letter-spacing:.015em}
+  .pr>p{margin-top:14px;max-width:62ch;color:var(--wo-leise)}
+  .pr h2{margin-top:56px!important;font:700 28px/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.02em}
+  .pr-liste{margin-top:18px!important;border-top:2px solid var(--wo-nacht)}
+  .pr-liste li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--wo-linie)}
+  .pr-liste b{font-weight:600}
+  .pr-liste small{grid-column:1/-1;color:var(--wo-leise);font-size:14px}
+  .pr-liste em{justify-self:start;font:400 10.5px/1 var(--wo-mono);letter-spacing:.14em;text-transform:uppercase;padding:6px 9px;border-radius:var(--wo-rk);background:var(--wo-papier2);color:var(--wo-tinte);white-space:nowrap}
+  .pr-liste em.gut{background:var(--wo-gut);color:var(--wo-weiss)}
+  .pr-liste em.schlecht{background:var(--wo-tinte);color:var(--wo-weiss)}
+  .pr-liste a{border-bottom:1px solid currentColor}
+  .pr-lex{margin-top:18px!important;display:grid;gap:14px}
+  .pr-lex article{padding:20px 22px;border-radius:var(--wo-r3);background:var(--wo-blatt);box-shadow:inset 0 0 0 1px var(--wo-linie)}
+  .pr-lex article:target{box-shadow:inset 0 0 0 2px var(--wo-nacht)}
+  .pr-lex h3{font:600 20px/1.2 var(--wo-titel);letter-spacing:.02em}
+  .pr-lex dl{display:grid;grid-template-columns:110px minmax(0,1fr);gap:6px 16px;margin:12px 0 0}
+  .pr-lex dt{font:400 10.5px/1.8 var(--wo-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--wo-akzent)}
+  .pr-lex dd{margin:0;font-size:15px}
+  .pr-rueck{margin-top:14px!important;padding:16px 18px;border-radius:var(--wo-r3);background:var(--wo-weiss);box-shadow:inset 0 0 0 1px var(--wo-linie)}
+  .pr-rueck[hidden]{display:none}
+  .pr-rueck .wo-kn{margin:10px 8px 0 0}
+  @media (max-width:600px){.pr-lex dl{grid-template-columns:1fr}.pr-liste li{grid-template-columns:1fr}}
+</style>
+</head>
+<body class="wo-app ma" data-wo-zl-nie>
+<header class="m-oben" id="kopf">
+  <span class="m-oben__ecke m-oben__ecke--l" data-knopf="Zur Zentrale|links|hell|/"></span>
+  <nav class="m-insel" aria-label="Prüfung"><a class="m-ecke" href="/"><span class="m-ecke__ring" data-zeichen></span><span class="m-ecke__t"><b>Prüfung</b><small>Zentrale · Tasty Studios</small></span></a></nav>
+  <span class="m-oben__ecke" data-knopf="Neu prüfen|verlauf|hell|/zentrale/pruefung.html"></span>
+</header>
+<main class="pr">
+  <h1>Prüfung der Zentrale</h1>
+  <p>Was die Zentrale zum Laufen braucht, hier einzeln nachgesehen. Steht etwas auf «Fehlt», führt «Was tun?» zum passenden Eintrag im Lexikon weiter unten.</p>
+  <h2>Die Zentrale</h2>
+  <ul class="pr-liste" id="grund"></ul>
+  <h2>Die Werkzeuge</h2>
+  <ul class="pr-liste" id="werkzeuge"><li><span>Die Werkzeuge werden gefragt …</span></li></ul>
+  <h2>Gemerkte Fehler</h2>
+  <ul class="pr-liste" id="fehler"></ul>
+  <div class="pr-rueck" id="rueck" hidden><b>Liste wirklich leeren?</b> Die gemerkten Fehler sind danach weg; «Rückgängig» holt sie in der Quittung noch einmal zurück.<br><button class="wo-kn wo-kn--dunkel wo-kn--klein" type="button" id="leerenJa"><span>Ja, leeren</span><i data-ic="haken"></i></button><button class="wo-kn wo-kn--hell wo-kn--klein" type="button" id="leerenNein"><span>Nein, behalten</span><i data-ic="zurueck"></i></button></div>
+  <h2>Lexikon</h2>
+  <div class="pr-lex" id="lexikon"></div>
+</main>
+<div class="wo-quittung m-quittung weg" id="quittung" role="status" aria-live="polite"><i data-ic="haken"></i><span data-q-text><b></b></span><span class="m-q-wege"><button type="button" class="m-q-k" data-q-vn aria-expanded="false">Vorher, nachher</button><button type="button" class="m-q-k" data-q-zurueck>Rückgängig</button></span><button type="button" data-q-zu aria-label="Schliessen" data-ic="x"></button></div>
+<script>
+(() => {
+  'use strict';
+  const el = id => document.getElementById(id), esc = WO.esc;
+  document.querySelectorAll('[data-zeichen]').forEach(s => { s.innerHTML = WO.zeichen(); });
+  document.querySelectorAll('[data-ic]').forEach(s => { s.insertAdjacentHTML('afterbegin', WO.ic(s.dataset.ic)); });
+  document.querySelectorAll('[data-knopf]').forEach(s => { const [t, z, a, h] = s.dataset.knopf.split('|'); s.outerHTML = WO.knopf(t, z, a, { href: h, klein: true, klasse: s.className }); });
+
+  const LEX = [
+    { id: 'server', titel: 'Der Server antwortet nicht', sehen: 'Die Zentrale zeigt «Der Server antwortet nicht», hier steht «Server» auf «Fehlt».',
+      grund: 'zentrale/server.py läuft nicht, oder die Seite wurde als Datei geöffnet statt über http://localhost:9100.', tun: 'Im Ordner des Repos python3 zentrale/server.py starten und http://localhost:9100 öffnen.' },
+    { id: 'kleid', titel: 'Das Kleid fehlt', sehen: 'Die Seite ist ungestaltet, oder die Startfehler-Tür nennt oberflaeche.js oder tasty.js.',
+      grund: 'Eine Datei aus zentrale/oberflaeche/ liess sich nicht laden (verschoben oder umbenannt).', tun: 'Den Ordner zentrale/oberflaeche/ aus dem Zweig neubau/00-kleid zurückholen, dann neu laden.' },
+    { id: 'schrift', titel: 'Eine Schrift fehlt', sehen: 'Titel stehen in einer Ersatzschrift, hier steht eine Schrift auf «Fehlt».',
+      grund: 'Die Schriften liegen in grundlagen/marke/schriften/. Fehlt eine Datei, nimmt der Browser eine Ersatzschrift.', tun: 'Die Schriftdatei aus seite/assets/fonts/ nach grundlagen/marke/schriften/ kopieren.' },
+    { id: 'werkzeug', titel: 'Ein Werkzeug öffnet sich nicht', sehen: 'Im Rahmen steht «Nicht gefunden», hier steht beim Werkzeug «Seite fehlt».',
+      grund: 'Der Ordner werkzeuge/<ordner>/ hat keine index.html, oder werkzeug.json nennt einen anderen Ordner.', tun: 'Im Zweig des Werkzeugs nachsehen, ob index.html da ist; die Übergabe des Werkzeugs nennt den Stand.' },
+    { id: 'heute', titel: 'Ein Werkzeug meldet nichts für «Heute»', sehen: 'Bei einem Werkzeug steht «Heute» auf «Ohne Antwort».',
+      grund: 'Das Werkzeug hat noch keine Antwort auf GET /api/<ordner>/heute oder sein api.py hat einen Fehler.', tun: 'Nichts nötig, die Zentrale lässt es einfach weg. Soll es melden: Vertrag in zentrale/VERTRAG-HEUTE.md.' },
+    { id: 'stand', titel: 'Die Zahlen eines Saals fehlen', sehen: 'Im Saal eines Werkzeugs stehen nur «–» und «Der Stand ist gerade nicht abrufbar».',
+      grund: 'Die Schnittstelle, aus der die Zentrale die Zahlen liest (zentrale/saele.js, stand.weg), antwortet nicht oder in anderer Form.', tun: 'Das Werkzeug einmal öffnen; startet es, hat sich seine Schnittstelle geändert: stand.weg und lies in zentrale/saele.js anpassen.' },
+    { id: 'startfehler', titel: 'Die Zentrale startet nicht', sehen: 'Unten steht «Die Zentrale startet nicht.» mit den Knöpfen «Prüfung öffnen» und «Neu laden».',
+      grund: 'zentrale.js ist beim Laden nicht durchgelaufen. Der Wortlaut darüber nennt die Datei oder den Fehler; er steht auch unter «Gemerkte Fehler».', tun: '«Neu laden». Bleibt es, den Wortlaut des Fehlers an Robert schicken.' },
+    { id: 'fehler', titel: 'Gemerkte Fehler', sehen: 'Unter «Gemerkte Fehler» stehen Einträge.',
+      grund: 'Der Fehlermelder (zentrale/fehler.js) merkt sich im Browser jeden Skriptfehler der Zentrale, höchstens 30, den neuesten zuerst.', tun: 'Den Wortlaut an Robert schicken. Danach lässt sich die Liste leeren, mit Rückfrage.' }
+  ];
+  el('lexikon').innerHTML = LEX.map(l => '<article id="lex-' + l.id + '"><h3>' + esc(l.titel) + '</h3><dl><dt>Was man sieht</dt><dd>' + esc(l.sehen) + '</dd><dt>Warum</dt><dd>' + esc(l.grund) + '</dd><dt>Was tun</dt><dd>' + esc(l.tun) + '</dd></dl></article>').join('');
+
+  const zeile = (titel, satz, gut, lex) => '<li><b>' + esc(titel) + '</b><em class="' + (gut === true ? 'gut' : gut === false ? 'schlecht' : '') + '">' + (gut === true ? 'Läuft' : gut === false ? 'Fehlt' : esc(gut)) + '</em><small>' + esc(satz) + (gut !== true && lex ? ' <a href="#lex-' + lex + '">Was tun?</a>' : '') + '</small></li>';
+  const hol = async (u, ms) => { const s = new AbortController(), t = setTimeout(() => s.abort(), ms || 4000); try { const r = await fetch(u, { signal: s.signal, cache: 'no-store' }); return r; } catch (e) { return null; } finally { clearTimeout(t); } };
+
+  async function pruefe() {
+    const g = [];
+    const r = await hol('/zentrale/api/werkzeuge');
+    let liste = [];
+    if (r && r.ok) { try { liste = await r.json(); } catch (e) {} }
+    g.push(zeile('Server', r && r.ok ? 'zentrale/server.py antwortet, ' + liste.length + ' Werkzeuge gemeldet.' : 'Keine Antwort von /api/werkzeuge.', !!(r && r.ok), 'server'));
+    g.push(zeile('Kleid', window.WO && WO.haus && WO.haus.kurz === 'tasty' ? 'oberflaeche.js und kleid/tasty.js sind geladen.' : 'Das Kleid ist nicht geladen.', !!(window.WO && WO.haus && WO.haus.kurz === 'tasty'), 'kleid'));
+    for (const [f, n] of [['700 40px Antonio', 'Antonio'], ['400 17px "Instrument Sans"', 'Instrument Sans'], ['400 12px "DM Mono"', 'DM Mono']]) {
+      let ok = false; try { ok = (await document.fonts.load(f)).length > 0; } catch (e) {}
+      g.push(zeile('Schrift ' + n, ok ? 'Geladen aus grundlagen/marke/schriften/.' : 'Nicht geladen.', ok, 'schrift'));
+    }
+    for (const [u, n] of [['/zentrale/zentrale/zentrale.js', 'Programm der Zentrale'], ['/zentrale/zentrale/saele.js', 'Säle der Werkzeuge'], ['/zentrale/zentrale/rundgang.js', 'Rundgang'], ['/zentrale/zentrale/fehler.js', 'Fehlermelder']]) {
+      const a = await hol(u); g.push(zeile(n, u, !!(a && a.ok), 'startfehler'));
+    }
+    el('grund').innerHTML = g.join('');
+    el('werkzeuge').innerHTML = liste.length ? (await Promise.all(liste.map(async w => {
+      const [s, h] = await Promise.all([hol('/zentrale/werkzeuge/' + w.ordner + '/'), hol('/zentrale/api/' + w.ordner + '/heute?wer=Robert')]);
+      let punkte = null; if (h && h.ok) { try { const d = await h.json(); punkte = Array.isArray(d.punkte) ? d.punkte.length : null; } catch (e) {} }
+      const ok = !!(s && s.ok);
+      return '<li><b>' + esc(w.name) + '</b><em class="' + (ok ? 'gut' : 'schlecht') + '">' + (ok ? 'Läuft' : 'Seite fehlt') + '</em><small>werkzeuge/' + esc(w.ordner) + '/ · Heute: '
+        + (punkte == null ? 'ohne Antwort <a href="#lex-heute">Was tun?</a>' : punkte + (punkte === 1 ? ' Punkt' : ' Punkte')) + (ok ? '' : ' <a href="#lex-werkzeug">Was tun?</a>') + '</small></li>';
+    }))).join('') : zeile('Keine Werkzeuge', 'Der Server meldet keine Werkzeuge.', false, 'server');
+    zeigeFehler();
+  }
+
+  const SCHL = 'tasty_werkzeuge_fehler';
+  const lies = () => { try { return JSON.parse(localStorage.getItem(SCHL) || '[]'); } catch (e) { return []; } };
+  function zeigeFehler() {
+    const a = lies();
+    el('fehler').innerHTML = a.length ? a.map(f => '<li><b>' + esc(f.text) + '</b><em>' + esc(new Date(f.zeit).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })) + '</em><small>' + esc(f.ort || '') + ' <a href="#lex-fehler">Was tun?</a></small></li>').join('')
+      + '<li><span></span><button class="wo-kn wo-kn--hell wo-kn--klein" type="button" id="leeren"><span>Liste leeren</span><i>' + WO.ic('x') + '</i></button></li>'
+      : zeile('Keine Fehler gemerkt', 'Der Fehlermelder hat in diesem Browser nichts festgehalten.', true);
+  }
+  // Leeren nur mit Rückfrage, danach Quittung mit vorher, nachher und Rückgängig
+  let qUhr = 0, sicher = null;
+  document.addEventListener('click', e => {
+    const t = e.target.closest('button'); if (!t) return;
+    if (t.id === 'leeren') { el('rueck').hidden = false; el('leerenNein').focus(); }
+    else if (t.id === 'leerenNein') el('rueck').hidden = true;
+    else if (t.id === 'leerenJa') {
+      sicher = localStorage.getItem(SCHL); const n = lies().length;
+      try { localStorage.removeItem(SCHL); } catch (x) {}
+      el('rueck').hidden = true; zeigeFehler();
+      const q = el('quittung');
+      q.querySelector('[data-q-text]').innerHTML = '<b>Liste geleert</b>Die gemerkten Fehler sind aus diesem Browser entfernt.<dl class="m-q-vn"><dt>Vorher</dt><dd>' + n + (n === 1 ? ' Fehler' : ' Fehler') + '</dd><dt>Nachher</dt><dd>keiner</dd></dl>';
+      q.classList.remove('weg'); clearTimeout(qUhr); qUhr = setTimeout(() => q.classList.add('weg'), 9000);
+    }
+    else if (t.hasAttribute('data-q-zurueck')) { if (sicher) { try { localStorage.setItem(SCHL, sicher); } catch (x) {} } zeigeFehler(); el('quittung').classList.add('weg'); }
+    else if (t.hasAttribute('data-q-zu')) el('quittung').classList.add('weg');
+    else if (t.hasAttribute('data-q-vn')) { const vn = el('quittung').querySelector('.m-q-vn'); t.setAttribute('aria-expanded', vn.classList.toggle('an') ? 'true' : 'false'); clearTimeout(qUhr); }
+  });
+  pruefe();
+})();
+</script>
+</body>
+</html>
