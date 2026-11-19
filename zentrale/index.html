@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/grund.css">
 <link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/kleid/tasty.css">
 <script src="/zentrale/zentrale/oberflaeche/oberflaeche.js"></script>
-<link rel="stylesheet" href="/zentrale/zentrale/zentrale.css?v=an3">
+<link rel="stylesheet" href="/zentrale/zentrale/zentrale.css?v=kopf2">
 <link rel="stylesheet" href="/zentrale/zentrale/pult-fassungen.css?v=an2">
 <link rel="stylesheet" href="/zentrale/zentrale/kopf-fassungen.css?v=1">
 <link rel="preload" as="font" type="font/woff2" href="/zentrale/grundlagen/marke/schriften/Antonio-normal-100_700.woff2" crossorigin>
@@ -30,6 +30,8 @@
 
 <header class="m-oben" id="kopf">
   <!-- fest in der Seite wie Kontrollpanel: «Website ansehen» geht auch ohne zentrale.js (Prüfung 2). Knopf «Anleitungen» entfernt (Robert 19.11.2026, mit der Spalte im Fuss) -->
+  <!-- Platzhalter an der Stelle des früheren Knopfs «Anleitungen»: hält die Leiste oben genau dort, wo sie vorher stand (Robert 19.11.2026: «Die war vorher in der Mitte») -->
+  <span class="m-oben__ecke m-oben__ecke--l m-oben__platz" aria-hidden="true"></span>
   <nav class="m-insel" aria-label="Zentrale">
     <button class="m-ecke" type="button" data-start><span class="m-ecke__ring" data-zeichen><span class="wo-zeichen" aria-hidden="true" style="aspect-ratio:1.033175355450237;background:currentColor;-webkit-mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/contain no-repeat;mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/contain no-repeat"></span></span><span class="m-ecke__t"><b>Zentrale</b><small>Alle Werkzeuge · Tasty Studios</small></span></button>
     <span class="m-insel__wege"><a class="m-insel__p" href="#werkzeuge"><span class="rl">Werkzeuge</span></a><button class="m-insel__p" type="button" data-suche><span class="rl">Suchen</span> <kbd>⌘K</kbd></button></span>

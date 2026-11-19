@@ -47,6 +47,7 @@ html.wartet body:has(.m-tuer:not([hidden])){visibility:visible}
 /* ---------- Kopf: Anleitungen · Insel · Website (wie La Maison M01, M02), weicht beim Hinunterscrollen ---------- */
 .m-oben{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px var(--rand) 0;pointer-events:none;transition:transform .6s var(--wo-e1)}
 .m-oben>*{pointer-events:auto}
+.m-oben__platz{display:block;flex:none;width:175.3px;height:44px;visibility:hidden;pointer-events:none!important}
 .m-oben.weg{transform:translateY(-130%)}
 .m-insel{display:flex;align-items:center;gap:clamp(14px,1.6vw,26px);height:58px;padding:0 24px 0 6px;border-radius:var(--wo-r3);min-width:0;overflow:hidden;
   background:var(--m-platte);box-shadow:inset 0 1px 0 var(--wo-weiss),inset 0 -2px 0 var(--wo-nacht),0 18px 34px -22px var(--m-schatten)}
