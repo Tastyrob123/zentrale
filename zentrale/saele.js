@@ -7,7 +7,7 @@
   var TEXT = {
   '01-feinschliff': {
     zweck: 'Texte und Schrift unserer Website',
-    satz: 'Anna ändert Wörter, Schrift und Abstände direkt auf der Agentur-Seite, grössere Umbauten schreibt sie als Wunsch an Robert. Die Seite selbst bleibt, bis Robert übernimmt.',
+    satz: 'Anna ändert Wörter, Schrift und Abstände direkt auf der Agentur-Seite und stellt sie mit «Veröffentlichen» selbst online. Grössere Umbauten schreibt sie als Wunsch an Robert.',
     schritte: [
       { t: 'Seite öffnen', p: '<span class="m-ui">als Anna</span> oder <span class="m-ui">als Robert</span> wählen und eine Seite öffnen, etwa die <span class="m-ui">Startseite</span>. Unten erscheint die Leiste des Werkzeugs.' },
       { t: 'Wörter und Schrift ändern', p: 'In der Leiste <span class="m-ui">Wörter</span> wählen, auf einen Text klicken und schreiben, Enter speichert. Unter <span class="m-ui">Schrift</span> und <span class="m-ui">Abschnitte</span> lassen sich Schrift, Abstände und Reihenfolge anpassen.' },

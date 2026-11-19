@@ -1705,3 +1705,6 @@ body.sc .sc-plan__teile li>b,body.sc .sc-plan__teile li>p{grid-column:2}
 /* Geöffnet? je Haus (19.11.2026): grün, sobald ein echter Besuch da ist, wie der Haken «verschickt» */
 .sc-geoeffnet.an dd>b,.sc-web__fakten .sc-geoeffnet.an dd{color:#3f8a5c}
 .sc-geoeffnet dd small{overflow-wrap:anywhere}
+/* Vertrag mit dem Haus beim Preis (19.11.2026): gleiche Anordnung wie der Vertrag in «Unser Start» */
+.sc-brief--haus{margin-top:22px}
+@media (min-width:821px){.sc-brief--haus{align-items:stretch}.sc-brief--haus .sc-brief__rechts{justify-content:center;gap:26px}.sc-brief--haus .sc-web__fakten dd small{font-size:15px;line-height:1.6}}

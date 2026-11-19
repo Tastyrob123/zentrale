@@ -1377,6 +1377,7 @@ function mappeWerkzeuge(h) {
           <div class="sc-preis" data-r><div><span class="wo-mk">${(h.preis || {}).gross ? 'Werkzeuge' : 'Betreuung im Monat'}</span><b>${esc(preisText(h) || 'Noch nicht festgelegt')}</b><p>${!preisText(h) ? 'Den Betrag überlegen wir gemeinsam.' : (h.preis || {}).gross ? 'Netto, einmalig.' : 'Netto, monatlich kündbar. Kein einmaliger Betrag.'}</p></div>
 </div>
           <div class="sc-karten2 sc-karten2--hell" data-r>${karteListe('Was das Haus bekommt', P.bekommt || [], 'blatt')}${karteListe('Was dem Haus gehört', P.gehoert || [], 'haus')}</div>
+          ${vertragHausBlock()}
           ${schrittFuss(h, 'preis')}
         </section>
 
@@ -1499,6 +1500,7 @@ function mappe(h) {
           </div>
           ${paketZeile(h, 'sc-fein')}
           ${zahlungListe().length ? `<p class="sc-fein"><b>Zahlung.</b> ${esc(zahlungListe().join(' '))}</p>` : ''}
+          ${vertragHausBlock()}
           ${schrittFuss(h, 'preis')}
         </section>
 
@@ -1981,6 +1983,18 @@ function antworten() {
 /* ---------------------------------------------------------------- Unser Start (Robert 11.11.2026: «Annas Start im Vertrieb und den Vertrag … alles auf so einem richtig geilen Cockpit in so einer View»;
    «… auch die Möglichkeit haben, da Fragen einzutragen zum Vertrag oder Ergänzungen»). Alles als Ideen formuliert, auf Augenhöhe. */
 const VERTRAG = 'start/vertrag.html', VERTRAG_PDF = 'start/Vertrag-Anna-Llorens-Entwurf.pdf';
+/* Vertrag mit dem Haus beim Preis jeder Mappe, als Blatt wie der Vertrag in «Unser Start» (Robert 19.11.2026: «so eine PDF-Datei … dass man die erste Seite sieht … ein bisschen Text daneben rechts») */
+const VERTRAG_HAUS = 'vertrag-haus/vorlage.html', VERTRAG_HAUS_PDF = 'vertrag-haus/Vertrag-Haus-Entwurf.pdf';
+const vertragHausBlock = () => `<div class="sc-web sc-brief sc-brief--haus" data-r>
+        <a class="sc-brief__blatt" href="${VERTRAG_HAUS_PDF}" target="_blank" rel="noopener" aria-label="Vertrag öffnen"><iframe src="${VERTRAG_HAUS}" title="Vertrag mit dem Haus, Entwurf" tabindex="-1" loading="lazy" scrolling="no"></iframe></a>
+        <div class="sc-brief__rechts">
+          <dl class="sc-web__fakten">
+            <div><dt>Der Vertrag · Erster Entwurf</dt><dd><small>Vertrag über Website, Werkzeuge und Betreuung, eine Vorlage für alle Häuser. Er regelt Ablauf bis zur Übergabe, Mitwirkung des Hauses, Zahlung, Betreuung, Eigentum, Kosten Dritter, Datenschutz und Kündigung.</small></dd></div>
+            <div><dt>Noch offen · grau markiert</dt><dd><small>Die Beträge, Steuern und Zahlungsziel, Haftung, Kündigungsfrist, Recht und Gerichtsstand.</small></dd></div>
+          </dl>
+          <div class="sc-brief__kn">${WO.knopf('Vertrag öffnen', 'pfeil', 'gold', { klein: true, href: VERTRAG_HAUS_PDF, neu: true })}${WO.knopf('Herunterladen', 'pdf', 'dunkel', { klein: true, href: VERTRAG_HAUS_PDF, attr: 'download' })}</div>
+        </div>
+      </div>`;
 const START_THEMEN = ['Vertrag', 'Ablauf', 'Geld', 'Rechtsform', 'Sonstiges'];
 const startNotizen = () => ((S.d && S.d.start && S.d.start.notizen) || []);
 const offeneFragen = () => startNotizen().filter(n => !n.antwort).length;
@@ -2743,6 +2757,7 @@ function familieAnsicht(f) {
             <p class="sc-angebot__fuss">${EG.size > 1 ? 'Einzeln ' + esc(einzelnText) + '. ' : ''}Im Monat für ${esc(nWort)} zusammen: ${esc(g(sb))} Betreuung und ${esc(g(sw))} Werkzeuge.</p>
           </div>
           ${zahlungListe().length ? `<p class="sc-fein"><b>Zahlung.</b> ${esc(zahlungListe().join(' '))}</p>` : ''}
+          ${vertragHausBlock()}
           ${schrittFuss(h, 'preis')}
         </section>
 
