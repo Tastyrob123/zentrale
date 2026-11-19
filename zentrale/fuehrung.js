@@ -33,7 +33,7 @@
       text: 'Zehn Werkzeuge, geordnet nach Verkaufen, Nach aussen und Marke. Die Zahl oben rechts in jeder Kachel kommt aus dem Werkzeug selbst, etwa die offenen Häuser im Sales Cockpit. Ein Klick öffnet das Werkzeug hier in der Zentrale.' },
 
     /* Sales Cockpit */
-    { kap: 'Sales Cockpit', wz: '13-sales-cockpit', imRahmen: false,
+    { kap: 'Sales Cockpit', wz: '13-sales-cockpit', breit: true,
       tun: function () { if (!api().leisteAuf()) api().leisteKlapp(); }, warte: 900,
       ziel: function () { return Q(document, '#leiste'); }, titel: 'Die Leiste der Zentrale',
       text: 'Ist ein Werkzeug offen, steht links diese Leiste mit allen Werkzeugen. Der Pfeil oben klappt sie auf und zeigt die Namen, ein zweiter Klick klappt sie wieder zu. Der Anker ganz oben führt zurück zur Startseite der Zentrale.' },
@@ -44,7 +44,7 @@
     { kap: 'Sales Cockpit', wz: '13-sales-cockpit',
       tun: function (d) { auf(Q(d, '.sc-lage__auf')); }, warte: 1000, max: 520,
       ziel: function (d) { return Q(d, '#sc-ann2'); }, titel: 'Aufklappen: wie die Zahlen entstehen',
-      text: 'Der kleine Pfeil rechts neben den Zahlen klappt die Rechnung dahinter auf: je Haus der Preis, aus dem sich die Summen oben ergeben. Die Preise sind vorläufig und noch mit keinem Haus besprochen. Ein zweiter Klick auf den Pfeil klappt die Rechnung wieder zu.' },
+      text: 'Der kleine Pfeil unter den Zahlen klappt die Rechnung dahinter auf: je Haus der Preis, aus dem sich die Summen oben ergeben. Die Preise sind vorläufig und noch mit keinem Haus besprochen. Ein zweiter Klick auf den Pfeil klappt die Rechnung wieder zu.' },
     { kap: 'Sales Cockpit', wz: '13-sales-cockpit', oben: true,
       tun: function (d) { zu(Q(d, '.sc-lage__auf')); }, warte: 800,
       ziel: function (d) { return Q(d, '.wo-rand'); }, titel: 'Die Seitenleiste',
@@ -58,7 +58,7 @@
       ziel: function (d) { return haus(d); }, titel: 'Stand und Fortschritt je Haus',
       text: 'Unter jedem Haus klappt «Stand und Fortschritt» auf: die Phase mit dem nächsten Schritt, die Tage seit dem Versand, ob jemand den Entwurf wirklich geöffnet hat, die Preise mit «Preise ändern», der Demo-Check von Website und Werkbank und wie weit das Gespräch ist. Der Pfeil klappt es wieder zu.' },
     { kap: 'Sales Cockpit', wz: '13-sales-cockpit',
-      ziel: function (d) { var m = T(d, 'main button, main a', /^Mappe öffnen$/i); return m ? m.parentElement : null; }, titel: 'Mappe, Website, Werkbank',
+      ziel: function (d) { var h = haus(d), m = h && T(h, 'button, a', /^Mappe öffnen$/i); return m ? m.parentElement : null; }, titel: 'Mappe, Website, Werkbank',
       text: '«Mappe öffnen» führt zur Gesprächsmappe. «Website öffnen» und «Werkbank öffnen» zeigen den Entwurf und die Werkbank des Hauses in einem neuen Fenster, so wie das Haus sie sieht.' },
     { kap: 'Sales Cockpit', wz: '13-sales-cockpit', gehe: '#familie:maeder', oben: true,
       ziel: function (d) { return Q(d, '.wo-sb'); }, titel: 'Die Gesprächsmappe',
@@ -99,14 +99,14 @@
       tun: function (d) { var b = Q(d, '.cu-t .kl-mini'); if (b && !T(d, 'button', /^Laufende Verträge$/i)) b.click(); }, warte: 1400,
       ziel: function (d) { var b = T(d, 'main button, main a', /^Laufende Verträge$/i); return b ? b.parentElement : null; }, titel: 'Die Akte eines Kunden',
       text: 'Oben in der Akte: «Datei ablegen», «Notiz schreiben» und «Entwurf ansehen». Die Reiter führen zu Überblick, Arbeiten, Stammdaten, laufenden Verträgen, Ablage, Rechnungen, Verlauf, Besuchen und Notizen.' },
-    { kap: 'Kunden', wz: '03-entwurf-besuche', oben: true,
+    { kap: 'Kunden', wz: '03-entwurf-besuche', in: '02-kundenliste', oben: true,
       ziel: function (d) { var z = Q(d, '.zeitraum'); return z ? (z.closest('section, .blatt') || z) : null; }, titel: 'Wer den Entwurf geöffnet hat',
       text: 'Für jedes Haus, dem wir einen Entwurf geschickt haben: wer ihn geöffnet hat, wann, welche Seiten und wie lange. Oben wählst du den Zeitraum, 7, 30 oder 90 Tage.' },
-    { kap: 'Kunden', wz: '03-entwurf-besuche',
+    { kap: 'Kunden', wz: '03-entwurf-besuche', in: '02-kundenliste',
       tun: function (d) { var b = Q(d, '.besuch'); if (b && !/besuche/.test(d.defaultView.location.hash)) b.click(); }, warte: 1300, oben: true,
       ziel: function (d) { return Q(d, 'main'); }, max: 640, titel: 'Ein Besuch im Einzelnen',
       text: 'Ein Klick auf einen Besuch zeigt den Weg durch den Entwurf, Seite für Seite.' },
-    { kap: 'Kunden', wz: '05-angebot', block: 'start', max: 560,
+    { kap: 'Kunden', wz: '05-angebot', in: '02-kundenliste', block: 'start', max: 560,
       ziel: function (d) { return Q(d, '.wo-aufg') || Q(d, 'main'); }, titel: 'Ein Angebot schreiben',
       text: 'Haus wählen, anklicken, was dazugehört, und das Angebot entsteht rechts Seite für Seite, mit den Preisen aus den Grundlagen. «Angebot speichern» gibt ihm eine Nummer, «PDF speichern» öffnet das Druckfenster.' },
 
@@ -166,7 +166,7 @@
   var PFEIL = '<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></i>';
 
   var lauf = null;
-  function starte() {
+  function starte(ab) {
     if (lauf || !api()) return;
     if (!document.getElementById('fg-css')) { var st = document.createElement('style'); st.id = 'fg-css'; st.textContent = CSS; document.head.appendChild(st); }
     var sperre = document.createElement('div'); sperre.className = 'fg-sperre';
@@ -201,15 +201,24 @@
       karte.style.setProperty('--rx', kx + 'px'); karte.style.setProperty('--ry', ky + 'px');
     }
 
+    /* Handy: die Karte liegt unten, das Ziel kommt in das freie Feld darüber (wie rundgang.js handy()) */
+    function handy() {
+      if (innerWidth > 700 || !ziel || !ziel.isConnected) return;
+      var r = rect(), oben = 84, unten = karte.getBoundingClientRect().top - 24, frei = unten - oben;
+      if (frei < 80 || (r.top >= oben && r.bottom <= unten)) return;
+      var dy = r.top - (r.height <= frei ? oben + (frei - r.height) / 2 : oben);
+      zielDoc.defaultView.scrollBy({ top: dy, behavior: 'instant' });
+    }
+
     /* Ort eines Schritts herstellen: Startseite der Zentrale oder Werkzeug im Rahmen, dort die Ansicht */
     async function ort(s) {
       var A = api();
       if (!s.wz) { if (A.offen()) A.zeigeStart(true); return document; }
-      var r = rahmen();
-      if (A.offen() !== s.wz) {
-        var geladen = new Promise(function (res) { r.addEventListener('load', res, { once: true }); setTimeout(res, 9000); });
-        A.oeffne(s.wz); await geladen;
-      }
+      var r = rahmen(), haupt = s.in || s.wz;   /* in: Teil eines anderen Werkzeugs (Angebot, Wer hat geöffnet gehören zu Kunden), öffnet im selben Rahmen */
+      var neu = function (tu) { var geladen = new Promise(function (res) { r.addEventListener('load', res, { once: true }); setTimeout(res, 9000); }); tu(); return geladen; };
+      if (A.offen() !== haupt) await neu(function () { A.oeffne(haupt); });
+      var pfad = ''; try { pfad = r.contentWindow.location.pathname; } catch (e) { }
+      if (pfad.indexOf('/' + s.wz + '/') < 0) await neu(function () { var u = new URL('../' + s.wz + '/', r.contentWindow.location.href); u.search = r.contentWindow.location.search; r.src = u.href; });
       await bis(function () { var d = r.contentDocument; return d && d.readyState === 'complete' && d.querySelector('main'); }, 9000);
       var w = r.contentWindow;
       if (s.gehe !== undefined && (w.location.hash || '') !== s.gehe) { w.location.hash = s.gehe; await warte(1100); }
@@ -221,6 +230,7 @@
       if (n < 0) n = 0;
       if (n >= S.length) return ende(true);
       var mein = ++takt, s = S[n];
+      if (s.breit && innerWidth <= 800) return zeige(rueck ? n - 1 : n + 1, rueck);   /* die Leiste links gibt es nur am Rechner */
       karte.classList.add('fg-laedt');
       var d = await ort(s); if (mein !== takt || !lauf) return;
       if (s.tun) { try { await s.tun(d); } catch (e) { } await warte(ruhig ? 150 : (s.warte || 650)); }
@@ -243,7 +253,7 @@
       var zuK = karte.querySelector('.fg-zu'); if (zuK) zuK.onclick = function () { ende(false); };
       karte.querySelector('.fg-los').onclick = function () { letzt ? ende(true) : zeige(nr + 1); };
       karte.classList.remove('fg-laedt');
-      lege(); setTimeout(lege, 450);
+      handy(); lege(); setTimeout(function () { handy(); lege(); }, 450);
       try { karte.querySelector('.fg-los').focus({ preventScroll: true }); } catch (e) { }
     }
 
@@ -267,7 +277,7 @@
       if (fertig) scrollTo({ top: 0, behavior: 'instant' });
     }
     addEventListener('resize', lege); document.addEventListener('keydown', taste, true);
-    zeige(0);
+    zeige(typeof ab === 'number' ? ab : 0);
   }
   window.ZENTRALE_FUEHRUNG = starte;
 })();
