@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de" data-wo-titel="{name} · Tasty Studios">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<!-- Aufbau aus La Réception (vorlage/culinarium-demo/werkzeuge/reception/), Rahmen «Die Bühne» wie Le Bureau, Kleid aus zentrale/oberflaeche/ -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post aus dem Studio · Tasty Studios</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111421">
+<script>/* die Daten der ersten Ansicht sofort holen, alle zugleich, während Stil und Skript noch laden (newsletter.js nimmt sie einmal in api() auf) */window.__vorab={};["stand"].forEach(function(w){window.__vorab[w]=fetch("/zentrale/api/10-newsletter/"+w,{cache:"no-store"})});</script>
+<link rel="icon" href="/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg" type="image/svg+xml">
+<link rel="preload" href="/zentrale/grundlagen/marke/schriften/Antonio-normal-100_700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/zentrale/grundlagen/marke/schriften/InstrumentSans-normal-400_600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/zentrale/grundlagen/marke/schriften/DMMono-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<script src="studio/fehlermelder.js"></script>
+<script src="/zentrale/zentrale/oberflaeche/kleid/tasty.js"></script>
+<script src="studio/auftakt.js"></script>
+<link rel="stylesheet" href="studio/studio.css">
+<link rel="stylesheet" href="newsletter.css">
+<link rel="stylesheet" href="studio/schweben.css">
+<link rel="stylesheet" href="studio/hell.css">
+<link rel="stylesheet" href="tasty-newsletter.css">
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/grund.css">
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/rahmen-buehne.css">
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/kleid/tasty.css">
+<link rel="stylesheet" href="rahmen-newsletter.css">
+<link rel="stylesheet" href="newsletter-teile.css">
+<link rel="stylesheet" href="schreibtisch.css?v=21">   <!-- Ausgaben als Schreibtisch (17.11.2026) -->
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/cockpit-stand.css?v=4">   <!-- Bewegung und Seitenleiste wie im Sales Cockpit (16.11.2026) -->
+</head>
+<body class="bu re wo-app">
+<header class="wo-kopf" id="kopf"></header>
+<aside class="wo-rand" id="rand" aria-label="Bereiche"></aside>
+<main class="gg-raum" id="haupt">
+  <div class="start-tuer" id="tuer" hidden>
+    <h1><span data-wo-name="10-newsletter">Das Werkzeug</span> startet nicht.</h1>
+    <p id="tuer-t">Die Verbindung zum Server-Teil fehlt.</p>
+    <p style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:22px 0 0"><a class="kn kn--gold" href="pruefung.html">Prüfung öffnen</a><a class="kn kn--linie" href="">Neu laden</a></p>
+  </div>
+  <div id="ansicht"></div>
+</main>
+<footer class="wo-leiste" id="leiste" aria-live="polite"></footer>
+<div class="fenster" id="fenster" hidden></div>
+<div class="meldung" id="meldung" aria-live="polite"></div>
+<script src="/zentrale/zentrale/oberflaeche/oberflaeche.js"></script>
+<script src="studio/namen.js"></script>
+<script src="studio/auswahl.js" defer></script>
+<script src="newsletter.js?v=20"></script>
+<script src="studio/schweben.js" data-wurzel="#ansicht" data-blaetter="#ansicht .tisch-umschlag, #ansicht h2.wo-zw, #ansicht .wo-lage, #ansicht .re-zahlen, #ansicht .re-leer" data-kacheln="#ansicht .re-gr, #ansicht .wo-ag" data-zeilen="#ansicht .re-liste .re-a, #ansicht .gb-z, #ansicht .lb-z" data-zahlen="#ansicht .re-zahlen b"></script>
+<script src="studio/zur-werkbank.js" defer data-zw data-neben="#rand" data-luft="40" data-ueber="#leiste"></script>
+<script src="studio/rundgang.js" defer data-werkzeug="newsletter" data-schild="aus"></script>
+<script src="/zentrale/zentrale/oberflaeche/cockpit-stand.js?v=2"></script>
+</body>
+</html>

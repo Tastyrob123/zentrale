@@ -1,0 +1,13 @@
+# Baukasten-Voreinstellung
+User-agent: *
+Disallow: /admin/
+Disallow: /cgi-bin/
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /

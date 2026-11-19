@@ -1,0 +1,156 @@
+{
+  "hinweis": "Erfundene Häuser zum Ausprobieren. Datumsangaben wie «heute-2» werden beim Laden auf den jeweiligen Tag bezogen.",
+  "haeuser": [
+    {
+      "id": "alpenblick-grindelwald",
+      "kuerzel": "alpenblick",
+      "name": "Hotel Alpenblick",
+      "ort": "Grindelwald",
+      "art": "Hotel",
+      "ansprechpartner": {"name": "Beat Zryd", "rolle": "Gastgeber", "mail": "b.zryd@alpenblick-beispiel.ch", "telefon": "+41 33 000 11 22"},
+      "website": "https://www.alpenblick-beispiel.ch",
+      "entwurf": "https://alpenblick-entwurf.beispiel.app",
+      "stand": "Entwurf geschickt",
+      "naechster_schritt": {"text": "Anrufen, ob der Entwurf angekommen ist", "datum": "heute-2"},
+      "notizen": [
+        {"wann": "heute-9T10:20", "wer": "Robert", "text": "Brief mit Entwurf-Link am Montag abgeschickt, Familie führt das Haus in dritter Generation."},
+        {"wann": "heute-4T16:05", "wer": "Anna", "text": "Rezeption sagt, Herr Zryd ist bis Donnerstag unterwegs."}
+      ]
+    },
+    {
+      "id": "seehotel-lindenhof-spiez",
+      "kuerzel": "lindenhof",
+      "name": "Seehotel Lindenhof",
+      "ort": "Spiez",
+      "art": "Hotel",
+      "ansprechpartner": {"name": "Claudia Berger", "rolle": "Direktion", "mail": "c.berger@lindenhof-beispiel.ch", "telefon": "+41 33 000 33 44"},
+      "website": "https://www.lindenhof-beispiel.ch",
+      "entwurf": "https://lindenhof-entwurf.beispiel.app",
+      "stand": "Gespräch",
+      "naechster_schritt": {"text": "Videogespräch, Entwurf gemeinsam durchgehen", "datum": "heute"},
+      "notizen": [
+        {"wann": "heute-12T09:00", "wer": "Robert", "text": "Erste Antwort per Mail: «sehr interessant, lassen Sie uns reden»."},
+        {"wann": "heute-6T11:30", "wer": "Robert", "text": "Termin für das Gespräch steht. Sie will vor allem die Zimmer-Seiten sehen."}
+      ]
+    },
+    {
+      "id": "gasthaus-zur-linde-thun",
+      "kuerzel": "linde",
+      "name": "Gasthaus zur Linde",
+      "ort": "Thun",
+      "art": "Restaurant",
+      "ansprechpartner": {"name": "Markus Wyss", "rolle": "Wirt und Küchenchef", "mail": "wirt@linde-beispiel.ch", "telefon": ""},
+      "website": "https://www.linde-beispiel.ch",
+      "entwurf": "",
+      "stand": "geprüft",
+      "naechster_schritt": {"text": "Brief schreiben, Entwurf der Startseite dazulegen", "datum": "heute+3"},
+      "notizen": [
+        {"wann": "heute-3T14:40", "wer": "Anna", "text": "Seite ist von 2017, Speisekarte als Foto, auf dem Handy nicht lesbar. 14 Punkte GaultMillau."}
+      ]
+    },
+    {
+      "id": "berghaus-rosenlaui",
+      "kuerzel": "rosenlaui",
+      "name": "Berghaus Rosenlaui",
+      "ort": "Meiringen",
+      "art": "Hotel",
+      "ansprechpartner": {"name": "", "rolle": "", "mail": "info@rosenlaui-beispiel.ch", "telefon": ""},
+      "website": "https://www.rosenlaui-beispiel.ch",
+      "entwurf": "",
+      "stand": "gefunden",
+      "naechster_schritt": {"text": "", "datum": ""},
+      "notizen": [
+        {"wann": "heute-1T20:15", "wer": "Robert", "text": "Tipp von der Lindenhof-Direktion. Nur im Sommer offen, kein Online-Buchen."}
+      ]
+    },
+    {
+      "id": "weinstube-rebstock-rapperswil",
+      "kuerzel": "rebstock",
+      "name": "Weinstube Rebstock",
+      "ort": "Rapperswil",
+      "art": "Restaurant",
+      "ansprechpartner": {"name": "Esther und Ruedi Hug", "rolle": "Inhaber", "mail": "hug@rebstock-beispiel.ch", "telefon": "+41 55 000 55 66"},
+      "website": "https://www.rebstock-beispiel.ch",
+      "entwurf": "https://rebstock-entwurf.beispiel.app",
+      "stand": "Angebot",
+      "naechster_schritt": {"text": "Nachfragen, ob das Angebot angekommen ist", "datum": "heute+6"},
+      "notizen": [
+        {"wann": "heute-20T10:00", "wer": "Robert", "text": "Gespräch vor Ort, sehr warm. Wollen die Weinkarte als eigenes Kapitel."},
+        {"wann": "heute-8T17:45", "wer": "Robert", "text": "Angebot per Mail: Bau zum Festpreis, Betreuung 200 im Monat."}
+      ]
+    },
+    {
+      "id": "hotel-krone-appenzell",
+      "kuerzel": "krone",
+      "name": "Hotel Krone",
+      "ort": "Appenzell",
+      "art": "Hotel",
+      "ansprechpartner": {"name": "Daniel Inauen", "rolle": "Geschäftsführer", "mail": "inauen@krone-beispiel.ch", "telefon": "+41 71 000 77 88"},
+      "website": "https://www.krone-beispiel.ch",
+      "entwurf": "https://krone-entwurf.beispiel.app",
+      "stand": "Vertrag",
+      "naechster_schritt": {"text": "Bildauswahl mit dem Haus festlegen", "datum": "heute+10"},
+      "notizen": [
+        {"wann": "heute-30T09:30", "wer": "Robert", "text": "Vertrag unterschrieben zurück. Start nach der Saison."}
+      ]
+    },
+    {
+      "id": "restaurant-schiff-murten",
+      "kuerzel": "schiff",
+      "name": "Restaurant Schiff",
+      "ort": "Murten",
+      "art": "Restaurant",
+      "ansprechpartner": {"name": "Pascal Rey", "rolle": "Inhaber", "mail": "rey@schiff-beispiel.ch", "telefon": ""},
+      "website": "https://www.schiff-beispiel.ch",
+      "entwurf": "",
+      "stand": "abgesagt",
+      "naechster_schritt": {"text": "", "datum": ""},
+      "notizen": [
+        {"wann": "heute-15T12:10", "wer": "Anna", "text": "Hat gerade eine neue Seite von einer Agentur aus Bern bekommen. In einem Jahr nochmal fragen."}
+      ]
+    },
+    {
+      "id": "landgasthof-hirschen-brienz",
+      "kuerzel": "hirschen",
+      "name": "Landgasthof Hirschen",
+      "ort": "Brienz",
+      "art": "Hotel",
+      "ansprechpartner": {"name": "Familie Abegglen", "rolle": "Gastgeber", "mail": "info@hirschen-beispiel.ch", "telefon": "+41 33 000 99 00"},
+      "website": "https://www.hirschen-beispiel.ch",
+      "entwurf": "https://hirschen-entwurf.beispiel.app",
+      "stand": "angeschrieben",
+      "naechster_schritt": {"text": "Zwei Wochen nach dem Brief nachfassen", "datum": "heute+1"},
+      "notizen": [
+        {"wann": "heute-13T08:50", "wer": "Robert", "text": "Brief ging mit der ersten Welle raus."}
+      ]
+    },
+    {
+      "id": "cafe-bar-elbdeck-hamburg",
+      "kuerzel": "elbdeck",
+      "name": "Elbdeck",
+      "ort": "Hamburg",
+      "art": "Restaurant",
+      "ansprechpartner": {"name": "Jonas Peters", "rolle": "Betreiber", "mail": "jonas@elbdeck-beispiel.de", "telefon": "+49 40 000 12 34"},
+      "website": "https://www.elbdeck-beispiel.de",
+      "entwurf": "",
+      "stand": "Gespräch",
+      "naechster_schritt": {"text": "Fotos vom Haus abholen, Startseite bauen", "datum": "heute-5"},
+      "notizen": [
+        {"wann": "heute-18T19:00", "wer": "Robert", "text": "Kennt die Seite von Salt & Silver, will «so etwas, nur heller»."}
+      ]
+    },
+    {
+      "id": "hotel-sonne-andermatt",
+      "kuerzel": "sonne",
+      "name": "Hotel Sonne",
+      "ort": "Andermatt",
+      "art": "Hotel",
+      "ansprechpartner": {"name": "", "rolle": "", "mail": "", "telefon": ""},
+      "website": "https://www.sonne-beispiel.ch",
+      "entwurf": "",
+      "stand": "gefunden",
+      "naechster_schritt": {"text": "Seite prüfen, Ansprechpartner finden", "datum": "heute+2"},
+      "notizen": []
+    }
+  ]
+}

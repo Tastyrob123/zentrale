@@ -1,0 +1,415 @@
+/* Haus-Check · Tasty Studios: Anschluss an das gemeinsame Kleid (zentrale/oberflaeche/, kleid/tasty). Aus Le Registre (culinarium.css) übernommen, mit allen
+   Funden der Vorlage. Rahmen, Kopf, Rand, Leiste und Startbild kommen aus dem Kleid. Hier steht nur, was das Werkzeug darin eigen hat: die Kennzahlen im
+   Startbild, der Zeitraum, das T des Studios als Zeichen, der Raum ohne eigene Scrollfläche, Quittung und Fenster wie in Le Bureau. Geladen nach dem Kleid.
+   Werte nur aus kleid/tasty.css. Bewegung nur über transform und opacity. */
+
+/* Raum: die Seite scrollt als Ganzes, nie eine Fläche für sich (UMSTELLUNG.md, Prüfen Punkt 3) */
+.rg .flaeche{overflow:visible;position:relative}
+.rg .flaeche:focus{outline:0}
+.rg .in{max-width:none;margin:0;padding:0 0 40px}
+.rg .wo-raum{min-height:60vh}
+
+/* Rand: Titel und Haus unten, sonst wie das Paket */
+.rg .rand__titel{margin:4px 8px 10px;font-size:9.5px}
+.rg .rand__titel::before{display:none}
+.rg .rand__haus{margin:14px 10px 2px;padding-top:12px}
+
+/* Startbild: das gemeinsame Startbild der Oberfläche, nichts eigen gestaltet. Die vier Kennzahlen stehen wie Zahlen auf einem Plakat des Hauses
+   (Zahl in der Titelschrift, darunter die Marke in Mono und Kerzenlicht), dazu der Zeitraum als Segment-Wahl des Pakets. */
+.wo-sb .wo-sb__kn{align-items:center}
+.wo-sb .buehne__chips{display:flex;flex-wrap:wrap;gap:26px;margin:0 0 0 12px;padding:0;list-style:none}
+.wo-sb .buehne__chips li{display:flex;flex-direction:column;list-style:none}
+.wo-sb .buehne__chips b{order:1;font:var(--wo-titel-g) 24px/1 var(--wo-titel);color:var(--wo-weiss);font-feature-settings:"lnum","tnum"}
+.wo-sb .buehne__chips span{order:2;margin-top:6px;font:400 9.5px/1.2 var(--wo-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--wo-gold)}
+.wo-sb .zeitraum{order:3}
+.wo-sb .zeitraum button{color:var(--wo-leise)}
+.wo-sb .zeitraum button[aria-pressed="true"]{color:var(--wo-tinte)}
+.rg .wahl3.wo-seg{padding:4px;border-radius:var(--wo-r1);background:linear-gradient(180deg,var(--wo-papier2),var(--wo-papier))}
+.rg .wahl3.wo-seg button{height:auto;padding:9px 16px;border-radius:var(--wo-r2);font:500 13px/1 var(--wo-sans)}
+.rg .wahl3.wo-seg button.an{background:linear-gradient(180deg,var(--wo-weiss),var(--wo-blatt));color:var(--wo-tinte)}
+
+/* Leiste: WO.leiste wie in den anderen Werkzeugen; nur «Dieses Gerät zählt nicht» zeigt gedrückt einen Rand */
+.wo-leiste .wo-kn[aria-pressed="true"]{box-shadow:inset 0 0 0 1.5px var(--wo-gold)}
+
+/* Startfehler-Tür */
+.tuer-zu__kn{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+
+/* Meldungen über der Leiste */
+.rg .meldung{bottom:96px}
+@media (max-width:900px){
+  .rg .meldung{bottom:84px}
+  .wo-sb .buehne__chips{margin:12px 0 0;gap:20px}
+  .wo-sb .buehne__chips b{font-size:21px}
+  .wo-sb .zeitraum{width:100%;display:flex}
+  .wo-sb .zeitraum button{flex:1}
+  .detail{top:76px}
+  .wo-leiste #l-export{display:none}   /* Handy: «Als Tabelle sichern» steht unter der Besuchsliste (wie Carlton und Doldenhorn) */
+}
+
+/* Abstand unter dem Startbild (das Paket setzt keinen) */
+.rg .wo-sb{margin-bottom:34px}   /* Fehlerbuch 10a (20.10.2026): unter der Bühne mindestens 30 px Luft bis zu den ersten Kacheln */
+
+/* Robert 18.10.2026 18:58 «da kann man die texte nicht erkenen»: im Weg zur Buchung lag helle Schrift halb auf dem Balken, halb auf hellem Grund.
+   Jetzt steht die Schrift dunkel auf hellem Grund, der Balken läuft als schmale Spur darunter; lesbar bei 1 % wie bei 100 %. */
+.trichter li{padding:12px 16px 22px!important}
+.trichter li i{inset:auto 16px 9px 16px!important;height:6px!important;border-radius:3px!important;background:var(--nacht)!important}
+.trichter li::after{content:'';position:absolute;left:16px;right:16px;bottom:9px;height:6px;border-radius:3px;background:color-mix(in srgb,var(--wo-tinte) 10%,transparent);z-index:-1}
+.trichter span,.trichter b{color:var(--tinte)!important;mix-blend-mode:normal!important}
+.trichter em{color:color-mix(in srgb,var(--wo-tinte) 66%,transparent)!important;mix-blend-mode:normal!important}
+
+/* Handy: die Zierzeile «Haus-Check · Tasty Studios» bricht um statt abgeschnitten zu enden (am Rechner passt sie in eine Zeile) */
+@media (max-width:600px){
+  .wo-sb .wo-sb__zier span{white-space:normal;overflow:visible;line-height:1.6}
+  .wo-sb .wo-sb__zier i{display:none}
+}
+
+/* Bilder in jeder Liste in der Grösse aus dem Werkzeug-Master («Bilder in jeder Liste», 20.10.2026): Listenzeile 104 × 78, Handy 72 × 54, nie die alten
+   58 × 46 (das Schlössli stand noch auf 56 × 42). Gilt für Besuche (Seite, auf der der Besuch begann, Land klein darauf), Seiten, Ranglisten und den Weg. */
+.rg .sbild{width:104px;height:78px;border-radius:var(--wo-r2)}
+.rg .mit-bild{gap:16px}
+.rg .weg .sbild{width:72px;height:54px;border-radius:var(--wo-r3)}
+.rg .besuch__b,.rg .besuch__b .sbild{width:104px;height:78px}
+.rg .besuch__b .sbild{border-radius:var(--wo-r2)}
+.rg .besuch{grid-template-columns:104px minmax(0,1fr) auto;gap:22px}   /* Spalte so breit wie das Bild, das Land ragt 8 px hinaus: Luft zum Text */
+@media (max-width:600px){
+  .rg .sbild,.rg .besuch__b,.rg .besuch__b .sbild{width:72px;height:54px}
+  .rg .weg .sbild{width:72px;height:54px}
+  .rg .besuch{grid-template-columns:72px minmax(0,1fr) auto;gap:16px}
+  .rg .mit-bild{gap:12px}
+}
+
+/* Handy: die fünf Wahlen über der Besuchsliste brachen als runder Klumpen um (3 + 2 + 1, abgerundet wie eine Pille). Jetzt ein ruhiges Raster:
+   «Alle» über die ganze Breite, darunter zwei mal zwei gleich breite Felder; Ecken wie die Knöpfe des Hauses (10 px). */
+@media (max-width:700px){
+  .rg .wahl3.wo-seg.wahl3--filter{display:grid;grid-template-columns:1fr 1fr;width:100%;border-radius:var(--wo-r1)}
+  .rg .wahl3.wo-seg.wahl3--filter button{border-radius:var(--wo-r2);white-space:normal;text-align:center;padding:11px 8px;line-height:1.25}
+  .rg .wahl3.wo-seg.wahl3--filter button:first-child{grid-column:1/-1}
+  /* Weg durch die Website: Bild über dem Namen, damit Namen wie «Dirty Chicken» nie mitten im Wort brechen (Fehlerbuch 10a: Wörter nie mitten getrennt) */
+  .rg .weg .mit-bild{flex-direction:column;align-items:flex-start;gap:8px}
+  .rg .weg .mit-bild>span{overflow-wrap:normal;word-break:normal;hyphens:manual}
+}
+
+/* Verlauf, «Woche für Woche»: bei 920–1180 px (zwei Blätter nebeneinander, Rand offen) war die Zeile 328 px breit und ragte bis zu 59 px aus dem Fenster
+   (selbst gefunden 21.10.2026, auch in der Vorlage des Schlössli). Jetzt rückt «n zum Platz» unter den Balken, nichts ragt hinaus. */
+.rg .zwei>*{min-width:0}
+@media (min-width:701px) and (max-width:1180px){
+  .rg .wochen li{grid-template-columns:96px minmax(24px,1fr) 40px;gap:4px 10px}
+  .rg .wochen li em{grid-column:2/-1;text-align:left}
+}
+
+/* Demo-Check 21.10.2026 (selbst gefunden, Messung + Bild): seit die Listenbilder 104 × 78 gross sind, hatte der Name in den Ranglisten keinen Platz mehr.
+   «Am meisten angesehen» zeigte schon bei 1440 px «Bar & Smoker…», «Gruppen und…», bei 920–1240 px fast nur noch Bilder; «Gekommen über» kürzte auf
+   «Direkt aufg…», «Guide Mich…»; in der Besuchsliste fehlte die Dauer («5 Min. …»). Jetzt brechen Namen um (nie mitten im Wort), die Spalte mit Bild ist breiter,
+   und Blätter mit Bildlisten sowie der Vergleich stehen bei 701–1240 px untereinander (Lösung Schlössli-Demo-Check für den Vergleich). */
+.rg .rang__n{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:normal;word-break:normal;hyphens:manual}
+.rg .rang__n small{overflow:visible;text-overflow:clip}
+.rg .rang__n .mit-bild>span{overflow-wrap:normal;word-break:normal;hyphens:manual}
+.rg .rang li:has(.mit-bild){grid-template-columns:minmax(0,2fr) minmax(48px,1fr) auto 42px}
+.rg .besuch__n b,.rg .besuch__n small{white-space:normal;overflow:visible;text-overflow:clip}
+@media (min-width:701px) and (max-width:1240px){
+  .rg .zwei:has(.vergleich),.rg .zwei:has(.rang .mit-bild){grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:600px){
+  .rg .rang li:has(.mit-bild){grid-template-columns:minmax(0,1.6fr) minmax(36px,.7fr) auto 34px}
+}
+/* Zierzeile endete in der Vorlage bei 901–1240 px abgeschnitten (Demo-Check 21.10.2026): bricht dort um wie am Handy */
+@media (min-width:601px) and (max-width:1240px){
+  .wo-sb .wo-sb__zier span{white-space:normal;overflow:visible;line-height:1.6}
+  .wo-sb .wo-sb__zier i{display:none}
+}
+
+/* Tasty Studios: das T des Studios als Zeichen (WO_HAUS.zeichen als Maske, Farbe aus der Schrift) */
+.rg .zt{display:block;width:32px;height:31px;background:currentColor;-webkit-mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/contain no-repeat;mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/contain no-repeat}
+/* Trichter «Der Weg zum Platz»: Balken in Nacht auf hellem Grund (Linie in Tinte), Text dunkel; Werte nur aus dem Kleid */
+.trichter li::after{background:color-mix(in srgb,var(--wo-tinte) 10%,transparent)}
+.trichter em{color:var(--wo-leise)!important}
+
+/* ===== Abnahme-Tor 6, 30.10.2026 ===== */
+/* 1 «Am meisten angesehen»: Bild links über zwei Zeilen, Seitenname und «im Schnitt» rechts daneben untereinander; Balken und Zahl stehen mittig zu diesem Block */
+.rg .rang__n:has(.mit-bild){display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:16px;align-items:center}
+.rg .rang__n .mit-bild{display:contents}
+.rg .rang__n:has(.mit-bild) .sbild{grid-row:1/3;grid-column:1}
+.rg .rang__n:has(.mit-bild) .mit-bild>span{grid-column:2;align-self:end}
+.rg .rang__n:has(.mit-bild)>small{grid-column:2;align-self:start;margin-top:2px}
+.rg .rang__n:has(.mit-bild):not(:has(>small)) .sbild{grid-row:auto}
+.rg .rang__n:has(.mit-bild):not(:has(>small)) .mit-bild>span{align-self:center}
+@media (max-width:600px){.rg .rang__n:has(.mit-bild){column-gap:12px}}
+/* 2 «So wird gezählt»: beide Karten auf einer Oberkante (der Abstand für untereinander gilt nicht nebeneinander) */
+.rg .zwei>.liste-txt+.liste-txt{margin-top:0}
+/* 3 Kennzahlen bis 1240 px in zwei Reihen: jede Bezeichnung einzeilig, alle Zahlen gleich gross auf einer Linie */
+@media (min-width:601px) and (max-width:1240px){.rg .zahlen{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rg .zahlen .mono{white-space:nowrap}
+/* 4 Seiten-Tabelle: Köpfe einzeilig, «Aufrufe» rechtsbündig über seiner Zahlenspalte */
+.rg .zeile--kopf>span{white-space:nowrap}
+.rg .zeile>span:nth-child(2){text-align:right}
+@media (min-width:1241px){.rg .zeile{grid-template-columns:minmax(0,2fr) 76px minmax(60px,1.3fr) 150px 96px}}
+/* Köpfe alle gleich klein (die Zeit- und Platz-Spalte gab ihnen die Grösse der Werte) */
+.rg .zeile--kopf>span{font-size:10px}
+/* 13/21 (cu-messlauf): Zeitwerte nie umbrechen; 621–1240 px ohne Balkenspalte, damit der Seitenname Platz hat (bei 1000 px zerfiel er in Silben) */
+.rg .zeile>span:nth-child(4){white-space:nowrap}
+@media (min-width:621px) and (max-width:1240px){.rg .zeile{grid-template-columns:minmax(0,1fr) 76px 150px 96px}.rg .zeile>span:nth-child(3){display:none}}
+/* Handy: Bild links über zwei Zeilen, rechts daneben Name und «… im Schnitt» untereinander, Aufrufe rechts; Namen brechen nie im Wort */
+@media (max-width:620px){
+  .rg .zeile:not(.zeile--kopf){grid-template-columns:auto minmax(0,1fr) auto;column-gap:12px;row-gap:2px}
+  .rg .zeile:not(.zeile--kopf) .zeile__n,.rg .zeile:not(.zeile--kopf) .zeile__n>b,.rg .zeile:not(.zeile--kopf) .mit-bild{display:contents}
+  .rg .zeile:not(.zeile--kopf) .sbild{grid-row:1/3;grid-column:1}
+  .rg .zeile:not(.zeile--kopf) .mit-bild>span{grid-column:2;grid-row:1;align-self:end;overflow-wrap:normal;word-break:normal;hyphens:manual}
+  .rg .zeile:not(.zeile--kopf)>.zeile__z{grid-column:3;grid-row:1/3}
+  .rg .zeile:not(.zeile--kopf)>span:nth-child(4){display:block;grid-column:2;grid-row:2;align-self:start}
+  .rg .zeile:not(.zeile--kopf)>span:nth-child(4)::after{content:'\00a0im Schnitt'}
+  .rg .zeile--kopf{grid-template-columns:minmax(0,1fr) auto}
+  .rg .zeile--kopf>span:nth-child(n+3){display:none}
+}
+/* 7 Hero-Satz schmaler, damit er nicht über das Schild im Foto läuft; 8 ausgewogen, kein Wort allein in der letzten Zeile */
+@media (min-width:901px){.rg .wo-sb__satz{max-width:44ch}}
+.rg .wo-sb__satz{text-wrap:pretty}
+/* B5 «Zuletzt zu Besuch» am Handy: Zeit in der ersten Zeile, Seiten und Dauer darunter, nie ein Trenner am Zeilenende */
+.rg .besuch__n small i{font-style:normal}
+@media (max-width:600px){.rg .besuch__n small .besuch__w{display:block}.rg .besuch__n small .besuch__t{display:none}}
+
+/* ===== cu-messlauf, Abnahme-Tor 6 Teil 2/3, 30.10.2026 ===== */
+/* 14 Verlauf am Handy: «3:48 Min.» bleibt in einer Zeile */
+.rg .vergleich .vz>:is(b,em){white-space:nowrap}
+@media (max-width:620px){.rg .vergleich .vz{grid-template-columns:minmax(0,1fr) 80px 80px}}
+/* 16 Kennzahlen-Band am Handy: Etiketten einzeilig, Zahlen auf einer Linie */
+@media (max-width:620px){
+  .rg .band{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);column-gap:14px}
+  .rg .band>div{align-content:space-between}
+  .rg .band .mono{white-space:nowrap;letter-spacing:.08em}
+}
+/* 17 Besuche-Filter am Handy: eine Leiste zum Wischen, alle Wahlen gleich gebaut, keine ungleichen Reihen */
+@media (max-width:600px){
+  .rg .wahl3.wo-seg.wahl3--filter{display:flex;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;scroll-snap-type:x proximity;max-width:100%}
+  .rg .wahl3.wo-seg.wahl3--filter::-webkit-scrollbar{display:none}
+  .rg .wahl3.wo-seg.wahl3--filter button{flex:none;white-space:nowrap;padding:11px 14px;scroll-snap-align:start}
+  .rg .wahl3.wo-seg.wahl3--filter button:first-child{grid-column:auto}
+}
+/* 15 Besuche-Liste: Zeit in der ersten Zeile, Seiten und Dauer darunter, bei jeder Breite (die Liste ist auch am Rechner schmal); nie ein «·» am Zeilenende */
+.rg .besuch__n small .besuch__w{display:block}.rg .besuch__n small .besuch__t{display:none}
+/* 22 Niedrige Fenster (bis 760 px hoch, z. B. 1000 × 650): die Leiste «Du siehst Beispielwerte» kommt erst nach dem ersten Scrollen, vorher deckte sie Zeitraum-Wahl und Zahlen im Startbild */
+@media (max-height:760px){
+  .rg #leiste{transition:transform .5s var(--wo-feder,cubic-bezier(.2,.8,.2,1))}
+  .rg:not(.rg-gerollt) #leiste{transform:translateY(calc(100% + 40px))}
+}
+/* 23 Ranglisten bei 701–1240 px untereinander wie die Listen mit Bild (nebeneinander war für Name, Balken, Zahl und Anteil kein Platz); die Namensspalte richtet sich nach dem längsten Namen der Liste, Balken danach; kein Name klebt am Balken oder bricht um */
+@media (min-width:701px) and (max-width:1240px){.rg .zwei:has(.rang){grid-template-columns:minmax(0,1fr)}}
+@media (min-width:621px) and (max-width:1240px){
+  .rg .rang:not(:has(.mit-bild)){grid-template-columns:auto minmax(40px,1fr) auto 42px;column-gap:12px}
+  .rg .rang:not(:has(.mit-bild))>li{grid-column:1/-1;grid-template-columns:subgrid}
+  .rg .rang:not(:has(.mit-bild)) .rang__n{white-space:nowrap}
+}
+/* 24 Kennzahlen «Zum Platz» bei 621–1240 px: jedes Etikett hat zwei Zeilen Platz, die Zahlen stehen auf einer Linie */
+@media (min-width:621px) and (max-width:1240px){.rg .werte .wert>.mono{min-height:2lh}}
+/* 6 Während des Rundgangs liegt die Leiste nicht über dem Gezeigten */
+.rg:has(.rdg-karte) #leiste{transform:translateY(calc(100% + 40px))}
+/* Schmale Rundgang-Karte (neben grossem Ziel): die Wegstriche geben nach, «Weiter» bleibt ganz in der Karte */
+.rg .rdg-karte .rdg-weg{min-width:0;flex:1 1 0;overflow:hidden}
+.rg .rdg-karte .rdg-fuss{gap:10px}
+.rg .rdg-karte{container-type:inline-size}
+@container (max-width:290px){.rg .rdg-karte .rdg-weg{display:none}.rg .rdg-karte .rdg-zu{margin-right:auto}}
+/* 25 Leiste: «mit Besuchen aussieht.» bleibt zusammen (festes Leerzeichen; ausgewogener Umbruch hielte es in Safari nicht) */
+.rg #leiste .wo-leiste__t small{text-wrap:wrap}
+/* 27 «Am meisten angesehen»: Seitennamen brechen nie; die Namensspalte richtet sich nach dem längsten Namen der Liste, der Balken nimmt den Rest.
+   «… im Schnitt» bricht höchstens zwischen Dauer und «im Schnitt» (registre.js), nie ein Wort allein */
+.rg .rang:has(.mit-bild){grid-template-columns:fit-content(270px) minmax(60px,1fr) auto 42px;column-gap:12px}
+.rg .rang:has(.mit-bild)>li{grid-column:1/-1;grid-template-columns:subgrid}
+.rg .rang__n:has(.mit-bild) .mit-bild>span{white-space:nowrap}
+@media (max-width:620px){.rg .rang:has(.mit-bild){grid-template-columns:auto minmax(28px,1fr) auto 34px;column-gap:8px}}
+/* 28 Kennzahlen «Zum Platz»: die Etiketten einer Reihe sind gleich hoch (Raster der Reihe), die Zahlen stehen auf einer Linie, auch wenn ein Etikett drei Zeilen braucht */
+@media (min-width:621px){.rg .werte .wert{grid-row:span 3;grid-template-rows:subgrid;row-gap:6px;align-content:normal}.rg .werte .wert>.mono{min-height:0;align-self:start}}
+/* Fund 30: Meldung steht, Rundgang-Schild tritt so lange zurück */
+.rg:has(#meldung .quit) .rdg-schild{visibility:hidden;pointer-events:none}
+/* Tor 6 Fund 31: Etikett aus zwei Teilen («Bar · Dirty Chicken»), am Handy übereinander ohne Trenner */
+.rg .besuch__z .besuch__m+.besuch__m::before{content:'\00a0·\00a0'}
+.rg button.besuch{container-type:inline-size}
+@container (max-width:440px){.rg .besuch__z .besuch__m{display:block}.rg .besuch__z .besuch__m+.besuch__m::before{content:none}}
+/* Seiten und Dauer: jeder Teil bleibt ganz; der Trenner (14 px, vor dem zweiten Teil) wird am Zeilenanfang abgeschnitten,
+   so steht er nur zwischen zwei Teilen derselben Zeile. Bricht die Zeile, stehen die Teile ohne Trenner untereinander. */
+.rg .besuch__n small .besuch__r{display:flex;flex-wrap:wrap;margin-left:-14px;clip-path:inset(-6px -6px -6px 14px)}
+.rg .besuch__n small .besuch__s{white-space:nowrap}
+.rg .besuch__n small .besuch__s::before{content:'·';display:inline-block;width:14px;text-align:center}
+
+/* ===== Haus-Check: was der Inhalt eigen hat ===== */
+/* Zahl der roten Bereiche als Kachel statt des Seitenbilds der Vorlage: dunkle Fläche, Zahl in der Titelschrift, Kante oben in der Ampel des Hauses */
+.rg .note-bild{display:grid;place-items:center;background:var(--wo-tief);color:var(--wo-g1);box-shadow:inset 0 3px 0 var(--hc-n,var(--wo-taupe));overflow:hidden}
+.rg .note-bild b{font:var(--wo-titel-g) 30px/1 var(--wo-titel);letter-spacing:var(--wo-titel-ls);font-variant-numeric:lining-nums tabular-nums}
+.rg .note--gruen{--hc-n:var(--wo-gut)}.rg .note--gelb{--hc-n:var(--wo-taupe)}.rg .note--rot{--hc-n:var(--wo-punkt)}
+@media (max-width:600px){.rg .note-bild b{font-size:22px}}
+/* Die zehn Bereiche in der Karte: links die Ampel in Mono; der Punkt auf der Linie in der Farbe der Ampel */
+.rg .weg li.hc-b{grid-template-columns:76px minmax(0,1fr) auto}
+.rg .weg .hc-b time{text-transform:uppercase;letter-spacing:.12em;font-size:10.5px}
+.rg .weg .hc-b--gruen::before{background:var(--wo-gut)}
+.rg .weg .hc-b--gelb::before{background:var(--wo-taupe)}
+.rg .weg .hc-b--rot::before{background:var(--wo-punkt)}
+.rg .weg .hc-b__befund{display:block;margin-top:3px;font-size:13.5px;line-height:1.45;color:var(--wo-leise)}
+@media (max-width:600px){.rg .weg li.hc-b{grid-template-columns:minmax(0,1fr) auto;padding-left:22px}.rg .weg .hc-b time{grid-column:1/-1;padding:0}}
+/* Taten unter der Karte */
+.rg .hc-taten{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:18px;padding-top:16px;border-top:1px solid var(--wo-linie)}
+.rg .link-i{color:inherit;border-bottom:1px solid currentColor;font:inherit;padding:0;cursor:pointer;background:none}
+.rg .bsp-band .link-i{white-space:nowrap}
+/* Auswahl und Suche über der Liste */
+.rg .hc-filter{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 0 18px}
+.rg .hc-filter .wahl3--filter{margin:0;min-width:0;flex:0 1 auto;max-width:100%}
+.rg .hc-such{flex:1 1 220px;max-width:340px}
+@media (max-width:600px){.rg .hc-such{max-width:none;flex-basis:100%}}
+.rg .hc-l{font:inherit;color:inherit;text-align:left;padding:0;background:none;border:0;cursor:pointer}
+.rg .hc-l:hover{text-decoration:underline;text-underline-offset:3px}
+.rg .angaben dd{overflow-wrap:anywhere}
+
+/* Quittung wie in Le Bureau: dunkle Platte über der Leiste, links am Raum; Text mit vorher und nachher, «Rückgängig», Schliessen */
+.hc-quittung-ort{position:fixed;z-index:26;left:342px;right:28px;bottom:104px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;pointer-events:none}
+.hc-quit{pointer-events:auto;display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;max-width:min(760px,100%);padding:12px 14px 12px 24px;border-radius:var(--wo-r1);color:var(--wo-g1);
+  background:linear-gradient(180deg,var(--wo-nacht2),var(--wo-nacht));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 3px 0 0 var(--wo-gut),0 26px 50px -22px rgba(0,0,0,.6);animation:hc-auf .5s var(--wo-e1) both}
+.hc-quit.fehl{box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 3px 0 0 var(--wo-punkt),0 26px 50px -22px rgba(0,0,0,.6)}
+.hc-quit__t{flex:1 1 220px;min-width:0;display:flex;flex-direction:column}
+.hc-quit__t b{font:var(--wo-titel-g) 20px/1.2 var(--wo-titel);letter-spacing:var(--wo-titel-ls);text-transform:uppercase}
+.hc-quit__t span{font-size:13px;color:var(--wo-g2);overflow-wrap:anywhere}
+.hc-quit__t span [data-q]{color:var(--wo-g1)}
+.hc-taste{font:400 10.5px/1 var(--wo-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--wo-g1);padding:11px 16px;border-radius:var(--wo-r3);background:none;border:0;cursor:pointer;
+  box-shadow:inset 0 0 0 1px var(--wo-linie-d);transition:transform .4s var(--wo-e2)}
+.hc-taste:hover{transform:translateY(-1px)}
+.hc-rund{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:0;background:none;color:var(--wo-g2);cursor:pointer;box-shadow:inset 0 0 0 1px var(--wo-linie-d)}
+.hc-rund svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+@keyframes hc-auf{from{opacity:0;transform:translateY(14px)}}
+@media (max-width:900px){.hc-quittung-ort{left:10px;right:10px;bottom:84px}.hc-quit{max-width:none;width:100%}}
+/* Fenster wie in Le Bureau: Grund in Nacht, Blatt hell, Titel mit Akzent, Knöpfe rechts */
+.hc-fenster{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px}
+.hc-fenster__grund{position:absolute;inset:0;border:0;padding:0;background:var(--wo-tief);opacity:.62;cursor:default;animation:hc-grund .35s var(--wo-e1) both}
+.hc-fenster__blatt{position:relative;width:min(680px,100%);max-height:calc(100dvh - 32px);overflow-y:auto;padding:28px clamp(18px,3vw,32px);border-radius:var(--wo-r1);color:var(--wo-tinte);
+  background:var(--wo-blatt);box-shadow:inset 0 0 0 1px var(--wo-linie),0 40px 80px -30px rgba(0,0,0,.7);display:flex;flex-direction:column;gap:16px;animation:hc-blatt .5s var(--wo-e1) both}
+.hc-fenster__blatt h2{font:var(--wo-titel-g) 30px/1.1 var(--wo-titel);letter-spacing:var(--wo-titel-ls);text-transform:uppercase;margin:0}
+.hc-fenster__blatt h2 em{font-style:normal;font-weight:300;color:var(--wo-akzent)}
+.hc-fenster__satz{margin:0;font-size:14.5px;line-height:1.55;color:var(--wo-leise)}
+.hc-fenster__satz b{color:var(--wo-tinte);font-weight:500}
+.hc-fenster__kn{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:10px 18px}
+@keyframes hc-grund{from{opacity:0}}
+@keyframes hc-blatt{from{opacity:0;transform:translateY(18px) scale(.98)}}
+.hc-not{padding:24px}
+
+/* ===== Haus-Check: Eingabe, Urteil, Verlauf (Inhalt der ersten Fassung im Rahmen der Vorlage) ===== */
+/* Eingabe der Adresse: ein Blatt wie das Band der Vorlage, Feld und Knopf nebeneinander, darunter die Probehäuser */
+.rg .hc-pruef{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:14px 16px;margin:0 0 22px;padding:20px 24px}
+.rg .hc-pruef__feld input{height:48px}
+.rg .hc-pruef .wo-kn{height:48px}
+.rg .hc-pruef__probe{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;font-size:13.5px;color:var(--leise)}
+.rg .hc-pruef__probe .link{font-size:13.5px}
+@media (max-width:600px){.rg .hc-pruef{grid-template-columns:minmax(0,1fr);padding:18px}.rg .hc-pruef .wo-kn{justify-content:space-between}}
+/* Urteil über den zehn Bereichen: Potential in der Titelschrift, der Satz daneben, Kante links in der Ampel */
+.rg .hc-gesamt{display:grid;gap:4px;margin:18px 0 0;padding:14px 18px;border-radius:14px;background:var(--wo-weiss);box-shadow:inset 3px 0 0 var(--hc-n,var(--wo-taupe)),inset 0 0 0 1px var(--linie)}
+.rg .hc-gesamt b{font:var(--wo-titel-g) 1.5rem/1.1 var(--wo-titel);letter-spacing:var(--wo-titel-ls);text-transform:uppercase}
+.rg .hc-gesamt p{color:var(--leise);font-size:14.5px;line-height:1.5}
+.rg .hc-gesamt--gruen{--hc-n:var(--wo-gut)}.rg .hc-gesamt--gelb{--hc-n:var(--wo-taupe)}.rg .hc-gesamt--rot{--hc-n:var(--wo-punkt)}
+/* Zahlen und Hinweise je Bereich: zugeklappt, damit die Karte ruhig bleibt */
+.rg .hc-mehr{margin-top:6px}
+.rg .hc-mehr summary{cursor:pointer;font:400 10px/1.4 var(--wo-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--wo-akzent);list-style:none}
+.rg .hc-mehr summary::-webkit-details-marker{display:none}
+.rg .hc-mehr summary::after{content:' +'}
+.rg .hc-mehr[open] summary::after{content:' −'}
+.rg .hc-zahlen{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px 14px;margin:10px 0 4px}
+.rg .hc-zahlen dt{font:400 9.5px/1.3 var(--wo-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--leise)}
+.rg .hc-zahlen dd{font-size:14px;font-weight:500;overflow-wrap:anywhere}
+.rg .hc-hinweise{margin:8px 0 2px;padding-left:18px;display:grid;gap:4px;font-size:13.5px;line-height:1.45;color:var(--leise);list-style:disc}
+/* Gelesene Seiten */
+.rg .hc-seiten{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.rg .hc-seiten li{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:4px 14px;align-items:baseline;padding:9px 0;border-top:1px solid var(--linie);font-size:14px}
+.rg .hc-seiten li span{font:400 10px/1.3 var(--wo-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--leise)}
+.rg .hc-seiten li a{overflow-wrap:anywhere}
+.rg .hc-seiten li em{font-style:normal;font-size:12.5px;color:var(--leise);white-space:nowrap}
+@media (max-width:600px){.rg .hc-seiten li{grid-template-columns:minmax(0,1fr)}.rg .hc-seiten li em{white-space:normal}}
+/* Verlauf je Haus: ein Knopf je Check, der gezeigte dunkel */
+.rg .hc-verlauf{display:grid;gap:8px;margin:16px 0 2px}
+.rg .hc-verlauf>div{display:flex;flex-wrap:wrap;gap:8px}
+.rg .hc-vk{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:0;border-radius:var(--wo-rk);background:var(--wo-weiss);color:var(--tinte);font:13px/1.2 var(--wo-sans);cursor:pointer;box-shadow:inset 0 0 0 1px var(--linie);transition:transform .4s var(--wo-e2)}
+.rg .hc-vk:hover{transform:translateY(-1px)}
+.rg .hc-vk.an{background:var(--nacht);color:var(--wo-g1);box-shadow:none}
+.rg .hc-punkt{flex:none;width:9px;height:9px;border-radius:50%;background:var(--wo-taupe)}
+.rg .hc-punkt--gruen{background:var(--wo-gut)}.rg .hc-punkt--rot{background:var(--wo-punkt)}
+.rg .hc-schon{margin:14px 0 0;font-size:14px;color:var(--leise)}
+/* Prüfung läuft */
+.rg .hc-laeuft{display:grid;gap:6px}
+.rg .hc-laeuft b{font:var(--wo-titel-g) 1.6rem/1.1 var(--wo-titel);letter-spacing:var(--wo-titel-ls);text-transform:uppercase;overflow-wrap:anywhere}
+.rg .hc-laeuft p{color:var(--leise)}
+.rg .hc-laeuft .lade-platz{padding-top:10px}
+.rg .hc-laeuft .lade-platz i{height:54px}
+/* Was sich geändert hat */
+.rg .hc-wandel{display:grid;margin:0;padding:0;list-style:none}
+.rg .hc-wandel li{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr) auto;gap:4px 16px;align-items:baseline;padding:11px 0;border-top:1px solid var(--linie);font-size:14px}
+.rg .hc-wandel li:first-child{border-top:0}
+.rg .hc-wandel li span{color:var(--leise)}
+.rg .hc-wandel li em{font-style:normal;font-size:12.5px;color:var(--leise)}
+@media (max-width:600px){.rg .hc-wandel li{grid-template-columns:minmax(0,1fr)}}
+.rg .hc-korb .zeile__n small{display:block;font-size:12.5px;color:var(--leise);overflow-wrap:anywhere}
+.rg .hc-ergebnis .besuchsblatt{max-width:none}
+
+/* ===== Nachbesserung nach der Prüfung (07.11.2026) ===== */
+/* Quittung wie Le Bureau: so breit wie der Inhalt erlaubt (höchstens 760 px), Tasten als helle Pillen, Schliessen als X */
+.hc-quittung-ort{right:auto;width:min(760px,calc(100vw - 370px));align-items:stretch}
+.hc-quit{max-width:none}
+.hc-taste{display:inline-flex;align-items:center;min-height:36px;padding:0 15px;border-radius:var(--wo-rk);white-space:nowrap;text-decoration:none;color:var(--wo-tinte);
+  background:linear-gradient(180deg,var(--wo-g1) 0%,var(--wo-g2) 52%,var(--wo-g3) 100%);box-shadow:inset 0 1px 0 var(--wo-weiss),inset 0 -2px 0 color-mix(in srgb,var(--wo-akzent) 30%,transparent),0 10px 20px -12px var(--wo-tief)}
+.hc-taste:active{transform:translateY(2px)}
+.hc-rund{background:var(--wo-tief);color:var(--wo-g2)}
+@media (max-width:900px){.hc-quittung-ort{right:10px;width:auto;max-width:none}.hc-quit{gap:8px 10px;padding:12px 12px 12px 18px}.hc-taste{padding:0 12px}}
+/* Fenster «Vorher und nachher»: beide Stände nebeneinander, am Handy untereinander */
+.hc-vn{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.hc-vn>div{padding:14px 16px;border-radius:var(--wo-r2);background:var(--wo-weiss);box-shadow:inset 0 0 0 1px var(--wo-linie)}
+.hc-vn>div+div{box-shadow:inset 0 0 0 1px var(--wo-linie),inset 3px 0 0 var(--wo-gut)}
+.hc-vn .mono{display:block;font:400 10px/1.3 var(--wo-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--wo-leise)}
+.hc-vn p{margin:6px 0 0;font-size:15px;line-height:1.45;color:var(--wo-tinte);overflow-wrap:anywhere}
+@media (max-width:600px){.hc-vn{grid-template-columns:minmax(0,1fr)}}
+/* Speichern grün: kräftig wie Le Bureau, nicht als gesperrt verblasst */
+.wo-leiste .wo-kn--fertig[disabled]{opacity:1}
+/* Woche für Woche: die Zahl rechts bleibt in einer Zeile */
+.rg .wochen li{grid-template-columns:118px minmax(50px,1fr) 44px max-content}
+.rg .wochen em{white-space:nowrap}
+/* Karte: «06:09 Uhr» bricht nie vor «Uhr» */
+.rg .hc-zeit{white-space:nowrap}
+/* Wo es fehlt: am Rechner stehen gelb und grün in eigenen Spalten; die Zeile darunter gibt es nur am Handy */
+.rg .hc-tab .hc-unter{display:none}
+@media (max-width:620px){
+  .rg .hc-tab .zeile:not(.zeile--kopf){grid-template-columns:minmax(0,1fr) auto;row-gap:2px}
+  .rg .hc-tab .zeile:not(.zeile--kopf) .zeile__n{display:block;grid-column:1;grid-row:1}
+  .rg .hc-tab .zeile:not(.zeile--kopf) .zeile__n>b{display:block}
+  .rg .hc-tab .hc-unter{display:block;margin-top:3px;font:400 12.5px/1.3 var(--wo-mono);color:var(--wo-leise)}
+  .rg .hc-tab .zeile:not(.zeile--kopf)>.zeile__z{grid-column:2;grid-row:1}
+  .rg .hc-tab .zeile:not(.zeile--kopf)>span:nth-child(n+3){display:none}
+  .rg .hc-tab .zeile:not(.zeile--kopf)>span:nth-child(4)::after{content:none}
+}
+/* Papierkorb am Handy: Name und Adresse links, «Zurückholen» rechts (die Spalte war ausgeblendet) */
+@media (max-width:620px){
+  .rg .hc-korb .zeile:not(.zeile--kopf){grid-template-columns:minmax(0,1fr) auto;row-gap:2px}
+  .rg .hc-korb .zeile:not(.zeile--kopf) .zeile__n{display:block;grid-column:1;grid-row:1}
+  .rg .hc-korb .zeile:not(.zeile--kopf) .zeile__n>b{display:block}
+  .rg .hc-korb .zeile:not(.zeile--kopf)>span:nth-child(2),.rg .hc-korb .zeile:not(.zeile--kopf)>span:nth-child(3),.rg .hc-korb .zeile:not(.zeile--kopf)>span:nth-child(4){display:none}
+  .rg .hc-korb .zeile:not(.zeile--kopf)>span:nth-child(5){display:block;grid-column:2;grid-row:1;font:inherit}
+  .rg .hc-korb .zeile:not(.zeile--kopf)>span:nth-child(4)::after{content:none}
+  .rg .hc-korb .zeile--kopf>span:nth-child(2){display:none}
+}
+/* Karten «Zuletzt geprüft» am Handy: Ort und Adresse brechen um (an Leerzeichen und Bindestrich), statt am Rand abgeschnitten zu werden */
+@media (max-width:600px){.rg .besuch__n small .besuch__r{display:block;margin-left:0;clip-path:none;min-width:0}.rg .besuch__n small .besuch__s{display:block;white-space:normal}.rg .besuch__n small .besuch__s::before{content:none}}
+
+/* ---------- Nachbesserung 2 (Prüfung 07.11.2026, zweite Runde) ---------- */
+/* Rand am Seitenende: Der Rand ist mit «Prüfen» und «Wege» höher als ein kurzer Inhalt daneben. Der Platz für die Leiste unten lag als Polster
+   der ganzen Seite ausserhalb der Zeile von Rand und Raum; beim Scrollen schob das Seitenende den klebenden Rand darum unter den Kopf.
+   Der Platz liegt jetzt im Raum selbst: die Zeile reicht bis ans Seitenende, der Rand bleibt wie in Le Registre bei 96 px stehen. */
+@media (min-width:901px){
+  body.rg.wo-app{padding-bottom:0;align-content:start}   /* ohne Polster ist die Seite oft kürzer als das Fenster: der freie Platz bleibt unten, statt die Zeilen zu dehnen */
+  .rg .wo-raum{padding-bottom:130px}
+}
+/* Startbild am Handy: alle vier Kennzahlen in einer Reihe wie in der Vorlage («Potential hoch» ist länger als die Wörter der Vorlage, darum etwas enger gesetzt) */
+@media (min-width:380px) and (max-width:600px){   /* noch schmaler: die vierte Zahl darf in die zweite Reihe */
+  .wo-sb .buehne__chips{flex-wrap:nowrap;gap:16px}
+  .wo-sb .buehne__chips li{flex:none}
+  .wo-sb .buehne__chips span{letter-spacing:.12em;white-space:nowrap}
+}
+/* Neben dem Zeitraum davor, am Handy: gibt es davor nichts zu vergleichen, fällt die leere zweite Zeile unter dem Wert weg */
+@media (max-width:620px){.rg .vergleich .vz>small.vgl--leer{display:none}}
+
+/* Nachbesserung 3: «Zur Kundenliste», Blatt «Warten, schwächste Website zuerst». Wie «Welche Seiten vor dem Platz lagen» in der Vorlage
+   folgen die Zeilen in festem Abstand direkt auf die Überschrift, statt sich bei wenigen Häusern über die Höhe der Karte zu verteilen.
+   Die Karte bleibt so hoch wie die Spalte daneben; der Satz zum Balken steht unten in der Karte. */
+.zwei--fuell .blatt--dicht>.rang{flex:0 0 auto;align-content:start;gap:16px}
+.zwei--fuell .blatt--dicht>.fein{margin-top:auto;padding-top:18px}
+
+/* Nachbesserung 4: Hinweis in der Quittung (z. B. ältere Fassung im Papierkorb), eigene Zeile, leise */
+.hc-quit__t span .hc-quit__h{display:block;margin-top:4px;color:var(--wo-g2)}

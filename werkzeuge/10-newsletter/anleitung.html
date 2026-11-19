@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="de" data-wo-titel="Anleitung · {name} · Tasty Studios">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anleitung · Post aus dem Studio · Tasty Studios</title>
+<meta name="description" content="Schritt für Schritt durch das Werkzeug Post aus dem Studio von Tasty Studios.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111421">
+<link rel="icon" href="/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg">
+<link rel="preload" href="/zentrale/grundlagen/marke/schriften/Antonio-normal-100_700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/zentrale/grundlagen/marke/fotos/fen-faehre-900.webp" as="image">
+<!-- Anleitung, aufgebaut wie die Anleitung von La Réception (vorlage/culinarium-demo/werkzeuge/reception/anleitung.html), im Kleid von Tasty Studios -->
+<style>
+@font-face{font-family:'Antonio';font-weight:100 700;font-display:block;src:url('/zentrale/grundlagen/marke/schriften/Antonio-normal-100_700.woff2') format('woff2')}
+@font-face{font-family:'Instrument Sans';font-weight:400 600;font-display:block;src:url('/zentrale/grundlagen/marke/schriften/InstrumentSans-normal-400_600.woff2') format('woff2')}
+@font-face{font-family:'DM Mono';font-weight:400;font-display:block;src:url('/zentrale/grundlagen/marke/schriften/DMMono-normal-400.woff2') format('woff2')}
+:root{--navy:#1f213b;--nacht:#111421;--papier:#ebe3d7;--weiss:#f5eee6;--gold:#ebdbce;--messing:#9e947f;--taupe:#6f6656;--tinte:#111421;--serif:'Antonio','Arial Narrow',sans-serif;--sans:'Instrument Sans',system-ui,sans-serif;--mono:'DM Mono',ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.65 var(--sans);color:var(--tinte);background:linear-gradient(rgba(235,219,206,.86),rgba(235,219,206,.86)),var(--papier)}
+a{color:inherit}
+.kopf{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:18px;padding:14px clamp(18px,4vw,56px);background:linear-gradient(180deg,#2d3250,#1f213b 60%,#111421);color:var(--weiss);box-shadow:0 0 0 1px rgba(235,219,206,.4),0 14px 30px -18px rgba(17,20,33,.7)}
+.kopf b{font:400 11px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.kopf nav{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.kopf a.kn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;font:500 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--weiss);box-shadow:inset 0 0 0 1px rgba(235,219,206,.4)}
+.kopf a.gold{background:linear-gradient(180deg,#ebdbce,#9e947f);color:var(--nacht);box-shadow:none}
+.hero{position:relative;overflow:hidden;color:var(--weiss);padding:clamp(48px,7vw,96px) clamp(22px,6vw,90px);background:linear-gradient(90deg,rgba(17,20,33,.96),rgba(17,20,33,.7)),url('/zentrale/grundlagen/marke/fotos/fen-faehre-900.webp') center/cover,var(--navy)}
+.hero span.m{font:11px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.hero h1{text-transform:uppercase;font:700 clamp(36px,5.6vw,68px)/1.06 var(--serif);margin:14px 0 16px;max-width:15em}
+.hero h1 em{font-style:normal;font-weight:300;color:#fff}
+.hero p{max-width:56ch;color:#cfc8b6}
+main{max-width:1060px;margin:0 auto;padding:46px clamp(18px,4vw,40px) 90px}
+.inhalt{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:0 0 20px}
+.inhalt a{display:flex;gap:12px;align-items:baseline;padding:14px 18px;border-radius:16px;background:var(--weiss);text-decoration:none;box-shadow:0 0 0 1px rgba(111,102,86,.25),0 12px 24px -18px rgba(17,20,33,.5)}
+.inhalt a b{font:400 11px var(--mono);letter-spacing:.14em;color:var(--taupe)}
+.k{margin-top:60px;padding-top:22px;border-top:1px solid rgba(111,102,86,.4)}
+.k .m{font:11px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+.k h2{text-transform:uppercase;font:700 clamp(28px,3.6vw,40px)/1.1 var(--serif);color:var(--navy);margin:6px 0 12px}
+.k h2 em{font-style:normal;font-weight:300;color:var(--navy)}
+.k p.s{max-width:68ch;color:rgba(17,20,33,.82)}
+.k ol{list-style:none;counter-reset:z;display:grid;gap:10px;margin:16px 0;max-width:72ch}
+.k ol li{counter-increment:z;position:relative;padding:12px 16px 12px 52px;border-radius:14px;background:rgba(250,246,240,.8);box-shadow:inset 0 0 0 1px rgba(111,102,86,.2)}
+.k ol li::before{content:counter(z);position:absolute;left:14px;top:11px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:500 12px var(--sans);color:var(--nacht);background:linear-gradient(180deg,#ebdbce,#9e947f)}
+.k .gut{margin:14px 0 18px;max-width:72ch;padding:14px 18px;border-radius:14px;background:linear-gradient(180deg,#2d3250,#1f213b);color:var(--weiss);box-shadow:inset 0 0 0 1px rgba(235,219,206,.35)}
+.k .gut b{display:block;font:400 11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+figure{margin:22px 0 4px}
+figure img{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 0 0 1px rgba(111,102,86,.3),0 30px 50px -30px rgba(17,20,33,.7);cursor:zoom-in}
+figcaption{font:11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--taupe);margin-top:8px}
+.gross{position:fixed;inset:0;z-index:20;background:rgba(17,20,33,.88);display:none;place-items:center;padding:24px;cursor:zoom-out}
+.gross.auf{display:grid}.gross img{max-width:min(1400px,100%);max-height:100%;border-radius:12px}
+.hilfe{display:grid;gap:10px;margin-top:16px}
+.hilfe div{padding:14px 18px;border-radius:14px;background:var(--weiss);box-shadow:inset 0 0 0 1px rgba(111,102,86,.25)}
+.hilfe b{font:500 11px var(--mono);letter-spacing:.16em;color:var(--taupe)}
+/* Messlauf 29.10.2026 (Regel einzelwort): kein einzelnes Wort allein in der letzten Titelzeile */
+h1,h2,h3,h4,figcaption{text-wrap:balance}
+.zs{white-space:nowrap}
+</style>
+<script src="/zentrale/zentrale/oberflaeche/kleid/tasty.js"></script>
+<script src="/zentrale/zentrale/oberflaeche/oberflaeche.js" defer></script>
+<script src="studio/namen.js" defer></script>
+</head>
+<body>
+<header class="kopf"><b>Anleitung · <span data-wo-name="10-newsletter">Werkzeug</span></b><nav><a class="kn" href="#kapitel">Kapitel</a><a class="kn gold" href="./">Werkzeug öffnen</a></nav></header>
+<section class="hero"><span class="m">Der Newsletter von Tasty Studios, Schritt für Schritt</span>
+<h1>Schreiben, prüfen, <em>an die Liste.</em></h1>
+<p>Wie eine Ausgabe entsteht, wie die Vorschau aussieht, wie Probemail und Versand gehen, wo die Empfänger und Listen stehen und wie du speicherst und zurücknimmst. Acht kurze Kapitel. Jedes Bild lässt sich mit einem Klick gross ansehen.</p></section>
+<main id="kapitel">
+<div class="inhalt">
+<a href="#k1"><b>01</b>Übersicht</a><a href="#k2"><b>02</b>Eine Ausgabe schreiben</a><a href="#k3"><b>03</b>Vorschau</a><a href="#k4"><b>04</b>Speichern und Rückgängig</a><a href="#k5"><b>05</b>Probemail und Versand</a><a href="#k6"><b>06</b>Empfänger</a><a href="#k7"><b>07</b>Listen</a><a href="#k8"><b>08</b>Archiv und Versandweg</a>
+</div>
+
+<section class="k" id="k1"><span class="m">01 · Übersicht</span><h2>So ist <span class="zs"><em>das Werkzeug</em> aufgebaut.</span></h2>
+<p class="s">Mit «Post aus dem Studio» schreiben Robert und Anna den Newsletter von Tasty Studios, pflegen die Empfängerlisten und bereiten den Versand vor. Verschickt wird hier nichts: jede Mail liegt als Datei im Postausgang.</p>
+<ol><li>Oben in der Übersicht drei Felder: wie viele Entwürfe es gibt, wie viele Empfänger bestätigt sind und wer noch wartet, und was zuletzt verschickt wurde. Darunter die Listen mit Foto, links «Zuletzt geschrieben», rechts «Neu angemeldet».</li><li>Links die Bereiche: «Ausgaben» und «Archiv», «Empfänger» und «Listen», dazu «Versand». Die Zahl daneben zeigt, was auf dich wartet. Auf dem Handy klappt der Rand über «Bereiche» auf.</li><li>Unten die Leiste: «Speichern» ist grau, solange nichts offen ist, gelb, wenn eine Änderung wartet, grün, wenn sie gespeichert ist.</li></ol>
+<figure><img src="bilder/nl-uebersicht.jpg" alt="Übersicht" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="10-newsletter">Post aus dem Studio</span> · Übersicht</figcaption></figure></section>
+<section class="k" id="k2"><span class="m">02 · Eine Ausgabe schreiben</span><h2>Eine Ausgabe <em>schreiben.</em></h2>
+<p class="s">Unter «Ausgaben» steht links jede Ausgabe, rechts die gewählte mit Betreff, Empfängern und Hinweisen. Darunter «Die Mail» mit zwei Ansichten: «Vorschau» und «Bausteine».</p>
+<ol><li>«Neue Ausgabe» legt eine Ausgabe an, mit einem Titel und einem Text als Anfang.</li><li>Unter «Bausteine» Titel, Liste, Betreff und Vorschautext eintragen. Darunter die Bausteine von oben nach unten: Titel, Text, Bild, Zitat, Knopf oder ein Projekt aus dem Atelier. Mit den Pfeilen verschieben, mit dem Papierkorb entfernen.</li><li>Ein Bild braucht für den echten Versand eine öffentliche Adresse mit https://. Ein Hinweis rechts sagt es, wenn eines fehlt.</li></ol>
+<figure><img src="bilder/nl-bausteine.jpg" alt="Eine Ausgabe schreiben" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="10-newsletter">Post aus dem Studio</span> · Eine Ausgabe schreiben</figcaption></figure></section>
+<section class="k" id="k3"><span class="m">03 · Vorschau</span><h2>So kommt <em>sie an.</em></h2>
+<p class="s">«Vorschau» zeigt die Mail so, wie sie im Postfach ankommt: in der Gestaltung der Agentur-Seite, so gebaut, dass sie in Outlook, Gmail und Apple Mail gleich aussieht.</p>
+<ol><li>Oben zwischen «Rechner» und «Handy» wechseln.</li><li>Darüber die Zeile, wie das Postfach sie zeigt: Betreff und Vorschautext.</li><li>«In eigenem Fenster» öffnet die Mail gross in einem neuen Fenster.</li></ol>
+<figure><img src="bilder/nl-vorschau.jpg" alt="Vorschau" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="10-newsletter">Post aus dem Studio</span> · Vorschau</figcaption></figure></section>
+<section class="k" id="k4"><span class="m">04 · Speichern und Rückgängig</span><h2>Speichern <em>mit Quittung.</em></h2>
+<p class="s">Gespeichert wird nur, was du selbst speicherst. Nichts geht still verloren und nichts wird still gespeichert.</p>
+<ol><li>Sobald etwas geändert ist, wird «Speichern» in der Leiste gelb.</li><li>Danach erscheint eine Quittung mit «Vorher» und «Nachher» und «Rückgängig». Rückgängig stellt den alten Stand wieder her. Das gilt für jede Änderung: Empfänger, Listen, Import, Versandweg, Versand.</li><li>Wechselst du mit einer offenen Änderung zu einer anderen Ausgabe oder einem anderen Bereich, fragt das Werkzeug: speichern, verwerfen oder zurück.</li></ol>
+<figure><img src="bilder/nl-quittung.jpg" alt="Speichern und Rückgängig" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="10-newsletter">Post aus dem Studio</span> · Speichern und Rückgängig</figcaption></figure></section>
+<section class="k" id="k5"><span class="m">05 · Probemail und Versand</span><h2>Erst die Probe, <em>dann die Liste.</em></h2>
+<p class="s">Unter der Mail stehen «Probemail an Robert» und «An die Liste senden». Beide nehmen den gespeicherten Stand.</p>
+<ol><li>«Probemail an Robert» legt eine Probe in den Postausgang, an die Adresse unter «Versand». Die Quittung hat «Ansehen».</li><li>«An die Liste senden» zeigt zuerst eine Zusammenfassung: welche Liste, wie viele Bestätigte, wer aussen vor bleibt, wer genau. Erst «Ja, senden» schickt.</li><li>Solange der Versand trocken ist, landen die Mails als Dateien im Postausgang, und «Rückgängig» nimmt den Versand zurück. Jede Ausgabe hat unten einen Abmelde-Link.</li></ol>
+<div class="gut"><b>Gut zu wissen</b>Scharf geschaltet wird der Versand nur auf Roberts Wort, in einem anderen Chat.</div><figure><img src="bilder/nl-versand.jpg" alt="Probemail und Versand" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="10-newsletter">Post aus dem Studio</span> · Probemail und Versand</figcaption></figure></section>
+<section class="k" id="k6"><span class="m">06 · Empfänger</span><h2>Wer die <em>Post bekommt.</em></h2>
+<p class="s">Unter «Empfänger» stehen alle Adressen mit Haus, Herkunft (Website, Gespräch, KI-Check), Datum der Einwilligung und Stand.</p>
+<ol><li>Oben die Zahlen, darunter die Auswahl nach Stand, nach Liste und eine Suche. «Dubletten?» zeigt Adressen mit gleichem Namen oder gleichem Teil vor dem @.</li><li>«Ändern» öffnet das Fenster mit allen Angaben und den Listen. Abgemeldete bleiben gesperrt: keine neue Anmeldung, kein Versand.</li><li>«Importieren» liest eine CSV-Datei, zeigt erst, was neu, doppelt, gesperrt oder fehlerhaft ist, und übernimmt dann. «Exportieren» speichert die aktuelle Auswahl als CSV.</li><li>«Anmeldung durchspielen» zeigt die doppelte Einwilligung: Eintrag ohne Bestätigung, Bestätigungsmail im Postausgang, Klick auf den Link bestätigt.</li></ol>
+<figure><img src="bilder/nl-empfaenger.jpg" alt="Empfänger" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="10-newsletter">Post aus dem Studio</span> · Empfänger</figcaption></figure></section>
+<section class="k" id="k7"><span class="m">07 · Listen</span><h2>Die <em>Listen.</em></h2>
+<p class="s">Jede Liste hat eine Karte: wie viele bestätigt sind, wer wartet, wer sich abgemeldet hat, und wann zuletzt eine Ausgabe an sie ging.</p>
+<ol><li>«Neue Liste» legt eine Liste an, «Umbenennen» ändert Name und Beschreibung.</li><li>«Löschen» entfernt nur die Liste, die Adressen bleiben. Über die Quittung kommt alles zurück.</li><li>«Anzeigen» öffnet die Empfänger dieser Liste.</li></ol>
+<figure><img src="bilder/nl-listen.jpg" alt="Listen" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="10-newsletter">Post aus dem Studio</span> · Listen</figcaption></figure></section>
+<section class="k" id="k8"><span class="m">08 · Archiv und Versandweg</span><h2>Archiv <em>und Versandweg.</em></h2>
+<p class="s">Das «Archiv» zeigt jede verschickte Ausgabe mit Datum, Liste und Empfängerzahl. Unter «Versand» stehen Absender, Versandweg und der Postausgang.</p>
+<ol><li>Im Archiv «Ansehen» für die Mail, «Öffnen» für die Ausgabe, «Als neue Ausgabe» für eine Kopie als Entwurf.</li><li>Unter «Versand» Absender, Antwortadresse und die Adresse für Probemails. Der Weg: Roberts Postfach (wie das Kontaktformular der Agentur-Seite über iCloud) oder ein Dienst, den Robert wählt.</li><li>Darunter der Postausgang: Probemails, Bestätigungen und Ausgaben, jede mit «Ansehen».</li></ol>
+<figure><img src="bilder/nl-archiv.jpg" alt="Archiv und Versandweg" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="10-newsletter">Post aus dem Studio</span> · Archiv und Versandweg</figcaption></figure></section>
+
+<section class="k" id="hilfe"><span class="m">Hilfe</span><h2>Wenn etwas <em>nicht geht.</em></h2>
+<p class="s">Jede Meldung des Werkzeugs nennt ein Stichwort. «Was tun?» in der Meldung führt zur Prüfseite, dort steht zu jedem Stichwort, was man sieht, warum und was hilft.</p>
+<div class="hilfe"><div><b>Prüfung</b> <a href="pruefung.html">pruefung.html</a> prüft Browser, Server-Teil, Ablage, Empfänger, Ausgaben und Versand, auch wenn das Werkzeug selbst nicht startet.</div><div><b>Starten</b> Im Ordner des Repos «python3 zentrale/server.py», dann http://localhost:9100/werkzeuge/10-newsletter/ oder in der Zentrale.</div></div></section>
+</main>
+<div class="gross" id="gross"><img alt=""></div>
+<script src="studio/anleitung.js"></script>
+</body>
+</html>

@@ -1,0 +1,354 @@
+{
+ "ansichten": [
+  [
+   "start",
+   "Start: Übersicht mit Gruss und Foto"
+  ],
+  [
+   "start-unten",
+   "Übersicht weiter unten: Häufig gebraucht, Bereiche"
+  ],
+  [
+   "bereich",
+   "Hauptbereich 1: Startseite / Das Zeichen"
+  ],
+  [
+   "schrift",
+   "Hauptbereich 2: Angaben des Hauses / Die Schrift"
+  ],
+  [
+   "schriftblatt",
+   "Hauptbereich 2b: Google-Texte / Antonio"
+  ],
+  [
+   "farbe",
+   "Hauptbereich 3: Zeiten & Preise / Die Farbe"
+  ],
+  [
+   "haltung",
+   "Hauptbereich 4: Hinweis für Gäste / Die Haltung"
+  ],
+  [
+   "fenster",
+   "Offenes Fenster: Foto / Logo"
+  ],
+  [
+   "fenster-farbe",
+   "Offenes Fenster: Foto / Farbe"
+  ],
+  [
+   "leiste-gelb",
+   "Leiste gelb: etwas offen"
+  ],
+  [
+   "quittung",
+   "Quittung: vorher, nachher, Rückgängig"
+  ],
+  [
+   "gespeichert",
+   "Speichern: grün mit Quittung"
+  ],
+  [
+   "meldung",
+   "Speichern ohne Änderung"
+  ],
+  [
+   "rand",
+   "Rand am Handy aufgeklappt"
+  ],
+  [
+   "rundgang",
+   "Rundgang"
+  ],
+  [
+   "anleitung",
+   "Anleitung"
+  ],
+  [
+   "pruefung",
+   "Prüfseite (Vorlage: La Réception)"
+  ]
+ ],
+ "befund": {
+  "start-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "start-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "start-unten-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "start-unten-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "bereich-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "bereich-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "schrift-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "schrift-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "schriftblatt-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "schriftblatt-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "farbe-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "farbe-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "haltung-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "haltung-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "fenster-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "fenster-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "fenster-farbe-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "fenster-farbe-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "leiste-gelb-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "leiste-gelb-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "quittung-1440-vorlage": {
+   "fehler": [
+    "Seitenfehler: Cannot read properties of undefined (reading '0')"
+   ],
+   "ueber": 0
+  },
+  "quittung-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "gespeichert-1440-vorlage": {
+   "fehler": [
+    "Seitenfehler: Cannot read properties of undefined (reading '0')"
+   ],
+   "ueber": 0
+  },
+  "gespeichert-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "meldung-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "meldung-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "rand-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "rand-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "rundgang-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "rundgang-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "anleitung-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "anleitung-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "pruefung-1440-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "pruefung-1440-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "start-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "start-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "start-unten-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "start-unten-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "bereich-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "bereich-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "schrift-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "schrift-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "schriftblatt-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "schriftblatt-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "farbe-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "farbe-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "haltung-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "haltung-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "fenster-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "fenster-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "fenster-farbe-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "fenster-farbe-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "leiste-gelb-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "leiste-gelb-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "quittung-390-vorlage": {
+   "fehler": [
+    "Seitenfehler: Cannot read properties of undefined (reading '0')"
+   ],
+   "ueber": 0
+  },
+  "quittung-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "gespeichert-390-vorlage": {
+   "fehler": [
+    "Seitenfehler: Cannot read properties of undefined (reading '0')"
+   ],
+   "ueber": 0
+  },
+  "gespeichert-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "meldung-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "meldung-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "rand-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "rand-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "rundgang-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "rundgang-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "anleitung-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "anleitung-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "pruefung-390-vorlage": {
+   "fehler": [],
+   "ueber": 0
+  },
+  "pruefung-390-neubau": {
+   "fehler": [],
+   "ueber": 0
+  }
+ }
+}

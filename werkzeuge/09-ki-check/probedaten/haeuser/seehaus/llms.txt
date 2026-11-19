@@ -1,0 +1,14 @@
+# Hotel Seehaus Steckborn
+
+Familiengeführtes Hotel am Untersee (Bodensee) in Steckborn, Kanton Thurgau, Schweiz. 24 Zimmer, eigener Badesteg, Garten am Wasser, Restaurant mit Fisch aus dem See.
+
+- Adresse: Seestrasse 118, 8266 Steckborn, Schweiz
+- Telefon: +41 52 761 20 20
+- Zimmerpreise: Doppelzimmer ab CHF 165, Seezimmer ab CHF 215, Seesuite ab CHF 340, jeweils mit Frühstück
+- Restaurant: täglich 11.30–14.00 und 18.00–22.00 Uhr, Hauptgänge CHF 28–48
+- Betriebsferien: Mitte Januar bis Ende Februar
+- Hunde willkommen, Parkplätze am Haus, Bahnhof in zehn Gehminuten
+
+## Seiten
+- Zimmer und Preise: zimmer.html
+- Restaurant und Speisekarte: restaurant.html

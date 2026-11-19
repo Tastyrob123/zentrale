@@ -1,0 +1,15 @@
+const { chromium } = require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1440,height:900}});
+await p.route(r=>!/^https?:\/\/(127\.0\.0\.1|localhost)/.test(r),r=>r.abort());
+await p.goto('http://localhost:8980/studio.html?feinschliff=probe-anna-feinschliff',{waitUntil:'load'});await p.waitForTimeout(3000);
+await p.click('.fs-leiste [data-modus=abschnitte]');await p.waitForTimeout(1200);
+const gr=p.locator('.fs-ab').nth(2);await gr.evaluate(e=>e.scrollIntoView({block:'center'}));await p.waitForTimeout(800);
+const o=gr.locator('.fs-griff--unten output');await o.evaluate(e=>e.scrollIntoView({block:'center'}));await p.waitForTimeout(800);const bb=await o.boundingBox();
+const wer=await p.evaluate(a=>{const e=document.elementFromPoint(a[0],a[1]);return e.tagName+'.'+e.className+' < '+(e.parentElement?e.parentElement.className:'')},[bb.x+bb.width/2,bb.y+bb.height/2]);console.log('unter Maus:',wer,JSON.stringify(bb));
+const vor=await gr.locator('.fs-griff--unten output').innerText();
+await p.mouse.move(bb.x+bb.width/2,bb.y+bb.height/2);await p.mouse.down();await p.mouse.move(bb.x+bb.width/2,bb.y+bb.height/2+50,{steps:8});await p.mouse.up();await p.waitForTimeout(1500);
+const nach=await gr.locator('.fs-griff--unten output').innerText();
+const t=await p.locator('.fs-toast').innerText().catch(()=>'');
+console.log('Ziehen:',vor,'→',nach,'| Quittung:',t.replace(/\s+/g,' '));
+await p.screenshot({path:'b/seite-ziehen-1440-neubau.jpg',type:'jpeg',quality:80});
+await b.close();})();

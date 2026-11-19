@@ -1,0 +1,53 @@
+{
+ "zeit": "2026-10-28T16:40:00",
+ "kz": {
+  "dateien": [
+   "assets/css/main.css",
+   "neu/runde3/ar.css",
+   "neu/runde3/at.css",
+   "neu/runde3/bz.css",
+   "neu/runde3/bzr.css",
+   "neu/runde3/ee.css",
+   "neu/runde3/gastro.css",
+   "neu/runde3/handy.css",
+   "neu/runde3/ih.css",
+   "neu/runde3/ki.css",
+   "neu/runde3/kopf.css",
+   "neu/runde3/r3.css",
+   "neu/runde3/r4.css",
+   "neu/runde3/samt.css",
+   "neu/runde3/st.css",
+   "neu/runde3/sz.css",
+   "neu/runde3/tm.css",
+   "neu/runde3/wi.css",
+   "neu/runde3/wz.css",
+   "neu/runde3/wz1.css",
+   "neu/runde3/wzmj.css",
+   "neu/runde2/r.css"
+  ],
+  "regeln": 5441,
+  "farben": 379,
+  "schriften": {
+   "Antonio": 164,
+   "DM Mono": 154,
+   "Cormorant Garamond": 82,
+   "Instrument Sans": 53,
+   "Systemschrift (Apple)": 12,
+   "Tenor Sans": 11,
+   "Hanken Grotesk": 3
+  },
+  "palette": {
+   "#111421": 16,
+   "#1f213b": 1,
+   "#1f212c": 1,
+   "#ffffff": 412,
+   "#9e947f": 2,
+   "#ebdbce": 69,
+   "#ff3132": 3,
+   "#000000": 209
+  },
+  "knoepfe": 8,
+  "logo": 4
+ },
+ "hinweis": "Erfundener früherer Stand für die Probe: zwei Stil-Dateien weniger, wie vor runde3/chat.css und fen.css."
+}

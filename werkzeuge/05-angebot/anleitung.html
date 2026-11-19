@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="de" data-wo-titel="Anleitung · {name} · Tasty Studios">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anleitung · Angebot · Tasty Studios</title>
+<meta name="description" content="Schritt für Schritt durch das Werkzeug Angebot von Tasty Studios.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111421">
+<link rel="icon" href="/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg">
+<link rel="preload" href="/zentrale/grundlagen/marke/schriften/Antonio-normal-100_700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/zentrale/grundlagen/marke/fotos/k-tafel-900.webp" as="image">
+<!-- Anleitung, aufgebaut wie die Anleitung von La Réception (vorlage/culinarium-demo/werkzeuge/reception/anleitung.html), im Kleid von Tasty Studios -->
+<style>
+@font-face{font-family:'Antonio';font-weight:100 700;font-display:block;src:url('/zentrale/grundlagen/marke/schriften/Antonio-normal-100_700.woff2') format('woff2')}
+@font-face{font-family:'Instrument Sans';font-weight:400 600;font-display:block;src:url('/zentrale/grundlagen/marke/schriften/InstrumentSans-normal-400_600.woff2') format('woff2')}
+@font-face{font-family:'DM Mono';font-weight:400;font-display:block;src:url('/zentrale/grundlagen/marke/schriften/DMMono-normal-400.woff2') format('woff2')}
+:root{--navy:#1f233b;--nacht:#111421;--papier:#e7dfd4;--weiss:#f3ede5;--gold:#eadecf;--messing:#9e947f;--taupe:#6f6656;--tinte:#111421;--serif:'Antonio','Arial Narrow',sans-serif;--sans:'Instrument Sans',system-ui,sans-serif;--mono:'DM Mono',ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.65 var(--sans);color:var(--tinte);background:linear-gradient(rgba(227,216,201,.86),rgba(227,216,201,.86)),var(--papier)}
+a{color:inherit}
+.kopf{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:18px;padding:14px clamp(18px,4vw,56px);background:linear-gradient(180deg,#2a2e48,#1f233b 60%,#111421);color:var(--weiss);box-shadow:0 0 0 1px rgba(234,222,207,.4),0 14px 30px -18px rgba(17,20,33,.7)}
+.kopf b{font:400 11px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.kopf nav{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.kopf a.kn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;font:500 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--weiss);box-shadow:inset 0 0 0 1px rgba(234,222,207,.4)}
+.kopf a.gold{background:linear-gradient(180deg,#eadecf,#9e947f);color:var(--nacht);box-shadow:none}
+.hero{position:relative;overflow:hidden;color:var(--weiss);padding:clamp(48px,7vw,96px) clamp(22px,6vw,90px);background:linear-gradient(90deg,rgba(17,20,33,.96),rgba(17,20,33,.7)),url('/zentrale/grundlagen/marke/fotos/k-tafel-900.webp') center/cover,var(--navy)}
+.hero span.m{font:11px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.hero h1{text-transform:uppercase;font:700 clamp(36px,5.6vw,68px)/1.06 var(--serif);margin:14px 0 16px;max-width:15em}
+.hero h1 em{font-style:normal;font-weight:300;color:#fff}
+.hero p{max-width:56ch;color:#ddd1c2}
+main{max-width:1060px;margin:0 auto;padding:46px clamp(18px,4vw,40px) 90px}
+.inhalt{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:0 0 20px}
+.inhalt a{display:flex;gap:12px;align-items:baseline;padding:14px 18px;border-radius:16px;background:var(--weiss);text-decoration:none;box-shadow:0 0 0 1px rgba(111,102,86,.25),0 12px 24px -18px rgba(17,20,33,.5)}
+.inhalt a b{font:400 11px var(--mono);letter-spacing:.14em;color:var(--taupe)}
+.k{margin-top:60px;padding-top:22px;border-top:1px solid rgba(111,102,86,.4)}
+.k .m{font:11px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+.k h2{text-transform:uppercase;font:700 clamp(28px,3.6vw,40px)/1.1 var(--serif);color:var(--navy);margin:6px 0 12px}
+.k h2 em{font-style:normal;font-weight:300;color:var(--navy)}
+.k p.s{max-width:68ch;color:rgba(17,20,33,.82)}
+.k ol{list-style:none;counter-reset:z;display:grid;gap:10px;margin:16px 0;max-width:72ch}
+.k ol li{counter-increment:z;position:relative;padding:12px 16px 12px 52px;border-radius:14px;background:rgba(245,243,240,.8);box-shadow:inset 0 0 0 1px rgba(111,102,86,.2)}
+.k ol li::before{content:counter(z);position:absolute;left:14px;top:11px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:500 12px var(--sans);color:var(--nacht);background:linear-gradient(180deg,#eadecf,#9e947f)}
+.k .gut{margin:14px 0 18px;max-width:72ch;padding:14px 18px;border-radius:14px;background:linear-gradient(180deg,#2d3250,#1f233b);color:var(--weiss);box-shadow:inset 0 0 0 1px rgba(234,222,207,.35)}
+.k .gut b{display:block;font:400 11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+figure{margin:22px 0 4px}
+figure img{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 0 0 1px rgba(111,102,86,.3),0 30px 50px -30px rgba(17,20,33,.7);cursor:zoom-in}
+figcaption{font:11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--taupe);margin-top:8px}
+.gross{position:fixed;inset:0;z-index:20;background:rgba(17,20,33,.88);display:none;place-items:center;padding:24px;cursor:zoom-out}
+.gross.auf{display:grid}.gross img{max-width:min(1400px,100%);max-height:100%;border-radius:12px}
+.hilfe{display:grid;gap:10px;margin-top:16px}
+.hilfe div{padding:14px 18px;border-radius:14px;background:var(--weiss);box-shadow:inset 0 0 0 1px rgba(111,102,86,.25)}
+.hilfe b{font:500 11px var(--mono);letter-spacing:.16em;color:var(--taupe)}
+/* Messlauf 29.10.2026 (Regel einzelwort): kein einzelnes Wort allein in der letzten Titelzeile */
+h1,h2,h3,h4,figcaption{text-wrap:balance}
+.zs{white-space:nowrap}
+</style>
+<script src="/zentrale/zentrale/oberflaeche/kleid/tasty.js"></script>
+<script src="/zentrale/zentrale/oberflaeche/oberflaeche.js" defer></script>
+<script src="studio/namen.js" defer></script>
+</head>
+<body>
+<header class="kopf"><b>Anleitung · <span data-wo-name="05-angebot">Werkzeug</span></b><nav><a class="kn" href="#kapitel">Kapitel</a><a class="kn gold" href="./">Werkzeug öffnen</a></nav></header>
+<section class="hero"><span class="m">Ein Angebot für ein Haus, Schritt für Schritt</span>
+<h1>Haus wählen, Umfang anklicken, <em>Angebot fertig.</em></h1>
+<p>Wie ein Angebot entsteht, woher die Preise kommen, wie du speicherst, zurücknimmst und als PDF sicherst, und wo die Häuser und ihr Verlauf stehen. Acht kurze Kapitel. Jedes Bild lässt sich mit einem Klick gross ansehen.</p></section>
+<main id="kapitel">
+<div class="inhalt">
+<a href="#k1"><b>01</b>Übersicht</a><a href="#k2"><b>02</b>Ein neues Angebot</a><a href="#k3"><b>03</b>Umfang und Text</a><a href="#k4"><b>04</b>Speichern und Rückgängig</a><a href="#k5"><b>05</b>Als PDF speichern</a><a href="#k6"><b>06</b>Angebote finden</a><a href="#k7"><b>07</b>Häuser</a><a href="#k8"><b>08</b>Preise</a>
+</div>
+
+<section class="k" id="k1"><span class="m">01 · Übersicht</span><h2>So ist <span class="zs"><em>das Werkzeug</em> aufgebaut.</span></h2>
+<p class="s">Mit «Angebot» entsteht ein fertiges Angebot für ein Haus in Minuten statt Stunden. Die Preise kommen aus den Grundlagen (Angebot.md), einmal in die Preisdatei übernommen, mit Stand-Datum. Nichts wird erfunden, nichts verschickt.</p>
+<ol><li>Oben in der Übersicht drei Felder: wie viele Angebote es gibt, welche in den nächsten sieben Tagen ablaufen, und wie viele Preise in den Grundlagen fehlen. Darunter die Häuser mit Foto und der Zahl ihrer Angebote, links «Zuletzt geschrieben», rechts «Preis fehlt».</li><li>Links die Bereiche: «Angebote», «Häuser» und «Preise». Die Zahl daneben zeigt, was auf dich wartet. Auf dem Handy öffnet «Bereiche» die Liste.</li><li>Die Leiste unten sagt in einem Satz, wo du stehst. «Speichern» ist grau, solange nichts offen ist, gelb, sobald eine Änderung wartet, grün, wenn das Angebot gespeichert ist.</li></ol>
+<figure><img src="bilder/an-uebersicht.jpg" alt="Übersicht" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="05-angebot">Angebot</span> · Übersicht</figcaption></figure></section>
+
+<section class="k" id="k2"><span class="m">02 · Ein neues Angebot</span><h2>Ein Angebot <em>anfangen.</em></h2>
+<p class="s">Ein neues Angebot beginnt immer bei einem Haus. Ist das Haus noch nicht eingetragen, geht das im selben Fenster.</p>
+<ol><li>Oben «Neues Angebot» drücken (auch in der Leiste unten oder in der Karte eines Hauses).</li><li>Im Fenster das Haus wählen, oder «Neues Haus eintragen»: Name genügt, Ansprechperson, Adresse, Währung (Euro oder Franken) und Anrede (Du oder Sie) kommen auf das Deckblatt.</li><li>«Weiter» öffnet das Angebot unter «Angebote», gleich mit «Umfang und Text». Datum ist heute, gültig ist es 30 Tage (änderbar).</li></ol>
+<div class="gut"><b>Gut zu wissen</b>Die 30 Tage Gültigkeit sind ein Vorschlag; in den Grundlagen steht keine Frist.</div><figure><img src="bilder/an-neu.jpg" alt="Neues Angebot" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="05-angebot">Angebot</span> · Neues Angebot</figcaption></figure></section>
+
+<section class="k" id="k3"><span class="m">03 · Umfang und Text</span><h2>Den Umfang <em>anklicken.</em></h2>
+<p class="s">Unter «Das Angebot» schaltet «Umfang und Text» vom Blatt auf die Liste zum Anklicken. Jede Position steht mit ihrem Preis aus den Grundlagen da, netto.</p>
+<ol><li>Oben Datum, Gültig bis, Titel, Untertitel (bleibt er leer, entsteht er aus dem Umfang), Einleitung und Schluss.</li><li>Darunter die Bereiche: Website, Werkzeuge, Betreuung, Drucksachen, Feed, Schulung, Backoffice. Ein Klick auf das Feld vorne nimmt eine Position ins Angebot.</li><li>Wo eine Menge Sinn ergibt (Sprachen, Häuser, Teilnehmer), erscheint ein Feld «Menge». Hat eine Position nur eine Spanne oder keinen Preis, erscheint «Betrag für dieses Angebot». Fehlt der Preis in den Grundlagen, steht «Preis fehlt» in Rot; einen Betrag nur nach Roberts Wort eintragen.</li><li>Unter jeder gewählten Position steht «Woher», also die Stelle in den Grundlagen, aus der der Preis kommt.</li></ol>
+<figure><img src="bilder/an-umfang.jpg" alt="Umfang und Text" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="05-angebot">Angebot</span> · Umfang und Text</figcaption></figure></section>
+
+<section class="k" id="k4"><span class="m">04 · Speichern und Rückgängig</span><h2>Speichern <em>mit Quittung.</em></h2>
+<p class="s">Gespeichert wird nur, was du selbst speicherst. Nichts geht still verloren und nichts wird still gespeichert.</p>
+<ol><li>Sobald etwas geändert ist, wird «Speichern» in der Leiste gelb. Drücken legt das Angebot ab; ein neues bekommt dabei seine Nummer (A-Jahr-laufende Nummer).</li><li>Danach erscheint eine Quittung mit «Vorher» und «Nachher» (Zahl der Positionen, Summe, Gültigkeit) und «Rückgängig». Rückgängig stellt den alten Stand wieder her.</li><li>Wechselst du mit einer offenen Änderung zu einem anderen Angebot, fragt ein Fenster: speichern, verwerfen oder zurück.</li><li>Löschen über den runden Knopf mit dem Papierkorb in der Karte, mit Rückfrage. Auch dort holt «Rückgängig» das Angebot zurück.</li></ol>
+<figure><img src="bilder/an-quittung.jpg" alt="Quittung nach dem Speichern" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="05-angebot">Angebot</span> · Quittung nach dem Speichern</figcaption></figure></section>
+
+<section class="k" id="k5"><span class="m">05 · Als PDF speichern</span><h2>Das Blatt <em>und das PDF.</em></h2>
+<p class="s">«Blatt» zeigt das Angebot so, wie es als PDF herauskommt: A4, Montserrat Light, Regular und Medium, nie fett, Schwarz, 11 pt, Deckblatt mit dem Tasty-Logo. Der Seitenumbruch rechnet sich selbst, eine Überschrift bleibt bei ihrem Text.</p>
+<ol><li>«Als PDF speichern» unter dem Blatt drücken. Es öffnet sich das Druckfenster des Browsers.</li><li>Dort «Als PDF sichern» wählen, Ränder auf «Keine», Kopf- und Fusszeilen aus. Das Blatt bringt die 2,54 cm Rand selbst mit.</li><li>Verschickt wird hier nichts, und es öffnet sich kein Mailprogramm. Das PDF gibst du selbst weiter.</li></ol>
+<figure><img src="bilder/an-blatt.jpg" alt="Das Blatt" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="05-angebot">Angebot</span> · Das Blatt</figcaption></figure></section>
+
+<section class="k" id="k6"><span class="m">06 · Angebote finden</span><h2>Angebote <em>finden.</em></h2>
+<p class="s">Unter «Angebote» stehen alle Angebote nach Monat, das neueste oben.</p>
+<ol><li>Oben die Häuser mit der Zahl ihrer gültigen Angebote: ein Klick zeigt nur dieses Haus.</li><li>Darunter die Auswahl «Alle», «Gültig», «Bald» (läuft in sieben Tagen ab) und «Abgelaufen».</li><li>In der Karte rechts klappt «Verlauf dieses Hauses» alle Angebote des Hauses auf. Die Zentrale meldet unter «Heute», wenn ein Angebot bald abläuft, und öffnet es direkt.</li></ol>
+<figure><img src="bilder/an-angebote.jpg" alt="Angebote" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="05-angebot">Angebot</span> · Angebote</figcaption></figure></section>
+
+<section class="k" id="k7"><span class="m">07 · Häuser</span><h2>Die <em>Häuser.</em></h2>
+<p class="s">Jedes Haus hat eine Karte: Art, Ort, Ansprechperson, Währung, Anrede und alle Angebote mit ihrem Stand.</p>
+<ol><li>«Neues Haus» oben trägt ein Haus ein, «Ändern» in der Karte ändert es. Beides mit Quittung und «Rückgängig».</li><li>«Neues Angebot» in der Karte beginnt gleich ein Angebot für dieses Haus.</li><li>Ein Haus lässt sich nur löschen, wenn es kein Angebot mehr hat. Häuser ohne Angebot stehen unten unter «Noch ohne Angebot».</li></ol>
+<figure><img src="bilder/an-haeuser.jpg" alt="Häuser" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="05-angebot">Angebot</span> · Häuser</figcaption></figure></section>
+
+<section class="k" id="k8"><span class="m">08 · Preise</span><h2>Was es <em>kostet.</em></h2>
+<p class="s">«Preise» zeigt die ganze Preisdatei, nach Bereichen, mit Stand-Datum. Hier wird nichts geändert: die Preise kommen nur aus den Grundlagen.</p>
+<ol><li>Oben die Zahlen: Positionen, Preis fehlt, mit Spanne, Bereiche. «Preis fehlt» zeigt nur, was in den Grundlagen keinen Betrag hat.</li><li>Jede Position klappt «Woher der Preis kommt» auf, mit dem Satz aus den Grundlagen.</li><li>Legt Robert einen fehlenden Preis fest, wird er in preise.json eingetragen und das Stand-Datum angepasst.</li></ol>
+<figure><img src="bilder/an-preise.jpg" alt="Preise" loading="lazy" width="1440" height="900"><figcaption><span data-wo-name="05-angebot">Angebot</span> · Preise</figcaption></figure></section>
+
+<section class="k" id="hilfe"><span class="m">Hilfe</span><h2>Wenn etwas <em>nicht geht.</em></h2>
+<p class="s">Jede Meldung des Werkzeugs nennt ein Stichwort. «Was tun?» in der Meldung führt zur Prüfseite, dort steht zu jedem Stichwort, was man sieht, warum und was hilft.</p>
+<div class="hilfe"><div><b>Prüfung</b> <a href="pruefung.html">pruefung.html</a> prüft Browser, Server-Teil, Preisdatei, Ablage, Daten und das Blatt, auch wenn das Werkzeug selbst nicht startet.</div><div><b>Starten</b> Im Ordner des Repos «python3 zentrale/server.py», dann http://localhost:9100/werkzeuge/05-angebot/ oder in der Zentrale.</div></div></section>
+</main>
+<div class="gross" id="gross"><img alt=""></div>
+<script src="studio/anleitung.js"></script>
+</body>
+</html>

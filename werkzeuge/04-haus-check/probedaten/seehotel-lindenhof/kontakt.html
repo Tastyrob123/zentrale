@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Kontakt - Seehotel Lindenhof</title>
+<link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+<body>
+<table width="980" border="0" align="center">
+<tr><td colspan="2"><img src="/bilder/kopf.jpg" width="980" height="180" /></td></tr>
+<tr><td width="220" valign="top">
+<a href="/">Home</a><br /><a href="/zimmer.html">Zimmer &amp; Preise</a><br /><a href="/restaurant.html">Restaurant</a><br /><a href="/kontakt.html">Kontakt &amp; Anfahrt</a><br /><a href="/impressum.html">Impressum</a>
+</td>
+<td valign="top">
+<h1>Kontakt &amp; Anfahrt</h1>
+<p>Seehotel Lindenhof<br />Seestraße 14<br />24306 Plön</p>
+<p>Telefon: 04522 / 50 11 20<br />Telefax: 04522 / 50 11 21<br />E-Mail: info@seehotel-lindenhof.de</p>
+<p>Anfahrt: Von der A21 Abfahrt Plön, dann der Beschilderung Richtung See folgen.</p>
+<img src="/bilder/anfahrt.gif" width="400" height="300" />
+</td></tr>
+</table>
+</body>
+</html>

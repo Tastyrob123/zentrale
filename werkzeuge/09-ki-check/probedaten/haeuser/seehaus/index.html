@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hotel Seehaus Steckborn · Zimmer am Untersee</title>
+<meta name="description" content="Familiengeführtes Hotel am Untersee mit 24 Zimmern, eigenem Steg und Restaurant. Steckborn, Thurgau.">
+<link rel="alternate" hreflang="de" href="index.html">
+<link rel="alternate" hreflang="en" href="en/index.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Hotel",
+  "name": "Hotel Seehaus Steckborn",
+  "url": "https://www.hotel-seehaus-steckborn.ch/",
+  "telephone": "+41 52 761 20 20",
+  "email": "willkommen@hotel-seehaus-steckborn.ch",
+  "image": "bilder/seehaus-abend.jpg",
+  "priceRange": "CHF 165 – 340",
+  "numberOfRooms": 24,
+  "checkinTime": "15:00",
+  "checkoutTime": "11:00",
+  "address": {"@type": "PostalAddress", "streetAddress": "Seestrasse 118", "postalCode": "8266", "addressLocality": "Steckborn", "addressCountry": "CH"},
+  "geo": {"@type": "GeoCoordinates", "latitude": 47.667, "longitude": 8.985},
+  "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "07:00", "closes": "23:00"}],
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.6", "reviewCount": "412"},
+  "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": "Eigener Badesteg", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Parkplatz", "value": true}],
+  "sameAs": ["https://www.google.com/maps/place/Hotel+Seehaus+Steckborn", "https://www.booking.com/hotel/ch/seehaus-steckborn.html"]
+}
+</script>
+<style>body{font:16px/1.6 system-ui;max-width:760px;margin:40px auto;padding:0 20px;color:#222}nav a{margin-right:14px}</style>
+</head>
+<body>
+<nav><a href="index.html">Start</a><a href="zimmer.html">Zimmer und Preise</a><a href="restaurant.html">Restaurant</a><a href="anreise.html">Anreise</a><a href="en/index.html">English</a></nav>
+<h1>Hotel Seehaus Steckborn</h1>
+<p>Seit 1962 führt unsere Familie das Seehaus am Untersee. 24 Zimmer, ein eigener Badesteg, ein Garten bis ans Wasser und ein Restaurant, in dem abends der Fisch vom Morgen auf den Tisch kommt. Steckborn liegt am westlichen Ende des Bodensees, zwischen Konstanz und Schaffhausen, mit dem Zug in 25 Minuten von Konstanz und in 50 Minuten von Zürich erreichbar.</p>
+<h2>Die Zimmer</h2>
+<p>Alle Zimmer sind 2021 erneuert worden. Die Seezimmer haben einen Balkon zum Wasser, die Gartenzimmer liegen ruhig zum Rebhang. Ein Doppelzimmer kostet ab CHF 165 pro Nacht inklusive Frühstück, die Seesuite mit Eckbalkon ab CHF 340. Hunde sind willkommen, Kinder bis sechs Jahre übernachten im Zimmer der Eltern kostenlos. Alle Preise und die Ausstattung je Zimmer stehen auf der Seite <a href="zimmer.html">Zimmer und Preise</a>.</p>
+<h2>Das Restaurant</h2>
+<p>Unsere Küche kocht mit dem, was der See und die Höfe der Umgebung hergeben: Egli, Felchen, Spargel aus dem Thurgau, Äpfel vom Nachbarhof. Das Restaurant ist täglich von 11.30 bis 14.00 Uhr und von 18.00 bis 22.00 Uhr geöffnet, die Terrasse bei gutem Wetter durchgehend. Ein Hauptgang kostet zwischen CHF 28 und CHF 48. Die ganze <a href="restaurant.html">Speisekarte</a> steht online.</p>
+<h2>Anreise und Kontakt</h2>
+<p>Hotel Seehaus, Seestrasse 118, 8266 Steckborn, Schweiz. Telefon +41 52 761 20 20, E-Mail willkommen@hotel-seehaus-steckborn.ch. Check-in ab 15.00 Uhr, Check-out bis 11.00 Uhr. Die Rezeption ist täglich von 07.00 bis 23.00 Uhr besetzt. Parkplätze stehen direkt am Haus bereit, der Bahnhof Steckborn ist zehn Gehminuten entfernt.</p>
+<h2>Was Gäste sagen</h2>
+<p>412 Bewertungen auf <a href="https://www.google.com/maps/place/Hotel+Seehaus+Steckborn">Google</a> und <a href="https://www.booking.com/hotel/ch/seehaus-steckborn.html">Booking.com</a>, im Schnitt 4,6 von 5. Am häufigsten genannt: der Steg am Morgen, das Frühstück und die ruhige Lage.</p>
+<h2>Rund ums Haus</h2>
+<p>Von Steckborn aus fährt das Schiff nach Stein am Rhein und zur Insel Reichenau. Der Seeradweg führt direkt am Haus vorbei, Velos leihen wir aus. Im Winter ist das Haus von Mitte Januar bis Ende Februar geschlossen, das Restaurant hat dann Betriebsferien. Für Feste und Tagungen bis 60 Personen steht der Seesaal bereit, Anfragen nehmen wir gern per Telefon oder Mail entgegen.</p>
+<footer><p>Hotel Seehaus Steckborn · Seestrasse 118 · 8266 Steckborn · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p></footer>
+</body>
+</html>

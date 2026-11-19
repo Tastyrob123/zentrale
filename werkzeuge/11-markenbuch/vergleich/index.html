@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vergleich · Markenbuch · Tasty Studios</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg">
+<script src="/zentrale/zentrale/oberflaeche/kleid/tasty.js"></script>
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/grund.css">
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/kleid/tasty.css">
+<style>
+  /* Vergleichsseite der Prüfung (07.11.2026): Vorlage Le Bureau links, Markenbuch rechts, je Ansicht bei 1440 und 390 px.
+     Bilder neu aufgenommen mit vergleich/aufnahme.js (Playwright); Konsole und Überlauf je Bild in vergleich/befund.json. Urteil: PRUEFUNG.md. */
+  body{margin:0}
+  .vg{max-width:1360px;margin:0 auto;padding:56px clamp(16px,3vw,40px) 80px}
+  .vg h1{font:700 clamp(40px,5vw,64px)/1 var(--wo-titel);text-transform:uppercase;letter-spacing:.015em;margin:0}
+  .vg>p{max-width:70ch;margin:16px 0 0;color:var(--wo-leise)}
+  .vg section{margin-top:64px;padding-top:28px;border-top:1px solid var(--wo-linie)}
+  .vg h2{font:700 28px/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.02em;margin:0}
+  .vg h2+p{margin:8px 0 0;max-width:80ch;color:var(--wo-leise);font-size:14.5px}
+  .vg .ab{color:var(--wo-tinte)}
+  .paar{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+  .paar--handy{grid-template-columns:repeat(2,minmax(0,300px));justify-content:start}
+  figure{margin:0;min-width:0}
+  figcaption{font:400 10px/1.4 var(--wo-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--wo-akzent);margin-bottom:8px}
+  img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:inset 0 0 0 1px var(--wo-linie),0 20px 34px -24px rgba(0,0,0,.5)}
+  @media (max-width:700px){.paar{grid-template-columns:1fr}.paar--handy{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body class="wo-app">
+<main class="vg">
+  <h1>Markenbuch: Vorlage und Neubau</h1>
+  <p>Links Le Bureau («Das Schaufenster» des Culinarium, Demo aus <code>vorlage/</code>), rechts das Markenbuch von Tasty Studios. Jede Ansicht bei 1440 px und darunter am Handy bei 390 px. In der Demo der Vorlage fehlen die meisten Fotos; dort stehen leere Flächen. Das Urteil steht in PRUEFUNG.md.</p>
+  <div id="ansichten"></div>
+</main>
+<script>
+  const A = [
+    ['start', 'Start: Übersicht', 'Gruss nach Tageszeit, ein Satz, Foto, Anleitung und Prüfung; darunter die Lage mit drei Fächern. Gleich gebaut.'],
+    ['start-unten', 'Häufig gebraucht und Bereiche', 'Kacheln mit Foto, darunter die Bereiche Blatt für Blatt. Gleich gebaut.'],
+    ['bereich', 'Hauptbereich: Startseite und Das Zeichen', 'Startbild «Bühne» mit Foto, darunter die Arbeitsfläche.'],
+    ['schrift', 'Hauptbereich: Angaben des Hauses und Die Schrift', 'Jede Probe in voller Grösse, auch «DM Mono». Gleich gebaut.'],
+    ['schriftblatt', 'Blatt: Google-Texte und Antonio', 'Wahl und Suche wie «Zeiten & Preise». Die Beispiele in der Suche stammen aus den Stellen der Schrift, jedes findet etwas.'],
+    ['farbe', 'Hauptbereich: Zeiten & Preise und Die Farbe', 'Wahl oben, Karten darunter. Gleich gebaut.'],
+    ['haltung', 'Hauptbereich: Hinweis für Gäste und Die Haltung', 'Gleich gebaut.'],
+    ['fenster', 'Offenes Fenster: Foto tauschen und Logo', 'Gleiches Fenster, Schliessen, Esc, Klick daneben.'],
+    ['fenster-farbe', 'Offenes Fenster: Foto tauschen und Farbe', 'Gleiches Fenster.'],
+    ['leiste-gelb', 'Leiste gelb: etwas offen', 'Speichern gelb, sobald die Website anders ist als im gespeicherten Stand («10 Unterschiede noch nicht gespeichert»), «Vorher, nachher» bedienbar. Gleich gebaut.'],
+    ['quittung', 'Quittung nach «Neu lesen»', 'Vorlage: Speichern in der Demo bricht ab (Fehler der Demo, Bild ohne Quittung). Neubau: Neu lesen ohne Änderung sagt «Alles wie vorher.», mit «Vorher/nachher ansehen» und «Rückgängig».'],
+    ['gespeichert', 'Speichern: grün mit Quittung', 'Speichern wird für einen Moment grün («Gespeichert»), die Quittung zeigt vorher und nachher, «Vorher/nachher ansehen» und «Rückgängig». Gleich gebaut.'],
+    ['meldung', 'Speichern ohne Änderung', 'Gleiche Meldung «Nichts geändert, nichts gespeichert.»'],
+    ['rand', 'Rand am Handy aufgeklappt', 'Gleich gebaut.'],
+    ['rundgang', 'Rundgang', 'Fünf Schritte, Überspringen, Weiter, «Los geht’s». Gleich gebaut.'],
+    ['anleitung', 'Anleitung', 'Gleich gebaut.'],
+    ['pruefung', 'Prüfseite (Vorlage: La Réception, Le Bureau hat in der Demo keine)', 'Gleich gebaut, mit Lexikon und Reparaturen.'],
+  ];
+  const ort = document.getElementById('ansichten');
+  A.forEach(([k, t, s]) => {
+    const sec = document.createElement('section');
+    const bild = (b, wer) => `<figure><figcaption>${wer} · ${b} px</figcaption><img src="bilder/${k}-${b}-${wer === 'Vorlage' ? 'vorlage' : 'neubau'}.jpg" alt="${t}, ${wer}, ${b} px" width="${b}" height="${b > 500 ? 900 : 844}"></figure>`;
+    sec.innerHTML = `<h2>${t}</h2><p class="${/Abweichung/.test(s) ? 'ab' : ''}">${s}</p>`
+      + `<div class="paar">${bild(1440, 'Vorlage')}${bild(1440, 'Neubau')}</div>`
+      + `<div class="paar paar--handy">${bild(390, 'Vorlage')}${bild(390, 'Neubau')}</div>`;
+    ort.append(sec);
+  });
+</script>
+</body>
+</html>

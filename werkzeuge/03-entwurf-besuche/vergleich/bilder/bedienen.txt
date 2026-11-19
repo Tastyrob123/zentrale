@@ -1,0 +1,121 @@
+--- 1440 px
+ja   Rand «Alle Häuser» öffnet die Ansicht · #haeuser, Kopf: null
+ja   Rand «Besuche» öffnet die Ansicht · #besuche, Kopf: null
+ja   Rand «So wird gezählt» öffnet die Ansicht · #zaehlung, Kopf: null
+ja   Rand «Der Schlüssel» öffnet die Ansicht · #schluessel, Kopf: null
+ja   Rand «Übersicht» öffnet die Ansicht · #start, Kopf: null
+ja   Leiste gelb, solange Neues offen ist · ["wo-kn--wartet wo-kn--klein",false,"ALS GESEHEN MARKIEREN"]
+ja   Häuser-Auswahl «offen» filtert · 5 Zeilen, Knopf sagt 5
+ja   Häuser-Auswahl «zu» filtert · 1 Zeilen, Knopf sagt 1
+ja   Häuser-Auswahl «neu» filtert · 5 Zeilen, Knopf sagt 5
+ja   Häuser-Auswahl «alle» filtert · 6 Zeilen, Knopf sagt 6
+ja   Klick auf ein Haus zeigt das Haus mit Zeitleiste · HOTEL SEEBLICK GEÖFFNET., 5 Schritte
+ja   «Entwurf ansehen» verweist auf den Entwurf · https://seeblick-entwurf.vercel.app/ target=_blank
+ja   Im Haus: anderer Besuch wechselt die Karte rechts · scroll vorher 0
+ja   «Alle Häuser» führt zurück
+ja   Besuche-Auswahl «alle» filtert · 11 Karten, Knopf sagt 11
+ja   Besuche-Auswahl «neu» filtert · 11 Karten, Knopf sagt 11
+ja   Besuche-Auswahl «rechner» filtert · 6 Karten, Knopf sagt 6
+ja   Besuche-Auswahl «handy» filtert · 5 Karten, Knopf sagt 5
+ja   Besuch wählen zeigt seine Karte · Daniel Marti
+ja   Zeitraum «7 Tage» lädt den Zeitraum · {"tage":7,"saeulen":7,"an":"7 Tage","leiste":"DU SIEHST PROBEDATEN Erfunden, im Format des Dienstes. Letzte 7 Tage: 4 Häuser haben seit dem letzten Öffnen den Entwurf angesehen. ALS TABELLE SICHERN NEU LADEN ALS GESEHEN MARKIEREN"}
+ja   Zeitraum «90 Tage» lädt den Zeitraum · {"tage":90,"saeulen":90,"an":"90 Tage","leiste":"DU SIEHST PROBEDATEN Erfunden, im Format des Dienstes. Letzte 90 Tage: 6 Häuser haben seit dem letzten Öffnen den Entwurf angesehen. ALS TABELLE SICHERN NEU LADEN ALS GESEHEN MARKIEREN"}
+ja   Zeitraum «30 Tage» lädt den Zeitraum · {"tage":30,"saeulen":30,"an":"30 Tage","leiste":"DU SIEHST PROBEDATEN Erfunden, im Format des Dienstes. Letzte 30 Tage: 5 Häuser haben seit dem letzten Öffnen den Entwurf angesehen. ALS TABELLE SICHERN NEU LADEN ALS GESEHEN MARKIEREN"}
+ja   Zeitraum auch in «haeuser»
+ja   Zeitraum auch in «besuche»
+ja   «Als Tabelle sichern» (#l-export) lädt eine Tabelle und quittiert · besuche-entwuerfe-2026-10-09-bis-2026-11-07-probedaten.csv, 11 Zeilen
+ja   «Als Tabelle sichern» ([data-sichern]) lädt eine Tabelle und quittiert · besuche-entwuerfe-2026-10-09-bis-2026-11-07-probedaten.csv, 11 Zeilen
+ja   «Als gesehen markieren» zeigt Quittung mit vorher, nachher und Rückgängig · Als gesehen markiert Neue Besuche werden nicht mehr hervorgehoben. VORHER 11 neue Besuche NACHHER nichts Neues RÜCKGÄNGIG
+ja   Leiste danach grün · ["wo-kn--fertig wo-kn--klein",false,"GESEHEN"]
+ja   Rückgängig holt die Markierung «neu» zurück · ["wo-kn--wartet wo-kn--klein",false,"ALS GESEHEN MARKIEREN"], Rand vorher «Alle Häuser» nachher «Alle Häuser 5», Quittung: Als Tabelle gesichert besuche-entwuerfe-2026-10-09-bis-2026-11-07-probedaten.csv · 11 Besuche · Probedaten
+ja   «Neu laden» lädt und meldet sich · Neu geladen Probedaten · keine echten Besuche
+ja   Leiste grau, wenn nichts Neues · ["wo-kn--glas wo-kn--klein",true,"ALLES GESEHEN"]
+ja   Schlüssel-Fenster öffnet, Fokus im Feld
+ja   Esc schliesst das Fenster
+ja   Klick daneben schliesst das Fenster
+ja   Hinterlegen ohne Eingabe wird abgefangen · Fenster bleibt offen
+ja   Schlüssel hinterlegen: Quittung mit vorher, nachher und Rückgängig · Schlüssel hinterlegt Dienst nicht erreichbar, gezeigt werden Probedaten. VORHER kein Schlüssel, Probedaten NACHHER Schlüssel in der Ablage, weiter Probedaten RÜCKGÄNGIG
+ja   Quittung sagt ehrlich, dass der Dienst nicht antwortet · Schlüssel hinterlegt Dienst nicht erreichbar, gezeigt werden Probedaten. VORHER kein Schlüssel, Probedaten NACHHER Schlüssel in der Ablage, weiter Probedaten RÜCKGÄNGIG
+ja   Schlüssel liegt nur in der Ablage, kommt nicht zurück in die Oberfläche
+ja   Ohne erreichbaren Dienst: Werkzeug sagt es und läuft weiter · null / DER SCHLÜSSEL
+ja   Rückgängig nimmt den Schlüssel wieder weg · Schlüssel wieder entfernt VORHER Schlüssel in der Ablage NACHHER kein Schlüssel, Probedaten
+ja   Entfernen fragt erst nach · Schlüssel entfernen? Danach zeigt das Werkzeug wieder Probedaten. Für echte Besuche musst du den Schlüssel neu eintragen; gleich danach geht es noch mit «Rückgängig». Nein, behalten JA, ENTFERNEN
+ja   Nach Ja ist der Schlüssel weg, Quittung mit Rückgängig · Schlüssel entfernt Das Werkzeug zeigt wieder Probedaten. VORHER Schlüssel in der Ablage NACHHER kein Schlüssel, Probedaten RÜCKGÄNGIG
+ja   Rundgang läuft durch und schliesst · 3 Schritte: WER HAT GEÖFFNET? | FÜNF ANSICHTEN | NEUES ABHAKEN
+ja   Weg erreichbar /werkzeuge/03-entwurf-besuche/?wer=Robert#start · 200
+ja   Weg erreichbar /seite/index.html · 200
+ja   Weg erreichbar /werkzeuge/03-entwurf-besuche/?wer=Robert# · 200
+ja   Weg erreichbar / · 200
+ja   Weg erreichbar /werkzeuge/03-entwurf-besuche/pruefung.html · 200
+ja   Weg erreichbar /werkzeuge/03-entwurf-besuche/anleitung.html · 200
+ja   ?haus=seeblick öffnet das Haus direkt · HOTEL SEEBLICK GEÖFFNET.
+ja   Nichts über dem Rand #start
+ja   Nichts über dem Rand #haeuser
+ja   Nichts über dem Rand #besuche
+ja   Nichts über dem Rand #zaehlung
+ja   Nichts über dem Rand #schluessel
+ja   Konsole leer
+--- 390 px
+ja   Rand «Alle Häuser» öffnet die Ansicht · #haeuser, Kopf: null, Rand danach zu: true
+ja   Rand «Besuche» öffnet die Ansicht · #besuche, Kopf: null, Rand danach zu: true
+ja   Rand «So wird gezählt» öffnet die Ansicht · #zaehlung, Kopf: null, Rand danach zu: true
+ja   Rand «Der Schlüssel» öffnet die Ansicht · #schluessel, Kopf: null, Rand danach zu: true
+ja   Rand «Übersicht» öffnet die Ansicht · #start, Kopf: null, Rand danach zu: true
+ja   Leiste gelb, solange Neues offen ist · ["wo-kn--wartet wo-kn--klein",false,""]
+ja   Häuser-Auswahl «offen» filtert · 5 Zeilen, Knopf sagt 5
+ja   Häuser-Auswahl «zu» filtert · 1 Zeilen, Knopf sagt 1
+ja   Häuser-Auswahl «neu» filtert · 5 Zeilen, Knopf sagt 5
+ja   Häuser-Auswahl «alle» filtert · 6 Zeilen, Knopf sagt 6
+ja   Klick auf ein Haus zeigt das Haus mit Zeitleiste · HOTEL SEEBLICK GEÖFFNET., 5 Schritte
+ja   «Entwurf ansehen» verweist auf den Entwurf · https://seeblick-entwurf.vercel.app/ target=_blank
+ja   Im Haus: anderer Besuch wechselt die Karte rechts · scroll vorher 0
+ja   «Alle Häuser» führt zurück
+ja   Besuche-Auswahl «alle» filtert · 11 Karten, Knopf sagt 11
+ja   Besuche-Auswahl «neu» filtert · 11 Karten, Knopf sagt 11
+ja   Besuche-Auswahl «rechner» filtert · 6 Karten, Knopf sagt 6
+ja   Besuche-Auswahl «handy» filtert · 5 Karten, Knopf sagt 5
+ja   Besuch wählen zeigt seine Karte · Daniel Marti
+ja   Zeitraum «7 Tage» lädt den Zeitraum · {"tage":7,"saeulen":7,"an":"7 Tage","leiste":"DU SIEHST PROBEDATEN"}
+ja   Zeitraum «90 Tage» lädt den Zeitraum · {"tage":90,"saeulen":90,"an":"90 Tage","leiste":"DU SIEHST PROBEDATEN"}
+ja   Zeitraum «30 Tage» lädt den Zeitraum · {"tage":30,"saeulen":30,"an":"30 Tage","leiste":"DU SIEHST PROBEDATEN"}
+ja   Zeitraum auch in «haeuser»
+ja   Zeitraum auch in «besuche»
+ja   «Als Tabelle sichern» ([data-sichern]) lädt eine Tabelle und quittiert · besuche-entwuerfe-2026-10-09-bis-2026-11-07-probedaten.csv, 11 Zeilen
+ja   «Als gesehen markieren» zeigt Quittung mit vorher, nachher und Rückgängig · Als gesehen markiert Neue Besuche werden nicht mehr hervorgehoben. VORHER 11 neue Besuche NACHHER nichts Neues RÜCKGÄNGIG
+ja   Leiste danach grün · ["wo-kn--fertig wo-kn--klein",false,""]
+ja   Rückgängig holt die Markierung «neu» zurück · ["wo-kn--wartet wo-kn--klein",false,""], Rand vorher «Alle Häuser» nachher «Alle Häuser5», Quittung: Als Tabelle gesichert besuche-entwuerfe-2026-10-09-bis-2026-11-07-probedaten.csv · 11 Besuche · Probedaten
+ja   «Neu laden» lädt und meldet sich · Neu geladen Probedaten · keine echten Besuche
+ja   Leiste grau, wenn nichts Neues · ["wo-kn--glas wo-kn--klein",true,""]
+ja   Schlüssel-Fenster öffnet, Fokus im Feld
+ja   Esc schliesst das Fenster
+ja   Klick daneben schliesst das Fenster
+ja   Hinterlegen ohne Eingabe wird abgefangen · Fenster bleibt offen
+ja   Schlüssel hinterlegen: Quittung mit vorher, nachher und Rückgängig · Schlüssel hinterlegt Dienst nicht erreichbar, gezeigt werden Probedaten. VORHER kein Schlüssel, Probedaten NACHHER Schlüssel in der Ablage, weiter Probedaten RÜCKGÄNGIG
+ja   Quittung sagt ehrlich, dass der Dienst nicht antwortet · Schlüssel hinterlegt Dienst nicht erreichbar, gezeigt werden Probedaten. VORHER kein Schlüssel, Probedaten NACHHER Schlüssel in der Ablage, weiter Probedaten RÜCKGÄNGIG
+ja   Schlüssel liegt nur in der Ablage, kommt nicht zurück in die Oberfläche
+ja   Ohne erreichbaren Dienst: Werkzeug sagt es und läuft weiter · null / DER SCHLÜSSEL
+ja   Rückgängig nimmt den Schlüssel wieder weg · Schlüssel wieder entfernt VORHER Schlüssel in der Ablage NACHHER kein Schlüssel, Probedaten
+ja   Entfernen fragt erst nach · Schlüssel entfernen? Danach zeigt das Werkzeug wieder Probedaten. Für echte Besuche musst du den Schlüssel neu eintragen; gleich danach geht es noch mit «Rückgängig». Nein, behalten JA, ENTFERNEN
+ja   Nach Ja ist der Schlüssel weg, Quittung mit Rückgängig · Schlüssel entfernt Das Werkzeug zeigt wieder Probedaten. VORHER Schlüssel in der Ablage NACHHER kein Schlüssel, Probedaten RÜCKGÄNGIG
+ja   Rundgang läuft durch und schliesst · 3 Schritte: WER HAT GEÖFFNET? | FÜNF ANSICHTEN | NEUES ABHAKEN
+ja   Weg erreichbar /werkzeuge/03-entwurf-besuche/?wer=Robert#start · 200
+ja   Weg erreichbar /seite/index.html · 200
+ja   Weg erreichbar /werkzeuge/03-entwurf-besuche/?wer=Robert# · 200
+ja   Weg erreichbar / · 200
+ja   Weg erreichbar /werkzeuge/03-entwurf-besuche/pruefung.html · 200
+ja   Weg erreichbar /werkzeuge/03-entwurf-besuche/anleitung.html · 200
+ja   ?haus=seeblick öffnet das Haus direkt · HOTEL SEEBLICK GEÖFFNET.
+ja   Nichts über dem Rand #start
+ja   Nichts über dem Rand #haeuser
+ja   Nichts über dem Rand #besuche
+ja   Nichts über dem Rand #zaehlung
+ja   Nichts über dem Rand #schluessel
+ja   Konsole leer
+ja   Anleitung: alle Bilder geladen · 8/8
+ja   Anleitung: Sprungmarken führen ins Ziel
+ja   Prüfseite zeigt Browser, Server, Besuche, Fehler und Lexikon
+ja   Prüfseite: Knöpfe · FEHLER LEEREN
+ja   Anleitung und Prüfseite ohne Konsolenfehler
+ja   heute für die Zentrale liefert Punkte · 0 Punkte
+ja   Zentrale kennt das Werkzeug · <button class="wo-an wo-an--neu" type="button" data-punkt="1"><span class="wo-an__b"><img src="/grundlagen/marke/fotos/k-empfang-900.webp" alt="" loading="lazy"
+ja   Werkzeug läuft im Rahmen der Zentrale · /werkzeuge/03-entwurf-besuche/?wer=Robert

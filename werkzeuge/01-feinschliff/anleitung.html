@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111421">
+<title>Anleitung · Website bearbeiten · Tasty Studios</title>
+<link rel="icon" href="/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg" type="image/svg+xml">
+<!-- Anleitung zum Feinschliff. Aufbau aus der Anleitung zu Le Bureau der Culinarium-Werkzeuge (vorlage/culinarium-demo/werkzeuge/bureau/uwerkzeuge/bureau/anleitung.html):
+     Kopf, Auftakt, Schritte mit Bild, Weg zur Prüfung. Knopf-Namen wie im Werkzeug; Bilder sind echte Bildschirme des Werkzeugs mit Probedaten. Kleid aus zentrale/oberflaeche/. -->
+<script src="/zentrale/zentrale/oberflaeche/kleid/tasty.js"></script>
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/grund.css"><link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/kleid/tasty.css">
+<link rel="stylesheet" href="rahmen/anleitung.css">
+</head>
+<body class="an">
+<header class="an-kopf">
+  <div class="an-kopf__in">
+    <a class="an-marke" href="index.html"><span class="an-zeichen" aria-hidden="true"></span><span><b><span data-wo-name="01-feinschliff">Website bearbeiten</span></b><small>Anleitung · Tasty Studios</small></span></a>
+    <a class="an-zurueck" href="index.html">Zurück zum Werkzeug</a>
+  </div>
+</header>
+<main class="an-raum">
+  <section class="an-auftakt">
+    <p class="an-zier">Website bearbeiten</p>
+    <h1>So änderst du <em>die Agentur-Seite.</em></h1>
+    <p class="an-satz">Mit «<span data-wo-name="01-feinschliff">Website bearbeiten</span>» arbeitest du direkt in der Seite von Tasty Studios, in voller Grösse: Text anklicken und schreiben, Fotos tauschen, Abstände und Reihenfolge setzen. Jede Eingabe ist sofort gesichert. «Veröffentlichen» prüft die Seiten und stellt sie online, ein früherer Stand kommt mit einem Klick zurück.</p>
+  </section>
+
+  <section class="an-schritt">
+    <div class="an-text"><p class="an-nr">1</p><h2>Die Übersicht</h2>
+      <p>Oben siehst du, ob etwas im Entwurf liegt, wann zuletzt veröffentlicht wurde und wie viele Wünsche offen sind. Darunter «Häufig gebraucht» und jede Seite der Agentur-Seite mit einem Foto.</p><p>Links im Rand stehen dieselben Seiten, dazu «Wünsche», «Entwurf», «Vorher &amp; nachher», «Verlauf» und «Ziel &amp; Prüfung». Am Handy öffnet «Bereiche» oben den Rand.</p></div>
+    <figure><img src="anleitung/uebersicht.webp" alt="Die Übersicht des Werkzeugs" loading="lazy" width="1440" height="900"></figure>
+  </section>
+
+  <section class="an-schritt">
+    <div class="an-text"><p class="an-nr">2</p><h2>Text schreiben</h2>
+      <p>Seite wählen, zum Beispiel «Werkzeuge». Die Seite steht in voller Grösse, so wie Besucher sie sehen. Fährst du über eine Stelle, zeigt ein Schild, was sie ist. Ein Klick auf einen Text, und du schreibst direkt hinein.</p><p>Enter sichert, Shift und Enter macht eine neue Zeile, Esc verwirft, was noch nicht gesichert ist. Oben steht immer der Stand: «Schreibt …», «Gesichert 12:04 Uhr» oder rot «Nicht gesichert».</p></div>
+    <figure><img src="anleitung/bereich.webp" alt="Eine Überschrift ist gewählt, rechts ihre Einstellungen" loading="lazy" width="1440" height="900"></figure>
+  </section>
+
+  <section class="an-schritt">
+    <div class="an-text"><p class="an-nr">3</p><h2>Schrift und Farbe</h2>
+      <p>Rechts stehen die Einstellungen der gewählten Stelle: Schriftart, Grösse, Stärke, Zeilen- und Buchstabenabstand, Ausrichtung, Schreibweise und eine Farbe aus der Marke. Die Seite zeigt jede Bewegung sofort.</p><p>Der runde Pfeil neben einem Regler holt den gebauten Wert zurück. Auf dem Handy wird alles anteilig mitgeführt.</p></div>
+    <figure><img src="anleitung/schrift.webp" alt="Die Einstellungen Schrift neben einem Text" loading="lazy" width="1440" height="900"></figure>
+  </section>
+
+  <section class="an-schritt">
+    <div class="an-text"><p class="an-nr">4</p><h2>Foto tauschen</h2>
+      <p>Ein Foto anklicken, auch eines, über dem Text liegt: daneben klicken, wo keine Buchstaben sind. Rechts «Foto tauschen» öffnet alle Fotos der Website mit Suche, oder du lädst ein eigenes hoch (mindestens 900 Pixel breit).</p><p>Ein Klick ins kleine Foto setzt den Punkt, der auf jeder Bildschirmbreite zu sehen bleibt. Darunter steht die Beschreibung für Google.</p></div>
+    <figure><img src="anleitung/foto.webp" alt="Ein Foto ist gewählt, rechts Tauschen und Ausschnitt" loading="lazy" width="1440" height="900"></figure>
+  </section>
+
+  <section class="an-schritt">
+    <div class="an-text"><p class="an-nr">5</p><h2>Abstände, Reihenfolge, ausblenden</h2>
+      <p>Ein zweiter Klick auf dieselbe Stelle wählt das Drumherum, bis zum ganzen Abschnitt. Der Weg steht oben rechts und lässt sich anklicken.</p><p>Unter «Platz» ziehst du die Abstände oben und unten, unter «Anordnung» schiebst du nach oben oder unten oder blendest aus. Ausblenden löscht nichts, «Wieder zeigen» holt die Stelle zurück.</p></div>
+    <figure><img src="anleitung/abschnitte.webp" alt="Ein Abschnitt mit Platz und Anordnung" loading="lazy" width="1440" height="900"></figure>
+  </section>
+
+  <section class="an-schritt">
+    <div class="an-text"><p class="an-nr">6</p><h2>Vorher, nachher</h2>
+      <p>Links die Seite, wie sie online steht, rechts dein Entwurf. Den Schieber in der Mitte ziehst du über die Seite, beide scrollen zusammen. Rechts steht jede Änderung dieser Seite, einzeln zurücknehmbar.</p><p>Cmd und Z am Mac nimmt die letzte Änderung zurück, auch der runde Pfeil oben über der Seite.</p></div>
+    <figure><img src="anleitung/vergleich.webp" alt="Vorher und nachher mit dem Schieber" loading="lazy" width="1440" height="900"></figure>
+  </section>
+
+  <section class="an-schritt">
+    <div class="an-text"><p class="an-nr">7</p><h2>Veröffentlichen</h2>
+      <p>«Veröffentlichen» unten zeigt, was online geht. Dann prüft das Werkzeug jede geänderte Seite bei Rechner- und Handybreite: läuft Text über den Rand, lädt jedes Foto, ist keine Überschrift leer. Passt etwas nicht, zeigt es die Stelle und veröffentlicht nicht.</p><p>Ist alles gut, legt es die Seiten in die Website und lädt sie danach von dort, bis sie angekommen sind: «Online, geprüft 12:06 Uhr».</p></div>
+    <figure><img src="anleitung/veroeffentlichen.webp" alt="Das Fenster Veröffentlichen" loading="lazy" width="1440" height="900"></figure>
+  </section>
+
+  <section class="an-schritt">
+    <div class="an-text"><p class="an-nr">8</p><h2>Verlauf und Zurückholen</h2>
+      <p>Jede Veröffentlichung steht mit Bild, wer, wann und welche Änderungen. «Zurück zu diesem Stand» holt einen früheren Stand zurück; das ist selbst eine Veröffentlichung, der heutige Stand bleibt im Verlauf.</p></div>
+    <figure><img src="anleitung/verlauf.webp" alt="Der Verlauf der Veröffentlichungen" loading="lazy" width="1440" height="900"></figure>
+  </section>
+
+  <section class="an-schritt">
+    <div class="an-text"><p class="an-nr">9</p><h2>Wünsche</h2>
+      <p>Was mehr ist als Text, Foto und Abstand, schreibst du als Wunsch, direkt an der Stelle («Wunsch zu dieser Stelle schreiben») oder unter «Wünsche». Robert antwortet und setzt den Stand: offen, besprochen, erledigt.</p></div>
+    <figure><img src="anleitung/wuensche.webp" alt="Wünsche mit Antworten" loading="lazy" width="1440" height="900"></figure>
+  </section>
+
+  <section class="an-schritt an-schritt--ohne">
+    <div class="an-text"><p class="an-nr">10</p><h2>Wenn etwas nicht klappt</h2>
+      <p>Jede Meldung trägt den Knopf «Was tun?». Er führt zur Prüfung: Sie läuft auch dann, wenn das Werkzeug selbst nicht startet, sagt, was los ist, und was zu tun ist. Fehlt kurz die Verbindung, warten deine Eingaben im Werkzeug und werden gesichert, sobald sie wieder steht.</p>
+      <p><a class="an-weg" href="pruefung.html">Zur Prüfung</a> <a class="an-weg" href="index.html?rundgang">Kurzer Rundgang</a></p></div>
+  </section>
+</main>
+<footer class="an-fuss"><p><span data-wo-name="01-feinschliff">Website bearbeiten</span> · Tasty Studios</p></footer>
+<script src="rahmen/anleitung.js"></script>
+</body>
+</html>

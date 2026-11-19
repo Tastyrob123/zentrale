@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anleitung · Marke &amp; Vision · Tasty Studios</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111421">
+<link rel="icon" href="/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg" type="image/svg+xml">
+<link rel="preload" href="/zentrale/grundlagen/marke/schriften/Antonio-normal-100_700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/grund.css">
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/kleid/tasty.css">
+<link rel="stylesheet" href="anleitung.css?v=1">
+</head>
+<body>
+<!-- Anleitung Marke & Vision · Tasty Studios: Aufbau wie die Anleitung von Le Livre (vorlage/culinarium-demo/werkzeuge/livre/), Bilder von bilder.js -->
+<header class="kopf"><div class="kopf__in">
+  <nav><span>Anleitung · Tasty Studios</span><a href="./">Marke &amp; Vision öffnen</a></nav>
+  <h1>Lesen, fragen <em>und nachschlagen.</em></h1>
+  <p>Sechs kurze Kapitel. Wie Marke &amp; Vision aufgebaut ist, wie du Robert eine Frage hinterlässt und wie du jede Änderung rückgängig machst.</p>
+  <div class="kopf__kn"><a class="wo-kn wo-kn--gold" href="./"><span>Marke &amp; Vision öffnen</span><i><svg class="wo-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></i></a><a class="wo-kn wo-kn--glas" href="#inhalt"><span>Zu den Kapiteln</span><i><svg class="wo-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></i></a></div>
+</div></header>
+<main>
+  <section class="inhalt" id="inhalt"><span class="mono">Inhalt</span><h2>Sechs Kapitel, <em>drei Themen.</em></h2><p>Jedes Kapitel zeigt den Bereich und nennt die Schritte. Ein Klick macht das Bild gross, ein zweiter oder Esc bringt es zurück.</p>
+    <div class="themen"><section class="thema"><h3><small>Grundlagen</small>So geht Marke &amp; Vision</h3><ol><li><a href="#k01"><span>So ist Marke &amp; Vision aufgebaut.</span><i>Auftakt</i></a></li><li><a href="#k02"><span>Ein Kapitel lesen.</span><i>Lesen</i></a></li></ol></section><section class="thema"><h3><small>Nachfragen</small>Fragen und Quittung</h3><ol><li><a href="#k03"><span>Eine Frage an Robert hinterlassen.</span><i>Fragen</i></a></li><li><a href="#k04"><span>Vorher, nachher und Rückgängig.</span><i>Quittung</i></a></li><li><a href="#k05"><span>Fragen beantworten.</span><i>Robert</i></a></li></ol></section><section class="thema"><h3><small>Nachschlagen</small>Die Prüfung</h3><ol><li><a href="#k06"><span>Woher jeder Satz kommt.</span><i>Prüfung</i></a></li></ol></section></div></section>
+<article class="kap" id="k01">
+  <div class="kap__t"><span class="mono">Auftakt</span><h2>So ist Marke &amp; Vision <span style="white-space:nowrap">aufgebaut.</span></h2><p class="einl">Marke &amp; Vision erzählt, wofür Tasty Studios steht, in neun Kapiteln. Das letzte sind deine Fragen an Robert.</p>
+    <ol class="schritte"><li><span>1</span><p>Links stehen die Kapitel als Geschichte: zuerst der Auftakt, dann «Warum» (warum es uns gibt, woran wir glauben, für wen wir arbeiten), «Woran man uns erkennt» (Bildwelt, Licht, Stimme und was wir bauen) und «Wohin» (der Fahrplan bis Ende 2027 und was wir bewusst nicht machen).</p></li><li><span>2</span><p>Das letzte Kapitel heisst «Annas Fragen». Die Zahl daneben zeigt, wie viele Fragen noch offen sind.</p></li><li><span>3</span><p>Oben rechts führen die runden Knöpfe zur Zentrale, zur Prüfung und zu dieser Anleitung. Auf dem Handy öffnet der Knopf «Bereiche» die Kapitel als Menü.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Der Auftakt begrüsst dich mit deinem Namen. Den Namen gibt die Zentrale mit; allein geöffnet gilt, wer zuletzt gewählt war.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen"><img src="anleitung/k01.jpg?v=2" width="1200" height="714" loading="lazy" decoding="async" alt="Marke &amp; Vision: Auftakt"></button>
+    <figcaption><span>marke &amp; vision / auftakt</span><span>Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k02">
+  <div class="kap__t"><span class="mono">Lesen</span><h2>Ein Kapitel <span style="white-space:nowrap">lesen.</span></h2><p class="einl">Jedes Kapitel beginnt mit einem Foto, einem Titel und einem Satz. Darunter drei Dinge, die man sich merken sollte.</p>
+    <ol class="schritte"><li><span>1</span><p>Nach unten scrollen. Grosse Titel, Fotos mit einem Satz und Zeilen mit Linien wechseln sich ab. Dazwischen zeigen echte Häuser, wie es gemeint ist, mit «Am Haus» bezeichnet, beim Culinarium auch vorher und nachher.</p></li><li><span>2</span><p>Am Ende steht das nächste Kapitel mit Foto. Ein Klick darauf liest weiter.</p></li><li><span>3</span><p>Ganz unten nennt jedes Kapitel klein seine Quelle in den Grundlagen.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Logo, Schriften und Farben selbst stehen im Markenbuch. Das Kapitel «Woran man uns erkennt» erklärt, warum sie so sind, und führt dorthin.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen"><img src="anleitung/k02.jpg?v=2" width="1200" height="714" loading="lazy" decoding="async" alt="Marke &amp; Vision: Lesen"></button>
+    <figcaption><span>marke &amp; vision / lesen</span><span>Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k03">
+  <div class="kap__t"><span class="mono">Fragen</span><h2>Eine Frage an Robert <span style="white-space:nowrap">hinterlassen.</span></h2><p class="einl">Was beim Lesen unklar ist, schreibst du direkt dazu.</p>
+    <ol class="schritte"><li><span>1</span><p>Unten rechts «Frage stellen» drücken, oder am Ende eines Kapitels. Das Kapitel ist schon gewählt.</p></li><li><span>2</span><p>Die Frage oder Notiz schreiben. Der Knopf «Speichern» wird gelb, sobald etwas drinsteht.</p></li><li><span>3</span><p>«Speichern» drücken. Der Knopf wird grün, das Fenster schliesst sich, und unten erscheint die Quittung.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Robert sieht deine offenen Fragen im Kapitel «Annas Fragen».</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen"><img src="anleitung/k03.jpg?v=2" width="1200" height="714" loading="lazy" decoding="async" alt="Marke &amp; Vision: Fragen"></button>
+    <figcaption><span>marke &amp; vision / fragen</span><span>Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k04">
+  <div class="kap__t"><span class="mono">Quittung</span><h2>Vorher, nachher und <span style="white-space:nowrap">Rückgängig.</span></h2><p class="einl">Jede Änderung zeigt unten eine Quittung. Nichts wird still gespeichert.</p>
+    <ol class="schritte"><li><span>1</span><p>«Vorher, nachher» zeigt den Stand vor und nach der Änderung nebeneinander.</p></li><li><span>2</span><p>«Rückgängig» stellt den Stand vorher wieder her: eine neue Frage verschwindet, eine geänderte bekommt ihren alten Text, eine gelöschte kommt zurück.</p></li><li><span>3</span><p>Löschen fragt immer zuerst nach. Erst «Löschen» im Fenster löscht wirklich.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Die Quittung bleibt zwölf Sekunden stehen. Mit der Maus darauf bleibt sie, bis du sie schliesst.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen"><img src="anleitung/k04.jpg?v=2" width="1200" height="714" loading="lazy" decoding="async" alt="Marke &amp; Vision: Quittung"></button>
+    <figcaption><span>marke &amp; vision / quittung</span><span>Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k05">
+  <div class="kap__t"><span class="mono">Robert</span><h2>Fragen <span style="white-space:nowrap">beantworten.</span></h2><p class="einl">Im Kapitel «Annas Fragen» stehen offene Fragen oben, beantwortete darunter.</p>
+    <ol class="schritte"><li><span>1</span><p>Als Robert arbeiten: In der Zentrale Robert wählen. Bei jeder offenen Frage steht dann «Antworten».</p></li><li><span>2</span><p>Die Antwort schreiben und speichern. Sie steht direkt unter der Frage, Anna sieht sie in der Zentrale unter «Heute».</p></li><li><span>3</span><p>Ein Klick auf den Kapitelnamen über einer Frage öffnet das Kapitel, zu dem sie gehört.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Ein Punkt in der Zentrale führt direkt zu seiner Frage.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen"><img src="anleitung/k05.jpg?v=2" width="1200" height="714" loading="lazy" decoding="async" alt="Marke &amp; Vision: Robert"></button>
+    <figcaption><span>marke &amp; vision / robert</span><span>Grösser ansehen</span></figcaption></figure>
+</article>
+<article class="kap" id="k06">
+  <div class="kap__t"><span class="mono">Prüfung</span><h2>Woher jeder Satz <span style="white-space:nowrap">kommt.</span></h2><p class="einl">Die Prüfseite zeigt, ob alles läuft, und woher jedes Kapitel seinen Inhalt hat.</p>
+    <ol class="schritte"><li><span>1</span><p>Oben «Ist alles in Ordnung?»: Browser, Server, Ablage, was die Zentrale unter «Heute» bekommt, Kapitel und Fotos als Punkte. «Neu prüfen» prüft noch einmal.</p></li><li><span>2</span><p>Im selben Blatt je Kapitel die Quellen in den Grundlagen, mit Abschnitt, und gelb, was bewusst weggelassen ist.</p></li><li><span>3</span><p>Darunter die Fehler des Browsers, die Reparaturen (jede erst nach einem zweiten Klick) und das Lexikon: Stichwort, Sehen, Grund, Tun.</p></li></ol>
+    <p class="wissen"><b>Gut zu wissen</b>Die Sätze in den Kapiteln stammen aus den Grundlagen, wörtlich oder eng daran gekürzt. Was dort nicht steht, steht hier auch nicht.</p></div>
+  <figure class="kap__b"><button type="button" class="bild" aria-label="Bild gross ansehen"><img src="anleitung/k06.jpg?v=3" width="1200" height="714" loading="lazy" decoding="async" alt="Marke &amp; Vision: Prüfung"></button>
+    <figcaption><span>marke &amp; vision / prüfung</span><span>Grösser ansehen</span></figcaption></figure>
+</article>
+<footer class="fuss"><span>Marke &amp; Vision · Tasty Studios · Anleitung, Stand 07.11.2026</span><a class="zurueck" href="./">Zurück zum Werkzeug</a></footer>
+</main>
+<div class="gross" id="gross" hidden><img alt=""></div>
+<script src="anleitung.js?v=2"></script>
+</body>
+</html>

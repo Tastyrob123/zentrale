@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Seehotel Lindenhof</title>
+<meta name="generator" content="WordPress 4.7.2" />
+<meta name="keywords" content="Hotel, See, Urlaub, Familie, Lindenhof" />
+<link rel="stylesheet" type="text/css" href="/style.css" />
+<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/js/nivo-slider.js"></script>
+<script type="text/javascript" src="/js/slider-start.js"></script>
+<!--[if lt IE 9]><script src="/js/html5shiv.js"></script><![endif]-->
+</head>
+<body>
+<table width="980" border="0" cellpadding="0" cellspacing="0" align="center">
+<tr><td colspan="2"><img src="/bilder/kopf.jpg" width="980" height="180" /></td></tr>
+<tr><td width="220" valign="top">
+<table width="220" border="0" cellpadding="4">
+<tr><td><a href="/">Home</a></td></tr>
+<tr><td><a href="/zimmer.html">Zimmer &amp; Preise</a></td></tr>
+<tr><td><a href="/restaurant.html">Restaurant</a></td></tr>
+<tr><td><a href="/kontakt.html">Kontakt &amp; Anfahrt</a></td></tr>
+<tr><td><a href="/impressum.html">Impressum</a></td></tr>
+</table>
+<br />
+<center><a href="https://www.booking.com/hotel/de/seehotel-lindenhof.html"><img src="/bilder/booking-button.gif" width="180" height="50" /></a></center>
+<center><a href="https://www.hrs.de/hotel/seehotel-lindenhof/"><img src="/bilder/hrs-button.gif" width="180" height="50" /></a></center>
+<center><a href="https://plus.google.com/+SeehotelLindenhof"><img src="/bilder/gplus.gif" width="32" height="32" /></a></center>
+</td>
+<td valign="top">
+<div id="slider" class="nivoSlider">
+<img src="/bilder/slider1.jpg" width="740" height="320" alt="" />
+<img src="/bilder/slider2.jpg" width="740" height="320" alt="" />
+<img src="/bilder/slider3.jpg" width="740" height="320" alt="" />
+</div>
+<h1><font face="Georgia" color="#2a4d69">Herzlich willkommen im Seehotel Lindenhof</font></h1>
+<p>Unser familiengeführtes Haus liegt direkt am Ufer des Plöner Sees. Seit 1962 heißen wir unsere Gäste willkommen.</p>
+<p>Genießen Sie den Blick auf den See von unserer Terrasse und lassen Sie sich in unserem Restaurant mit regionaler Küche verwöhnen.</p>
+<p><a href="/zimmer.html">Zu unseren Zimmern</a></p>
+<center><img src="/bilder/terrasse.jpg" width="300" height="200" /> <img src="/bilder/see.jpg" width="300" height="200" /></center>
+</td></tr>
+<tr><td colspan="2" align="center"><font size="1">&copy; 2017 Seehotel Lindenhof &middot; Seestraße 14 &middot; 24306 Plön &middot; Tel. 04522 / 50 11 20 &middot; <a href="/impressum.html">Impressum</a></font></td></tr>
+</table>
+</body>
+</html>

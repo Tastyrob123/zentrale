@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vergleich · Marke &amp; Vision · Tasty Studios</title>
+<meta name="robots" content="noindex, nofollow">
+<script src="/zentrale/zentrale/oberflaeche/kleid/tasty.js"></script>
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/grund.css">
+<link rel="stylesheet" href="/zentrale/zentrale/oberflaeche/kleid/tasty.css">
+<style>
+  /* Vergleichsseite des Prüf-Chats (07.11.2026): links die Vorlage (Le Livre, Culinarium), rechts der Neubau (Marke & Vision).
+     Bilder: Playwright (bilder.js) bei 1440 und 390 px; die Bilder «bedient-…» zeigen den Neubau beim Bedienen. */
+  body{margin:0}
+  .vg{max-width:1360px;margin:0 auto;padding:56px clamp(16px,3vw,40px) 80px}
+  .vg h1{font:700 clamp(40px,5vw,64px)/1 var(--wo-titel);text-transform:uppercase;letter-spacing:.015em;margin:0}
+  .vg>p{max-width:70ch;margin:16px 0 0;color:var(--wo-leise)}
+  .vg section{margin-top:64px;padding-top:28px;border-top:1px solid var(--wo-linie)}
+  .vg h2{font:700 28px/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.02em;margin:0}
+  .vg h2+p{margin:8px 0 0;max-width:80ch;color:var(--wo-leise);font-size:14.5px}
+  .vg .ab{margin:10px 0 0;max-width:80ch;font-size:14.5px;border-left:2px solid var(--wo-rot);padding-left:12px}
+  .paar{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+  .paar--handy{grid-template-columns:repeat(2,minmax(0,300px));justify-content:start}
+  .paar--drei{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .paar--rand{grid-template-columns:repeat(5,minmax(0,220px));justify-content:start}
+  figure{margin:0;min-width:0}
+  figcaption{font:400 10px/1.4 var(--wo-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--wo-akzent);margin-bottom:8px}
+  img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:inset 0 0 0 1px var(--wo-linie),0 20px 34px -24px rgba(0,0,0,.5)}
+  @media (max-width:700px){.paar,.paar--drei{grid-template-columns:1fr}.paar--handy{grid-template-columns:1fr 1fr}.paar--rand{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body class="wo-app">
+<main class="vg">
+  <h1>Marke &amp; Vision: Vorlage und Neubau</h1>
+  <p>Nachbesserung vom 07.11.2026 (Bilder neu aufgenommen). Links Le Livre («Das Markenbuch» des Culinarium, abgenommen), rechts Marke &amp; Vision von Tasty Studios. Gleich bleiben sollen Rahmen, Aufbau, Grössen, Abstände und Bewegung; anders sein dürfen nur Kleid, Inhalt und Namen. Jede Ansicht bei 1440 px und am Handy bei 390 px. In der Vorlage fehlen einige Fotos (nur ein Teil liegt im Repo); Aufbau und Grössen sind trotzdem zu sehen. Was nachgebessert ist, steht in NACHBESSERUNG.md.</p>
+  <div id="ansichten"></div>
+</main>
+<script>
+  // [Schlüssel, Titel, Satz, Abweichung (leer = keine), nur Handy]
+  const A = [
+    ['start', 'Start', 'Kopf mit Zeichen und runden Knöpfen, Rand mit Gruppen und Zahlen, Startbild mit Gruss nach Tageszeit, Satz und Foto, darunter die Lage mit drei Fächern, unten die Leiste. In Le Livre die Übersicht, hier Kapitel 1 «Auftakt» mit «Guten Morgen, Anna.»'],
+    ['start-tiefer', 'Start, weiter unten', 'Lage mit drei Fächern und die Kacheln mit Foto (in Le Livre «Arbeiten», hier die Kapitel nach Roberts Gliederung).'],
+    ['bereich-fotos-warum', 'Hauptbereich: Fotos / Warum es uns gibt', 'Bühne mit Titel, Satz und zwei Knöpfen, darunter die Lage. Hier mit Foto im Startbild, in der Vorlage fehlt das Foto im Repo.'],
+    ['bereich-tiefer', 'Hauptbereich, weiter unten', 'Vorlage: Bildraster. Neubau: grosses Fensterbild mit Satz und danach der Beleg am Haus.'],
+    ['bereich-dateien-glaube', 'Hauptbereich: Logo &amp; Dateien / Woran wir glauben', 'Bühne, Lage, darunter grosser Titel mit Satz rechts.'],
+    ['bereich-pruefung-kunden', 'Hauptbereich: Markenprüfung / Für wen wir arbeiten', 'Bühne und Lage gleich gebaut.'],
+    ['buch-erkennen', 'Die Hausregeln / Woran man uns erkennt', 'Le Livre erzählt die Marke in einer eigenen Seite (buch.html); Marke &amp; Vision erzählt sie in den Kapiteln selbst, mit Weg ins Markenbuch (Werkzeug 11).'],
+    ['buch-tiefer-bauen', 'Hausregeln weiter unten / Was wir bauen', 'Neubau: das Culinarium vorher und nachher als Beleg.'],
+    ['bereich-wohin', 'Dateien weiter unten / Wohin es geht', 'Neubau: Zahlen aus dem Strategiepapier, Fahrplan bis Ende 2027.'],
+    ['liste-fragen', 'Liste: Logo &amp; Dateien / Annas Fragen', 'Neubau: offene und beantwortete Fragen, je mit Ändern und Löschen.'],
+    ['fenster', 'Fenster offen', 'Vorlage: ein Foto im Fenster. Neubau: das Feld-Fenster «Frage an Robert» mit Speichern grau.'],
+    ['anleitung', 'Anleitung', 'Gleich gebaut: dunkle Bühne, zwei Knöpfe, Inhalt in Karten.'],
+    ['rundgang', 'Rundgang', 'Karte mit Schritten, Überspringen und Weiter; die Fläche wird hervorgehoben. Vorlage vier Schritte, Neubau drei.'],
+    ['pruefseite', 'Prüfseite', 'Le Livre hat keine eigene Prüfseite; verglichen wird mit der von La Réception (mit Lexikon). Nachbesserung: jetzt gleich gebaut, schlanker Kopf mit «Zum Werkzeug» und «Neu prüfen», «Ist alles in Ordnung?» mit Punkten in Gruppen (die Quellen je Kapitel und das bewusst Weggelassene als eigene Gruppen), «Fehler, die der Browser mitgeschrieben hat», «Reparaturen», Lexikon als Karten in drei Spalten.'],
+    ['handy-rand', 'Handy: Rand aufgeklappt', 'Der Knopf «Bereiche» klappt den Rand auf, wie in der Vorlage.', '', true]
+  ];
+  const fig = (k, t, x, b) => '<figure><figcaption>' + (x === 'vorlage' ? 'Vorlage' : 'Neubau') + ' · ' + b + ' px</figcaption><img src="bilder/' + k + '-' + b + '-' + x + '.jpg?v=4" alt="' + t + ', ' + (x === 'vorlage' ? 'Vorlage' : 'Neubau') + ', ' + b + ' px" width="' + b + '" height="' + (b > 500 ? 900 : 844) + '"></figure>';
+  const bild = (f, t) => '<figure><figcaption>' + t + '</figcaption><img src="bilder/' + f + '.jpg?v=4" alt="' + t + '"></figure>';
+  let h = A.map(([k, t, s, ab, nurHandy]) => '<section><h2>' + t + '</h2><p>' + s + '</p>' + (ab ? '<p class="ab">' + ab + '</p>' : '')
+    + (nurHandy ? '' : '<div class="paar">' + ['vorlage', 'neubau'].map(x => fig(k, t, x, 1440)).join('') + '</div>')
+    + '<div class="paar paar--handy">' + ['vorlage', 'neubau'].map(x => fig(k, t, x, 390)).join('') + '</div></section>').join('');
+  h += '<section><h2>Rand im ersten Bild</h2><p>Ausschnitt des Rands direkt nach dem Öffnen (1440 px), gleich nach dem Erscheinen und 300 ms später.</p>'
+    + '<p>Nachbesserung: Wie in der Vorlage steht der Rand ab dem ersten Bild still; nichts rückt zusammen, nichts liegt übereinander.</p>'
+    + '<div class="paar paar--rand">' + bild('rand-erstes-bild-0ms-vorlage', 'Vorlage · sofort') + bild('rand-erstes-bild-300ms-vorlage', 'Vorlage · 300 ms') + bild('rand-erstes-bild-0ms-neubau', 'Neubau · sofort') + bild('rand-erstes-bild-120ms-neubau', 'Neubau · 120 ms') + bild('rand-erstes-bild-300ms-neubau', 'Neubau · 300 ms') + '</div></section>';
+  h += '<section><h2>Bedient: Speichern grau, gelb, grün</h2><p>Neubau, Feld-Fenster «Frage an Robert»: leer grau, nach dem Tippen gelb, nach dem Speichern grün, danach die Quittung.</p>'
+    + ['1440', '390'].map(b => '<div class="paar paar--drei">' + bild('bedient-fenster-grau-' + b, 'Grau · ' + b + ' px') + bild('bedient-fenster-gelb-' + b, 'Gelb · ' + b + ' px') + bild('bedient-fenster-gruen-' + b, 'Grün · ' + b + ' px') + '</div>').join('') + '</section>';
+  h += '<section><h2>Bedient: Quittung, vorher und nachher, Löschen</h2><p>Quittung mit «Vorher, nachher» und «Rückgängig»; Löschen fragt vorher; die Quittung nach dem Löschen holt die Frage mit «Rückgängig» zurück (geprüft); Antwort als Robert.</p>'
+    + ['1440', '390'].map(b => '<div class="paar paar--drei">' + bild('bedient-quittung-' + b, 'Quittung · ' + b + ' px') + bild('bedient-vorher-nachher-' + b, 'Vorher, nachher · ' + b + ' px') + bild('bedient-loeschen-frage-' + b, 'Rückfrage Löschen · ' + b + ' px') + '</div><div class="paar">' + bild('bedient-quittung-loeschen-' + b, 'Quittung Löschen · ' + b + ' px') + bild('bedient-antwort-' + b, 'Antwort als Robert · ' + b + ' px') + '</div>').join('') + '</section>';
+  document.getElementById('ansichten').innerHTML = h;
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+/* pruefung.css · Prüfseite der Kundenliste im Kleid von Tasty Studios, aus pruefung-haus.css von Le Bureau (Vorlage). Werte nur aus kleid/tasty.css;
+   hier Grund, Kopf und Schrift der Seite, damit sie aussieht wie das Werkzeug und nicht wie eine fremde Seite. Ohne Rahmen «Die Bühne»: die Seite läuft allein. */
+body.wsp{margin:0;background-color:var(--wo-papier);background-image:none;color:var(--wo-tinte);font:15px/1.55 var(--wo-sans);-webkit-font-smoothing:antialiased}
+.wsp-kopf{background:var(--wo-tapete);color:#fff;border-bottom:1px solid var(--wo-linie-d)}
+.wsp-kopf__in{max-width:1000px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.wsp-marke{display:flex;align-items:center;gap:14px;color:#fff;text-decoration:none;min-width:0}
+.wsp-zeichen{flex:none;width:46px;height:46px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--wo-linie-d);background:var(--wo-g2);
+  -webkit-mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/24px no-repeat;mask:url(/zentrale/zentrale/oberflaeche/kleid/anker-zeichen.svg) center/24px no-repeat}
+.wsp-marke b{display:block;font:700 20px/1.1 var(--wo-titel);text-transform:uppercase;letter-spacing:.015em}
+.wsp-marke small{display:block;margin-top:5px;font:400 9.5px/1 var(--wo-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--wo-gold)}
+.wsp-kopf a:not(.wsp-taste){color:var(--wo-g1)}
+.wsp-taste{flex:none;display:inline-flex;align-items:center;height:38px;padding:0 18px;border:0;border-radius:999px;cursor:pointer;text-decoration:none;
+  font:400 10px/1 var(--wo-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--wo-tief);background:var(--kn-h);box-shadow:var(--kn-h-s)}
+.wsp-taste[data-scharf]{color:#fff;background:linear-gradient(180deg,color-mix(in srgb,var(--wo-punkt) 85%,#fff),var(--wo-punkt) 50%,color-mix(in srgb,var(--wo-punkt) 70%,#000))}
+.wsp-kopf .wsp-taste{color:var(--wo-tief)}
+.wsp-raum{max-width:1000px;margin:0 auto;padding:54px 24px 90px}
+.wsp-kopf__titel{color:var(--wo-tief);font:700 clamp(38px,5.4vw,60px)/1.02 var(--wo-titel);text-transform:uppercase;letter-spacing:.01em;margin:0}
+.wsp-kopf__titel em{font-style:normal;font-weight:300}
+.wsp-auftakt p,.wsp-satz{max-width:66ch;color:color-mix(in srgb,var(--wo-tinte) 78%,var(--wo-papier));margin:14px 0 0}
+.wsp-teil .wsp-satz{margin-top:8px}
+.wsp-teil{margin-top:46px}
+.wsp h2.t-zwischen{font:600 26px/1.1 var(--wo-titel);letter-spacing:.01em;color:var(--wo-tief);margin:0;padding-top:18px;border-top:1px solid var(--wo-linie)}
+.wsp-punkte{margin-top:16px;padding:6px 22px;display:grid}
+.wsp-punkt{display:grid;grid-template-columns:22px minmax(0,220px) minmax(0,1fr) auto;gap:6px 14px;align-items:baseline;padding:14px 0;border-top:1px solid var(--wo-linie)}
+.wsp-punkt:first-child{border-top:0}
+.wsp-rep .wsp-punkt{grid-template-columns:minmax(0,220px) minmax(0,1fr) auto;align-items:center}
+.wsp-punkt__z{font:400 14px/1 var(--wo-mono);color:var(--wo-gut)}
+.wsp-punkt[data-gut="nein"] .wsp-punkt__z{color:var(--wo-punkt)}
+.wsp-punkt__t{font:600 17px/1.2 var(--wo-titel);letter-spacing:.01em}
+.wsp-punkt__x{font-size:14px;color:color-mix(in srgb,var(--wo-tinte) 78%,var(--wo-papier));overflow-wrap:anywhere}
+.wsp-punkt__x a{color:var(--wo-tinte)}
+.wsp-wartet{margin:12px 0;color:var(--ws-leise)}
+.wsp-quit{margin:12px 0 0;font-size:14px;min-height:1.4em}
+.wsp-lexikon{display:grid;gap:10px;margin-top:16px}
+.wsp-lex{padding:14px 22px}
+.wsp-lex summary{cursor:pointer;font:600 18px/1.25 var(--wo-titel);letter-spacing:.01em}
+.wsp-lex dl{display:grid;grid-template-columns:70px minmax(0,1fr);gap:8px 14px;margin:14px 0 4px}
+.wsp-lex dt{font:400 10.5px/1.6 var(--wo-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--wo-akzent)}
+.wsp-lex dd{margin:0;font-size:14.5px}
+.wsp-lex:target,.wsp-lex[open]{box-shadow:var(--platte-h-s),inset 0 0 0 1.5px var(--wo-taupe)}
+@media (max-width:640px){
+  .wsp-raum{padding:36px 16px 70px}
+  .wsp-kopf__in{padding:12px 16px}
+  .wsp-punkte{padding:4px 16px}
+  .wsp-punkt{grid-template-columns:22px minmax(0,1fr)}
+  .wsp-punkt__x{grid-column:2}
+  .wsp-rep .wsp-punkt{grid-template-columns:minmax(0,1fr)}
+  .wsp-rep .wsp-punkt__x{grid-column:1}
+  .wsp-rep .wsp-taste{justify-self:start}
+  .wsp-lex dl{grid-template-columns:minmax(0,1fr)}
+  .wsp-marke small{letter-spacing:.14em}
+}

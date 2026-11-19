@@ -1,0 +1,134 @@
+<!doctype html><html lang="de"><head>
+<meta name="robots" content="noindex, nofollow">
+<script>(function () {var P = "/zentrale", f = window.fetch.bind(window), M = {};function teil(n) { return M[n] || (M[n] = f(P + "/_stand/" + n + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })); }function j(o, s) { return new Response(JSON.stringify(o), { status: s, headers: { "Content-Type": "application/json" } }); }function antw(e) { if (!e) return j({ fehler: "Online nicht verfügbar." }, 404); if (e.b64) { var b = atob(e.b64), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Response(u, { status: e.s, headers: { "Content-Type": e.t } }); } return new Response(e.x, { status: e.s, headers: { "Content-Type": e.t } }); }window.fetch = function (u, o) { var url; try { url = new URL(typeof u === "string" ? u : (u && u.url) || String(u), location.href); } catch (e) { return f(u, o); } if (url.origin !== location.origin || url.pathname.indexOf(P + "/api/") !== 0) return f(u, o); var m = ((o && o.method) || (u && u.method) || "GET").toUpperCase(), pfad = url.pathname.slice(P.length + 5); if (m !== "GET" && m !== "HEAD") return Promise.resolve(j({ fehler: "Online lässt sich nichts speichern." }, 403)); var n = pfad.split("/")[0] || "werkzeuge"; return teil(n).then(function (K) { var e = K[pfad + url.search] || K[pfad]; if (!e) { for (var x in K) { if (x.split("?")[0] === pfad) { e = K[x]; break; } } } if (!e && /\/heute$/.test(pfad)) return j({ punkte: [] }, 200); if (!e && /\/rahmen$/.test(pfad)) { var z = url.searchParams.get("u") || ""; return j({ url: /^https:\/\//.test(z) ? z : null }, 200); } if (!e && /\/gespraeche\//.test(pfad)) return j({ gespraech: null }, 200); return antw(e); }); };if (navigator.sendBeacon) { var sb = navigator.sendBeacon.bind(navigator); navigator.sendBeacon = function (u, d) { return String(u).indexOf("/api/") >= 0 ? true : sb(u, d); }; }})();</script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Briefing Markenbuch</title>
+<style>body{margin:0;background:#111421;color:#ebdbce;font:17px/1.6 "Instrument Sans",system-ui,sans-serif}main{max-width:820px;margin:0 auto;padding:56px 20px 96px}
+h1{font:600 40px/1.15 system-ui;color:#fff;margin:0 0 24px}h2{color:#fff;font-size:24px;margin:48px 0 12px;padding-top:24px;border-top:1px solid #2a2d45}
+b{color:#fff;font-weight:600}code{font:14px "DM Mono",ui-monospace,monospace;color:#c7b489;word-break:break-all}a{color:#c7b489}li{margin:6px 0}hr{border:0;border-top:1px solid #2a2d45;margin:32px 0}p,li{overflow-wrap:anywhere}</style>
+<link rel="stylesheet" href="/zentrale/zentrale/grund.css" media="none"></head><body><main><h1>Briefing: Markenbuch Tasty Studios, Neubau auf Luxus-Niveau</h1>
+<p>Stand 17.11.2026. Für den Bau-Chat. Gilt zusätzlich zu <code>auftraege/11-markenbuch.md</code> und <code>CLAUDE.md</code>.</p>
+<p><b>Roberts Worte (17.11.2026):</b> «Ich finde bei diesem Markenbuch fehlt es an allem … Wir haben doch so geile Vorlagen für Markenbücher mit solchen schönen Animationen … Ich gehe in den Bereich rein, da steht da so ein kleiner Abschnitt und dann muss ich in den nächsten Bereich durchklicken … Das mit den Farben ist auch nicht schön umgesetzt. Die sollen sich auffüllen … wirklich wunderschön und edel … wie so ein richtiges High-End, luxuriöses Gefühl.» Dazu: die Logos von Masterclass und Backoffice mit aufnehmen, alle Bereiche ausführlicher und schöner, alle relevanten Informationen.</p>
+<hr>
+<h2>1. Was heute falsch ist</h2>
+<ul>
+<li><b>Es ist ein Werkzeug, kein Buch.</b> Das Markenbuch steckt im Werkzeug-Kleid (Le Bureau): Seitenleiste mit 16 Einträgen, je Eintrag eine eigene Ansicht mit einem kurzen Abschnitt. Man liest nichts am Stück, man klickt sich durch.</li>
+<li><b>Der Einstieg ist ein Arbeitsplatz.</b> «Guten Tag. Was suchst du heute?», darunter Prüfzahlen («25 Stil-Dateien, 5774 Regeln, 393 Farben», «12 Abweichungen», unten «18 Unterschiede noch nicht gespeichert»). Das ist Abgleich, nicht Marke. Kein Moment, in dem man die Marke betritt.</li>
+<li><b>Wiederholungen.</b> «Häufig gebraucht» und «Blatt für Blatt» auf der Übersicht wiederholen die Seitenleiste. Bei den Schriften steht viermal «TASTY STUDIOS» untereinander, dazu Klassennamen und Dateipfade (<code>.ueb-t b in neu/runde3/r4.css</code>).</li>
+<li><b>Farben sind starre Kacheln.</b> Kein Füllen, kein Fächer, keine Herkunft. Unter der Filterzeile der Palette steht eine leere Fläche.</li>
+<li><b>Nur der Anker.</b> Die Familie Agentur, Masterclass, Backoffice fehlt.</li>
+</ul>
+<h2>2. Grundentscheidung: Vorlage, nicht frei bauen</h2>
+<p>Nach der obersten Regel «Vorlage statt frei bauen» und dem Fehlerbuch-Eintrag vom 13.11.2026 (Werkzeug-Bau Master, Abschnitt 10a): <b>Jedes Markenbuch wird aus dem Culinarium-Markenbuch gebaut</b>, gleiche Klassen, umgekleidet über die Variablen.</p>
+<ul>
+<li>Vorlage: <code>~/Desktop/Website-Projekte/Culinarium Hannover/_werkzeuge/livre/buch.html</code>, <code>buch/marke.css</code>, <code>buch/marke.js</code>, <code>buch.js</code>, Bauweise <code>buch.py</code>.</li>
+<li>Ansehen: <a href="http://localhost:8978/haus/Culinarium%20Hannover/_werkzeuge/livre/buch.html">http://localhost:8978/haus/Culinarium%20Hannover/_werkzeuge/livre/buch.html</a></li>
+<li>Ein durchgehendes Buch auf einer Seite, nativer Scroll, oben eine Inhaltsleiste, die zum Kapitel springt und das Kapitel zeigt, in dem man gerade liest.</li>
+<li>Kapitel im Wechsel dunkel und hell (Nacht <code>#111421</code>, Navy <code>#1f213b</code>, Papier/Creme). Tapete nur im Auftakt und im Schluss, dazwischen glatte Flächen.</li>
+<li>Das heutige Werkzeug bleibt als Arbeitsbereich erhalten (Auslese der Website, Abgleich, Speichern, Quittung, Dateien). <b>Startansicht ist aber das Buch.</b> Abgleich und Prüfzahlen wandern in einen eigenen Bereich «Abgleich» hinter dem Buch, nie ins Buch selbst.</li>
+<li>Vorher sichern: <code>werkzeuge/11-markenbuch</code> komplett als <code>…vor-buch-2026-11-17</code>.</li>
+</ul>
+<h2>3. Der Einstieg</h2>
+<p>So wie der Auftakt der Vorlage, in Tasty-Kleid:</p>
+<ul>
+<li>Dunkle Fläche Nacht, Tapete aus kleinen Ankern, leise.</li>
+<li>Der Anker gross in der Mitte, er atmet langsam (nur solange der Auftakt zu sehen ist).</li>
+<li>Darunter <b>TASTY STUDIOS</b> in Antonio, gross (Desktop deutlich über 100 px, Hero-Regel).</li>
+<li>Zeile in DM Mono, gesperrt: «Hamburg · Koh Phangan · Siargao» (Design-DNA, drei Basen).</li>
+<li>Ein Einleitungssatz, mittig, gut lesbar (um 20 px), was in diesem Buch steht.</li>
+<li>Pfeil nach unten, Inhaltsleiste.</li>
+<li>Alles im ersten Moment da: Schrift und Bilder gleichzeitig, kein Nachladen.</li>
+</ul>
+<h2>4. Die Kapitel</h2>
+<p>Jedes Kapitel: Kicker, Serifentitel in zwei Zeilen (zweite Zeile in der Akzentfarbe, wie die Vorlage: «Ein Name, / ein Original.»), daneben ein Absatz, dann der Inhalt in vollen Reihen. Inhalte nur aus <code>grundlagen/</code> und den genannten Ordnern, nichts dazudichten.</p>
+<p><b>I. Haltung</b></p>
+<ul>
+<li>Kernsatz aus <code>Branding.md</code>, «Der entscheidende Punkt» (steht schon in <code>inhalt.js</code>, <code>kern</code>).</li>
+<li>Mission und Bewegung aus <code>Positionierung &amp; Markenkern.md</code>: KI für die Gastronomie, kleinen und mittelständischen Betrieben die KI-Welt zugänglich machen, gastronomische Vielfalt bewahren.</li>
+<li>Drei Fotokarten (wie «Am Tresen / Am Pass / Die Tafel» der Vorlage) mit echten Bildern von der Website <code>seite/</code>, je mit kurzem Satz.</li>
+<li>Ein Fenster mit dem Kernsatz, Satz mittig im Fenster, Bild von der Mitte her gedämpft.</li>
+</ul>
+<p><b>II. Die Familie: ein Dach, drei Zeichen</b> (neu)</p>
+<ul>
+<li>Agentur = Anker, Masterclass = Doktorhut, Backoffice = das T.</li>
+<li>Dateien: <code>~/Desktop/Website-Projekte/_Logo/produkte/</code> (<code>anker-*.svg</code>, <code>hut-*.svg</code>, <code>t-*.svg</code>, je creme, dunkel, navy, weiss) und <code>_Logo/moodboard/logos/</code> (je schwarz als PNG). Original-Dateien einsetzen, nie nachzeichnen.</li>
+<li>Drei grosse Platten nebeneinander (3 in einer Reihe, am Handy untereinander), je Zeichen auf seiner Fläche.</li>
+<li>Regel sichtbar machen: Der Anker ist das Zeichen von Tasty Studios überall; das T gehört nur zum Backoffice (Robert, 11.11.2026).</li>
+<li>«Im Einsatz»: die echten Oberflächen mit Logo, wie Robert sie am 08.11. wollte (Backoffice in Notion, Masterclass auf der Kursseite, Agentur in den Werkzeugen). Material: <code>_Logo/logo-interfaces.jpg</code>, <code>_Logo/logo-im-kontext.jpg</code> bzw. Aufnahmen aus <code>_Logo/produkte/</code> (aufnahme.js, liste10.json). In Blender-Geräten, wenn es Bildschirme sind.</li>
+</ul>
+<p><b>III. Das Zeichen</b></p>
+<ul>
+<li>Grosse Logo-Tafeln wie die Vorlage («Hauptform auf Dunkel», «auf Hell», «Querform», «Zeichen allein»), für den Anker ausführlich, für Hut und T je eine Reihe.</li>
+<li>Schutzraum und kleinste Grösse als Zeichnung mit Massen (siehe offene Fragen).</li>
+<li>«So steht das Zeichen, so nicht»: Bildkarten richtig und falsch (nicht verzerren, nicht drehen, nicht umfärben, keine Schatten), Regeln aus <code>inhalt.js</code> (<code>nie</code>).</li>
+<li>Wasserzeichen 6 % auf einem A4-Blatt gezeigt.</li>
+</ul>
+<p><b>IV. Farben</b> (Roberts Hauptpunkt)</p>
+<ul>
+<li><b>Fächer</b> wie in der Vorlage: alle Farben als Fächer, über den Fächer fahren hebt eine Farbe heraus, ein Klick kopiert den Wert.</li>
+<li><b>Farbkarten</b> in vollen Reihen (8 Farben = 4 + 4): Fläche, Name, Wert, Wofür. Beim Hereinscrollen <b>füllt sich jede Fläche von links nach rechts</b>, gestaffelt.</li>
+<li><b>Herkunft</b>: Fotokarten aus Roberts Bildwelt (Speicherstadt bei Nacht, warmes Licht, Holz), darunter der Farbstreifen, der beim Bau aus dem Foto gemessen wird, und welche Markenfarbe daraus wird. Gemessen, nie geschätzt.</li>
+<li><b>Mengenverhältnis</b>: wie viel Nacht, Weiss, Creme, Rot auf einer Seite; Zahlen zählen hoch. Aus der Website gerechnet.</li>
+<li><b>Lesbarkeit</b>: «Aa»-Paare (Weiss auf Nacht, Creme auf Navy, Schwarz auf Weiss, Rot nur als Punkt) mit gerechnetem Kontrastwert.</li>
+<li>Palette laut <code>Branding.md</code> (16.06.2026). Abweichungen der Website stehen nicht im Buch, sondern im Bereich «Abgleich».</li>
+</ul>
+<p><b>V. Schrift</b></p>
+<ul>
+<li>Je Schrift ein Blatt wie die Vorlage: grosses «Aa», Name, Rolle, Schnitte, eine echte Zeile in der Schrift, Alphabet, Ziffern. Antonio (Titel), Instrument Sans (Fliesstext), DM Mono (Etiketten), Cormorant Garamond.</li>
+<li>Eine <b>Hierarchie-Seite</b>: Titel, Zwischentitel, Fliesstext, Etikett zusammen gesetzt wie eine echte Seite, statt viermal dasselbe Wort.</li>
+<li>Werte (Grösse, Stärke, Zeile, Abstand) leise darunter zum Kopieren; Klassennamen und Dateipfade nur im Abgleich.</li>
+<li>Montserrat als eigenes Blatt «Für Dokumente» mit den beiden Skalen aus <code>Tastyrob Document Taste.md</code> (steht schon in <code>inhalt.js</code>, <code>montserrat</code>), als kleine A4-Vorschau gesetzt.</li>
+</ul>
+<p><b>VI. Bildsprache</b></p>
+<ul>
+<li>Die elf Gesetze der Design-DNA (in <code>inhalt.js</code>, <code>bild</code>) als Bildwand: je Gesetz ein Bild, darunter Titel und Satz. Echte Bilder von der Website und aus Roberts Archiv.</li>
+<li>Ein grosses Fenster dazwischen mit einem Satz.</li>
+</ul>
+<p><b>VII. Bausteine</b></p>
+<ul>
+<li>Knöpfe der Website lebendig (mit Tiefe und rundem Pfeil-Knauf, Hover vorgeführt), Abstände, Rundungen, Bewegung als kleine Vorführung (Hereinschweben in Zeitlupe). Werte aus der Auslese.</li>
+</ul>
+<p><b>VIII. Sprache</b></p>
+<ul>
+<li>Grundton, Ansprache, Prinzip aus <code>Schreibstil.md</code> (in <code>inhalt.js</code>, <code>sprache</code>), gross gesetzt.</li>
+<li>«Was wir vermeiden» und «verbotene Wörter» als ruhige Liste in zwei Spalten, keine Nummern.</li>
+</ul>
+<p><b>IX. Mitnehmen</b></p>
+<ul>
+<li>Alle Zeichen der Familie als Dateien (einzeln und als ZIP), Schriftdateien, Schriftmuster, «Als PDF» (je Kapitel eine Seite, Karten nie zerschnitten).</li>
+</ul>
+<h2>5. Bewegung: das edle Gefühl</h2>
+<p>Aus <code>buch/marke.js</code> der Vorlage übernehmen und am neuen Markup nachmessen:</p>
+<ul>
+<li>Was unter dem ersten Bildschirm steht, schwebt beim Hereinscrollen an seinen Platz (40 px, Feder, Staffel höchstens vier).</li>
+<li>Fotos zoomen leicht in ihrem Rahmen.</li>
+<li>Farbflächen und Farbstreifen füllen sich von links nach rechts.</li>
+<li>Zahlen zählen hoch (Mengenverhältnis, Lesbarkeit, Anzahl Farben).</li>
+<li>Kacheln neigen sich zur Maus, das Licht wandert mit (nur Rechner mit Maus, nicht während gescrollt wird).</li>
+<li>Der Satz im Fenster steigt auf, wenn das Fenster ein Drittel freigibt.</li>
+<li>Der Anker im Auftakt atmet.</li>
+<li>Die Inhaltsleiste markiert das Kapitel, in dem man liest.</li>
+</ul>
+<p>Regeln: nur transform, opacity, clip-path; ein Takt, eine Bibliothek, nativer Scroll; eine Bewegung pro Blick; nichts Bewegtes unter Weichzeichner oder Schatten; geprüft gedrosselt (4×), nicht auf Roberts Mac allein.</p>
+<h2>6. Was rausfliegt</h2>
+<ul>
+<li>Startbild «Guten Tag. Was suchst du heute?» und die drei Prüf-Tafeln im Buch.</li>
+<li>«Häufig gebraucht» und die doppelte Blatt-Liste.</li>
+<li>Die Seitenleiste mit 16 Einträgen im Buch (bleibt nur im Arbeitsbereich).</li>
+<li>Die untere Leiste «… Unterschiede noch nicht gespeichert» im Buch.</li>
+<li>Klassennamen, Dateipfade, Zählungen von Stil-Dateien im Buch.</li>
+</ul>
+<h2>7. Offene Fragen an Robert (vor dem Bau klären)</h2>
+<ul>
+<li><b>Gold und Creme:</b> Die Website nutzt Gold <code>#c7b489</code> 280 Mal und Creme <code>#ebdbce</code> häufig; im Branding vom 16.06.2026 fehlt Gold. Kommt Gold in die Palette des Buchs oder bleibt es bei den acht Farben?</li>
+<li><b>Schutzraum und kleinste Grösse:</b> Heute ein Vorschlag (ein Viertel der Zeichenbreite), Druckgrösse fehlt. Festlegen oder als Vorschlag kennzeichnen?</li>
+<li><b>Sätze zu den drei Zeichen:</b> Im Logo-Moodboard stehen Sätze («Ordnung im Betrieb …», «Wissen für Gastgeber …», «Websites aus dem Hafen …»). Übernehmen oder nur Name und Zeichen?</li>
+</ul>
+<h2>8. Fertig, wenn</h2>
+<ul>
+<li>Startansicht ist das Buch, alle Kapitel am Stück lesbar, Inhaltsleiste springt.</li>
+<li>Alle Bewegungen aus Abschnitt 5 laufen, gedrosselt flüssig.</li>
+<li><code>node ~/Desktop/Website-Projekte/_Werkzeuge/oberflaeche_pruefen.js <a href="http://localhost:9150/werkzeuge/11-markenbuch/">http://localhost:9150/werkzeuge/11-markenbuch/</a></code> meldet BESTANDEN bei 1280, 1440, 1728, 1920, 390: keine halb leeren Reihen, kein Text über den Rand.</li>
+<li>PDF Seite für Seite als Bild angesehen.</li>
+<li>Arbeitsbereich «Abgleich» bedient: Neu lesen, Speichern mit Quittung und Rückgängig, Dateien laden.</li>
+<li>Nichts hochgeladen, nichts verschickt.</li>
+</ul></main></body></html>

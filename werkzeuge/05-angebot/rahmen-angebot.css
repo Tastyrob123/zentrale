@@ -1,0 +1,85 @@
+/* Angebot · Tasty Studios: Anschluss der Arbeitsflächen an das Kleid (zentrale/oberflaeche/, Rahmen «Die Bühne», kleid/tasty.css).
+   Kopie von gastgeber.css aus La Réception (vorlage/culinarium-demo/werkzeuge/reception/), Farben ins Kleid gerechnet. Lädt als letztes Stylesheet vor blatt.css.
+   Am Ende: die Teile, die nur das Angebot hat (Umfang zum Anklicken, Felder im Fenster, Knöpfe in der Hauskarte), in der Formensprache der Vorlage. */
+.wo-rand__wege button{display:flex;align-items:center;gap:8px;width:100%;padding:7px 14px;border:0;background:none;font:inherit;font-size:13.5px;color:var(--wo-leise);text-align:left;cursor:pointer}
+.wo-rand__wege button:hover,.wo-rand__wege a:hover{color:var(--wo-tinte)}
+@media (min-width:901px){.wo-rand__probe{display:none!important}}
+/* Knöpfe des Pakets: studio.css setzt «.bu button{font:inherit}» und überstimmt sonst die Schrift von .wo-kn */
+.wo-app button.wo-kn{font:400 11px/1 var(--wo-mono);letter-spacing:.16em;text-transform:uppercase}
+.wo-app button.wo-kn--klein{font-size:10.5px}
+/* Raum: Lage wie .wo-raum des Rahmens «Die Bühne», aber ohne Klasse «wo-» (sonst setzt grund.css die Knöpfe der Arbeitsflächen zurück) */
+.wo-app>.gg-raum{grid-area:raum;min-width:0;margin-left:28px}
+@media (max-width:900px){.wo-app>.gg-raum{margin:0 16px}}
+/* Kacheln als Knopf: «.bu button{color:inherit}» aus studio.css überstimmt sonst die helle Schrift auf der dunklen Kachel */
+.wo-app button.wo-ag{color:var(--wo-weiss);text-align:left;padding:0;border:0;font:inherit}
+.wo-app button.wo-kopf__ber{font:400 10.5px/1 var(--wo-mono);letter-spacing:.16em;text-transform:uppercase}
+.wo-app button.wo-kn--hell{color:var(--wo-tinte)}
+.wo-app button.wo-kn--gold{color:var(--wo-tief)}
+.wo-app button.wo-kn--dunkel,.wo-app button.wo-kn--glas{color:var(--wo-weiss)}
+.wo-app button.wo-kn--rund{color:var(--wo-gold)}
+
+/* Werkbank-Chat 18.10.2026 (Kopfleiste 1000–1920 ganz drin): bei schmalem Fenster steht der Titel der Ansicht nicht unter «Chat ausprobieren» */
+@media (max-width:1240px){.wo-kopf__mitte{display:none!important}}
+
+/* Endprüfung 19.10.2026: «Alle 10 Fragen ansehen» lag unter der letzten Fragen-Kachel und liess sich nicht anklicken; der Stand «Gesichert» beim Brief
+   war mit 9,5 px Beige auf Beige kaum lesbar (1,9:1) */
+.re-mehr{position:relative;z-index:3;margin-top:26px!important}
+.re-qliste{position:relative;z-index:1}
+.gs-hinweis .gs-werk__stand{font-size:11px!important;font-weight:400;letter-spacing:.14em;color:#57534c!important}
+.gs-hinweis .gs-werk__stand.laeuft{color:#191c30!important}
+
+/* Culinarium Hannover 21.10.2026 (lädt als letztes, deshalb hier) */
+/* Kopf (Fehlerbuch 10a «Titel überdeckt nie einen Knopf»): La Réception hat rechts zusätzlich «Chat ausprobieren»; der Titel in der Mitte nimmt deshalb
+   in jeder Breite nur den freien Platz zwischen Marke und Knöpfen und kürzt notfalls mit «…» (gemessen 21.10.2026: «Vom Team nachgetragen» lief bei 1440 unter den Knopf). */
+@media (min-width:901px){
+  .wo-kopf{grid-template-columns:auto minmax(0,1fr) auto}
+  .wo-kopf__mitte{min-width:0;max-width:100%}
+  .wo-kopf__mitte b,.wo-kopf__mitte small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+}
+
+
+/* ================= Angebot · Tasty Studios (07.11.2026) ================= */
+/* «Umfang und Text» auf dem Briefpapier: Felder wie «Nur Text» der Vorlage, Positionen wie die Zeilen in «Das wurde gefragt» */
+.an-umfang{padding:34px 34px 30px}
+.an-umfang .feld{display:block;margin:0 0 16px}
+.an-umfang .feld>span,.fenster .feld>span{display:block;margin:0 0 6px;font:400 9.5px/1.2 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--wo-akzent)}
+.an-umfang input:not([type=checkbox]),.an-umfang textarea,.fenster .feld input,.fenster .feld select,.fenster .feld textarea{width:100%;box-sizing:border-box;padding:10px 13px;border:0;border-radius:12px;font:400 15px/1.45 var(--wo-sans);color:var(--wo-tinte);background:linear-gradient(180deg,#e7e0d4,#efe9df 40%,#f3efe8);box-shadow:inset 0 2px 5px -1px rgba(17,20,33,.14),inset 0 0 0 1px rgba(158,148,127,.18);outline:0;-webkit-appearance:none;appearance:none}
+.an-umfang textarea,.fenster .feld textarea{resize:vertical;min-height:0}
+.an-umfang input:focus,.an-umfang textarea:focus,.fenster .feld input:focus,.fenster .feld select:focus,.fenster .feld textarea:focus{box-shadow:inset 0 2px 5px -1px rgba(17,20,33,.14),inset 0 0 0 1px var(--wo-taupe)}
+.brief--bearb.an-umfang textarea{field-sizing:content;font:400 15px/1.5 var(--wo-sans)!important;padding:10px 13px!important;background:linear-gradient(180deg,#e7e0d4,#efe9df 40%,#f3efe8)!important;box-shadow:inset 0 2px 5px -1px rgba(17,20,33,.14),inset 0 0 0 1px rgba(158,148,127,.18)!important}
+.an-felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}
+.an-felder--drei{grid-template-columns:repeat(3,minmax(0,1fr))}
+.an-umfang__k{margin:26px 0 4px;padding-top:22px;border-top:1px solid var(--wo-linie);font:400 9.5px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--wo-akzent)}
+.an-gr{border-bottom:1px solid var(--wo-linie)}
+.an-gr>summary{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:16px 0 12px;cursor:pointer;list-style:none}
+.an-gr>summary::-webkit-details-marker{display:none}
+.an-gr>summary b{font:600 19px/1.15 var(--wo-titel);letter-spacing:.01em;color:var(--wo-tinte)}
+.an-gr>summary small{font:400 9.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--wo-akzent)}
+.an-gr__h,.re-gr__h{margin:0 0 10px;font-size:13px;line-height:1.5;color:var(--wo-leise)}
+.re-gr__h{padding:0 22px}
+.an-pos{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:4px 14px;align-items:start;padding:12px 0;border-top:1px solid var(--wo-linie);cursor:pointer}
+.an-pos input[type=checkbox]{width:16px;height:16px;margin:3px 0 0;accent-color:var(--wo-nacht);cursor:pointer}
+.an-pos__n b{display:block;font:500 15px/1.35 var(--wo-sans);color:var(--wo-tinte)}
+.an-pos__n small{display:block;margin-top:2px;font-size:13px;line-height:1.45;color:var(--wo-leise)}
+.an-pos__p{padding-top:3px;font:400 10.5px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;text-align:right;white-space:nowrap;color:var(--wo-leise)}
+.an-pos.gewaehlt .an-pos__p{color:var(--wo-tinte)}
+.an-pos.fehlt .an-pos__p,.an-pos__mehr em{color:#b02a2a}
+.an-pos__mehr{grid-column:2/4;display:none;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-top:6px;font-size:13px;color:var(--wo-leise)}
+.an-pos.gewaehlt .an-pos__mehr{display:flex}
+.an-pos__mehr>span{display:inline-flex;align-items:center;gap:8px}
+.an-umfang .an-pos__mehr input{width:96px;padding:6px 10px;font-size:14px;border-radius:9px}
+.an-pos__mehr em{font-style:normal;font-size:12.5px}
+.an-pos__mehr small{flex-basis:100%;font-size:12px;line-height:1.5;color:var(--wo-leise)}
+/* Das Blatt in der Gestaltungsfläche der Vorlage */
+.an-flaeche .gs-hinweis{display:flex;justify-content:space-between;gap:12px}
+.an-flaeche .an-blatt{margin:0 auto}
+/* Hauskarte: zwei Knöpfe unten wie die Knöpfe der Zusage in der Vorlage */
+.re-ab__kn{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
+.re-zus__t b+b{margin-top:2px}
+.fenster .an-felder .feld,.fenster>div .feld{display:block;margin:0 0 14px}
+@media (max-width:700px){.an-felder,.an-felder--drei{grid-template-columns:1fr}.an-umfang{padding:24px 18px}.an-pos{grid-template-columns:20px minmax(0,1fr)}.an-pos__p{grid-column:2;text-align:left;padding-top:0}.an-pos__mehr{grid-column:2}}
+/* Preise: der Name einer Position ist kein Zitat (in der Vorlage stand hier die Frage eines Gastes in «») */
+.an-preis .re-f__q{padding-left:0;text-indent:0}
+.an-preis .re-f__q::before,.an-preis .re-f__q::after{content:none}
+/* Häuser: der Name eines Hauses ist länger als ein Datum der Vorlage, darf also umbrechen */
+.re-ab__k h3{white-space:normal}
