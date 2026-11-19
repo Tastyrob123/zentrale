@@ -83,6 +83,7 @@
   function finde(liste) { for (var i = 0; i < liste.length; i++) { var e = sichtbar(liste[i]); if (e) return e; } return null; }
 
   function starte(w) {
+    if (w === 'zentrale' && window.ZENTRALE_FUEHRUNG) return window.ZENTRALE_FUEHRUNG();   /* Rundführung über mehrere Werkzeuge (fuehrung.js, Robert 19.11.2026) */
     var g = GAENGE[w]; if (!g || lauf) return;
     var schritte = g.schritte;                     /* Ziele erst beim Zeigen suchen: Leisten fahren nach dem Laden herein */
     if (!finde(schritte[0].ziel)) return;
@@ -238,7 +239,7 @@
     }
     if (!document.getElementById('rdg-schild-css')) { var st = document.createElement('style'); st.id = 'rdg-schild-css'; st.textContent = SCHILD_CSS; document.head.appendChild(st); }
     var s = document.createElement('div'); s.className = 'rdg-schild'; s.setAttribute('role', 'status');
-    s.innerHTML = '<span class="rdg-schild__t"><small>' + GAENGE[w].name + '</small><b>Kurzer Rundgang</b></span>' +
+    s.innerHTML = '<span class="rdg-schild__t"><small>' + GAENGE[w].name + '</small><b>' + (w === 'zentrale' ? 'Rundgang' : 'Kurzer Rundgang') + '</b></span>' +
       '<button type="button" class="rdg-los">Zeigen' + PFEIL + '</button><button type="button" class="rdg-schild__zu" aria-label="Schliessen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 9.67 2.67 6.33 6 3M2.67 6.33h7.33a3.33 3.33 0 0 1 0 6.67h-2"/></svg></button>';
     /* über die Leiste unten (Speichern, Veröffentlichen) setzen, nie darauf */
     /* Fehlerbuch 10a, 20.10.2026: fest unten rechts über einer Leiste, einmal gesetzt, neu nur bei geänderter Fenstergrösse, nie nach dem Inhalt darunter */

@@ -20,6 +20,9 @@
   let werkzeuge = [], alle = [], offen = null, heutePunkte = null, serverFehler = false;
   let wer = PERSONEN.includes(H.wer) ? H.wer : 'Robert';
   try { const w = localStorage.getItem(SPEICHER.wer); if (PERSONEN.includes(w)) wer = w; } catch (e) {}
+  /* ?wer=Anna im Link stellt die Zentrale gleich auf diese Person (Robert 19.11.2026: «wenn ich Anna den Link … schicke, dass es direkt auf Anna eingestellt ist») */
+  { const q = (new URLSearchParams(location.search).get('wer') || '').toLowerCase(), p = PERSONEN.find(x => x.toLowerCase() === q);
+    if (p) { wer = p; try { localStorage.setItem(SPEICHER.wer, p); } catch (e) {} } }
 
   const art = w => (SAELE[w.ordner] && SAELE[w.ordner].zeichen) || 'pfeil';
   const wort = w => (SAELE[w.ordner] && SAELE[w.ordner].wort) || 'Werkzeug';
@@ -521,5 +524,7 @@
     void el('titel').offsetWidth; el('titel').classList.add('da');   /* Ausgangslage festhalten, dann rollt der Titel genau beim Sichtbarwerden */
   }
   anfang().catch(e => { if (window.ZENTRALE_MERK) ZENTRALE_MERK('Anfang: ' + (e && e.message || e)); document.documentElement.classList.remove('wartet'); });
+  /* Für die Rundführung (fuehrung.js): Werkzeug öffnen, zurück zum Start, Leiste */
+  window.ZENTRALE_API = { oeffne, zeigeStart, offen: () => offen, leisteAuf: () => leisteAuf, leisteKlapp: () => el('leiste').querySelector('[data-leiste-klapp]') && el('leiste').querySelector('[data-leiste-klapp]').click() };
   window.ZENTRALE_BEREIT = true;   /* Startfehler-Tür (wie Kontrollpanel R04): ohne dieses Zeichen öffnet fehler.js die Tür */
 })();
