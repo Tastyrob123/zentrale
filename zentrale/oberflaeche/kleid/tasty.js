@@ -112,3 +112,141 @@ window.WO_ZEILEN = function (el) {
   var schrift = document.fonts ? document.fonts.load('600 40px Antonio').then(function () { return document.fonts.load('400 15px "Instrument Sans"'); }) : Promise.resolve();
   Promise.all([schrift, bild.decode ? bild.decode().catch(function () {}) : Promise.resolve()]).then(zeige, zeige);
 })();
+/* Auftritte wie in der Zentrale (Robert 19.11.2026: «dass diese geilen Effekte … auch auf allen Unterseiten zu finden sind»). Vorlage: zentrale.css
+   [data-schlitz] und pult-fassungen.css (Bareiss-Reinfliegen). Für jedes Werkzeug, ohne dass es selbst etwas markiert:
+   - Titel rollen Zeile für Zeile aus ihrem Schlitz (Startbild, Zwischentitel, Titel in Karten): Wörter aus WO_ZEILEN, jedes Wort ist ein Schlitz
+     (überstehendes verdeckt, mit Luft für Ober- und Unterlängen), darin schiebt sich das Wort herauf. Danach ist nichts mehr beschnitten.
+   - Fotos in beschnittenen Rahmen zoomen aus 1,16 zur Ruhe (eigene Eigenschaft scale, stört kein transform der Werkzeuge).
+   - Karten aus bewegung.js fliegen weiter und länger herauf (Werte der Zentrale).
+   Nur beim Laden und gleich nach einem Klick; was beim Tippen oder Speichern neu gezeichnet wird, steht still. prefers-reduced-motion: nichts. */
+(function () {
+  if (window.__woAuftritt || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  window.__woAuftritt = true;
+  var K = 'cubic-bezier(.16,1,.3,1)', html = document.documentElement;
+  var st = document.createElement('style'); st.id = 'wo-auftritt';
+  st.textContent = ''
+    + '@keyframes auZoom{from{scale:1.16}}'
+    /* Titel: das Wort ist der Schlitz, sein Inneres rollt herauf */
+    + 'html body [data-au].wo-zl,html:not(.still) body.wo-app [data-au="ruht"][data-au]{animation:none!important}'
+    /* data-au="ruht": nach dem Auftritt bleibt nur das Stillhalten, damit die alten Wort-Bewegungen der Werkzeuge nicht ein zweites Mal anlaufen */
+    + 'html body [data-au].wo-zl .wo-w{animation:none!important;opacity:1!important;translate:none!important;transform:none!important}'
+    + 'html body [data-au=""].wo-zl .wo-w{display:inline-block;vertical-align:top;overflow:hidden;padding:.16em .12em .05em;margin:-.16em -.12em -.05em}'
+    + 'html body [data-au=""].wo-zl .au-i{display:inline-block}'
+    + 'html body [data-au=""].wo-zl:not(.au-da) .au-i{transform:translate3d(0,140%,0)}'
+    + 'html body [data-au=""].wo-zl.au-da .au-i{transform:none;transition:transform 1.4s ' + K + ';transition-delay:calc(.12s + var(--au-i,0) * 90ms + var(--z,0) * 110ms)}'
+    /* Karten aus bewegung.js: weiter und länger, wie die Bildwand der Zentrale */
+    + 'html body [data-wo-bw="k"]{--wo-bw-weg:clamp(56px,5.6vw,88px)}'
+    + 'html body [data-wo-bw="k"].wo-bw-da{animation-duration:1.6s!important;animation-timing-function:' + K + '!important;animation-delay:calc(var(--wo-bw-i,0) * 90ms)!important}'
+    + 'html body [data-wo-bw="k"].wo-bw-da img{animation:auZoom 2.6s ' + K + ' backwards!important;animation-delay:calc(var(--wo-bw-i,0) * 90ms)!important}'
+    /* Fotos: warten leicht vergrössert in ihrem Rahmen, zoomen beim Auftauchen zur Ruhe */
+    + 'html body img[data-au-b]:not(.au-da){scale:1.16}'
+    + 'html body img[data-au-b].au-da{scale:1;transition:scale 2.6s ' + K + ' calc(var(--au-i,0) * 90ms)}'
+    + '@media (prefers-reduced-motion:reduce){html body [data-au] .au-i,html body img[data-au-b]{transform:none!important;scale:none!important;transition:none!important}}';
+  document.head.appendChild(st);
+
+  var offen = performance.now() + 2600;
+  ['click', 'hashchange', 'popstate'].forEach(function (e) { addEventListener(e, function () { offen = performance.now() + 1600; }, true); });
+  addEventListener('keydown', function (e) { if (e.key === 'Enter') offen = performance.now() + 1600; }, true);
+  var frisch = function () { return performance.now() <= offen; };
+  var NIE = 'nav, .wo-rand, .wo-kopf, .wo-leiste, body > header, body > footer, dialog, [role="dialog"], [aria-modal], svg, [contenteditable], [data-wo-zl-nie], [data-st-mini], .rdg-karte, .rdg-schild, [data-fd]';
+
+  /* Solange die Seite noch auf Schrift und Startfoto wartet (wo-wartet), beginnt nichts: der Auftritt läuft erst, wenn man ihn sieht */
+  var nachWarten = [];
+  new MutationObserver(function () { if (!html.classList.contains('wo-wartet') && nachWarten.length) { var n = nachWarten; nachWarten = []; n.forEach(function (f) { f(); }); } })
+    .observe(html, { attributes: true, attributeFilter: ['class'] });
+  function auf(el, i) {
+    var los = function () { el.style.setProperty('--au-i', i); void el.offsetWidth; el.classList.add('au-da'); setTimeout(function () { fertig(el); }, 3400); };
+    if (html.classList.contains('wo-wartet')) nachWarten.push(los); else los();
+  }
+  var io = new IntersectionObserver(function (es) {
+    var k = 0;
+    es.forEach(function (e) {
+      var el = e.target;
+      if (e.isIntersecting) {
+        io.unobserve(el);
+        if (!el._auWartet && !frisch()) { fertig(el); return; }   // schon zu sehen und nicht frisch: steht still
+        auf(el, Math.min(k++, 4));
+      } else if (e.boundingClientRect.top > 0) el._auWartet = true;   // unter dem Rand: wartet im Schlitz bzw. vergrössert
+      else { io.unobserve(el); fertig(el); }
+    });
+  }, { rootMargin: '0px 0px 12% 0px' });
+  /* nach dem Auftritt alles zurück: die Werkzeuge haben wieder ihre eigenen Regeln (Hover-Zoom usw.) */
+  function fertig(el) {
+    el.classList.remove('au-da'); el.style.removeProperty('--au-i');
+    if (el.tagName === 'IMG') { el.removeAttribute('data-au-b'); return; }
+    el.setAttribute('data-au', 'ruht');
+    /* selbst geteilte Titel bekommen ihren ursprünglichen Satz zurück, als wäre nie etwas gewesen (nur wenn das Werkzeug den Text nicht inzwischen geändert hat) */
+    if (el._auRoh != null && !el.classList.contains('wo-sb__h') && el.textContent === el._auText) {
+      var h0 = el.offsetHeight, geteilt = el.innerHTML, lh0 = el.style.lineHeight;
+      el.innerHTML = el._auRoh; el.classList.remove('wo-zl');
+      var gleich = function () { return Math.abs(el.offsetHeight - h0) <= .5; };
+      if (!gleich()) {   // die geteilte Fassung hatte mehr Zeilenluft (cockpit-stand.js lesbar() an den Wörtern): dieselbe Luft am ganzen Titel
+        var cs = getComputedStyle(el), fs = parseFloat(cs.fontSize), lh = parseFloat(cs.lineHeight);
+        if (fs >= 18 && lh && lh < fs * 1.12) el.style.lineHeight = '1.14';
+      }
+      if (!gleich()) { el.innerHTML = geteilt; el.classList.add('wo-zl'); el.style.lineHeight = lh0; }   // nichts darf springen: dann bleibt er geteilt
+    }
+    el._auRoh = null;
+  }
+
+  var ZAHL = /^[\d'’.,]+%?$/;
+  function titel(h) {
+    if (h.hasAttribute('data-au') || h.hasAttribute('data-wo-bw-art') || h.closest(NIE)) return;
+    if (parseFloat(getComputedStyle(h).fontSize) < 19 || !h.offsetHeight) return;
+    if (!h.classList.contains('wo-zl')) {
+      if (h.hasAttribute('data-wo-zl') || !window.WO_ZEILEN) return;
+      var roh = h.innerHTML, text = h.textContent;
+      if (!WO_ZEILEN(h)) return;
+      h._auRoh = roh; h._auText = text;
+    }
+    var ws = [].slice.call(h.querySelectorAll('.wo-w'));
+    /* eine Zahl bleibt mit ihrem Wort zusammen («12 Häuser»), nie allein in einem Teil */
+    ws.forEach(function (w, i) {
+      var n = ws[i + 1], z = function (x) { return x.style.getPropertyValue('--z') || '0'; };
+      if (!n || !w.parentNode || !ZAHL.test(w.textContent.trim()) || w.nextSibling !== n.previousSibling || z(w) !== z(n)) return;
+      if (w.nextSibling && w.nextSibling.nodeType === 3 && !w.nextSibling.data.trim()) { w.appendChild(w.nextSibling); w.appendChild(document.createTextNode(n.textContent)); n.remove(); ws[i + 1] = w; }
+    });
+    [].forEach.call(h.querySelectorAll('.wo-w'), function (w) {
+      if (w.firstElementChild && w.firstElementChild.classList.contains('au-i')) return;
+      var i = document.createElement('span'); i.className = 'au-i';
+      while (w.firstChild) i.appendChild(w.firstChild);
+      w.appendChild(i);
+    });
+    h.setAttribute('data-wo-bw-nie', '');   // bewegung.js lässt ihn, er rollt hier
+    h.setAttribute('data-au', ''); io.observe(h);
+  }
+  function rahmen(i) {
+    for (var e = i.parentElement, n = 0; e && n < 4; e = e.parentElement, n++) {
+      var s = getComputedStyle(e);
+      if (/hidden|clip/.test(s.overflow) || s.clipPath !== 'none') return e.getBoundingClientRect().width <= i.getBoundingClientRect().width * 1.6 + 2;
+    }
+    return false;
+  }
+  function foto(i) {
+    if (i.hasAttribute('data-au-b') || i.closest(NIE) || i.closest('[data-wo-bw="k"],[data-wo-bw-art="k"],[class*="schirm"]')) return;
+    var b = i.getBoundingClientRect(); if (b.height < 80 || b.width < 80) return;
+    var s = getComputedStyle(i);
+    if (s.animationName !== 'none' || s.scale !== 'none' || s.transform !== 'none') return;   // eigene Bewegung
+    if (/(^|,\s*)(all|transform|scale)\b/.test(s.transitionProperty) && s.transitionDuration.split(',').some(function (d) { return parseFloat(d) >= .6; })) return;
+    if (!rahmen(i)) return;   // nur Fotos, die in einem beschnittenen Rahmen sitzen: nie über den Rand
+    i.setAttribute('data-au-b', ''); io.observe(i);
+  }
+  function suche(wurzel) {
+    if (!wurzel || wurzel.nodeType !== 1 || !frisch() || html.classList.contains('still')) return;
+    var m = document.querySelector('main') || document.body;
+    if (!m || !(m.contains(wurzel) || wurzel.contains(m))) return;
+    var w = wurzel.contains(m) ? m : wurzel;
+    if (w.matches('h1, h2, h3, .wo-zw')) titel(w);
+    [].forEach.call(w.querySelectorAll('h1, h2, h3, .wo-zw'), titel);
+    if (w.tagName === 'IMG') foto(w);
+    [].forEach.call(w.querySelectorAll('img'), foto);
+  }
+  /* gleich nach dem Zeichnen, vor dem nächsten Bild: nichts steht erst da und springt dann in den Schlitz */
+  new MutationObserver(function (l) {
+    if (!frisch()) return;
+    l.forEach(function (x) { [].forEach.call(x.addedNodes, suche); });
+  }).observe(html, { childList: true, subtree: true });
+  var los = function () { suche(document.body); };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', los); else los();
+  if (document.fonts) document.fonts.ready.then(function () { if (frisch()) los(); });
+})();
