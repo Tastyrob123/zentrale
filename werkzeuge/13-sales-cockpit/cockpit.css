@@ -1708,3 +1708,13 @@ body.sc .sc-plan__teile li>b,body.sc .sc-plan__teile li>p{grid-column:2}
 /* Vertrag mit dem Haus beim Preis (19.11.2026): gleiche Anordnung wie der Vertrag in «Unser Start» */
 .sc-brief--haus{margin-top:22px}
 @media (min-width:821px){.sc-brief--haus{align-items:stretch}.sc-brief--haus .sc-brief__rechts{justify-content:center;gap:26px}.sc-brief--haus .sc-web__fakten dd small{font-size:15px;line-height:1.6}}
+/* Hauskarten der Familien (Prüfung 20.11.2026, Familie Maeder bei rund 1440 px): vier Spalten waren schmaler als «Werkbank öffnen» (204 px),
+   die Pfeil-Knäufe rutschten hinter den Nachbarknopf. Reicht der Platz nicht für vier Spalten à 210 px, stehen vier Häuser 2+2 (wie unter 1180 px). */
+.sc-baum{container-type:inline-size}
+@container (max-width:911px){
+  .sc-baum .sc-karten[style*="--n:4"]{grid-template-columns:repeat(2,minmax(0,1fr));padding-top:0;margin-top:0}
+  .sc-baum .sc-karten[style*="--n:4"]::after,.sc-baum .sc-karten[style*="--n:4"]>.sc-karte::before{display:none}
+  .sc-baum .sc-karten[style*="--n:4"]::before{position:static;display:block;grid-column:1/-1;justify-self:center;height:24px}
+  .sc-baum .sc-karten[style*="--n:4"]>.sc-karte>.sc-wege{margin-bottom:30px}
+}
+@container (max-width:443px){.sc-baum .sc-karten,.sc-baum .sc-karten[style*="--n"]{grid-template-columns:minmax(0,1fr)}}

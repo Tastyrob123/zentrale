@@ -1,27 +1,27 @@
 {
  "saltandsilver": {
   "bureau": {
-   "url": "https://salt-and-silver-studie.vercel.app/studio/",
+   "url": "https://saltandsilver.tastystudios.ch/studio/",
    "bild": "schirme/saltandsilver-bureau.webp",
    "titel": "Übersicht · Studio · Salt & Silver"
   },
   "livre": {
-   "url": "https://salt-and-silver-studie.vercel.app/marke/buch/",
+   "url": "https://saltandsilver.tastystudios.ch/marke/buch/",
    "bild": "schirme/saltandsilver-livre.webp",
    "titel": "Markenbuch · Salt & Silver"
   },
   "maison": {
-   "url": "https://salt-and-silver-studie.vercel.app/hafen/",
+   "url": "https://saltandsilver.tastystudios.ch/hafen/",
    "bild": "schirme/saltandsilver-maison.webp",
    "titel": "Hafen · Salt & Silver"
   },
   "carte": {
-   "url": "https://salt-and-silver-studie.vercel.app/hafen/karte/",
+   "url": "https://saltandsilver.tastystudios.ch/hafen/karte/",
    "bild": "schirme/saltandsilver-carte.webp",
    "titel": "Karte · Salt & Silver"
   },
   "imprimerie": {
-   "url": "https://salt-and-silver-studie.vercel.app/hafen/druckerei/",
+   "url": "https://saltandsilver.tastystudios.ch/hafen/druckerei/",
    "bild": "schirme/saltandsilver-imprimerie.webp",
    "titel": "Druckerei · Salt & Silver"
   }
@@ -58,7 +58,7 @@
    "titel": "Übersicht · Le Registre · Grand Beau-Rivage"
   },
   "imprimerie": {
-   "url": "https://drucksachen-studio.vercel.app/",
+   "url": "https://tastyrob123.github.io/drucksachen-studio/",
    "bild": "schirme/beau-rivage-imprimerie.webp",
    "titel": "L’Imprimerie · Grand Beau-Rivage"
   }
@@ -176,37 +176,37 @@
  },
  "gasterntal": {
   "bureau": {
-   "url": "https://berghotel-gasterntal-entwurf.vercel.app/studio/",
+   "url": "https://tastyrob123.github.io/berghotel-gasterntal-entwurf/studio/",
    "bild": "schirme/gasterntal-bureau.webp",
    "titel": "Der Schreibtisch · Berghotel Gasterntal"
   },
   "reception": {
-   "url": "https://berghotel-gasterntal-entwurf.vercel.app/_werkzeuge/reception/",
+   "url": "https://tastyrob123.github.io/berghotel-gasterntal-entwurf/_werkzeuge/reception/",
    "bild": "schirme/gasterntal-reception.webp",
    "titel": "Der Gastgeber · Berghotel Gasterntal Kandersteg"
   },
   "maison": {
-   "url": "https://berghotel-gasterntal-entwurf.vercel.app/_werkzeuge/maison/?gruss=tag",
+   "url": "https://tastyrob123.github.io/berghotel-gasterntal-entwurf/_werkzeuge/maison/?gruss=tag",
    "bild": "schirme/gasterntal-maison.webp",
    "titel": "Die Stube · Berghotel Gasterntal"
   },
   "carte": {
-   "url": "https://berghotel-gasterntal-entwurf.vercel.app/_werkzeuge/carte/",
+   "url": "https://tastyrob123.github.io/berghotel-gasterntal-entwurf/_werkzeuge/carte/",
    "bild": "schirme/gasterntal-carte.webp",
    "titel": "Die Tafel · Berghotel Gasterntal"
   },
   "livre": {
-   "url": "https://berghotel-gasterntal-entwurf.vercel.app/_werkzeuge/livre/",
+   "url": "https://tastyrob123.github.io/berghotel-gasterntal-entwurf/_werkzeuge/livre/",
    "bild": "schirme/gasterntal-livre.webp",
    "titel": "Das Hausbuch · Berghotel Gasterntal"
   },
   "registre": {
-   "url": "https://berghotel-gasterntal-entwurf.vercel.app/_werkzeuge/registre/",
+   "url": "https://tastyrob123.github.io/berghotel-gasterntal-entwurf/_werkzeuge/registre/",
    "bild": "schirme/gasterntal-registre.webp",
    "titel": "Übersicht · Das Besucherbuch · Berghotel Gasterntal"
   },
   "imprimerie": {
-   "url": "https://berghotel-gasterntal-entwurf.vercel.app/_werkzeuge/imprimerie/",
+   "url": "https://tastyrob123.github.io/berghotel-gasterntal-entwurf/_werkzeuge/imprimerie/",
    "bild": "schirme/gasterntal-imprimerie.webp",
    "titel": "Die Werkstatt · Berghotel Gasterntal"
   }
@@ -472,37 +472,37 @@
  },
  "roots": {
   "maison": {
-   "url": "http://localhost:9301/_werkzeuge/maison/",
+   "url": "https://tastyrob123.github.io/roots-basel-entwurf/_werkzeuge/maison/",
    "bild": "schirme/roots-maison.webp",
    "titel": "Kontrollpanel · roots Basel"
   },
   "bureau": {
-   "url": "http://localhost:9302/_werkzeuge/bureau/",
+   "url": "https://tastyrob123.github.io/roots-basel-entwurf/_werkzeuge/bureau/",
    "bild": "schirme/roots-bureau.webp",
    "titel": "Website bearbeiten · roots"
   },
   "carte": {
-   "url": "http://localhost:9303/_werkzeuge/carte/",
+   "url": "https://tastyrob123.github.io/roots-basel-entwurf/_werkzeuge/carte/",
    "bild": "schirme/roots-carte.webp",
    "titel": "Karten & Preislisten · roots"
   },
   "reception": {
-   "url": "http://localhost:9304/_werkzeuge/reception/",
+   "url": "https://tastyrob123.github.io/roots-basel-entwurf/_werkzeuge/reception/",
    "bild": "schirme/roots-reception.webp",
    "titel": "Anfragen & Chat · roots Basel"
   },
   "livre": {
-   "url": "http://localhost:9305/_werkzeuge/livre/",
+   "url": "https://tastyrob123.github.io/roots-basel-entwurf/_werkzeuge/livre/",
    "bild": "schirme/roots-livre.webp",
    "titel": "Markenbuch · roots Basel"
   },
   "registre": {
-   "url": "http://localhost:9306/_werkzeuge/registre/",
+   "url": "https://tastyrob123.github.io/roots-basel-entwurf/_werkzeuge/registre/",
    "bild": "schirme/roots-registre.webp",
    "titel": "Übersicht · Besucher · roots"
   },
   "imprimerie": {
-   "url": "http://localhost:9307/_werkzeuge/imprimerie/",
+   "url": "https://tastyrob123.github.io/roots-basel-entwurf/_werkzeuge/imprimerie/",
    "bild": "schirme/roots-imprimerie.webp",
    "titel": "Drucksachen & Feed · roots"
   }

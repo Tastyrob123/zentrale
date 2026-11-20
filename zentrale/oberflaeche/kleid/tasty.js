@@ -30,7 +30,7 @@
     fotoJe: { zentrale: 'studio', '01-feinschliff': 'plan', '02-kundenliste': 'empfang', '03-entwurf-besuche': 'bildschirm', '04-haus-check': 'haus',
       '05-angebot': 'tafel', '06-aufgaben': 'studio', '07-kunden-uebersicht': 'aussen', '08-beitraege': 'terrasse', '09-ki-check': 'speicherstadt',
       '10-newsletter': 'faehre', '11-markenbuch': 'bar', '15-drucksachen': 'drucksachen' },
-    wege: { zentrale: '/', website: 'https://tastyrob123.github.io/tastystudios/' }
+    wege: { zentrale: '/', website: 'https://tastystudios.vercel.app/' }
   };
   Object.keys(WO_HAUS.namen).forEach(function (k) { if (k !== 'zentrale') WO_HAUS.wege[k] = '/zentrale/werkzeuge/' + k + '/'; });
   /* Wer arbeitet gerade: die Zentrale gibt ?wer=Robert|Anna mit; allein geöffnet gilt, was zuletzt gewählt war */

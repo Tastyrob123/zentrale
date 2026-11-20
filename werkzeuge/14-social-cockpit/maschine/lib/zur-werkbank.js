@@ -46,7 +46,7 @@
     if (w.__besuch || !n.sendBeacon || n.webdriver || w.self !== w.top || location.hostname !== 'grand-beau-rivage-entwurf.vercel.app') return;
     w.__besuch = 1;
     var breit = function (px) { return !!(w.matchMedia && w.matchMedia('(max-width:' + px + 'px)').matches); };
-    n.sendBeacon('https://tasty-besuche.vercel.app/api/b', location.pathname.slice(0, 120) + ' ' + (breit(700) ? 'handy' : breit(1060) ? 'tablet' : 'rechner'));
+    n.sendBeacon('https://tastyrob123.github.io/tasty-besuche/api/b', location.pathname.slice(0, 120) + ' ' + (breit(700) ? 'handy' : breit(1060) ? 'tablet' : 'rechner'));
   } catch (e) {}
 })();
 

@@ -812,7 +812,7 @@ function startFehler(e) {
   const text = (e && e.fehler) || (e && e.message) || String(e);
   merke('Start: ' + text, e && e.stichwort);
   $('#ws-rand').hidden = true;
-  $('#ws-kopf').innerHTML = WO.kopf({ werkzeug: W, unter: 'Agentur-Seite', titel: 'Startet nicht', stand: 'Prüfung öffnen', pruefung: pruefLink(e && e.stichwort), website: 'https://tastyrob123.github.io/tastystudios/' });
+  $('#ws-kopf').innerHTML = WO.kopf({ werkzeug: W, unter: 'Agentur-Seite', titel: 'Startet nicht', stand: 'Prüfung öffnen', pruefung: pruefLink(e && e.stichwort), website: 'https://tastystudios.vercel.app/' });
   leere($('#ws-leiste')).innerHTML = WO.leiste({ titel: 'Das Werkzeug startet nicht', satz: 'Nichts ist verloren: Annas Änderungen liegen in der Ablage.', knoepfe: WO.knopf('Speichern', 'pfeil', 'glas', { id: 'ws-speichern', klein: true, disabled: true }) });
   leere($('#ws-mitte')).append(el('div', { class: 'platte ws-karte ws-form', style: 'max-width:640px;margin-top:40px', 'data-ws-startfehler': (e && e.stichwort) || 'unerwartet' },
     mono('Das Werkzeug startet nicht'), el('h2', {}, text),

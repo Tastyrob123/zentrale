@@ -6,7 +6,7 @@
    "name": "Hotel Seeblick",
    "ort": "Thun",
    "land": "CH",
-   "entwurf": "https://seeblick-entwurf.vercel.app",
+   "entwurf": "",
    "seiten": {
     "index.html": "Startseite",
     "zimmer.html": "Zimmer",
@@ -20,7 +20,7 @@
    "name": "Landgasthof Sonne",
    "ort": "Weggis",
    "land": "CH",
-   "entwurf": "https://sonne-weggis-entwurf.vercel.app",
+   "entwurf": "",
    "seiten": {
     "index.html": "Startseite",
     "stube.html": "Die Stube",
@@ -33,7 +33,7 @@
    "name": "Grandhotel Bellevue",
    "ort": "Montreux",
    "land": "CH",
-   "entwurf": "https://bellevue-entwurf.vercel.app",
+   "entwurf": "",
    "seiten": {
     "index.html": "Startseite",
     "suiten.html": "Suiten",
@@ -46,7 +46,7 @@
    "name": "Restaurant Kranich",
    "ort": "Hamburg",
    "land": "DE",
-   "entwurf": "https://kranich-entwurf.vercel.app",
+   "entwurf": "",
    "seiten": {
     "index.html": "Startseite",
     "karte.html": "Karte",
@@ -58,7 +58,7 @@
    "name": "Berghaus Alpina",
    "ort": "Zermatt",
    "land": "CH",
-   "entwurf": "https://alpina-entwurf.vercel.app",
+   "entwurf": "",
    "seiten": {
     "index.html": "Startseite",
     "zimmer.html": "Zimmer",
@@ -70,7 +70,7 @@
    "name": "Weinstube Linden",
    "ort": "Hannover",
    "land": "DE",
-   "entwurf": "https://linden-entwurf.vercel.app",
+   "entwurf": "",
    "seiten": {
     "index.html": "Startseite",
     "weine.html": "Weine",

@@ -5,7 +5,7 @@
   "probe_an": "robert@tasty-studios.de",
   "weg": "postfach",
   "postfach": {"host": "smtp.mail.me.com", "port": 587, "benutzer": "robert@tasty-studios.de", "passwort": ""},
-  "dienst": {"adresse": "https://tasty-besuche.vercel.app/api/newsletter", "schluessel": ""},
+  "dienst": {"adresse": "https://tastyrob123.github.io/tasty-besuche/api/newsletter", "schluessel": ""},
   "seite": "https://tastystudios.vercel.app",
   "basis": "http://localhost:9100",
   "scharf": false

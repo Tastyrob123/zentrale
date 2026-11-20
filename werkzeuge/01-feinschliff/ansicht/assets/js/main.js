@@ -248,7 +248,7 @@
       if (!w('text') && !w('property') && !w('name')) { var t = f.querySelector('[name="text"]'); if (t) t.focus(); return; }
       if (!window.fetch) return perMail();
       laeuft = true; if (knopf) knopf.setAttribute('aria-busy', 'true');
-      fetch('https://tasty-besuche.vercel.app/api/anfrage', {
+      fetch('https://tastyrob123.github.io/tasty-besuche/api/anfrage', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ betreff: betreff, property: w('property'), website: w('website'), wahl: wahl, text: w('text'), name: w('name'), mail: w('mail'), firma2: falle.value, seite: location.href.split('#')[0] })
       }).then(function (r) { return r.ok ? r.json() : { ok: false }; }).then(function (d) {

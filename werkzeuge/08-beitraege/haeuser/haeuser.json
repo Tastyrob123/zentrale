@@ -43,7 +43,7 @@
   "ort": "Hannover-Linden",
   "seit": 2017,
   "fertig": "2026-10-28",
-  "adresse": "https://wildside-hannover-entwurf.vercel.app/",
+  "adresse": "https://tastyrob123.github.io/wildside-hannover-entwurf/",
   "stand": "Auftrag. Neubau der Bar-Website am 28.10.2026, als Entwurf online; Künstler-Anfragen über «Auf unserer Bühne» online seit 06.11.2026.",
   "offen": "Betreiber fürs Impressum und Rechte an Bildern vor dem Online-Gehen unter eigener Adresse. Ob die Bar auf LinkedIn genannt werden darf, ist nicht belegt.",
   "vorher": {
@@ -205,28 +205,28 @@
     "ort": "Interlaken",
     "art": "Hotel",
     "seiten": 24,
-    "adresse": "https://carlton-europe-entwurf.vercel.app/"
+    "adresse": "https://carlton.tastystudios.ch/"
    },
    {
     "name": "Waldhotel Doldenhorn",
     "ort": "Kandersteg",
     "art": "Hotel, fünf Sterne",
     "seiten": 25,
-    "adresse": "https://waldhotel-doldenhorn-entwurf.vercel.app/"
+    "adresse": "https://doldenhorn.tastystudios.ch/"
    },
    {
     "name": "Landgasthof Ruedihus",
     "ort": "Kandersteg",
     "art": "Landgasthof, Haus von 1753",
     "seiten": 14,
-    "adresse": "https://landgasthof-ruedihus-entwurf.vercel.app/"
+    "adresse": "https://ruedihus.tastystudios.ch/"
    },
    {
     "name": "Berghotel Gasterntal",
     "ort": "Selden, Gasterntal",
     "art": "Berghotel",
     "seiten": 24,
-    "adresse": "https://berghotel-gasterntal-entwurf.vercel.app/"
+    "adresse": "https://tastyrob123.github.io/berghotel-gasterntal-entwurf/"
    }
   ],
   "anders": [],
@@ -243,7 +243,7 @@
   "ort": "Saas-Almagell und Zermatt",
   "seit": "",
   "fertig": "",
-  "adresse": "https://tastystudios.vercel.app/einblick/wellness/",
+  "adresse": "https://tastyrob123.github.io/wellness-zurbriggen-entwurf/",
   "stand": "Designstudien, nur lokal; online nur als Einblick-Kopien auf der Agentur-Website. Monte-Moro: Feinschliff für den Brief am 23.10.2026; Wellness & Spa: Startseite in acht Kapiteln (19.10.2026); Suitenhotel Zermatt: Startseite am 01.11.2026 neu konzipiert.",
   "offen": "Werkbank fehlt (Stand 22.10.2026). Briefe an Esther und Fabian sowie an Moni und Pirmin geplant, Versand nicht belegt.",
   "vorher": {
@@ -262,21 +262,21 @@
     "ort": "Saas-Almagell",
     "art": "Hotel, drei Sterne",
     "seiten": 9,
-    "adresse": "https://tastystudios.vercel.app/einblick/monte-moro/"
+    "adresse": "https://tastyrob123.github.io/monte-moro-entwurf/"
    },
    {
     "name": "Suitenhotel Zurbriggen",
     "ort": "Zermatt",
     "art": "Suitenhotel, fünf Suiten",
     "seiten": null,
-    "adresse": "https://tastystudios.vercel.app/einblick/zermatt/"
+    "adresse": "https://tastyrob123.github.io/suitenhotel-zermatt-entwurf/"
    },
    {
     "name": "Wellness & Spa Pirmin Zurbriggen",
     "ort": "Saas-Almagell",
     "art": "Wellnesshotel",
     "seiten": 17,
-    "adresse": "https://tastystudios.vercel.app/einblick/wellness/"
+    "adresse": "https://tastyrob123.github.io/wellness-zurbriggen-entwurf/"
    }
   ],
   "anders": [],

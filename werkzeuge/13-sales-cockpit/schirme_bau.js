@@ -5,7 +5,7 @@ const fs = require('fs'), path = require('path'), { execFileSync } = require('ch
 const ZIEL = '/Users/robertreff/Desktop/Apps & Tools/tasty-intern-fertig/werkzeuge/13-sales-cockpit/schirme';
 const KS = ['maison', 'bureau', 'carte', 'reception', 'livre', 'registre', 'imprimerie'];
 const WB = JSON.parse(fs.readFileSync(__dirname + '/wb_links.json', 'utf8')), DATEN = JSON.parse(fs.readFileSync(__dirname + '/wz_liste.json', 'utf8'));
-const EXTRA = { saltandsilver: { maison: 'https://salt-and-silver-studie.vercel.app/hafen/', carte: 'https://salt-and-silver-studie.vercel.app/hafen/karte/', imprimerie: 'https://salt-and-silver-studie.vercel.app/hafen/druckerei/' } };
+const EXTRA = { saltandsilver: { maison: 'https://saltandsilver.tastystudios.ch/hafen/', carte: 'https://saltandsilver.tastystudios.ch/hafen/karte/', imprimerie: 'https://saltandsilver.tastystudios.ch/hafen/druckerei/' } };
 const karte = {};
 for (const h of DATEN) {
   if (h.id === 'angelina') continue;   // eigene Werkzeuge mit anderen Namen, bleiben wie bisher

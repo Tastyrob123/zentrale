@@ -119,7 +119,7 @@ function kopfLeiste() {
   const n = baldZahl();
   $('#kopf').innerHTML = WO.kopf({ werkzeug: '05-angebot', unter: 'Angebote', titel: TITEL[S.ansicht] || WO.name('05-angebot'),
     stand: n ? mal(n, 'Eines läuft bald ab', 'laufen bald ab') : mal((S.angebote || []).length, 'Ein Angebot', 'Angebote'),
-    pruefung: WEGE.pruefung, anleitung: WEGE.anleitung, website: (WO_HAUS.wege || {}).website || 'https://tastyrob123.github.io/tastystudios/', marke: 'data-gehe="start"' });
+    pruefung: WEGE.pruefung, anleitung: WEGE.anleitung, website: (WO_HAUS.wege || {}).website || 'https://tastystudios.vercel.app/', marke: 'data-gehe="start"' });
   const r = $('#kopf .wo-kopf__r');
   if (r) r.insertAdjacentHTML('afterbegin', WO.knopf('Neues Angebot', 'plus', 'hell', { id: 'k-neu', klein: true }) + '<span class="wo-trenn"></span>');
   $$('#kopf [data-gehe]').forEach(x => x.onclick = e => { e.preventDefault(); gehe(x.dataset.gehe); });

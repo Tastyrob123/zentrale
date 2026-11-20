@@ -15,7 +15,7 @@
     var m = /[?&]f=([a-z0-9]{4,10})\b/.exec(q), f = m ? m[1] : (localStorage.getItem('tasty-f') || '');
     if (m) localStorage.setItem('tasty-f', f);
     var breit = function (px) { return !!(w.matchMedia && w.matchMedia('(max-width:' + px + 'px)').matches); };
-    n.sendBeacon('https://tasty-besuche.vercel.app/api/b', location.pathname.slice(0, 120) + ' ' + (breit(700) ? 'handy' : breit(1060) ? 'tablet' : 'rechner') + (f ? ' ' + f : ''));
+    n.sendBeacon('https://tastyrob123.github.io/tasty-besuche/api/b', location.pathname.slice(0, 120) + ' ' + (breit(700) ? 'handy' : breit(1060) ? 'tablet' : 'rechner') + (f ? ' ' + f : ''));
   } catch (e) {}
 })();
 
@@ -31,7 +31,7 @@
   try {
     var w = window, n = navigator, d = document;
     if (w.__verweil || !n.sendBeacon || n.webdriver || w.self !== w.top || !w.IntersectionObserver) return;
-    var host = location.hostname, ZIEL = w.__verweilZiel || 'https://tasty-besuche.vercel.app/api/b?w=1';
+    var host = location.hostname, ZIEL = w.__verweilZiel || 'https://tastyrob123.github.io/tasty-besuche/api/b?w=1';
     if (!/(\.vercel\.app|(^|\.)tasty-studios\.de)$/.test(host) && !w.__verweilZiel) return;
     if (localStorage.getItem('tasty-ich')) return;
     w.__verweil = 1;

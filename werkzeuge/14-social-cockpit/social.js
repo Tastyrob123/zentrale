@@ -12,7 +12,7 @@ const ORDNER = '14-social-cockpit', API = '/zentrale/api/' + ORDNER + '/', NAME 
 const H = window.WO_HAUS || {};
 if (H.namen && !H.namen[ORDNER]) H.namen[ORDNER] = NAME;   // das Kleid kennt Werkzeug 14 nicht: nur für diese Seite ergänzt (wie im Sales Cockpit)
 const FOTO = k => (H.fotos && H.fotos[k]) || H.foto;
-const WEBSITE = (H.wege && H.wege.website) || 'https://tastyrob123.github.io/tastystudios/';
+const WEBSITE = (H.wege && H.wege.website) || 'https://tastystudios.vercel.app/';
 const WER = () => H.wer || 'Robert';
 const zahl = n => Number(n || 0).toLocaleString('de-CH');
 const datum = s => { const m = /^(\d{4})-(\d\d)-(\d\d)(?:T(\d\d:\d\d))?/.exec(s || ''); return m ? `${+m[3]}.${+m[2]}.${m[1]}${m[4] ? ', ' + m[4] : ''}` : ''; };

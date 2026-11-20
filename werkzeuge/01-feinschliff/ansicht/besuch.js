@@ -23,6 +23,6 @@
       d.addEventListener('click', mit, true); d.addEventListener('auxclick', mit, true); d.addEventListener('contextmenu', mit, true);
     }
     var breit = function (px) { return !!(w.matchMedia && w.matchMedia('(max-width:' + px + 'px)').matches); };
-    n.sendBeacon('https://tasty-besuche.vercel.app/api/b', location.pathname.slice(0, 120) + ' ' + (breit(700) ? 'handy' : breit(1060) ? 'tablet' : 'rechner') + (f ? ' ' + f : ''));
+    n.sendBeacon('https://tastyrob123.github.io/tasty-besuche/api/b', location.pathname.slice(0, 120) + ' ' + (breit(700) ? 'handy' : breit(1060) ? 'tablet' : 'rechner') + (f ? ' ' + f : ''));
   } catch (e) {}
 })();

@@ -17,7 +17,7 @@ const GESAMT = KAP.length + 2;   // Auftakt + Kapitel + Annas Fragen
 const FOTO = k => (H.fotos && H.fotos[k]) || H.foto;
 /* Bild eines Bausteins: bild = echtes Haus (haeuser/), foto = Foto der Agentur-Seite aus dem Kleid */
 const BILD = b => b.bild ? 'haeuser/' + b.bild + '.webp' : FOTO(b.foto);
-const WEBSITE = (H.wege && H.wege.website) || 'https://tastyrob123.github.io/tastystudios/';
+const WEBSITE = (H.wege && H.wege.website) || 'https://tastystudios.vercel.app/';
 const MARKENBUCH = (H.wege && H.wege['11-markenbuch']) || '/zentrale/werkzeuge/11-markenbuch/';
 const zahl = n => Number(n).toLocaleString('de-DE');
 const datum = s => { const m = /^(\d{4})-(\d\d)-(\d\d)(?:T(\d\d:\d\d))?/.exec(s || ''); return m ? `${+m[3]}.${+m[2]}.${m[1]}${m[4] ? ', ' + m[4] : ''}` : ''; };

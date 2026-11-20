@@ -5,7 +5,7 @@
    Fotos als JPG (haeuser/gbr/mail/, 1200 px, Outlook kann kein WebP), öffentliche Adressen auf der Studio-Seite.
    Kein Mailprogramm führt Skripte aus; alles hier ist reines HTML. DSMAIL.html(doc, {editor}) → vollständiges Dokument. */
 (function () {
-  const ONLINE = 'https://drucksachen-studio.vercel.app/';
+  const ONLINE = 'https://tastyrob123.github.io/drucksachen-studio/';
   const C = { navy: '#1b2033', papier: '#f7f0e3', creme: '#efe4cf', weiss: '#fdf9f1', sand: '#e2d2b5', gold: '#d2bf98', messing: '#b7a27a', taupe: '#9f896f', tief: '#7d6a4f', tinte: '#1a1d28' };
   const F = {
     serif: "'Cormorant Garamond',Georgia,'Times New Roman',serif",

@@ -10,7 +10,7 @@
   function zeigen() { html.classList.remove('fs-warte'); }
   if (!K) { zeigen(); return; }
   var LOKAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  var API = LOKAL ? 'http://localhost:8981/api/feinschliff' : 'https://tasty-besuche.vercel.app/api/feinschliff';
+  var API = LOKAL ? 'http://localhost:8981/api/feinschliff' : 'https://tastyrob123.github.io/tasty-besuche/api/feinschliff';
   var SEITE = decodeURIComponent(location.pathname.split('/').pop() || 'index.html') || 'index.html';
   var SEITEN_NAME = { 'index.html': 'Startseite', 'team.html': 'Team', 'studio.html': 'Studio', 'work.html': 'Arbeiten', 'werkzeuge.html': 'Werkzeuge',
     'contact.html': 'Kontakt', 'legal.html': 'Impressum', 'restaurant.html': 'Restaurant', 'studio-r.html': 'Studio (Restaurant)',

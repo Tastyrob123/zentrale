@@ -15,7 +15,7 @@ if (H.namen && !H.namen[ORDNER]) H.namen[ORDNER] = 'Sales Cockpit';
 const NAME = 'Sales Cockpit';
 const W = window.SC_WISSEN || {};
 const FOTO = k => (H.fotos && H.fotos[k]) || H.foto;
-const WEBSITE = (H.wege && H.wege.website) || 'https://tastyrob123.github.io/tastystudios/';
+const WEBSITE = (H.wege && H.wege.website) || 'https://tastystudios.vercel.app/';
 const KUNDEN_WZ = '/zentrale/werkzeuge/02-kundenliste/';
 const LAPTOP = '/zentrale/zentrale/img/laptop.webp';
 const WZ_BILD = '/zentrale/werkzeuge/12-marke-vision/haeuser/wz/';
@@ -412,12 +412,12 @@ function liveAn(g) {
 /* Im grossen Bildschirm die Fassung von diesem Mac zeigen, wenn sie läuft (Robert 12.11.2026: «die Bilder im Bildschirm selber laden nach»):
    die Seiten im Netz laden ihre Bilder erst beim Scrollen, die vom Mac sind sofort da. Läuft der Mac-Server nicht, bleibt es bei der Adresse im Netz. */
 const LOKAL_FEST = [['https://doldenhorn.tastystudios.ch/', 'http://localhost:8916/'], ['https://ruedihus.tastystudios.ch/', 'http://localhost:8917/'],
-  ['https://berghotel-gasterntal-entwurf.vercel.app/', 'http://localhost:8918/'], ['https://schloessli.tastystudios.ch/', 'http://localhost:8978/haus/Wirtschaft%20am%20Schl%C3%B6ssli%20Bottighofen/website/'], ['https://maeder.tastystudios.ch/', 'http://localhost:8978/haus/Familie%20Maeder%20%E2%80%94%20Landingpage/'],
+  ['https://tastyrob123.github.io/berghotel-gasterntal-entwurf/', 'http://localhost:8918/'], ['https://tastyrob123.github.io/berghotel-gasterntal-entwurf/', 'http://localhost:8918/'], ['https://schloessli.tastystudios.ch/', 'http://localhost:8978/haus/Wirtschaft%20am%20Schl%C3%B6ssli%20Bottighofen/website/'], ['https://maeder.tastystudios.ch/', 'http://localhost:8978/haus/Familie%20Maeder%20%E2%80%94%20Landingpage/'],
   ['https://schaefli.tastystudios.ch/', 'http://localhost:8953/'], ['https://carlton.tastystudios.ch/', 'http://localhost:8912/'],
-  ['https://grand-beau-rivage-entwurf.vercel.app/', 'http://localhost:8940/'], ['https://salt-and-silver-studie.vercel.app/', 'http://localhost:8866/'],
-  ['https://tastystudios.vercel.app/einblick/monte-moro/', 'https://tastyrob123.github.io/monte-moro-entwurf/'],
-  ['https://tastystudios.vercel.app/einblick/zermatt/', 'http://localhost:8978/haus/Zurbriggen%20Suitenhotel%20Zermatt/website/'],
-  ['https://tastystudios.vercel.app/einblick/wellness/', 'https://tastyrob123.github.io/wellness-zurbriggen-entwurf/']];   // Werkzeug-Server mit Rahmen-Verbot: Durchgang in rahmen.py
+  ['https://grand-beau-rivage-entwurf.vercel.app/', 'http://localhost:8940/'], ['https://saltandsilver.tastystudios.ch/', 'http://localhost:8866/'],
+  ['https://tastyrob123.github.io/monte-moro-entwurf/', 'https://tastyrob123.github.io/monte-moro-entwurf/'],
+  ['https://tastyrob123.github.io/suitenhotel-zermatt-entwurf/', 'https://tastyrob123.github.io/suitenhotel-zermatt-entwurf/'],
+  ['https://tastyrob123.github.io/wellness-zurbriggen-entwurf/', 'https://tastyrob123.github.io/wellness-zurbriggen-entwurf/']];   // Werkzeug-Server mit Rahmen-Verbot: Durchgang in rahmen.py
 function lokalVon(u) {
   const l = ((S.d && S.d.projekte) || []).filter(p => p.url && p.lokal && p.lokal !== 8978).map(p => [p.url, 'http://localhost:' + p.lokal + '/']);
   l.unshift(...LOKAL_FEST);   // die festen Mac-Fassungen zuerst: auf manchem alten Port läuft inzwischen eine andere Seite (Robert 14.11.2026)
