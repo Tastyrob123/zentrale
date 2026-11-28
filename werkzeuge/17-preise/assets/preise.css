@@ -1,0 +1,318 @@
+/* Preise (Zentrale, Werkzeug 17): Bausteine, die die Portfolio-Vorlage nicht hat. Farben und Schrift aus werkbank.css. */
+.pr-in{display:block}
+.pr-weg .in{grid-template-columns:repeat(4,1fr)!important}
+@media(max-width:899px){.pr-weg .in{grid-template-columns:1fr!important}}
+
+/* Kopf: Tafel mit den Summen */
+.tafel{justify-self:end;width:100%;max-width:620px;background:rgba(255,255,255,.035);border:1px solid rgba(199,180,137,.24);border-radius:22px;padding:clamp(24px,2.6vw,40px);color:#fff;display:grid;gap:clamp(18px,2vw,28px)}
+.tafel-k{font-family:var(--serif);text-transform:uppercase;letter-spacing:.06em;color:var(--gold);font-size:clamp(16px,1.1vw,18px)}
+.tafel-b{padding-top:clamp(16px,1.8vw,24px);border-top:1px solid rgba(199,180,137,.22)}
+.tafel-l{font-size:15px;color:rgba(255,255,255,.66);display:flex;justify-content:space-between;gap:12px}
+.tafel-z{font-family:var(--serif);font-size:clamp(42px,4.4vw,70px);line-height:1;margin:10px 0 6px;color:#fff;font-variant-numeric:tabular-nums}
+.tafel-s{font-size:15px;color:rgba(255,255,255,.66)}
+.tafel-m{margin-top:12px;font-size:17px;color:rgba(255,255,255,.86)}
+.tafel-m b{font-weight:600;color:var(--gold)}
+.tafel-f{font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.5)}
+@media(max-width:1039px){.tafel{justify-self:stretch;max-width:none}}
+
+/* Je Haus */
+.hl{display:grid;gap:clamp(28px,3vw,44px)}
+.hg{color:var(--tinte);background:#fff;border:1px solid rgba(17,20,33,.08);border-radius:20px;padding:clamp(20px,2.4vw,36px);box-shadow:0 18px 40px -28px rgba(17,20,33,.35)}
+.hg-k{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid rgba(17,20,33,.12)}
+.hg-k h3{font-family:var(--serif);text-transform:uppercase;font-size:clamp(24px,2vw,32px);line-height:1.05;font-weight:500}
+.hg-k p{margin-top:6px;font-size:15px;color:rgba(17,20,33,.6)}
+.hg-sum{display:flex;gap:10px 26px;flex-wrap:wrap;font-size:16px;font-variant-numeric:tabular-nums}
+.hg-sum span{white-space:nowrap}
+.hg-sum span+span{color:var(--messing);font-weight:600}
+.hz{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start;padding:11px 0;border-bottom:1px solid rgba(17,20,33,.08)}
+.hz:last-child{border-bottom:0}
+.hz--kopf{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:rgba(17,20,33,.5);padding:14px 0 10px}
+.hz-n b{display:block;font-size:17px;font-weight:600}
+.hz-n span{display:block;font-size:14px;color:rgba(17,20,33,.58);margin-top:2px}
+.hz-n em{display:block;font-style:normal;font-size:13.5px;color:var(--messing);margin-top:6px}
+.hz-hin{display:block;font-size:13.5px;line-height:1.5;color:rgba(17,20,33,.62);margin-top:8px;max-width:62ch}
+.hz-p{font-size:16px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.stand{display:inline-block;font-size:13.5px;color:rgba(17,20,33,.72)}
+@media(max-width:899px){
+  .hz--kopf{display:none}
+  .hz{grid-template-columns:1fr 1fr;gap:10px 16px}
+  .hz-n{grid-column:1/-1}
+  .hz-s,.hz-p{font-size:15px}
+  .hz-s::before,.hz-p::before{content:attr(data-k);display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:rgba(17,20,33,.5);margin-bottom:2px}
+}
+
+.hf{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:baseline;padding:16px 0 4px;border-bottom:1px solid rgba(17,20,33,.08)}
+.hf b{font-family:var(--serif);text-transform:uppercase;letter-spacing:.03em;font-size:18px;font-weight:500;color:var(--messing)}
+.hf span{font-size:14.5px;color:rgba(17,20,33,.62)}
+
+/* Preiskarten */
+.pk-stapel{display:grid;gap:clamp(28px,3vw,44px)}
+.pk{color:var(--tinte);background:#fff;border:1px solid rgba(17,20,33,.08);border-radius:20px;padding:clamp(20px,2.4vw,40px);box-shadow:0 18px 40px -28px rgba(17,20,33,.35)}
+.pk-t{font-family:var(--serif);text-transform:uppercase;font-size:clamp(22px,1.9vw,30px);line-height:1.05;font-weight:500;margin-bottom:10px}
+.pk-z{display:grid;grid-template-columns:minmax(0,auto) minmax(24px,1fr) auto;gap:16px;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(17,20,33,.07)}
+.pk--zwei .pk-z{grid-template-columns:minmax(0,auto) minmax(24px,1fr) 128px 128px}
+.pk-z:last-of-type{border-bottom:0}
+.pk-n{font-size:17px;font-weight:500;max-width:70ch}
+.pk-n small{display:block;font-size:14px;font-weight:400;color:rgba(17,20,33,.58);margin-top:3px;line-height:1.45}
+.pk-l{border-bottom:1px dotted rgba(17,20,33,.3);align-self:center;height:1px;transform:translateY(5px)}
+.pk-p{font-size:17px;font-weight:600;text-align:right;font-variant-numeric:tabular-nums;color:var(--tinte)}
+.pk-z--kopf{padding:4px 0 8px;border-bottom:1px solid rgba(17,20,33,.14)}
+.pk-z--kopf .pk-p{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:500;color:rgba(17,20,33,.5)}
+.pk-z--kopf .pk-n{grid-column:1/3}
+.pk-z--summe{background:rgba(199,180,137,.12);border-radius:10px;padding-left:14px;padding-right:14px;border-bottom:0;margin-top:6px}
+.pk-z--summe .pk-p{color:var(--messing)}
+.pk-fuss{margin-top:16px;font-size:14.5px;line-height:1.6;color:rgba(17,20,33,.62);max-width:96ch}
+@media(max-width:699px){
+  .pk-z,.pk--zwei .pk-z{grid-template-columns:1fr 1fr;gap:6px 16px}
+  .pk-n{grid-column:1/-1}
+  .pk-l{display:none}
+  .pk-p{text-align:left}
+  .pk:not(.pk--zwei) .pk-p{grid-column:1/-1}
+  .pk--zwei .pk-p::before{content:attr(data-k);display:block;font-size:12px;font-weight:400;text-transform:uppercase;letter-spacing:.05em;color:rgba(17,20,33,.5)}
+  .pk-z--kopf{display:none}
+}
+
+/* Offen */
+.ofl{color:var(--tinte);list-style:none;padding:0;margin:0;background:#fff;border:1px solid rgba(17,20,33,.08);border-radius:20px;padding:clamp(8px,1vw,14px) clamp(20px,2.4vw,40px);box-shadow:0 18px 40px -28px rgba(17,20,33,.35)}
+.of{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:8px 32px;padding:18px 0;border-bottom:1px solid rgba(17,20,33,.08)}
+.of:last-child{border-bottom:0}
+.of b{font-size:17px;font-weight:600}
+.of span{font-size:16px;line-height:1.55;color:rgba(17,20,33,.72)}
+@media(max-width:699px){.of{grid-template-columns:1fr}}
+
+/* Kompakt (Robert 25.11.2026: «sehr unübersichtlich … mit diesen ganzen 1000 Leerräumen») */
+.pf.fl{padding-top:clamp(56px,5.6vw,92px);padding-bottom:calc(clamp(56px,5.6vw,92px) + var(--rund))}
+.pf .pf-kopf{margin-bottom:clamp(26px,2.6vw,40px)}
+.pf .pf-kopf .lauf{margin-top:14px}
+.pk-stapel{gap:clamp(20px,2vw,30px)}
+.hl{gap:clamp(20px,2vw,30px)}
+
+/* Kachel-Gruppen: fester Spaltensatz, jede Kachel gleich gebaut */
+.kg{color:var(--tinte);background:#fff;border:1px solid rgba(17,20,33,.08);border-radius:20px;padding:clamp(20px,2.2vw,32px);box-shadow:0 18px 40px -28px rgba(17,20,33,.35)}
+.kg-t{font-family:var(--serif);text-transform:uppercase;font-size:clamp(20px,1.7vw,26px);line-height:1.05;font-weight:500;margin-bottom:16px}
+.kr{display:grid;gap:12px}
+.kr--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kr--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.kr--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ka{background:rgba(199,180,137,.1);border:1px solid rgba(168,132,79,.16);border-radius:14px;padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px}
+.ka-n{font-size:13.5px;color:rgba(17,20,33,.62)}
+.ka-z{font-family:var(--serif);font-size:clamp(28px,2.5vw,38px);line-height:1.05;color:var(--tinte);font-variant-numeric:tabular-nums}
+.ka-h{font-size:13.5px;line-height:1.45;color:rgba(17,20,33,.62)}
+.kg-f{margin-top:14px;font-size:14px;line-height:1.6;color:rgba(17,20,33,.62)}
+@media(max-width:1099px){.kr--4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:799px){.kr--3,.kr--2{grid-template-columns:1fr}}
+@media(max-width:599px){.kr--4{grid-template-columns:1fr}}
+
+/* Werkzeug-Tabelle */
+.wztab{display:grid}
+.wztab--pk{margin-top:22px}
+.wzt{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:baseline;padding:9px 0;border-bottom:1px solid rgba(17,20,33,.07)}
+.wzt--drei{grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr)}
+.wzt--kopf{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:rgba(17,20,33,.5);padding:6px 0 8px;border-bottom:1px solid rgba(17,20,33,.14)}
+.wzt-n{font-size:16px;font-weight:500}
+.wzt-n i{font-style:normal;font-size:12px;color:var(--messing);margin-left:8px;text-transform:uppercase;letter-spacing:.05em}
+.wzt span{font-size:15px;color:rgba(17,20,33,.66)}
+.wzt .wzt-n{color:var(--tinte)}
+.wzt b{font-size:16px;font-weight:600;font-variant-numeric:tabular-nums}
+.wzt--pk b{color:var(--messing)}
+@media(max-width:699px){
+  .wzt--kopf{display:none}
+  .wzt{grid-template-columns:1fr 1fr;gap:4px 12px;padding:12px 0}
+  .wzt--pk span[data-k]{grid-column:1/-1}
+  .wzt-n{grid-column:1/-1}
+  .wzt span[data-k]::before,.wzt b::before{content:attr(data-k);display:block;font-size:11.5px;font-weight:400;text-transform:uppercase;letter-spacing:.05em;color:rgba(17,20,33,.5)}
+}
+.wzt b small{display:block;font-size:13px;font-weight:400;color:rgba(17,20,33,.55);margin-top:2px}
+
+/* Hausliste: eine Zeile je Haus */
+.hz-n b{display:inline;font-size:16px}
+.hz-n span{display:inline;margin-left:10px;font-size:13.5px}
+.hz-n em{display:inline;margin-left:10px;margin-top:0}
+.hz-hin{margin-top:4px}
+.hz{align-items:baseline}
+@media(max-width:899px){.hz-n b,.hz-n span,.hz-n em{display:block;margin-left:0}}
+/* aufklappbare Tafel (Robert 26.11.2026) */
+.kg--klapp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.kg--klapp>summary::-webkit-details-marker{display:none}
+.kg--klapp>summary .kg-t{margin:0}
+.kg--klapp>summary i{flex:none;position:relative;width:34px;height:34px;border-radius:50%;border:1px solid rgba(17,20,33,.18)}
+.kg--klapp>summary i::before,.kg--klapp>summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--tinte);transform:translate(-50%,-50%)}
+.kg--klapp>summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .25s}
+.kg--klapp[open]>summary i::after{transform:translate(-50%,-50%) rotate(0deg)}
+.kg--klapp[open]>summary{margin-bottom:14px}
+.wzt--summe{border-top:1.5px solid rgba(17,20,33,.35);border-bottom:none}
+.wzt--summe .wzt-n,.wzt--summe b{font-weight:700;font-size:17px}
+.wzt-n small.wzt-k{display:block;font-size:13px;font-weight:400;color:rgba(17,20,33,.55);margin-top:2px}
+/* Grafik Kosten je Bündel (26.11.2026) */
+.gr-kopf{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:6px 0 18px}
+.gr-wahl{display:inline-flex;border:1px solid rgba(17,20,33,.16);border-radius:999px;padding:3px}
+.gr-wahl button{font:inherit;font-size:14px;border:0;background:transparent;color:var(--tinte);padding:7px 16px;border-radius:999px;cursor:pointer}
+.gr-wahl button[aria-pressed="true"]{background:var(--tinte);color:#fff}
+.gr-leg{display:flex;gap:18px;font-size:14px;color:rgba(17,20,33,.66);margin:0}
+.gr-leg span{display:inline-flex;align-items:center;gap:7px}
+.gr-leg i{display:inline-block;width:14px;height:14px;border-radius:3px}
+.gb-k{background:#2a2e3d}
+.gb-r{background:var(--messing)}
+.gr[data-zeige="hotel"] .gr-a[data-art="restaurant"],.gr[data-zeige="restaurant"] .gr-a[data-art="hotel"]{display:none}
+.gg{padding:14px 0;border-bottom:1px solid rgba(17,20,33,.07)}
+.gg:last-child{border-bottom:0}
+.gg-n{font-size:16px;font-weight:600;color:var(--tinte);margin:0 0 8px}
+.gg-n small{display:block;font-size:13px;font-weight:400;color:rgba(17,20,33,.55);margin-top:2px}
+.gb{display:grid;grid-template-columns:140px minmax(0,1fr) 150px;gap:14px;align-items:center;margin-top:6px}
+.gb-w{font-size:14px;color:rgba(17,20,33,.66)}
+.gb-spur{height:22px}
+.gb-bar{display:flex;height:22px;border-radius:5px;overflow:hidden}
+.gb-bar .gb-k{display:block;height:100%}
+.gb-bar .gb-r{display:block;height:100%;flex:1}
+.gb-z{font-size:15px;font-weight:600;color:var(--tinte);font-variant-numeric:tabular-nums}
+.gb-z small{display:block;font-size:13px;font-weight:400;color:rgba(17,20,33,.6)}
+@media(max-width:699px){.gb{grid-template-columns:1fr auto;gap:4px 12px}.gb-spur{grid-column:1/-1;grid-row:2}}
+.gb>.gb-z,.gb>.gb-w{display:block;width:auto;max-width:none;justify-self:stretch;white-space:normal}
+.gb>.gb-z{text-align:left}
+/* Was hinter einem Werkzeug steckt (26.11.2026) */
+.hg-satz{font-size:16px;line-height:1.6;color:rgba(17,20,33,.75);margin:0 0 14px;max-width:820px}
+.hg-l{list-style:none;margin:0 0 16px;padding:0}
+.hg-l li{display:grid;grid-template-columns:220px minmax(0,1fr);gap:16px;padding:11px 0;border-bottom:1px solid rgba(17,20,33,.07);font-size:15.5px}
+.hg-l li:last-child{border-bottom:0}
+.hg-l b{font-weight:600;color:var(--tinte)}
+.hg-l span{color:rgba(17,20,33,.7)}
+@media(max-width:699px){.hg-l li{grid-template-columns:1fr;gap:2px}}
+/* Herleitung CHF 30 */
+.hl-rech{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:stretch;margin:4px 0 20px}
+.hl-rech>div{background:rgba(17,20,33,.035);border-radius:10px;padding:14px 16px}
+.hl-rech>div b{display:block;font-size:22px;font-weight:600;color:var(--tinte);font-variant-numeric:tabular-nums}
+.hl-rech>div span{display:block;font-size:13.5px;line-height:1.45;color:rgba(17,20,33,.62);margin-top:4px}
+.hl-rech>i{font-style:normal;align-self:center;font-size:20px;color:rgba(17,20,33,.45)}
+.hl-rech>.hl-rech-e{background:var(--tinte)}
+.hl-rech>.hl-rech-e b{color:#fff}.hl-rech>.hl-rech-e span{color:rgba(255,255,255,.7)}
+@media(max-width:899px){.hl-rech{grid-template-columns:1fr}.hl-rech>i{justify-self:center}}
+/* Balken: Betrag am Ende, eine Zeile (26.11.2026) */
+.gb{grid-template-columns:140px minmax(0,1fr)}
+.gb-spur{display:flex;align-items:center;gap:12px;height:auto}
+.gb-bar{flex:none}
+.gb-spur>.gb-z{display:block;font-size:14.5px;font-weight:600;color:var(--tinte);font-variant-numeric:tabular-nums}
+.gg{padding:10px 0}
+.gb-spur>.gb-bar{width:calc((100% - 185px) * var(--f,1))}
+@media(max-width:699px){.gb{grid-template-columns:1fr;gap:2px}.gb-spur{flex-wrap:wrap;gap:4px 12px}.gb-spur>.gb-bar{width:calc(100% * var(--f,1))}.gb-spur>.gb-z{font-size:13px;flex-basis:100%}}
+.gb-spur>.gb-z{flex:none}
+.gb-spur>.gb-z{margin:0 !important;width:max-content !important;max-width:none}
+/* aufklappbare Zeilen im Vergleich (27.11.2026) */
+.vg-d>summary{list-style:none;cursor:pointer;position:relative;padding-right:34px}
+.vg-d>summary::-webkit-details-marker{display:none}
+.vg-i{position:absolute;right:4px;top:50%;width:22px;height:22px;margin-top:-11px;border-radius:50%;border:1px solid rgba(17,20,33,.2)}
+.vg-i::before,.vg-i::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:1.5px;background:var(--tinte);transform:translate(-50%,-50%)}
+.vg-i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.vg-d[open] .vg-i::after{transform:translate(-50%,-50%) rotate(0deg)}
+.vg-mehr{background:rgba(17,20,33,.03);border-radius:8px;padding:10px 34px 10px 12px;margin:0 0 8px;font-size:14px}
+.vg-mehr span{color:rgba(17,20,33,.7);font-size:14px}
+.vg-mehr span:first-child{font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:rgba(17,20,33,.5)}
+.vg .wzt{padding-right:34px}.vg .vg-mehr{padding-left:12px}
+.vg .vg-mehr{padding:4px 34px 4px 12px}
+.vg .vg-st{padding:7px 0;border-bottom:1px solid rgba(17,20,33,.06)}
+.vg .vg-st:last-child{border-bottom:0}
+.vg .vg-st span{font-size:14px;color:rgba(17,20,33,.72)}
+.vg .vg-st b{font-size:14.5px;font-weight:600;color:var(--tinte)}
+.vg .vg-st span:first-child{text-transform:none;letter-spacing:0;font-size:14px;color:rgba(17,20,33,.72)}
+/* Balken: Zahlen beim Darüberfahren, Animation (27.11.2026) */
+.gb-spur>.gb-bar{width:calc((100% - 230px) * var(--f,1));position:relative;overflow:visible;cursor:default;outline:none}
+.gb-bar>.gb-k{border-radius:5px 0 0 5px}.gb-bar>.gb-r{border-radius:0 5px 5px 0}
+.gb-bar>i{transform-origin:left center}
+.gr.da .gb-bar>i{animation:gb-wachsen .7s cubic-bezier(.2,.7,.2,1) both}
+.gr.da .gb-bar>.gb-r{animation-delay:.12s}
+@keyframes gb-wachsen{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.gb-tip{position:absolute;left:0;bottom:calc(100% + 10px);z-index:5;min-width:250px;background:var(--tinte);color:#fff;border-radius:10px;padding:12px 14px;font-size:13.5px;line-height:1.5;
+  opacity:0;transform:translateY(4px);pointer-events:none;transition:opacity .15s,transform .15s}
+.gb-tip>b{display:block;font-size:13px;font-weight:600;margin-bottom:4px;color:rgba(255,255,255,.7)}
+.gb-tip>span{display:flex;justify-content:space-between;gap:18px}
+.gb-tip em{font-style:normal;font-weight:600;font-variant-numeric:tabular-nums}
+.gb-tip>.gb-tip-s{border-top:1px solid rgba(255,255,255,.2);margin-top:5px;padding-top:5px;font-weight:600}
+.gb-bar:hover>.gb-tip,.gb-bar:focus>.gb-tip{opacity:1;transform:none}
+.gb-bar:hover,.gb-bar:focus{filter:brightness(1.08)}
+@media(prefers-reduced-motion:reduce){.gr.da .gb-bar>i{animation:none}}
+.vg .vg-st b small{display:block;font-size:12.5px;font-weight:400;color:rgba(17,20,33,.55);margin-top:1px}
+.gb-tip{width:max-content;max-width:340px;min-width:270px}.gb-tip em{flex:none}
+/* Minuten-Grafik (27.11.2026) */
+.gb-bar--m>.gb-r{border-radius:5px;width:100%}
+.hl-rech--3{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr)}
+.hl-rech>div b{font-size:19px}
+@media(max-width:899px){.hl-rech--3{grid-template-columns:1fr}}
+.hl-rech--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:899px){.hl-rech--4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:599px){.hl-rech--4{grid-template-columns:1fr}}
+/* Werkzeug-Karten (27.11.2026) */
+.wk-kp{font-size:15px;color:rgba(17,20,33,.7);margin:0 0 16px;padding:12px 16px;border-radius:10px;background:rgba(17,20,33,.035)}
+.wk-kp b{color:var(--tinte);font-weight:600;margin-right:8px}
+.wk-liste{display:grid;gap:10px}
+.wk{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:center;padding:18px 20px;border:1px solid rgba(17,20,33,.09);border-radius:12px;background:#fff}
+.wk-n{font-size:18px;font-weight:600;color:var(--tinte);margin:0 0 10px}
+.wk-n small{font-size:13px;font-weight:400;color:rgba(17,20,33,.55);margin-left:10px}
+.wk-c{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.wk-c li{font-size:13.5px;line-height:1.3;padding:5px 11px;border-radius:999px;background:rgba(17,20,33,.05);color:rgba(17,20,33,.78)}
+.wk-h{font-size:13px;color:rgba(17,20,33,.55);margin:10px 0 0}
+.wk-p{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.wk-p small{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:rgba(17,20,33,.5);margin-bottom:2px}
+.wk-p b{font-size:26px;font-weight:600;color:var(--messing);font-variant-numeric:tabular-nums}
+.wk--dunkel{background:var(--tinte);border-color:var(--tinte)}
+.wk--dunkel .wk-n{color:#fff}.wk--dunkel .wk-c li{background:rgba(255,255,255,.1);color:rgba(255,255,255,.85)}
+.wk--dunkel .wk-h,.wk--dunkel .wk-p small{color:rgba(255,255,255,.6)}
+.wk--dunkel .wk-p b{color:#e0c48f}
+@media(max-width:799px){.wk{grid-template-columns:1fr;gap:14px}.wk-p b{font-size:22px}}
+/* Was hinter einem Werkzeug steckt, zweispaltig (27.11.2026) */
+.hg-zwei{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px;align-items:start}
+.hg-zwei .hg-l{margin:0}
+.hg-zwei .hg-l li{grid-template-columns:190px minmax(0,1fr)}
+.hg-satz--b{color:var(--tinte);font-weight:500}
+@media(max-width:899px){.hg-zwei{grid-template-columns:1fr;gap:12px}}
+/* KI-Block */
+.ki-kg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.ki-z{margin:4px 0 12px;font-size:16px;color:rgba(17,20,33,.7)}
+.ki-z b{display:block;font-size:44px;line-height:1.1;font-weight:600;color:var(--messing)}
+.ki-liste{list-style:none;margin:0;padding:0}
+.ki-liste li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-bottom:1px solid rgba(17,20,33,.07)}
+.ki-liste li:last-child{border-bottom:0;font-weight:600}
+.ki-liste span{font-size:15.5px;color:var(--tinte)}
+.ki-liste small{display:block;font-size:13px;color:rgba(17,20,33,.55)}
+.ki-liste b{font-size:18px;font-weight:600;color:var(--messing);font-variant-numeric:tabular-nums}
+@media(max-width:899px){.ki-kg{grid-template-columns:1fr;gap:12px}}
+/* 10 Häuser im Vergleich */
+.zt4{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr)}
+.zehn .wzt b.z-v{color:var(--tinte);font-weight:600}
+.zehn .wzt--summe b.z-v{font-size:18px}
+.zt-ab{margin:18px 0 2px;font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--messing);font-weight:600}
+.z-d{font-weight:600}
+.z-plus{color:#2f7d4f !important}
+.z-minus{color:#b3473b !important}
+.z-0{color:rgba(17,20,33,.45) !important;font-weight:400}
+.zehn .wzt--summe .z-plus{font-size:18px}
+@media(max-width:699px){
+  .hg-zwei .hg-l li{grid-template-columns:1fr;gap:2px}
+  .zt4{grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 10px}
+  .zt4 .wzt-n{grid-column:1/-1}
+  .zehn .wzt b.z-v,.zehn .wzt b.z-d,.zehn .wzt--summe b.z-v,.zehn .wzt--summe .z-plus{font-size:13.5px}
+}
+.zehn .gr-a{display:none}
+.zehn[data-zeige="hotels"] .gr-a[data-art="hotels"],.zehn[data-zeige="restaurants"] .gr-a[data-art="restaurants"],.zehn[data-zeige="gemischt"] .gr-a[data-art="gemischt"]{display:block}
+/* Beträge in den Balken beim Überfahren (Robert 28.11.2026) */
+.gb-spur .gb-bar>.gb-k,.gb-spur .gb-bar>.gb-r{display:flex;align-items:center;justify-content:center;overflow:hidden;min-width:0}
+.gb-v{display:block;flex:none;font-style:normal;font-size:12.5px;font-weight:600;line-height:1;color:#fff;white-space:nowrap;font-variant-numeric:tabular-nums;opacity:0;transition:opacity .18s ease;pointer-events:none}
+.gb-bar:hover .gb-v,.gb-bar:focus .gb-v{opacity:1}
+.gb-v--aus{display:none}
+/* Gewichtung: drei Laptops, darunter die Beschreibungen (Robert 28.11.2026) */
+.gw-r{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.6vw,44px);margin-top:8px}
+.gw-s{min-width:0}
+.gw-b{display:block;width:100%;height:auto;margin:0 0 18px}
+.gw-n{font-family:var(--serif);font-weight:400;text-transform:uppercase;font-size:clamp(34px,3vw,46px);line-height:1;margin:0 0 8px;color:var(--tinte)}
+.gw-m{font-size:16.5px;color:rgba(17,20,33,.7);margin:0 0 6px}
+.gw-m b{color:var(--tinte);font-weight:600}
+.gw-wz{font-size:15px;color:var(--messing);margin:0 0 18px;line-height:1.5}
+.gw-k{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(17,20,33,.5);margin:0 0 4px}
+.gw-t{font-size:18px;line-height:1.55;color:var(--tinte);margin:0 0 16px}
+@media(max-width:899px){.gw-r{grid-template-columns:1fr;gap:40px}.gw-b{max-width:560px}}
+@media(max-width:699px){.gb-spur>.gb-bar{width:calc(100% * var(--f,1))}}
+/* Text neben den Balken als Rechnung (Robert 28.11.2026) */
+.gb-spur>.gb-bar{width:calc((100% - 300px) * var(--f,1))}
+.gb-spur>.gb-z{line-height:1.3}
+.gb-spur>.gb-z small{display:block;font-size:13px;font-weight:500;color:rgba(17,20,33,.62);margin-top:2px}
+.gr .gb{padding:3px 0}
+@media(max-width:699px){.gb-spur>.gb-bar{width:calc(100% * var(--f,1))}}
+@media(max-width:699px){.gb-spur>.gb-z{flex-basis:100%;width:100% !important}}

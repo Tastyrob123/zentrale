@@ -727,7 +727,7 @@ function zeichneUeberblick(id, opt) {
         leute.length ? el('ul', { class: 'kl-pp kl-pp--reihe', 'data-n': String(Math.min(leute.length, 3)) }, ...leute.map(personKurz)) : el('b', { class: 'kl-ue__mittel' }, ap.name || 'Noch offen'),
         el('div', { class: 'kl-ue__links' }, el('button', { type: 'button', onclick: () => geh('personen') }, 'Alle Personen'))),
       el('div', { class: 'kl-ue__block kl-ue__block--rahmen' }, el('span', { class: 'kl-ue__k' }, 'Zuletzt'),
-        notizen.length ? el('ul', { class: 'kl-ue__notizen kl-ue__notizen--ruhig' }, ...notizen.map(n => el('li', {}, el('small', {}, zeit(n.wann) + (n.wer ? ' · ' + n.wer : '')), el('span', {}, kurz(n.text, 160)))))
+        notizen.length ? el('ul', { class: 'kl-ue__notizen kl-ue__notizen--ruhig' }, ...notizen.map(n => el('li', {}, el('small', {}, zeit(n.wann) + (n.wer ? ' · ' + n.wer : '')), el('span', {}, n.text))))
                        : el('p', { class: 'kl-ue__fein' }, 'Noch keine Notiz.'),
         el('div', { class: 'kl-ue__links' }, el('button', { type: 'button', onclick: () => notizFenster(h0) }, 'Notiz schreiben')))));
   // Eine lange Seite (Robert 08.11.2026: «nach unten scrollen … die Informationen direkt alle haben … der Balken wandert automatisch mit»)
@@ -802,10 +802,11 @@ function reiterWeg(h) {
   const fertig = st.filter(x => x.erledigt).length;
   return el('section', { class: 'kl-zeit kl-breit', 'aria-label': 'Schritte der Zusammenarbeit' },
     el('div', { class: 'kl-zeit__kopf' }, el('span', { class: 'kl-ue__k' }, 'Von Anfang bis Ende'), el('b', { class: 'kl-ue__mittel' }, fertig + ' von ' + st.length + ' Schritten erledigt')),
-    el('ol', { class: 'kl-zeit__liste' }, ...st.map((x, i) => el('li', { class: x.erledigt ? 'da' : '' },
-      el('i', { class: 'kl-zeit__punkt' }, x.erledigt ? el('span', { html: WO.ic('haken') }) : String(i + 1)),
-      el('div', { class: 'kl-zeit__t' }, el('b', {}, x.station), el('p', {}, x.erledigt ? (x.ergebnis || 'Erledigt') : 'Noch offen')),
-      el('div', { class: 'kl-zeit__r' }, x.datum ? el('small', {}, datumZeigen(x.datum)) : null, x.link ? el('a', { href: x.link, target: '_blank', rel: 'noopener' }, 'Ansehen') : null)))),
+    /* Schritt nicht erledigt, aber ein späterer schon: nicht «Noch offen», sondern was belegt ist (Robert 22.11.2026: «die Punkte bauen doch aufeinander auf») */
+    el('ol', { class: 'kl-zeit__liste' }, ...st.map((x, i) => { const weiter = !x.erledigt && st.slice(i + 1).some(y => y.erledigt); return el('li', { class: x.erledigt ? 'da' : weiter ? 'weg' : '' },
+      el('i', { class: 'kl-zeit__punkt' }, x.erledigt ? el('span', { html: WO.ic('haken') }) : weiter ? '–' : String(i + 1)),
+      el('div', { class: 'kl-zeit__t' }, el('b', {}, x.station), el('p', {}, x.erledigt ? (x.ergebnis || 'Erledigt') : weiter ? (x.ergebnis || 'Keine Unterlage dazu') : 'Noch offen')),
+      el('div', { class: 'kl-zeit__r' }, x.datum ? el('small', {}, datumZeigen(x.datum)) : null, x.link ? el('a', { href: x.link, target: '_blank', rel: 'noopener' }, 'Ansehen') : null)); })),
     el('p', { class: 'kl-ue__fein kl-zeit__fuss' }, 'Gelesen aus den Unterlagen im Projektordner des Hauses. Das Datum ist der Stand der jeweiligen Unterlage.'),
     gespraecheBlock(h));
 }

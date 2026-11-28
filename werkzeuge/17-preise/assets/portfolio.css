@@ -1,0 +1,338 @@
+/* Portfolio (23.11.2026): Bausteine zusätzlich zum Werkbank-Kit (werkbank.css, seiten.css), Farben aus :root der Werkbank */
+.t1,.t2{font-family:var(--serif);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1.1}
+.t1 .z,.t2 .z{padding:.06em 0}
+.t1 em,.t2 em{font-style:normal;color:var(--gold)}
+.fl--papier .t2 em,.fl--creme .t2 em{color:#a07c3f}
+.insel__m b{font-weight:700;letter-spacing:.06em}
+:root{--abschnitt:clamp(92px,10.6vw,150px);--hell-linie:rgba(17,20,33,.14);--dunkel-linie:rgba(199,180,137,.22)}
+
+/* wie Drucksachen (Robert 19.11.2026): keine Kästen hinter den Stücken, nur ein weicher Schatten an der Form */
+.auslage .blattbild img{box-shadow:none!important;background:none!important;filter:drop-shadow(0 18px 22px rgba(0,0,0,.45))}
+.auslage .blattbild{box-shadow:none!important;background:none!important}
+
+/* Kapitel-Weg unter dem Kopf */
+.pf-weg{background:var(--nacht);border-top:1px solid var(--dunkel-linie);position:relative;z-index:2}
+.pf-weg .in{display:grid;grid-template-columns:repeat(9,1fr);gap:0;padding:0 var(--rand);max-width:var(--max);margin:0 auto}
+.pf-weg a{display:flex;flex-direction:column;gap:6px;padding:20px 12px 22px;color:rgba(255,255,255,.72);text-decoration:none;font-size:13px;line-height:1.3;border-left:1px solid var(--dunkel-linie);transition:color .4s,background .4s}
+.pf-weg a:first-child{border-left:0}
+.pf-weg a b{font-family:var(--mono);font-weight:400;font-size:13px;color:var(--gold);letter-spacing:.08em}
+.pf-weg a:hover{color:#fff;background:rgba(255,255,255,.03)}
+@media(max-width:1100px){.pf-weg .in{grid-template-columns:repeat(3,1fr)}.pf-weg a:nth-child(3n+1){border-left:0}.pf-weg a{border-top:1px solid var(--dunkel-linie)}}
+
+/* Abschnitt */
+.pf .pf-in{display:block}
+.pf-kopf{max-width:760px;margin-bottom:clamp(40px,4.4vw,72px)}
+.pf-kopf .lauf{margin-top:clamp(22px,2.4vw,34px)}
+.pf-kopf .lauf p{font-size:19px;line-height:1.6;max-width:640px}
+.pf-fuss{margin-top:clamp(28px,3vw,44px);font-size:15px;line-height:1.6;max-width:760px;opacity:.78}
+
+/* Liste: was jede Werkbank hat (15 = 5 × 3) */
+.pf-liste{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--hell-linie)}
+.pf-z{display:flex;flex-direction:column;gap:6px;padding:24px 28px 26px 0;border-bottom:1px solid var(--hell-linie)}
+.pf-z b{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:22px;letter-spacing:.02em;line-height:1.1}
+.pf-z span{font-size:16px;line-height:1.5;opacity:.82}
+
+/* Häuser */
+.pf-gruppe+.pf-gruppe{margin-top:clamp(40px,4vw,64px)}
+.pf-gruppe__t{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#a07c3f;margin:0 0 12px}
+.pf-haus{display:grid;grid-template-columns:minmax(220px,30%) 1fr;gap:32px;padding:20px 0;border-top:1px solid var(--hell-linie)}
+.pf-haus:last-child{border-bottom:1px solid var(--hell-linie)}
+.pf-haus b{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:21px;line-height:1.15;letter-spacing:.02em}
+.pf-haus span{font-size:16px;line-height:1.55}
+
+/* Stücke auf Karton (12 = 4 × 3) */
+.stk-raster{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,30px)}
+.stk{padding:0!important;display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:rgba(255,255,255,.035);box-shadow:inset 0 0 0 1px var(--dunkel-linie)}
+.fl--papier .stk,.fl--creme .stk{background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 1px var(--hell-linie)}
+.stk__k{aspect-ratio:4/3;background:#8f8672;display:flex;align-items:center;justify-content:center;gap:2%;padding:3%}
+.stk__k img{display:block;height:auto;flex:none;filter:drop-shadow(0 10px 14px rgba(20,16,10,.28))}
+.stk__t{padding:20px 24px 24px;flex:1}
+.stk__t h3{margin:0 0 6px;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:20px;letter-spacing:.02em;line-height:1.15}
+.stk__t p{margin:0;font-size:15.5px;line-height:1.55;opacity:.82}
+
+/* Ideen als Tabelle */
+.pf-tabelle{border-top:1px solid var(--hell-linie);font-size:16px}
+.pf-tr{display:grid;grid-template-columns:1fr 120px 120px 140px;gap:16px;align-items:center;padding:13px 0;border-bottom:1px solid var(--hell-linie)}
+.pf-th{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#a07c3f}
+.pf-tr>span:nth-child(2),.pf-tr>span:nth-child(3){text-align:center}
+.ja,.nein{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:middle}
+.ja{background:#a07c3f}.nein{box-shadow:inset 0 0 0 1px rgba(17,20,33,.25)}
+.fl--nacht .ja{background:var(--gold)}.fl--nacht .nein{box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.art{font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.art--werkzeug{color:#1f213b}.art--giveaway{color:#a07c3f}.art--betreuung{color:#6d6658}
+
+/* Werkzeuge (8 = 2 × 4) */
+.pf-wz{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,1.6vw,24px)}
+.pf-w{display:flex;flex-direction:column;padding:26px 24px 22px;border-radius:18px;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px var(--hell-linie)}
+.pf-w__stufe{margin:0 0 14px;font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#a07c3f}
+.pf-w h3{margin:0 0 10px;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:22px;line-height:1.1;letter-spacing:.02em}
+.pf-w__s{margin:0 0 18px;font-size:15.5px;line-height:1.55;flex:1}
+.pf-w dl{margin:0;border-top:1px solid var(--hell-linie)}
+.pf-w dl div{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--hell-linie);font-size:14px}
+.pf-w dt{opacity:.7}.pf-w dd{margin:0}
+
+/* Stufen (3 nebeneinander) */
+.pf-stufen{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,28px)}
+.pf-st{display:flex;flex-direction:column;padding:30px 28px 28px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:inset 0 0 0 1px var(--dunkel-linie)}
+.pf-st__nr{margin:0 0 16px;font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.pf-st h3{margin:0 0 12px;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:28px;line-height:1.05;letter-spacing:.02em}
+.pf-st p{margin:0;font-size:16px;line-height:1.6;color:rgba(255,255,255,.82)}
+.pf-st>p:nth-of-type(2){flex:1}
+.pf-st__was{margin-top:20px!important;padding-top:14px;border-top:1px solid var(--dunkel-linie);font-family:var(--mono);font-size:13px!important;letter-spacing:.06em;color:var(--gold)!important}
+.pf-st--warte{opacity:.62}
+
+@media(max-width:1100px){.stk-raster{grid-template-columns:repeat(2,1fr)}.pf-liste{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:860px){.stk-raster,.pf-stufen,.pf-liste{grid-template-columns:1fr}
+  .pf-haus{grid-template-columns:1fr;gap:6px}
+  .pf-tr{grid-template-columns:1fr 104px 56px;gap:8px;font-size:15px}.pf-th{font-size:13px;letter-spacing:.04em}.pf-tr>span:nth-child(4){grid-column:1/-1;margin-top:-6px}
+  .pf-th>span:nth-child(4){display:none}}
+@media(max-width:560px){.pf-wz{grid-template-columns:1fr}.pf-weg .in{grid-template-columns:repeat(3,1fr)}.pf-weg a{padding:14px 8px;font-size:13px}}
+
+/* ---------- Zweite Fassung (23.11.2026): Bilder, Auswahl Hotel/Restaurant ---------- */
+.t1,.t2{line-height:1.16!important}
+.zt .z{padding:.1em 0 .14em;margin:-.1em 0 -.14em}
+.sk .t1{font-size:clamp(46px,6.6vw,108px)}
+.pf-weg .in{grid-template-columns:repeat(7,1fr)}
+@media(max-width:1100px){.pf-weg .in{grid-template-columns:repeat(4,1fr)}.pf-weg a:nth-child(3n+1){border-left:1px solid var(--dunkel-linie)}.pf-weg a:nth-child(4n+1){border-left:0}}
+@media(max-width:560px){.pf-weg .in{grid-template-columns:repeat(2,1fr)}.pf-weg a:nth-child(4n+1){border-left:1px solid var(--dunkel-linie)}.pf-weg a:nth-child(2n+1){border-left:0}}
+.pf-kopf{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;max-width:none}
+.pf-kopf__t{max-width:760px}
+/* Auswahl Hotel / Restaurant */
+.hrwahl{display:inline-flex;flex:none;padding:6px;border-radius:999px;background:rgba(17,20,33,.06);box-shadow:inset 0 0 0 1px var(--hell-linie)}
+.fl--nacht .hrwahl{background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px var(--dunkel-linie)}
+.hrwahl button{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 26px;border-radius:999px;transition:background .4s,color .4s}
+.hrwahl button b{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:17px;letter-spacing:.04em;line-height:1}
+.hrwahl button span{font-size:13px;opacity:.7;line-height:1.2}
+.hrwahl button[aria-pressed="true"]{background:var(--nacht);color:#fff}
+.fl--nacht .hrwahl button[aria-pressed="true"]{background:var(--gold);color:var(--nacht)}
+html[data-welt="hotel"] .nur-restaurant,html[data-welt="restaurant"] .nur-hotel{display:none}
+/* Karten mit Gerät oder Foto */
+.stk__k--geraet{background:linear-gradient(180deg,#9a917d,#857c69)}
+.stk__k--geraet img{max-height:100%;width:auto!important;max-width:100%;filter:drop-shadow(0 14px 18px rgba(20,16,10,.35))}
+.stk__k--foto{position:relative;padding:0;overflow:hidden;display:block}
+.stk__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:none!important}
+.stk__auf{position:absolute;right:5%;bottom:6%;width:46%;height:62%;display:flex;align-items:flex-end;justify-content:flex-end;gap:4%}
+.stk__auf img{filter:drop-shadow(0 12px 16px rgba(0,0,0,.45))!important;max-height:100%;object-fit:contain}
+/* Häuser mit Bildern */
+.pf-haus{grid-template-columns:minmax(240px,32%) 1fr;align-items:center}
+.pf-haus__t{display:flex;flex-direction:column;gap:8px}
+.pf-haus__bilder{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pf-haus__b{aspect-ratio:1;border-radius:12px;background:#8f8672;display:grid;place-items:center;padding:10%}
+.pf-haus__b img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(20,16,10,.3))}
+/* Werkzeug-Reihen: Text und Laptop mit Handy */
+.pf-wzr{display:grid;grid-template-columns:minmax(300px,34%) 1fr;gap:clamp(28px,4vw,72px);align-items:center;padding:clamp(28px,3vw,48px) 0;border-top:1px solid var(--hell-linie)}
+.pf-wzr--r{grid-template-columns:1fr minmax(300px,34%)}
+.pf-wzr--r .pf-wzr__t{order:2}
+.pf-wzr h3{margin:0 0 12px;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(28px,2.6vw,40px);line-height:1.08;letter-spacing:.02em}
+.pf-wzr__t>p:not(.pf-w__stufe){font-size:17px;line-height:1.6;margin:0 0 18px}
+.pf-wzr dl{margin:0;border-top:1px solid var(--hell-linie);max-width:320px}
+.pf-wzr dl div{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--hell-linie);font-size:15px}
+.pf-wzr dd{margin:0}
+.pf-wzr__b img{width:100%;height:auto;filter:drop-shadow(0 30px 36px rgba(20,16,10,.25))}
+@media(max-width:860px){.pf-kopf{flex-direction:column;align-items:flex-start}
+ .pf-haus{grid-template-columns:1fr}.pf-haus__bilder{grid-template-columns:repeat(2,1fr)}
+ .pf-wzr,.pf-wzr--r{grid-template-columns:1fr}.pf-wzr--r .pf-wzr__t{order:0}
+ .hrwahl button{padding:10px 18px}}
+/* feste Kartenflächen: jedes Bild passt sich ein, keine Karte wird höher als die anderen */
+.stk__k{aspect-ratio:4/3;min-height:0;overflow:hidden}
+.stk__k--geraet{padding:5%;display:flex;align-items:center;justify-content:center}
+.stk__k--geraet img{width:100%!important;height:100%!important;max-width:none;object-fit:contain}
+.pf-haus__bilder{min-width:0}
+.pf-haus__b{overflow:hidden;min-width:0}
+.pf-haus__b img{width:100%;height:100%;object-fit:contain}
+.pf>.in{display:block!important}
+.pf-kopf{flex-wrap:wrap}.pf-kopf .hrwahl{margin-left:auto}.pf-kopf__t{min-width:0}
+/* Kopf: Schatten liegt im Bild, kein CSS-Schatten (Safari schneidet ihn an der Ebene ab); Einflug aus allen Richtungen */
+.auslage .blattbild img{filter:none!important;box-shadow:none!important}
+.auslage [data-a="schweb"]:not(.da){transform:translate(var(--x0,0),var(--y0,120px)) rotate(var(--r0,0deg)) scale(.9)}
+
+/* ================= Dritte Fassung (23.11.2026, abends) ================= */
+.pf-kopf{width:100%}
+/* ---- 3D-Reihe zum Durchklicken ---- */
+.kar{position:relative;margin-top:22px}
+.kar__buehne{position:relative;height:clamp(300px,31vw,460px);perspective:1700px;overflow:hidden;border-radius:22px;
+  background:radial-gradient(ellipse 60% 55% at 50% 58%,rgba(255,255,255,.16),transparent 70%),linear-gradient(180deg,#9d937f,#837a67);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -40px 60px -40px rgba(0,0,0,.25);cursor:grab;touch-action:pan-y}
+.kar--druck .kar__buehne{background:radial-gradient(ellipse 55% 60% at 50% 45%,rgba(255,255,255,.55),transparent 70%),linear-gradient(180deg,#e9e3d7,#d3cab9);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -50px 70px -50px rgba(60,48,30,.35)}
+.kar__s{position:absolute;left:50%;top:50%;margin:0;transform:translate(-50%,-50%);transition:transform 1.05s cubic-bezier(.16,1,.3,1),opacity .9s cubic-bezier(.16,1,.3,1);will-change:transform;cursor:pointer}
+.kar__s img{display:block;height:clamp(230px,24vw,370px);width:auto;max-width:min(52vw,560px);object-fit:contain}
+.kar__fuss{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:16px}
+.kar__z{margin:0;min-width:260px;text-align:center;display:flex;flex-direction:column;gap:3px}
+.kar__z b{font-family:var(--serif);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:19px;line-height:1.15}
+.kar__z span{font-family:var(--mono);font-size:13px;letter-spacing:.12em;opacity:.7}
+.kar__k{all:unset;cursor:pointer;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--nacht);color:#fff;
+  box-shadow:0 1px 0 rgba(255,255,255,.15) inset,0 14px 24px -14px rgba(0,0,0,.6);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.fl--nacht .kar__k{background:var(--gold);color:var(--nacht)}
+.kar__k:hover{transform:translateY(-2px)}
+.kar__k svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.kar:not(.da) .kar__buehne{opacity:0;transform:translateY(46px) scale(.985)}
+.kar .kar__buehne{transition:opacity 1.4s cubic-bezier(.16,1,.3,1),transform 1.8s cubic-bezier(.16,1,.3,1)}
+/* Häuser als eigene Bühne */
+.pf-haus{display:block;padding:clamp(28px,3vw,44px) 0}
+.pf-haus__t{display:grid;grid-template-columns:minmax(240px,30%) 1fr;gap:32px;align-items:baseline}
+.pf-haus__t span{font-size:16px;line-height:1.55}
+/* Druckerei-Zeilen */
+.druck-zeile+.druck-zeile{margin-top:clamp(36px,4vw,60px)}
+.druck-zeile__t{display:flex;align-items:baseline;gap:16px;margin:0}
+.druck-zeile__t b{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(24px,2.2vw,32px);letter-spacing:.02em}
+.druck-zeile__t span{font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--gold)}
+/* ---- Ideen als Bildtafel (12 = 4 × 3) ---- */
+.ideen-gruppe+.ideen-gruppe{margin-top:clamp(48px,5vw,80px)}
+.ideen-gruppe__k{display:flex;align-items:baseline;gap:18px;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--hell-linie)}
+.ideen-gruppe__k b{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(30px,3vw,44px);letter-spacing:.02em;line-height:1}
+.ideen-gruppe__k span{font-size:16px;opacity:.75}
+.ideen-raster{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.5vw,22px)}
+.ikachel{border-radius:18px;overflow:hidden;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px var(--hell-linie);display:flex;flex-direction:column}
+.ikachel__b{aspect-ratio:4/3;overflow:hidden;display:grid;place-items:center;background:linear-gradient(180deg,#9d937f,#857b68)}
+.ikachel__b img{width:100%;height:100%;object-fit:contain;padding:9%}
+.ikachel--foto .ikachel__b img{object-fit:cover;padding:0}
+.ikachel--geraet .ikachel__b img{padding:6%}
+.ikachel__t{padding:16px 18px 18px}
+.ikachel__t h3{margin:0 0 10px;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:18px;line-height:1.15;letter-spacing:.02em}
+.ikachel__t p{margin:0;display:flex;align-items:center;gap:7px;font-size:13.5px;opacity:.8}
+.ikachel__t p i{width:10px;height:10px}
+.ikachel__t p i:nth-of-type(2){margin-left:10px}
+/* ---- Stufen: dunkle Karten mit Bild auf hellem Grund ---- */
+.pf-st{padding:0!important;overflow:hidden;background:var(--nacht)!important;box-shadow:0 30px 50px -34px rgba(17,20,33,.7)!important;color:#fff}
+.pf-st__b{aspect-ratio:16/10;overflow:hidden;background:linear-gradient(180deg,#1c2133,#111421)}
+.pf-st__b img{width:100%;height:100%;object-fit:cover}
+.pf-st__b--geraet img{object-fit:contain;padding:6%}
+.pf-st__t{padding:26px 26px 26px;display:flex;flex-direction:column;flex:1}
+.pf-st__t>p:nth-of-type(2){flex:1}
+.pf-st--warte{opacity:1!important}
+.pf-st--warte .pf-st__b img{filter:grayscale(.6) brightness(.8)}
+/* ---- Einschweben überall: ruhig, lang, gestaffelt ---- */
+.stk .stk__k>*,.ikachel .ikachel__b img,.pf-st .pf-st__b img{transition:opacity 1.4s cubic-bezier(.16,1,.3,1),transform 2s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0)*120ms + 220ms)}
+.stk:not(.da) .stk__k>*{opacity:0;transform:translateY(34px) scale(.95)}
+.stk:not(.da) .stk__foto,.ikachel:not(.da) .ikachel__b img,.pf-st:not(.da) .pf-st__b img{opacity:0;transform:scale(1.09)}
+.stk__auf{transition:opacity 1.4s cubic-bezier(.16,1,.3,1) .6s,transform 2s cubic-bezier(.16,1,.3,1) .6s}
+.stk:not(.da) .stk__auf{opacity:0;transform:translate(40px,30px) rotate(4deg)}
+.stk__t>*,.ikachel__t>*,.pf-st__t>*{transition:opacity 1.2s cubic-bezier(.16,1,.3,1),transform 1.6s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0)*120ms + 420ms)}
+.stk:not(.da) .stk__t>*,.ikachel:not(.da) .ikachel__t>*,.pf-st:not(.da) .pf-st__t>*{opacity:0;transform:translateY(16px)}
+.pf-wzr__b{transition:opacity 1.5s cubic-bezier(.16,1,.3,1) .15s,transform 2.2s cubic-bezier(.16,1,.3,1) .15s}
+.pf-wzr:not(.da) .pf-wzr__b{opacity:0;transform:translateX(110px) rotate(1.5deg)}
+.pf-wzr--r:not(.da) .pf-wzr__b{transform:translateX(-110px) rotate(-1.5deg)}
+.pf-wzr__t>*{transition:opacity 1.2s cubic-bezier(.16,1,.3,1),transform 1.6s cubic-bezier(.16,1,.3,1)}
+.pf-wzr__t>*:nth-child(2){transition-delay:.12s}.pf-wzr__t>*:nth-child(3){transition-delay:.24s}.pf-wzr__t>*:nth-child(4){transition-delay:.36s}
+.pf-wzr:not(.da) .pf-wzr__t>*{opacity:0;transform:translateY(22px)}
+.pf-wzr[data-a="auf"]{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.stk *,.ikachel *,.pf-st *,.pf-wzr *,.kar *{transition:none!important;opacity:1!important}}
+@media(max-width:1100px){.ideen-raster{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:860px){.ideen-raster{grid-template-columns:repeat(2,1fr)}.pf-haus__t{grid-template-columns:1fr;gap:6px}.kar__z{min-width:0;flex:1}}
+.ideen-raster>*,.stk-raster>*,.pf-stufen>*{min-width:0}
+.ikachel__b img,.pf-st__b img{max-width:100%}
+/* Spalten dürfen nie von Bildbreiten aufgedrückt werden */
+.ideen-raster{grid-template-columns:repeat(4,minmax(0,1fr))}
+.stk-raster,.pf-stufen{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:1100px){.ideen-raster{grid-template-columns:repeat(3,minmax(0,1fr))}.stk-raster{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:860px){.ideen-raster{grid-template-columns:repeat(2,minmax(0,1fr))}.stk-raster,.pf-stufen{grid-template-columns:minmax(0,1fr)}}
+.ikachel__b{position:relative}
+.ikachel__b img{position:absolute;inset:0;width:100%!important;height:100%!important;box-sizing:border-box}
+.pf-st__b{position:relative}
+.pf-st__b img{position:absolute;inset:0;width:100%!important;height:100%!important;box-sizing:border-box}
+/* Prüfpunkt 39 (23.11.2026): kein CSS-Schatten an Bildern, die sich bewegen oder an einer Kante enden; der Schatten liegt im Bild */
+.stk__k img,.stk__k--geraet img,.stk__auf img,.pf-haus__b img,.pf-wzr__b img,.auslage .blattbild img{filter:none!important;box-shadow:none!important}
+.ikachel__t h3{overflow-wrap:anywhere;hyphens:auto}
+@media(max-width:860px){.auslage [data-a="schweb"]:not(.da){transform:translate(calc(var(--x0,0px)*.25),calc(var(--y0,120px)*.25)) rotate(var(--r0,0deg)) scale(.94)}}
+/* ---- Aufklappbare Erklärungen ---- */
+.erkl{margin-top:18px;border-top:1px solid var(--hell-linie)}
+.fl--nacht .erkl,.pf-st .erkl{border-color:var(--dunkel-linie)}
+.erkl summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#a07c3f}
+.pf-st .erkl summary,.fl--nacht .erkl summary{color:var(--gold)}
+.erkl summary::-webkit-details-marker{display:none}
+.erkl summary i{position:relative;width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 1px currentColor;flex:none;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.erkl summary i::before,.erkl summary i::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:1.4px;background:currentColor;transform:translate(-50%,-50%)}
+.erkl summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.erkl[open] summary i{transform:rotate(180deg)}.erkl[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+.erkl ul{list-style:none;margin:0;padding:0 0 10px;display:grid;gap:14px}
+.erkl li{display:grid;gap:4px;padding-left:18px;position:relative}
+.erkl li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#a07c3f}
+.pf-st .erkl li::before{background:var(--gold)}
+.erkl li b{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:16px;letter-spacing:.03em}
+.erkl li span{font-size:15.5px;line-height:1.6}
+.pf-st .erkl li span{color:rgba(255,255,255,.82)}
+.erkl[open] ul{animation:erkl-auf .7s cubic-bezier(.16,1,.3,1)}
+@keyframes erkl-auf{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.ideen-gruppe>.erkl{max-width:760px;margin:-8px 0 22px}
+/* ---- Geräte freigestellt: kein Karton hinter Laptop und Handy ---- */
+.stk__k--geraet,.ikachel--geraet .ikachel__b{background:transparent!important;box-shadow:none}
+.stk:has(.stk__k--geraet){background:transparent;box-shadow:none}
+.stk:has(.stk__k--geraet) .stk__t{padding-left:4px;padding-right:4px}
+/* ---- Hereinzoomen über die ganze Seite ---- */
+.stk:not(.da) .stk__k>*{opacity:0;transform:scale(.84) translateY(26px)}
+.ikachel:not(.da) .ikachel__b img{opacity:0;transform:scale(1.16)}
+.ikachel--geraet:not(.da) .ikachel__b img,.ikachel--stueck:not(.da) .ikachel__b img{transform:scale(.82)}
+.pf-wzr:not(.da) .pf-wzr__b{opacity:0;transform:translateX(90px) scale(.86)}
+.pf-wzr--r:not(.da) .pf-wzr__b{transform:translateX(-90px) scale(.86)}
+.kar:not(.da) .kar__buehne{opacity:0;transform:scale(.92) translateY(30px)}
+.pf-st:not(.da) .pf-st__b img{opacity:0;transform:scale(1.18)}
+.pf-haus__t[data-a]:not(.da),.druck-zeile__t[data-a]:not(.da),.ideen-gruppe__k[data-a]:not(.da){opacity:0;transform:translateY(24px) scale(.98)}
+.pf-weg a{transition:opacity 1.2s cubic-bezier(.16,1,.3,1),transform 1.6s cubic-bezier(.16,1,.3,1)}
+
+/* ================= Vierte Fassung (23.11.2026, nachts) ================= */
+/* ---- Katalog: Kategorien links, Häuser oben, eine 3D-Reihe ---- */
+.kat{display:grid;grid-template-columns:260px minmax(0,1fr);gap:28px;align-items:start}
+.kat__tabs{display:flex;flex-direction:column;gap:6px;position:sticky;top:110px}
+.kat__tabs button{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-radius:14px;
+  font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:17px;letter-spacing:.03em;line-height:1.15;transition:background .4s,color .4s,box-shadow .4s}
+.kat__tabs button em{font-style:normal;font-family:var(--mono);font-weight:400;font-size:13px;letter-spacing:.06em;opacity:.7}
+.kat__tabs button:hover{background:rgba(17,20,33,.05)}
+.kat__tabs button[aria-pressed="true"]{background:var(--nacht);color:#fff}
+.fl--nacht .kat__tabs button:hover{background:rgba(255,255,255,.05)}
+.fl--nacht .kat__tabs button[aria-pressed="true"]{background:var(--gold);color:var(--nacht)}
+.kat__tabs button:disabled{opacity:.3;cursor:default}
+.kat__haeuser{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.kat__haeuser button{all:unset;cursor:pointer;padding:9px 15px;border-radius:999px;font-size:13.5px;box-shadow:inset 0 0 0 1px var(--hell-linie);transition:background .4s,color .4s}
+.kat__haeuser button[aria-pressed="true"]{background:var(--nacht);color:#fff;box-shadow:none}
+.kat .kar{margin-top:0}
+.haus-liste{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.haus-liste li{display:grid;grid-template-columns:200px 1fr;gap:20px;font-size:15px;line-height:1.55}
+.haus-liste b{font-family:var(--serif);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.erkl--haeuser{margin-top:28px}
+@media(max-width:960px){.kat{grid-template-columns:1fr}.kat__tabs{position:static;flex-direction:row;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}.kat__tabs button{flex:none;font-size:15px;padding:11px 15px}.haus-liste li{grid-template-columns:1fr;gap:2px}}
+
+/* ---- Geräte wie im Sales Cockpit: Gehäuse freigestellt, Aufnahme im Bildschirm, Schatten als Ellipse ---- */
+.gr{position:relative;display:block;width:100%;isolation:isolate}
+.gr__lap{position:relative;display:block;aspect-ratio:1600/1338}
+.gr__lap::after,.gr__han::after{content:"";position:absolute;z-index:-1;left:5%;right:5%;bottom:-3%;height:8%;border-radius:50%;background:radial-gradient(closest-side,rgba(20,16,10,.32),transparent)}
+.gr__schirm{position:absolute;left:9.7242%;top:2.0296%;width:80.5516%;height:62.3256%;overflow:hidden;border-radius:1.4%/2.2%;background:#0d1219}
+.gr__schirm img,.gr__hschirm img{display:block;width:100%!important;height:100%!important;object-fit:cover;object-position:50% 0;filter:none!important}
+.gr__haus,.gr__hhaus{position:absolute;inset:0;width:100%!important;height:100%!important;pointer-events:none;filter:none!important}
+.gr__han{position:relative;display:block;aspect-ratio:623/1092}
+.gr__hschirm{position:absolute;left:16.769%;top:9.372%;width:66.067%;height:81.282%;overflow:hidden;border-radius:9%/4.5%;background:#0d1219}
+.gr--paar{padding-right:13%}
+.gr--paar .gr__han{position:absolute;right:0;bottom:-1%;width:24%}
+.gr--handy{width:auto;height:100%;display:flex;justify-content:center}
+.gr--handy .gr__han{height:100%}
+/* Einflug wie im Cockpit: das Gerät schwebt aus 84 % von unten hoch, der Bildschirm zoomt aus 130 % zur Ruhe */
+.gr[data-gr]:not(.gr-da) .gr__lap{transform:translate3d(0,24px,0) scale(.84);opacity:.001}
+.gr[data-gr]:not(.gr-da) .gr__han{transform:translate3d(30px,30px,0) scale(.8);opacity:.001}
+.gr[data-gr]:not(.gr-da) :is(.gr__schirm,.gr__hschirm) img{transform:scale(1.3)}
+.gr__lap,.gr__han{transform-origin:50% 100%;transition:transform 1.3s cubic-bezier(.19,1,.22,1) .08s,opacity .7s cubic-bezier(.19,1,.22,1) .08s}
+.gr__han{transition-delay:.28s}
+:is(.gr__schirm,.gr__hschirm) img{transition:transform 1.8s cubic-bezier(.19,1,.22,1) .12s}
+.gr--paar .gr__han{transition:transform 1.3s cubic-bezier(.19,1,.22,1) .3s,opacity .7s cubic-bezier(.19,1,.22,1) .3s}
+.stk__k--geraet{padding:6% 8%!important;overflow:visible!important}
+.stk__k--geraet .gr{height:100%;display:flex;align-items:center;justify-content:center}
+.stk__k--geraet .gr__lap{width:100%}
+.stk:has(.stk__k--geraet){overflow:visible}
+.ikachel--geraet .ikachel__b{padding:7% 8%;overflow:visible}
+.ikachel--geraet .ikachel__b .gr{position:absolute;inset:7% 8%;width:auto}
+.ikachel:has(.gr){overflow:visible}
+.pf-st__b--geraet{padding:7% 9%}
+.pf-st__b--geraet .gr{position:absolute;inset:8% 10%;width:auto}
+.pf-wzr__b .gr{width:100%}
+/* ---- Hochschweben wie im Sales Cockpit (cockpit-stand.css): weit von unten, leicht kleiner, ruhig, ohne Überschwinger ---- */
+.pf [data-a="auf"]:not(.da){opacity:0!important;transform:translate3d(0,88px,0) scale(.95)!important}
+.pf [data-a="auf"]{transform-origin:50% 100%;transition:opacity .7s cubic-bezier(.19,1,.22,1),transform 1.2s cubic-bezier(.19,1,.22,1)!important;transition-delay:calc(min(var(--i,0),3) * 80ms)!important}
+.pf [data-a="auf"].da{opacity:1;transform:none}
+/* Bilder in Karten zoomen aus 1,12 zur Ruhe, wie die Bildschirme im Cockpit */
+.stk:not(.da) .stk__k>:not(.gr),.ikachel:not(.da) .ikachel__b>img,.pf-st:not(.da) .pf-st__b>img{opacity:1!important;transform:scale(1.12)!important}
+.stk .stk__k>:not(.gr),.ikachel .ikachel__b>img,.pf-st .pf-st__b>img{transition:transform 1.6s cubic-bezier(.19,1,.22,1) calc(min(var(--i,0),3) * 80ms + 100ms)!important}
+.stk:not(.da) .stk__t>*,.ikachel:not(.da) .ikachel__t>*,.pf-st:not(.da) .pf-st__t>*{opacity:1!important;transform:none!important}
+.pf-wzr:not(.da) .pf-wzr__b,.pf-wzr--r:not(.da) .pf-wzr__b{opacity:1!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){.gr *,.pf [data-a]{opacity:1!important;transform:none!important;transition:none!important}}
+.kat .kar .kar__buehne{opacity:1!important;transform:none!important}
+@media(max-width:960px){.kat__tabs{flex-wrap:wrap;overflow:visible}.kat__tabs button{flex:0 1 auto}}
+@media(max-width:860px){.pf [data-a="auf"]:not(.da){transform:translate3d(0,34px,0) scale(.97)!important}}

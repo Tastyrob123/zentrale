@@ -101,7 +101,7 @@
   const GRUPPEN = [
     ['Verkaufen', 'Häuser finden, ansprechen, gewinnen', ['13-sales-cockpit', '02-kundenliste', '04-haus-check', '09-ki-check']],
     ['Nach aussen', 'Was die Welt von uns sieht', ['14-social-cockpit', '10-newsletter', '01-feinschliff']],
-    ['Marke', 'Wer wir sind und wie wir aussehen', ['11-markenbuch', '12-marke-vision', '15-drucksachen']]
+    ['Marke', 'Wer wir sind und wie wir aussehen', ['11-markenbuch', '12-marke-vision', '15-drucksachen', '16-portfolio']]
   ];
   /* Fotos der Agentur-Seite, die oben im Empfang noch nicht stehen: kein Bild zweimal auf der Seite */
   const PULT_FOTO = { '13-sales-cockpit': 'tafel', '02-kundenliste': 'aussen', '04-haus-check': 'zimmer', '09-ki-check': 'speicherstadt',
@@ -173,7 +173,7 @@
   /* Robert 17.11.2026: die Leiste in jedem Werkzeug, ein- und aufklappbar, mit Titeln und einem Satz, sortiert wie die Werkzeuge der Zentrale */
   const LEISTE_SATZ = { '13-sales-cockpit': 'Häuser ohne Vertrag, je Haus eine Mappe', '02-kundenliste': 'Unser Kundenstamm mit allen Akten', '04-haus-check': 'Kunden finden und jedes Haus prüfen',
     '09-ki-check': 'Wie gut KI-Dienste eine Website lesen', '14-social-cockpit': 'Alle Kanäle von Tasty Studios', '10-newsletter': 'Newsletter, Empfänger und Archiv',
-    '01-feinschliff': 'Unsere Website direkt ändern', '11-markenbuch': 'Logo, Schriften und Farben', '12-marke-vision': 'Wofür Tasty Studios steht', '15-drucksachen': 'Visitenkarten, Briefe und Vorlagen' };
+    '01-feinschliff': 'Unsere Website direkt ändern', '11-markenbuch': 'Logo, Schriften und Farben', '12-marke-vision': 'Wofür Tasty Studios steht', '15-drucksachen': 'Visitenkarten, Briefe und Vorlagen', '16-portfolio': 'Was wir bauen und was dazukommen könnte' };
   /* Robert 17.11.2026: bei jedem Wechsel in ein Werkzeug zuerst eingeklappt, damit der Bereich wirkt; aufgeklappt nur auf Wunsch */
   let leisteAuf = false;
   function leisteSetzen() { document.documentElement.classList.toggle('leiste-auf', leisteAuf); }

@@ -125,6 +125,16 @@
     ],
     zweiter: null
   },
+  '16-portfolio': {
+    zweck: 'Was wir bauen und was dazukommen könnte',
+    satz: 'Was jede Werkbank heute hat, was einzelne Häuser zusätzlich bekommen haben, und Ideen für neue Werkzeuge und Giveaways im Stil von Ihr Haus und Maloja, die mit der Zeit dazukommen können.',
+    schritte: [
+      { t: 'Bestand ansehen', p: 'Unter <span class="m-ui">In jeder Werkbank</span> und <span class="m-ui">Einzelne Häuser</span> steht, was es heute schon gibt, nach Kategorien geordnet.' },
+      { t: 'Ideen durchgehen', p: '<span class="m-ui">Ideen</span> zeigt jede Idee mit Restaurant und Hotel und ob daraus ein Giveaway oder ein Werkzeug würde.' },
+      { t: 'Entwürfe ansehen', p: 'Unter <span class="m-ui">Neue Werkzeuge</span> und <span class="m-ui">Neue Giveaways</span> stehen die Entwürfe, oben rechts zwischen Hotel und Restaurant wechseln.' }
+    ],
+    zweiter: null
+  },
   '15-drucksachen': {
     zweck: 'Unser Papier und unsere Vorlagen',
     satz: 'Alle Drucksachen von Tasty Studios auf einer Seite: Visitenkarten, Briefbogen, Umschläge, Pitch-Heft, Mappe, Präsentation, Beitragsvorlagen und die Stücke für Backoffice und Masterclass, jedes als druckfertige PDF.',
@@ -239,6 +249,10 @@
         var f = d.fragen || [], o = f.filter(function (x) { return !x.antwort; }).length;
         return { zahlen: { offen: o, beantwortet: f.length - o }, kurz: o ? mehr(o, 'Frage offen', 'Fragen offen') : 'Alles beantwortet',
           satz: o ? mehr(o, 'Frage von Anna wartet', 'Fragen von Anna warten') + ' auf eine Antwort.' : 'Keine Frage wartet auf eine Antwort.' }; } } },
+    '16-portfolio': { zeichen: 'buch', wort: 'Marke', z: ['blatt', 'buch', 'haken'],
+      zahlen: [['giveaways', 'Neue Giveaways'], ['werkzeuge', 'Neue Werkzeuge']],
+      stand: { weg: '/zentrale/werkzeuge/16-portfolio/stand.json', lies: function (d) {
+        return { zahlen: { giveaways: d.giveaways, werkzeuge: d.werkzeuge }, satz: d.ideen + ' Ideen, gezeigt an Ihr Haus und Maloja.' }; } } },
     '15-drucksachen': { zeichen: 'druck', wort: 'Marke', z: ['blatt', 'pdf', 'siegel'],
       zahlen: [['stuecke', 'Stücke'], ['seiten', 'Seiten']],
       stand: { weg: '/zentrale/werkzeuge/15-drucksachen/plan.json', lies: function (d) {

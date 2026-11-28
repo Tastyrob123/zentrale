@@ -2027,7 +2027,7 @@ const START_FORM = [
 const START_VERTRAG = [
   ['Vergütung', 'Die Hälfte aller Kundenzahlungen nach Abzug der gemeinsamen Kosten beider Seiten ab der Unterschrift (§ 4)'],
   ['Abrechnung', 'Monatlich, über ein eigenes Konto für Tasty Studios, mit Einsicht in Rechnungen und Zahlungseingänge (§ 5)'],
-  ['Selbstständig', 'Keine festen Zeiten, kein Mindestumsatz, frei für andere Tätigkeiten, keine Haftung für Anna (§ 3, § 14)'],
+  ['Selbstständig', 'Keine festen Zeiten, kein Mindestumsatz, beide frei für andere Tätigkeiten, keine Haftung für Anna (§ 3, § 14)'],
   ['Gemeinsame Firma', 'UG oder GmbH zu gleichen Teilen, sobald es steuerlich am meisten Sinn macht (§ 11)'],
   ['Laufzeit', 'Gesetzliche Kündigungsfristen, im ersten Jahr ein Monat, Überprüfung im März 2027, nach dem Ende bis zu zwölf Monate Beteiligung (§ 12, § 13)']
 ];
@@ -2035,7 +2035,7 @@ const START_OFFEN = [
   ['§ 4', 'Wer zählt als Kunde?', 'Die Hälfte für alle neuen Kunden oder nur für Kunden, die über Anna kommen?', 'Alle neuen Kunden, egal wer sie bringt.'],
   ['§ 11', 'Ab wann die Firma?', 'Ab welcher Summe monatlicher Betreuung gründen wir die gemeinsame Firma?', 'Sobald es steuerlich am meisten Sinn macht. Den Zeitpunkt nennt uns die Steuerberatung, spätestens im März 2027 legen wir fest, wann wir gründen.'],
   ['§ 13', 'Die Fristen', 'Zwölf Monate Beteiligung nach Vertragsende und drei Monate Kündigungsfrist: passt das?', 'Es gelten die gesetzlichen Kündigungsfristen, nichts darüber hinaus: ein Monat im ersten Jahr, steigend bis sechs Monate nach fünf Jahren, jeweils zum Monatsende.'],
-  ['§ 3', 'Andere Anbieter', 'Soll die Vermittlung vergleichbarer Leistungen anderer Anbieter ausgeschlossen sein?', 'Kein Ausschluss. Anna ist frei, auch für andere tätig zu sein.']
+  ['§ 3', 'Andere Anbieter', 'Soll die Vermittlung vergleichbarer Leistungen anderer Anbieter ausgeschlossen sein?', 'Kein Ausschluss. Beide sind frei, daneben anders tätig zu sein: Anna auch für andere, Robert außerhalb der Leistungen von Tasty Studios unter eigenem Namen.']
 ];
 /* Der Vertrag in einfachen Worten für Anna (Robert 14.11.2026: «dass sie versteht, was genau die Intention war … wohlwollend ihr gegenüber formuliert,
    woher die Richtung kommt … ich bringe die kompletten Produkte und Systeme mit und sie bringt ihre Kompetenz mit»). Inhalt nur aus start/vertrag.html. */
